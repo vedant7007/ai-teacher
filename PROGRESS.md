@@ -37,14 +37,20 @@ Session start: 2026-09-04 18:05 IST.
 - [x] Pushed to GitHub: github.com/vedant7007/ai-teacher (**private, Vedant to flip to public**)
 
 ### Phase 1 Ingest and RAG
-- [ ] PyMuPDF parse into blocks with page number and font size
-- [ ] Heading detection by font-size clustering
-- [ ] Chapter/section/paragraph tree, persisted
-- [ ] Structure-aware chunking, 300 to 500 tokens, 15 percent overlap
-- [ ] bge-m3 embeddings into a numpy matrix on disk
-- [ ] BM25 over the same chunks, RRF fusion, top 8
-- [ ] `GET /docs/{id}/tree` returns real chapters
-- [ ] Acceptance: 10 known-answer questions cited correctly, zero fabricated pages
+- [x] PyMuPDF parse with page, font size, font name, geometry
+- [x] Overprint reconstruction (greedy y-band span cover) for fake-bold headings
+- [x] Heading detection by font-size clustering, numbering only refines depth
+- [x] Chapter/section/paragraph tree, persisted, matches the printed book
+- [x] Structure-aware chunking, 300 to 500 tokens, 15 percent overlap, equation-safe
+- [x] Chunks attributed to nearest numbered section, not leaf heading
+- [x] MiniLM-multilingual embeddings, numpy matrix on disk, swappable via EMBED_MODEL
+- [x] BM25 over the same chunks, RRF fusion, top 8, section scoping
+- [x] Cross-lingual retrieval (query + translation union)
+- [x] Local groundedness scoring, 0 API requests
+- [x] `GET /docs`, `POST /docs`, `GET /docs/{id}/tree`, `GET /docs/{id}/search`
+- [x] **Acceptance: 13 passed, 10/10 questions cited to the right section, zero fabricated pages**
+- [x] Hindi source indexed (34 chunks, lang=hi, Devanagari sections clean)
+- [x] `docs/RAG.md` written
 
 ### Phase 2 Lesson generation
 - [ ] Pydantic contracts from CLAUDE.md section 7
