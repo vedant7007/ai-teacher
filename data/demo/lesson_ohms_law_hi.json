@@ -1,6 +1,6 @@
 {
   "lesson_id": "demo_ohms_hi",
-  "title": "ओम का नियम और प्रतिरोध के कारक",
+  "title": "विद्युत धारा और प्रतिरोध (Electric Current and Resistance)",
   "profile": {
     "level": "beginner",
     "prior_knowledge": [],
@@ -15,40 +15,42 @@
   },
   "concepts": [
     {
-      "id": "potential_difference",
-      "name": "विद्युत पोटेंशियल डिफरेंस",
+      "id": "ohms_law",
+      "name": "ओम का नियम (Ohm's Law)",
       "prerequisites": [],
       "source_refs": [],
       "difficulty": 0.3,
-      "est_minutes": 4.0,
+      "est_minutes": 7.0,
       "analogy_families": [
-        "mechanical"
+        "mechanical",
+        "everyday"
       ]
     },
     {
-      "id": "ohms_law_resistance",
-      "name": "ओम का नियम और प्रतिरोध",
+      "id": "electrical_resistance",
+      "name": "विद्युत प्रतिरोध (Electrical Resistance)",
       "prerequisites": [
-        "potential_difference"
+        "ohms_law"
+      ],
+      "source_refs": [],
+      "difficulty": 0.4,
+      "est_minutes": 6.0,
+      "analogy_families": [
+        "mechanical",
+        "everyday"
+      ]
+    },
+    {
+      "id": "factors_resistivity",
+      "name": "प्रतिरोध और प्रतिरोधकता को प्रभावित करने वाले कारक (Factors Affecting Resistance and Resistivity)",
+      "prerequisites": [
+        "electrical_resistance"
       ],
       "source_refs": [],
       "difficulty": 0.5,
-      "est_minutes": 8.0,
+      "est_minutes": 7.0,
       "analogy_families": [
-        "everyday",
-        "mechanical"
-      ]
-    },
-    {
-      "id": "factors_of_resistance_resistivity",
-      "name": "प्रतिरोध को प्रभावित करने वाले कारक और प्रतिरोधकता",
-      "prerequisites": [
-        "ohms_law_resistance"
-      ],
-      "source_refs": [],
-      "difficulty": 0.6,
-      "est_minutes": 6.0,
-      "analogy_families": [
+        "mechanical",
         "everyday"
       ]
     }
@@ -56,90 +58,30 @@
   "beats": [
     {
       "id": "b1",
-      "concept_id": "potential_difference",
+      "concept_id": "ohms_law",
       "intent": "hook",
-      "script": "क्या आपने कभी सोचा है कि एक इलेक्ट्रिक सर्किट में करंट कैसे बहता है? जैसे पानी को एक जगह से दूसरी जगह जाने के लिए एक दबाव की ज़रूरत होती है, वैसे ही इलेक्ट्रिक चार्ज को बहने के लिए भी एक तरह के 'इलेक्ट्रिक दबाव' की ज़रूरत होती है. इसी इलेक्ट्रिक दबाव को हम 'पोटेंशियल डिफरेंस' कहते हैं. यह पोटेंशियल डिफरेंस ही इलेक्ट्रॉनों को एक दिशा में धकेलता है, जिससे करंट पैदा होता है. बैटरी या सेल इसी पोटेंशियल डिफरेंस को बनाए रखते हैं. आज हम इसी पोटेंशियल डिफरेंस, ओम के नियम और उन कारकों के बारे में जानेंगे जिन पर किसी तार का प्रतिरोध निर्भर करता है.",
-      "visual": {
-        "kind": "bullets",
-        "reason": "यह स्लाइड पोटेंशियल डिफरेंस के मूल विचार को एक प्रश्न के साथ प्रस्तुत करती है, जो छात्र को सोचने पर मजबूर करती है।",
-        "subject": "विद्युत प्रवाह",
-        "payload": {
-          "heading": "विद्युत प्रवाह कैसे होता है?",
-          "items": [
-            "इलेक्ट्रिक चार्ज को बहने के लिए क्या चाहिए?",
-            "क्या यह अपने आप बहता है?",
-            "पोटेंशियल डिफरेंस क्या है?"
-          ]
-        },
-        "timeline": [
-          {
-            "element_id": "heading",
-            "word_index": 0,
-            "action": "show"
-          },
-          {
-            "element_id": "0",
-            "word_index": 12,
-            "action": "show"
-          },
-          {
-            "element_id": "1",
-            "word_index": 17,
-            "action": "show"
-          },
-          {
-            "element_id": "2",
-            "word_index": 21,
-            "action": "show"
-          }
-        ]
-      },
-      "citations": [
-        {
-          "doc_id": "jesc111-640a680a2407:0004",
-          "chunk_id": "jesc111-640a680a2407:0004",
-          "chapter": "Electricity",
-          "section": "11.2 ELECTRIC POTENTIAL AND POTENTIAL DIFFERENCE",
-          "page_start": 3,
-          "page_end": 3,
-          "char_start": 0,
-          "char_end": 0,
-          "quote": "For flow of charges in a conducting metallic wire, the gravity, of course, has no role to play; the electrons move only if there is a difference of electric pressure – called the potential difference – along the conductor."
-        }
-      ],
-      "checkpoint": null,
-      "language": "hi-IN",
-      "analogy_family": null,
-      "groundedness_score": null,
-      "est_seconds": 49.8,
-      "generated_after_answer": false
-    },
-    {
-      "id": "b2",
-      "concept_id": "potential_difference",
-      "intent": "analogy",
-      "script": "इसे समझने के लिए, चलो पानी के बहाव का एक उदाहरण लेते हैं. सोचो, अगर एक पाइप में पानी को बहना है, तो उसे एक ऊंचे टैंक से जोड़ना पड़ता है. टैंक में पानी का स्तर ऊंचा होने से पाइप के दोनों सिरों के बीच एक दबाव का अंतर पैदा होता है, और इसी दबाव के अंतर के कारण पानी बहता है. ठीक इसी तरह, एक इलेक्ट्रिक सर्किट में, बैटरी या सेल एक 'इलेक्ट्रिक दबाव' का अंतर पैदा करते हैं, जिसे हम पोटेंशियल डिफरेंस कहते हैं. यह पोटेंशियल डिफरेंस ही इलेक्ट्रॉनों को एक सिरे से दूसरे सिरे तक धकेलता है, जिससे करंट बहता है.",
+      "script": "नमस्ते! आज हम बिजली के बारे में एक बहुत ही दिलचस्प और महत्वपूर्ण नियम सीखेंगे। क्या आपने कभी सोचा है कि जब आप स्विच ऑन करते हैं तो बल्ब कैसे जलता है? या पानी एक पाइप में कैसे बहता है? जैसे पानी को एक जगह से दूसरी जगह ले जाने के लिए दबाव का अंतर चाहिए होता है, तभी वह बहता है, वैसे ही बिजली के आवेशों (charges) को एक तार में बहने के लिए एक 'विद्युत दबाव' का अंतर चाहिए होता है, जिसे हम 'विभवांतर' (potential difference) कहते हैं। यह विभवांतर ही आवेशों को गति प्रदान करता है।",
       "visual": {
         "kind": "diagram",
-        "reason": "यह डायग्राम पानी के बहाव के उदाहरण से पोटेंशियल डिफरेंस के कॉन्सेप्ट को आसान बनाता है।",
-        "subject": "पानी का बहाव और विद्युत प्रवाह",
+        "reason": "यह पानी के बहाव के उदाहरण से विद्युत आवेशों के बहाव की अवधारणा को समझने में मदद करेगा।",
+        "subject": "पानी का बहाव और विद्युत आवेश का बहाव",
         "payload": {
-          "mermaid": "graph TD\n    A[ऊंचा पानी का टैंक] --> B(पाइप)\n    B --> C[नीचा स्तर]\n    subgraph विद्युत प्रवाह\n        D[बैटरी/सेल] --> E(तार)\n        E --> F[बल्ब/रेसिस्टर]\n    end\n    style A fill:#add8e6,stroke:#333,stroke-width:2px\n    style C fill:#add8e6,stroke:#333,stroke-width:2px\n    style D fill:#90ee90,stroke:#333,stroke-width:2px\n    style F fill:#ffcccb,stroke:#333,stroke-width:2px"
+          "mermaid": "graph TD\n    A[ऊँचा टैंक]-->B(पाइप)\n    B-->C[नीचा टैंक]\n    subgraph विद्युत परिपथ\n        D[बैटरी]-->E(तार)\n        E-->F[बल्ब]\n        F-->D\n    end\n    style A fill:#add8e6,stroke:#333,stroke-width:2px\n    style C fill:#add8e6,stroke:#333,stroke-width:2px\n    style D fill:#90ee90,stroke:#333,stroke-width:2px\n    style F fill:#ffff00,stroke:#333,stroke-width:2px\n    linkStyle 0 stroke-width:2px,fill:none,stroke:blue;\n    linkStyle 1 stroke-width:2px,fill:none,stroke:blue;\n    linkStyle 2 stroke-width:2px,fill:none,stroke:red;\n    linkStyle 3 stroke-width:2px,fill:none,stroke:red;\n    linkStyle 4 stroke-width:2px,fill:none,stroke:red;"
         },
         "timeline": [
           {
             "element_id": "A",
-            "word_index": 10,
+            "word_index": 33,
             "action": "show"
           },
           {
             "element_id": "B",
-            "word_index": 12,
+            "word_index": 33,
             "action": "show"
           },
           {
             "element_id": "C",
-            "word_index": 20,
+            "word_index": 33,
             "action": "show"
           },
           {
@@ -149,12 +91,12 @@
           },
           {
             "element_id": "E",
-            "word_index": 47,
+            "word_index": 45,
             "action": "show"
           },
           {
             "element_id": "F",
-            "word_index": 49,
+            "word_index": 45,
             "action": "show"
           }
         ]
@@ -169,333 +111,46 @@
           "page_end": 3,
           "char_start": 0,
           "char_end": 0,
-          "quote": "If one end of the tube is connected to a tank of water kept at a higher level, such that there is a pressure difference between the two ends of the tube, water flows out of the other end of the tube."
+          "quote": "Charges do not flow in a copper wire by themselves, just as water in a perfectly horizontal tube does not flow. If one end of the tube is connected to a tank of water kept at a higher level, such that there is a pressure difference between the two ends of the tube, water flows out of the other end of the tube. For flow of charges in a conducting metallic wire, the gravity, of course, has no role to play; the electrons move only if there is a difference of electric pressure – called the potential difference – along the conductor."
         }
       ],
       "checkpoint": null,
       "language": "hi-IN",
       "analogy_family": "mechanical",
-      "groundedness_score": 0.5741,
-      "est_seconds": 48.0,
+      "groundedness_score": null,
+      "est_seconds": 45.7,
       "generated_after_answer": false
     },
     {
-      "id": "b3",
-      "concept_id": "potential_difference",
-      "intent": "explain",
-      "script": "इसी तरह, एक इलेक्ट्रिक सर्किट में, दो बिंदुओं के बीच का पोटेंशियल डिफरेंस उस काम की मात्रा है जो एक यूनिट चार्ज को एक बिंदु से दूसरे बिंदु तक ले जाने में किया जाता है. इसे हम 'V' से दिखाते हैं. इसका मतलब है कि अगर आपको एक चार्ज को सर्किट में घुमाना है, तो आपको कुछ काम करना होगा, और यह काम पोटेंशियल डिफरेंस पर निर्भर करता है. इसे एक सूत्र से दर्शाया जाता है: V = W/Q. यहां 'W' किया गया काम है, और 'Q' चार्ज की मात्रा है. यह हमें बताता है कि कितना काम करना पड़ा प्रति यूनिट चार्ज को ले जाने में.",
+      "id": "b2",
+      "concept_id": "ohms_law",
+      "intent": "hook",
+      "script": "यह विभवांतर एक बैटरी या सेल द्वारा बनाया जाता है। बैटरी के अंदर की रासायनिक क्रिया ही यह विभवांतर उत्पन्न करती है, भले ही उससे कोई धारा न ली जा रही हो। जब यह विभवांतर होता है, तो आवेश बहने लगते हैं, और इसी बहाव को हम विद्युत धारा (electric current) कहते हैं। तो, क्या विभवांतर और विद्युत धारा के बीच कोई सीधा संबंध है? क्या एक को बढ़ाने से दूसरा भी बढ़ता है, या घटता है? क्या हम इसे माप सकते हैं और कोई पैटर्न ढूंढ सकते हैं? चलो एक गतिविधि से इसे समझते हैं।",
       "visual": {
-        "kind": "equation",
-        "reason": "यह सूत्र पोटेंशियल डिफरेंस की गणितीय परिभाषा दिखाता है।",
-        "subject": "पोटेंशियल डिफरेंस का सूत्र",
+        "kind": "bullets",
+        "reason": "यह विभवांतर और विद्युत धारा के बीच संबंध की खोज के लिए प्रश्न प्रस्तुत करता है।",
+        "subject": "विभवांतर और विद्युत धारा",
         "payload": {
-          "latex": "V = \\frac{W}{Q}",
-          "terms": [
-            {
-              "id": "V",
-              "label": "पोटेंशियल डिफरेंस",
-              "tex": "V"
-            },
-            {
-              "id": "W",
-              "label": "किया गया काम",
-              "tex": "W"
-            },
-            {
-              "id": "Q",
-              "label": "चार्ज की मात्रा",
-              "tex": "Q"
-            }
+          "heading": "विभवांतर और विद्युत धारा",
+          "items": [
+            "विभवांतर (Potential Difference) आवेशों को गति देता है।",
+            "आवेशों की गति विद्युत धारा (Electric Current) है।",
+            "क्या इनके बीच कोई संबंध है?"
           ]
         },
         "timeline": [
           {
-            "element_id": "V",
-            "word_index": 28,
+            "element_id": "0",
+            "word_index": 12,
             "action": "show"
           },
           {
-            "element_id": "equals",
-            "word_index": 29,
-            "action": "show"
-          },
-          {
-            "element_id": "W",
-            "word_index": 30,
-            "action": "show"
-          },
-          {
-            "element_id": "divide",
-            "word_index": 31,
-            "action": "show"
-          },
-          {
-            "element_id": "Q",
-            "word_index": 32,
-            "action": "show"
-          }
-        ]
-      },
-      "citations": [
-        {
-          "doc_id": "jesc111-640a680a2407:0004",
-          "chunk_id": "jesc111-640a680a2407:0004",
-          "chapter": "Electricity",
-          "section": "11.2 ELECTRIC POTENTIAL AND POTENTIAL DIFFERENCE",
-          "page_start": 3,
-          "page_end": 3,
-          "char_start": 0,
-          "char_end": 0,
-          "quote": "We define the electric potential difference between two points in an electric circuit carrying some current as the work done to move a unit charge from one point to the other – Potential difference (V) between two points = Work done (W)/Charge (Q) (11.2) V = W/Q"
-        }
-      ],
-      "checkpoint": null,
-      "language": "hi-IN",
-      "analogy_family": null,
-      "groundedness_score": 0.4735,
-      "est_seconds": 49.4,
-      "generated_after_answer": false
-    },
-    {
-      "id": "b4",
-      "concept_id": "potential_difference",
-      "intent": "explain",
-      "script": "पोटेंशियल डिफरेंस की SI यूनिट वोल्ट (Volt) है, जिसे इटालियन भौतिक विज्ञानी एलेसेंड्रो वोल्टा के नाम पर रखा गया है. एक वोल्ट का मतलब है कि जब एक कूलम्ब (Coulomb) चार्ज को एक बिंदु से दूसरे बिंदु तक ले जाने में 1 जूल (Joule) काम किया जाता है. इसे हम 1V = 1J/1C के रूप में लिख सकते हैं. पोटेंशियल डिफरेंस को मापने के लिए जिस उपकरण का उपयोग किया जाता है, उसे वोल्टमीटर (Voltmeter) कहते हैं. वोल्टमीटर को हमेशा सर्किट में उन दो बिंदुओं के समानांतर (parallel) जोड़ा जाता है जिनके बीच पोटेंशियल डिफरेंस मापना होता है. यह सुनिश्चित करता है कि वोल्टमीटर सर्किट के करंट को प्रभावित न करे.",
-      "visual": {
-        "kind": "equation",
-        "reason": "यह समीकरण वोल्ट की परिभाषा को स्पष्ट करता है, जो पोटेंशियल डिफरेंस की SI यूनिट है।",
-        "subject": "वोल्ट की परिभाषा",
-        "payload": {
-          "latex": "1 \\text{ V} = \\frac{1 \\text{ J}}{1 \\text{ C}}",
-          "terms": [
-            {
-              "id": "1V",
-              "label": "एक वोल्ट",
-              "tex": "1 \\text{ V}"
-            },
-            {
-              "id": "equals",
-              "label": "बराबर",
-              "tex": "="
-            },
-            {
-              "id": "1J",
-              "label": "एक जूल",
-              "tex": "1 \\text{ J}"
-            },
-            {
-              "id": "divide",
-              "label": "बटे",
-              "tex": "/"
-            },
-            {
-              "id": "1C",
-              "label": "एक कूलम्ब",
-              "tex": "1 \\text{ C}"
-            }
-          ]
-        },
-        "timeline": [
-          {
-            "element_id": "1V",
-            "word_index": 23,
-            "action": "show"
-          },
-          {
-            "element_id": "equals",
-            "word_index": 24,
-            "action": "show"
-          },
-          {
-            "element_id": "1J",
-            "word_index": 25,
-            "action": "show"
-          },
-          {
-            "element_id": "divide",
-            "word_index": 26,
-            "action": "show"
-          },
-          {
-            "element_id": "1C",
-            "word_index": 27,
-            "action": "show"
-          }
-        ]
-      },
-      "citations": [
-        {
-          "doc_id": "jesc111-640a680a2407:0004",
-          "chunk_id": "jesc111-640a680a2407:0004",
-          "chapter": "Electricity",
-          "section": "11.2 ELECTRIC POTENTIAL AND POTENTIAL DIFFERENCE",
-          "page_start": 3,
-          "page_end": 4,
-          "char_start": 0,
-          "char_end": 0,
-          "quote": "The SI unit of electric potential difference is volt (V), named after Alessandro Volta (1745 –1827), an Italian physicist. One volt is the potential difference between two points in a current carrying conductor when 1 joule of work is done to move a charge of 1 coulomb from one point to the other. 1 joule Therefore, 1 volt = 1 coulomb (11.3) 1 V = 1 J C–1 The potential difference is measured by means of an instrument called the voltmeter. The voltmeter is always connected in parallel across the points between which the potential difference is to be measured."
-        },
-        {
-          "doc_id": "jesc111-640a680a2407:0005",
-          "chunk_id": "jesc111-640a680a2407:0005",
-          "chapter": "Electricity",
-          "section": "11.2 ELECTRIC POTENTIAL AND POTENTIAL DIFFERENCE",
-          "page_start": 3,
-          "page_end": 4,
-          "char_start": 0,
-          "char_end": 0,
-          "quote": "The potential difference is measured by means of an instrument called the voltmeter. The voltmeter is always connected in parallel across the points between which the potential difference is to be measured."
-        }
-      ],
-      "checkpoint": null,
-      "language": "hi-IN",
-      "analogy_family": null,
-      "groundedness_score": 0.6079,
-      "est_seconds": 51.2,
-      "generated_after_answer": false
-    },
-    {
-      "id": "b5",
-      "concept_id": "potential_difference",
-      "intent": "example",
-      "script": "चलो एक छोटा सा उदाहरण देखते हैं. मान लो, आपको 2 कूलम्ब चार्ज को दो बिंदुओं के बीच ले जाना है, और उन बिंदुओं के बीच का पोटेंशियल डिफरेंस 12 वोल्ट है. तो, इस काम को करने में कितनी ऊर्जा खर्च होगी? हमें पता है कि V = W/Q, तो W = V × Q होगा. यहां V = 12 V और Q = 2 C है. तो, W = 12 V × 2 C = 24 जूल. इसका मतलब है कि 2 कूलम्ब चार्ज को 12 वोल्ट के पोटेंशियल डिफरेंस के पार ले जाने में 24 जूल काम किया जाएगा. यह सीधा सा हिसाब है जो हमें पोटेंशियल डिफरेंस और काम के बीच का संबंध बताता है.",
-      "visual": {
-        "kind": "equation",
-        "reason": "यह उदाहरण पोटेंशियल डिफरेंस के सूत्र का उपयोग करके काम की गणना करना सिखाता है।",
-        "subject": "काम की गणना",
-        "payload": {
-          "latex": "W = V \\times Q \\\\ W = 12 \\text{ V} \\times 2 \\text{ C} \\\\ W = 24 \\text{ J}",
-          "terms": [
-            {
-              "id": "W1",
-              "label": "काम",
-              "tex": "W"
-            },
-            {
-              "id": "equals1",
-              "label": "बराबर",
-              "tex": "="
-            },
-            {
-              "id": "V",
-              "label": "पोटेंशियल डिफरेंस",
-              "tex": "V"
-            },
-            {
-              "id": "times",
-              "label": "गुणा",
-              "tex": "\\times"
-            },
-            {
-              "id": "Q",
-              "label": "चार्ज",
-              "tex": "Q"
-            },
-            {
-              "id": "W2",
-              "label": "काम",
-              "tex": "W"
-            },
-            {
-              "id": "equals2",
-              "label": "बराबर",
-              "tex": "="
-            },
-            {
-              "id": "V_val",
-              "label": "12 वोल्ट",
-              "tex": "12 \\text{ V}"
-            },
-            {
-              "id": "times2",
-              "label": "गुणा",
-              "tex": "\\times"
-            },
-            {
-              "id": "C_val",
-              "label": "2 कूलम्ब",
-              "tex": "2 \\text{ C}"
-            },
-            {
-              "id": "W3",
-              "label": "काम",
-              "tex": "W"
-            },
-            {
-              "id": "equals3",
-              "label": "बराबर",
-              "tex": "="
-            },
-            {
-              "id": "J_val",
-              "label": "24 जूल",
-              "tex": "24 \\text{ J}"
-            }
-          ]
-        },
-        "timeline": [
-          {
-            "element_id": "W1",
-            "word_index": 17,
-            "action": "show"
-          },
-          {
-            "element_id": "equals1",
-            "word_index": 18,
-            "action": "show"
-          },
-          {
-            "element_id": "V",
-            "word_index": 19,
-            "action": "show"
-          },
-          {
-            "element_id": "times",
-            "word_index": 20,
-            "action": "show"
-          },
-          {
-            "element_id": "Q",
+            "element_id": "1",
             "word_index": 21,
             "action": "show"
           },
           {
-            "element_id": "W2",
-            "word_index": 26,
-            "action": "show"
-          },
-          {
-            "element_id": "equals2",
-            "word_index": 27,
-            "action": "show"
-          },
-          {
-            "element_id": "V_val",
-            "word_index": 28,
-            "action": "show"
-          },
-          {
-            "element_id": "times2",
-            "word_index": 30,
-            "action": "show"
-          },
-          {
-            "element_id": "C_val",
-            "word_index": 31,
-            "action": "show"
-          },
-          {
-            "element_id": "W3",
-            "word_index": 34,
-            "action": "show"
-          },
-          {
-            "element_id": "equals3",
-            "word_index": 35,
-            "action": "show"
-          },
-          {
-            "element_id": "J_val",
+            "element_id": "2",
             "word_index": 36,
             "action": "show"
           }
@@ -503,95 +158,16 @@
       },
       "citations": [
         {
-          "doc_id": "jesc111-640a680a2407:0005",
-          "chunk_id": "jesc111-640a680a2407:0005",
+          "doc_id": "jesc111-640a680a2407:0004",
+          "chunk_id": "jesc111-640a680a2407:0004",
           "chapter": "Electricity",
           "section": "11.2 ELECTRIC POTENTIAL AND POTENTIAL DIFFERENCE",
           "page_start": 3,
-          "page_end": 4,
+          "page_end": 3,
           "char_start": 0,
           "char_end": 0,
-          "quote": "Example 11.2 How much work is done in moving a charge of 2 C across two points having a potential difference 12 V? Solution The amount of charge Q, that flows between two points at potential difference V (= 12 V) is 2 C. Thus, the amount of work W, done in moving the charge [from Eq. (11.2)] is 173 Electricity Reprint 2026-27 W = VQ 12 V × 2 C = = 24 J."
-        }
-      ],
-      "checkpoint": null,
-      "language": "hi-IN",
-      "analogy_family": null,
-      "groundedness_score": 0.6892,
-      "est_seconds": 54.5,
-      "generated_after_answer": false
-    },
-    {
-      "id": "b6",
-      "concept_id": "potential_difference",
-      "intent": "check",
-      "script": "अब, पोटेंशियल डिफरेंस के बारे में आपकी समझ को परखने के लिए एक सवाल. अगर 10 कूलम्ब चार्ज को 5 वोल्ट के पोटेंशियल डिफरेंस वाले दो बिंदुओं के बीच ले जाना है, तो कितना काम करना पड़ेगा? अपना जवाब सोचो और मुझे बताओ.",
-      "visual": {
-        "kind": "bullets",
-        "reason": "Summary of the point being made.",
-        "subject": "",
-        "payload": {
-          "heading": "",
-          "items": []
+          "quote": "When the cell is connected to a conducting circuit element, the potential difference sets the charges in motion in the conductor and produces an electric current."
         },
-        "timeline": []
-      },
-      "citations": [],
-      "checkpoint": {
-        "id": "c1",
-        "concept_id": "potential_difference",
-        "type": "numeric",
-        "prompt": "यदि 10 कूलम्ब चार्ज को 5 वोल्ट के पोटेंशियल डिफरेंस वाले दो बिंदुओं के बीच ले जाना है, तो कितना काम करना पड़ेगा?",
-        "options": [],
-        "answer_key": "50 J",
-        "rubric": [
-          "छात्र को W = VQ सूत्र का उपयोग करना चाहिए।",
-          "सही गणना (5 V * 10 C = 50 J) होनी चाहिए।",
-          "सही इकाई (जूल) का उल्लेख होना चाहिए।"
-        ],
-        "targets_misconception": null
-      },
-      "language": "hi-IN",
-      "analogy_family": null,
-      "groundedness_score": null,
-      "est_seconds": 19.8,
-      "generated_after_answer": false
-    },
-    {
-      "id": "b7",
-      "concept_id": "ohms_law_resistance",
-      "intent": "transition",
-      "script": "हमने पोटेंशियल डिफरेंस समझा, जो करंट को बहने के लिए ज़रूरी है. लेकिन क्या पोटेंशियल डिफरेंस और करंट के बीच कोई सीधा संबंध है? क्या हम हमेशा एक ही पोटेंशियल डिफरेंस पर एक ही मात्रा में करंट की उम्मीद कर सकते हैं? या कुछ और भी है जो करंट के बहाव को प्रभावित करता है? इन सवालों के जवाब हमें ओम के नियम में मिलेंगे. ओम का नियम हमें बताता है कि किसी कंडक्टर में बहने वाला करंट और उसके सिरों के बीच का पोटेंशियल डिफरेंस कैसे संबंधित हैं, बशर्ते तापमान समान रहे. चलो, इसे एक एक्टिविटी से समझते हैं.",
-      "visual": {
-        "kind": "bullets",
-        "reason": "यह स्लाइड ओम के नियम की ओर ले जाने वाले मुख्य प्रश्न को प्रस्तुत करती है।",
-        "subject": "पोटेंशियल डिफरेंस और करंट",
-        "payload": {
-          "heading": "पोटेंशियल डिफरेंस और करंट में क्या संबंध है?",
-          "items": [
-            "क्या वे सीधे संबंधित हैं?",
-            "क्या कोई और कारक करंट को प्रभावित करता है?"
-          ]
-        },
-        "timeline": [
-          {
-            "element_id": "heading",
-            "word_index": 0,
-            "action": "show"
-          },
-          {
-            "element_id": "0",
-            "word_index": 10,
-            "action": "show"
-          },
-          {
-            "element_id": "1",
-            "word_index": 14,
-            "action": "show"
-          }
-        ]
-      },
-      "citations": [
         {
           "doc_id": "jesc111-640a680a2407:0007",
           "chunk_id": "jesc111-640a680a2407:0007",
@@ -608,45 +184,100 @@
       "language": "hi-IN",
       "analogy_family": null,
       "groundedness_score": null,
-      "est_seconds": 46.2,
+      "est_seconds": 44.3,
       "generated_after_answer": false
     },
     {
-      "id": "b8",
-      "concept_id": "ohms_law_resistance",
-      "intent": "explain",
-      "script": "अब, चलो एक एक्टिविटी करते हैं. हम एक सर्किट बनाते हैं जिसमें एक नाइक्रोम तार (nichrome wire), एक एमीटर (ammeter), एक वोल्टमीटर (voltmeter) और 1.5 वोल्ट के चार सेल होते हैं. नाइक्रोम एक मिश्र धातु है जो निकल, क्रोमियम, मैंगनीज और लोहे से बनी होती है. सबसे पहले, हम सर्किट में केवल एक सेल का उपयोग करते हैं. हम एमीटर में करंट (I) की रीडिंग और नाइक्रोम तार के सिरों के बीच पोटेंशियल डिफरेंस (V) की रीडिंग को नोट करते हैं. फिर, हम सर्किट में दो सेल जोड़ते हैं और फिर से I और V की रीडिंग नोट करते हैं. इसी तरह, हम तीन और चार सेल के साथ भी यही प्रक्रिया दोहराते हैं. हर बार, हम V और I के अनुपात (V/I) की गणना करते हैं. इससे हमें एक महत्वपूर्ण पैटर्न देखने को मिलेगा.",
+      "id": "b3",
+      "concept_id": "ohms_law",
+      "intent": "example",
+      "script": "कल्पना करो कि तुम एक भीड़-भाड़ वाली सड़क पर चल रहे हो। अगर सड़क चौड़ी और खाली है, तो तुम आसानी से और तेज़ी से चल पाओगे। लेकिन अगर सड़क संकरी और लोगों से भरी हुई है, तो तुम्हें चलने में मुश्किल होगी, है ना? तुम्हें आगे बढ़ने के लिए ज़्यादा ज़ोर लगाना पड़ेगा। इसी तरह, विद्युत धारा के रास्ते में भी कुछ रुकावटें आती हैं। ये रुकावटें इलेक्ट्रॉनों की गति को धीमा कर देती हैं। इन रुकावटों को हम 'प्रतिरोध' (resistance) कहते हैं। अब हम देखेंगे कि विभवांतर, धारा और प्रतिरोध एक-दूसरे से कैसे जुड़े हैं और कैसे ये एक सर्किट में बिजली के प्रवाह को नियंत्रित करते हैं।",
       "visual": {
         "kind": "diagram",
-        "reason": "यह डायग्राम ओम के नियम को समझने के लिए आवश्यक सर्किट सेटअप को दर्शाता है।",
-        "subject": "ओम के नियम के लिए सर्किट",
+        "reason": "यह भीड़-भाड़ वाली सड़क के उदाहरण से प्रतिरोध की अवधारणा को समझने में मदद करेगा।",
+        "subject": "भीड़-भाड़ वाली सड़क",
         "payload": {
-          "mermaid": "graph LR\n    A[बैटरी/सेल] -- V --> B(नाइक्रोम तार XY)\n    B -- A --> C[एमीटर]\n    C -- K --> D[प्लग कुंजी]\n    D -- वायर --> A\n    V_meter(वोल्टमीटर) -- समानांतर --> B"
+          "mermaid": "graph LR\n    A[चौड़ी सड़क]-->B(आसान बहाव)\n    C[संकरी सड़क]-->D(मुश्किल बहाव)\n    style A fill:#90ee90,stroke:#333,stroke-width:2px\n    style C fill:#ffcccb,stroke:#333,stroke-width:2px\n    style B fill:#add8e6,stroke:#333,stroke-width:2px\n    style D fill:#add8e6,stroke:#333,stroke-width:2px\n    linkStyle 0 stroke-width:2px,fill:none,stroke:green;\n    linkStyle 1 stroke-width:2px,fill:none,stroke:red;"
         },
         "timeline": [
           {
             "element_id": "A",
-            "word_index": 20,
+            "word_index": 10,
             "action": "show"
           },
           {
             "element_id": "B",
-            "word_index": 22,
+            "word_index": 10,
             "action": "show"
           },
           {
             "element_id": "C",
-            "word_index": 24,
+            "word_index": 20,
             "action": "show"
           },
           {
             "element_id": "D",
-            "word_index": 26,
+            "word_index": 20,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407:0010",
+          "chunk_id": "jesc111-640a680a2407:0010",
+          "chapter": "Electricity",
+          "section": "11.4 OHM’S LAW",
+          "page_start": 6,
+          "page_end": 7,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "Certain components offer an easy path for the flow of electric current while the others resist the flow. ... Thus, motion of electrons through a conductor is retarded by its resistance."
+        }
+      ],
+      "checkpoint": null,
+      "language": "hi-IN",
+      "analogy_family": "everyday",
+      "groundedness_score": 0.2025,
+      "est_seconds": 50.8,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b4",
+      "concept_id": "ohms_law",
+      "intent": "explain",
+      "script": "एक वैज्ञानिक ने इस संबंध को समझने के लिए एक प्रयोग किया। उन्होंने एक नाइक्रोम तार (nichrome wire) लिया और उसे एक सर्किट में जोड़ा जिसमें एक एमीटर और एक वोल्टमीटर भी था। फिर उन्होंने बैटरी में सेल की संख्या बदलकर विभवांतर को बदला, यानी पहले एक सेल, फिर दो, फिर तीन और अंत में चार सेल का उपयोग किया। हर बार उन्होंने एमीटर (ammeter) से धारा (I) और वोल्टमीटर (voltmeter) से नाइक्रोम तार के सिरों के बीच के विभवांतर (V) को मापा। उन्होंने देखा कि जैसे-जैसे विभवांतर बढ़ता गया, वैसे-वैसे धारा भी बढ़ती गई।",
+      "visual": {
+        "kind": "diagram",
+        "reason": "यह ओम के नियम को समझने के लिए किए गए प्रयोग के सर्किट डायग्राम को दिखाता है।",
+        "subject": "ओम के नियम का प्रयोग",
+        "payload": {
+          "mermaid": "graph LR\n    A[बैटरी]-->B[प्लग कुंजी]\n    B-->C[एमीटर]\n    C-->D[नाइक्रोम तार XY]\n    D-->A\n    V(वोल्टमीटर)---D\n    style A fill:#90ee90,stroke:#333,stroke-width:2px\n    style B fill:#add8e6,stroke:#333,stroke-width:2px\n    style C fill:#ffff00,stroke:#333,stroke-width:2px\n    style D fill:#ffcccb,stroke:#333,stroke-width:2px\n    style V fill:#add8e6,stroke:#333,stroke-width:2px\n    linkStyle 0 stroke-width:2px,fill:none,stroke:black;\n    linkStyle 1 stroke-width:2px,fill:none,stroke:black;\n    linkStyle 2 stroke-width:2px,fill:none,stroke:black;\n    linkStyle 3 stroke-width:2px,fill:none,stroke:black;\n    linkStyle 4 stroke-width:2px,fill:none,stroke:blue,stroke-dasharray: 5 5;"
+        },
+        "timeline": [
+          {
+            "element_id": "A",
+            "word_index": 18,
             "action": "show"
           },
           {
-            "element_id": "V_meter",
-            "word_index": 28,
+            "element_id": "B",
+            "word_index": 18,
+            "action": "show"
+          },
+          {
+            "element_id": "C",
+            "word_index": 18,
+            "action": "show"
+          },
+          {
+            "element_id": "D",
+            "word_index": 18,
+            "action": "show"
+          },
+          {
+            "element_id": "V",
+            "word_index": 24,
             "action": "show"
           }
         ]
@@ -661,29 +292,29 @@
           "page_end": 6,
           "char_start": 0,
           "char_end": 0,
-          "quote": "Set up a circuit as shown in Fig. 11.2, consisting of a nichrome wire XY of length, say 0.5 m, an ammeter, a voltmeter and four cells of 1.5 V each. (Nichrome is an alloy of nickel, chromium, manganese, and iron metals.) First use only one cell as the source in the circuit. Note the reading in the ammeter I, for the current and reading of the voltmeter V for the potential difference across the nichrome wire XY in the circuit. Tabulate Figure 11.2 Electric circuit for studying Ohm’s law them in the Table given. Next connect two cells in the circuit and note the respective readings of the ammeter and voltmeter for the values of current through the nichrome wire and potential difference across the nichrome wire. Repeat the above steps using three cells and then four cells in the circuit separately. Calculate the ratio of V to I for each pair of potential difference V and current I."
+          "quote": "Set up a circuit as shown in Fig. 11.2, consisting of a nichrome wire XY of length, say 0.5 m, an ammeter, a voltmeter and four cells of 1.5 V each. ... First use only one cell as the source in the circuit. Note the reading in the ammeter I, for the current and reading of the voltmeter V for the potential difference across the nichrome wire XY in the circuit. ... Next connect two cells in the circuit and note the respective readings of the ammeter and voltmeter ... Repeat the above steps using three cells and then four cells in the circuit separately."
         }
       ],
       "checkpoint": null,
       "language": "hi-IN",
       "analogy_family": null,
-      "groundedness_score": 0.7335,
-      "est_seconds": 62.3,
+      "groundedness_score": 0.6525,
+      "est_seconds": 43.8,
       "generated_after_answer": false
     },
     {
-      "id": "b9",
-      "concept_id": "ohms_law_resistance",
+      "id": "b5",
+      "concept_id": "ohms_law",
       "intent": "explain",
-      "script": "जब हम अलग-अलग सेल का इस्तेमाल करते हैं और V तथा I की रीडिंग नोट करते हैं, तो हम देखेंगे कि हर बार V/I का अनुपात लगभग समान आता है. इसका मतलब है कि पोटेंशियल डिफरेंस (V) करंट (I) के सीधे आनुपातिक (directly proportional) है. अगर हम V और I के बीच एक ग्राफ बनाते हैं, तो हमें एक सीधी रेखा मिलेगी जो मूल बिंदु (origin) से होकर गुजरती है. यह सीधी रेखा यही दर्शाती है कि जैसे-जैसे करंट बढ़ता है, वैसे-वैसे तार के सिरों के बीच पोटेंशियल डिफरेंस भी रेखीय रूप से बढ़ता है. यही ओम के नियम का आधार है.",
+      "script": "इस प्रयोग से पता चला कि विभवांतर (V) और विद्युत धारा (I) का अनुपात हमेशा लगभग एक जैसा रहता है, यानी V/I एक स्थिरांक (constant) है। जब हम V और I के बीच एक ग्राफ बनाते हैं, तो हमें एक सीधी रेखा मिलती है जो मूल बिंदु (origin) से होकर गुजरती है। यह सीधी रेखा स्पष्ट रूप से दिखाती है कि जैसे-जैसे विभवांतर बढ़ता है, वैसे-वैसे धारा भी उसी अनुपात में बढ़ती है – यह एक सीधा आनुपातिक संबंध है। यह अवलोकन ओम के नियम का आधार बना।",
       "visual": {
         "kind": "graph",
-        "reason": "यह ग्राफ V और I के बीच सीधा संबंध दिखाता है, जो ओम के नियम का एक प्रमुख प्रमाण है।",
+        "reason": "यह V और I के बीच सीधा आनुपातिक संबंध दिखाता है, जो ओम के नियम का एक महत्वपूर्ण परिणाम है।",
         "subject": "V-I ग्राफ",
         "payload": {
           "type": "line",
-          "x_label": "करंट (I) (एम्पीयर)",
-          "y_label": "पोटेंशियल डिफरेंस (V) (वोल्ट)",
+          "x_label": "विद्युत धारा (I) (Ampere)",
+          "y_label": "विभवांतर (V) (Volt)",
           "series": [
             {
               "name": "नाइक्रोम तार",
@@ -714,18 +345,8 @@
         },
         "timeline": [
           {
-            "element_id": "x_label",
-            "word_index": 33,
-            "action": "show"
-          },
-          {
-            "element_id": "y_label",
+            "element_id": "series.0",
             "word_index": 35,
-            "action": "show"
-          },
-          {
-            "element_id": "series[0]",
-            "word_index": 37,
             "action": "show"
           }
         ]
@@ -736,61 +357,45 @@
           "chunk_id": "jesc111-640a680a2407:0008",
           "chapter": "Electricity",
           "section": "11.4 OHM’S LAW",
-          "page_start": 6,
+          "page_start": 5,
           "page_end": 6,
           "char_start": 0,
           "char_end": 0,
           "quote": "In this Activity, you will find that approximately the same value for V/I is obtained in each case. Thus the V–I graph is a straight line that passes through the origin of the graph, as shown in Fig. 11.3. Thus, V/I is a constant ratio."
-        },
-        {
-          "doc_id": "jesc111-640a680a2407:0009",
-          "chunk_id": "jesc111-640a680a2407:0009",
-          "chapter": "Electricity",
-          "section": "11.4 OHM’S LAW",
-          "page_start": 6,
-          "page_end": 6,
-          "char_start": 0,
-          "char_end": 0,
-          "quote": "A straight line plot shows that as the current through a wire increases, the R = potential difference across the wire or V = IR (11.5) increases linearly – this is Ohm’s law."
         }
       ],
       "checkpoint": null,
       "language": "hi-IN",
       "analogy_family": null,
-      "groundedness_score": 0.3992,
-      "est_seconds": 47.1,
+      "groundedness_score": 0.3702,
+      "est_seconds": 40.6,
       "generated_after_answer": false
     },
     {
-      "id": "b10",
-      "concept_id": "ohms_law_resistance",
+      "id": "b6",
+      "concept_id": "ohms_law",
       "intent": "explain",
-      "script": "इसी ऑब्जर्वेशन को जॉर्ज साइमन ओम ने 1827 में एक नियम के रूप में प्रस्तुत किया, जिसे ओम का नियम (Ohm's Law) कहते हैं. ओम के नियम के अनुसार, किसी दिए गए मेटालिक तार के सिरों के बीच का पोटेंशियल डिफरेंस (V) उसमें बहने वाले करंट (I) के सीधे आनुपातिक होता है, बशर्ते उसका तापमान समान रहे. इसे गणितीय रूप से V ∝ I लिखा जाता है. जब हम आनुपातिकता का चिन्ह हटाते हैं, तो हमें एक स्थिरांक (constant) मिलता है, जिसे 'R' से दर्शाया जाता है. तो, सूत्र बन जाता है V = IR. यहां 'R' उस तार का रेजिस्टेंस (Resistance) कहलाता है. यह एक बहुत ही महत्वपूर्ण सूत्र है जो हमें करंट, वोल्टेज और रेजिस्टेंस के बीच का संबंध बताता है.",
+      "script": "जर्मन भौतिक विज्ञानी जॉर्ज साइमन ओम ने 1827 में इस संबंध को 'ओम का नियम' कहा। इस नियम के अनुसार, किसी धातु के तार के सिरों के बीच का विभवांतर (V) उसमें प्रवाहित होने वाली विद्युत धारा (I) के सीधे आनुपातिक होता है, बशर्ते उसका तापमान समान रहे। यह 'तापमान समान रहे' वाली शर्त बहुत महत्वपूर्ण है क्योंकि तापमान बदलने से तार का प्रतिरोध बदल सकता है। इसे हम गणितीय रूप से ऐसे लिखते हैं: V ∝ I, या V/I = स्थिरांक। इस स्थिरांक को हम R कहते हैं, जिसका मतलब है प्रतिरोध। तो, सूत्र बनता है V = IR। यह सूत्र विद्युत परिपथों को समझने का आधार है।",
       "visual": {
         "kind": "equation",
-        "reason": "यह ओम के नियम का मूल सूत्र है, जो विद्युत सर्किट के तीन मुख्य तत्वों को जोड़ता है।",
+        "reason": "यह ओम के नियम का गणितीय सूत्र प्रस्तुत करता है, जो विभवांतर, धारा और प्रतिरोध के बीच संबंध को दर्शाता है।",
         "subject": "ओम का नियम",
         "payload": {
           "latex": "V = IR",
           "terms": [
             {
               "id": "V",
-              "label": "पोटेंशियल डिफरेंस",
+              "label": "विभवांतर",
               "tex": "V"
             },
             {
-              "id": "equals",
-              "label": "बराबर",
-              "tex": "="
-            },
-            {
               "id": "I",
-              "label": "करंट",
+              "label": "विद्युत धारा",
               "tex": "I"
             },
             {
               "id": "R",
-              "label": "रेजिस्टेंस",
+              "label": "प्रतिरोध",
               "tex": "R"
             }
           ]
@@ -798,22 +403,17 @@
         "timeline": [
           {
             "element_id": "V",
-            "word_index": 42,
-            "action": "show"
-          },
-          {
-            "element_id": "equals",
-            "word_index": 43,
+            "word_index": 33,
             "action": "show"
           },
           {
             "element_id": "I",
-            "word_index": 44,
+            "word_index": 35,
             "action": "show"
           },
           {
             "element_id": "R",
-            "word_index": 45,
+            "word_index": 43,
             "action": "show"
           }
         ]
@@ -824,57 +424,42 @@
           "chunk_id": "jesc111-640a680a2407:0008",
           "chapter": "Electricity",
           "section": "11.4 OHM’S LAW",
-          "page_start": 6,
+          "page_start": 5,
           "page_end": 6,
           "char_start": 0,
           "char_end": 0,
-          "quote": "In 1827, a German physicist Georg Simon Ohm (1787–1854) found out the relationship between the current I, flowing in a metallic wire and the potential difference across its terminals. The potential difference, V, across the ends of a given metallic wire in an electric circuit is directly proportional to the current flowing through it, provided its temperature remains the same. This is called Ohm’s law. In other words – Figure 11.3 V ∝ I (11.4) V–I graph for a nichrome wire. A or V/I = constant straight line plot shows that as the current through a wire increases, the R = potential difference across the wire or V = IR (11.5) increases linearly – this is Ohm’s law."
-        },
-        {
-          "doc_id": "jesc111-640a680a2407:0009",
-          "chunk_id": "jesc111-640a680a2407:0009",
-          "chapter": "Electricity",
-          "section": "11.4 OHM’S LAW",
-          "page_start": 6,
-          "page_end": 6,
-          "char_start": 0,
-          "char_end": 0,
-          "quote": "In Eq. (11.4), R is a constant for the given metallic wire at a given temperature and is called its resistance."
+          "quote": "In 1827, a German physicist Georg Simon Ohm (1787–1854) found out the relationship between the current I, flowing in a metallic wire and the potential difference across its terminals. The potential difference, V, across the ends of a given metallic wire in an electric circuit is directly proportional to the current flowing through it,  provided its temperature remains the same. This is called Ohm’s law. ... V ∝ I (11.4) or V/I = constant R = or V = IR (11.5)"
         }
       ],
       "checkpoint": null,
       "language": "hi-IN",
       "analogy_family": null,
-      "groundedness_score": 0.6013,
-      "est_seconds": 56.8,
+      "groundedness_score": 0.4392,
+      "est_seconds": 50.3,
       "generated_after_answer": false
     },
     {
-      "id": "b11",
-      "concept_id": "ohms_law_resistance",
-      "intent": "analogy",
-      "script": "तो, यह R क्या है? R को रेजिस्टेंस (Resistance) कहते हैं. यह किसी कंडक्टर का वह गुण है जो उसमें से बहने वाले चार्ज के प्रवाह का विरोध करता है. इसे ऐसे समझो, जैसे एक भीड़भाड़ वाले दरवाज़े से लोगों को निकलने में मुश्किल होती है, वैसे ही रेजिस्टेंस इलेक्ट्रॉनों को तार में आसानी से बहने से रोकता है. जितना ज़्यादा रेजिस्टेंस होगा, इलेक्ट्रॉनों को बहने में उतनी ही ज़्यादा मुश्किल होगी, और उतना ही कम करंट बहेगा. हर मटेरियल का अपना एक अलग रेजिस्टेंस होता है. कुछ मटेरियल में कम रेजिस्टेंस होता है, जैसे तांबा, इसलिए वे अच्छे कंडक्टर होते हैं, जबकि कुछ में ज़्यादा रेजिस्टेंस होता है, जैसे नाइक्रोम.",
+      "id": "b7",
+      "concept_id": "ohms_law",
+      "intent": "example",
+      "script": "चलो एक उदाहरण देखते हैं। एक इलेक्ट्रिक हीटर के सिरों के बीच विभवांतर 60 V है, और यह स्रोत से 4 A की धारा लेता है। अगर विभवांतर को बढ़ाकर 120 V कर दिया जाए, तो हीटर कितनी धारा लेगा? सबसे पहले, हम हीटर का प्रतिरोध (R) निकालते हैं, जो स्थिर रहता है: R = V/I = 60 V / 4 A = 15 Ω। अब, जब विभवांतर 120 V हो जाता है, तो नई धारा होगी I = V/R = 120 V / 15 Ω = 8 A। देखा, विभवांतर दोगुना हुआ तो धारा भी दोगुनी हो गई! यह ओम के नियम का सीधा उदाहरण है कि V और I सीधे आनुपातिक होते हैं।",
       "visual": {
         "kind": "bullets",
-        "reason": "यह स्लाइड रेजिस्टेंस की परिभाषा और उसके प्रभाव को सरल शब्दों में बताती है।",
-        "subject": "रेजिस्टेंस क्या है?",
+        "reason": "यह ओम के नियम का उपयोग करके एक व्यावहारिक समस्या को हल करने के चरण दिखाता है।",
+        "subject": "उदाहरण 11.4: ओम का नियम",
         "payload": {
-          "heading": "रेजिस्टेंस (Resistance)",
+          "heading": "उदाहरण: हीटर की धारा",
           "items": [
-            "चार्ज के प्रवाह का विरोध करता है।",
-            "जितना ज़्यादा रेजिस्टेंस, उतना कम करंट।",
-            "हर मटेरियल का अपना रेजिस्टेंस होता है।"
+            "दिया गया: V = 60 V, I = 4 A",
+            "प्रतिरोध (R) = V/I = 60V / 4A = 15 Ω",
+            "नया विभवांतर (V') = 120 V",
+            "नई धारा (I') = V'/R = 120V / 15Ω = 8 A"
           ]
         },
         "timeline": [
           {
-            "element_id": "heading",
-            "word_index": 0,
-            "action": "show"
-          },
-          {
             "element_id": "0",
-            "word_index": 12,
+            "word_index": 20,
             "action": "show"
           },
           {
@@ -886,387 +471,10 @@
             "element_id": "2",
             "word_index": 29,
             "action": "show"
-          }
-        ]
-      },
-      "citations": [
-        {
-          "doc_id": "jesc111-640a680a2407:0009",
-          "chunk_id": "jesc111-640a680a2407:0009",
-          "chapter": "Electricity",
-          "section": "11.4 OHM’S LAW",
-          "page_start": 6,
-          "page_end": 6,
-          "char_start": 0,
-          "char_end": 0,
-          "quote": "It is the property of a conductor to resist the flow of charges through it."
-        },
-        {
-          "doc_id": "jesc111-640a680a2407:0010",
-          "chunk_id": "jesc111-640a680a2407:0010",
-          "chapter": "Electricity",
-          "section": "11.4 OHM’S LAW",
-          "page_start": 7,
-          "page_end": 7,
-          "char_start": 0,
-          "char_end": 0,
-          "quote": "Certain components offer an easy path for the flow of electric current while the others resist the flow. ... Thus, motion of electrons through a conductor is retarded by its resistance."
-        }
-      ],
-      "checkpoint": null,
-      "language": "hi-IN",
-      "analogy_family": "everyday",
-      "groundedness_score": 0.5206,
-      "est_seconds": 51.2,
-      "generated_after_answer": false
-    },
-    {
-      "id": "b12",
-      "concept_id": "ohms_law_resistance",
-      "intent": "explain",
-      "script": "रेजिस्टेंस की SI यूनिट ओम (Ohm) है, जिसे ग्रीक अक्षर 'ओमेगा' (Ω) से दर्शाया जाता है. ओम के नियम के अनुसार, R = V/I. तो, अगर किसी कंडक्टर के दो सिरों के बीच पोटेंशियल डिफरेंस 1 वोल्ट हो और उसमें से 1 एम्पीयर करंट बह रहा हो, तो उस कंडक्टर का रेजिस्टेंस 1 ओम होगा. यानी, 1 ओम = 1 वोल्ट / 1 एम्पीयर. यह परिभाषा हमें रेजिस्टेंस की इकाई को समझने में मदद करती है. यह याद रखना महत्वपूर्ण है कि रेजिस्टेंस एक स्थिरांक है जो मटेरियल और उसके भौतिक गुणों पर निर्भर करता है, न कि करंट या वोल्टेज पर.",
-      "visual": {
-        "kind": "equation",
-        "reason": "यह समीकरण ओम की परिभाषा को स्पष्ट करता है, जो रेजिस्टेंस की SI यूनिट है।",
-        "subject": "ओम की परिभाषा",
-        "payload": {
-          "latex": "1 \\Omega = \\frac{1 \\text{ V}}{1 \\text{ A}}",
-          "terms": [
-            {
-              "id": "1Ohm",
-              "label": "एक ओम",
-              "tex": "1 \\Omega"
-            },
-            {
-              "id": "equals",
-              "label": "बराबर",
-              "tex": "="
-            },
-            {
-              "id": "1V",
-              "label": "एक वोल्ट",
-              "tex": "1 \\text{ V}"
-            },
-            {
-              "id": "divide",
-              "label": "बटे",
-              "tex": "/"
-            },
-            {
-              "id": "1A",
-              "label": "एक एम्पीयर",
-              "tex": "1 \\text{ A}"
-            }
-          ]
-        },
-        "timeline": [
-          {
-            "element_id": "1Ohm",
-            "word_index": 22,
-            "action": "show"
           },
           {
-            "element_id": "equals",
-            "word_index": 23,
-            "action": "show"
-          },
-          {
-            "element_id": "1V",
-            "word_index": 24,
-            "action": "show"
-          },
-          {
-            "element_id": "divide",
-            "word_index": 25,
-            "action": "show"
-          },
-          {
-            "element_id": "1A",
-            "word_index": 26,
-            "action": "show"
-          }
-        ]
-      },
-      "citations": [
-        {
-          "doc_id": "jesc111-640a680a2407:0009",
-          "chunk_id": "jesc111-640a680a2407:0009",
-          "chapter": "Electricity",
-          "section": "11.4 OHM’S LAW",
-          "page_start": 6,
-          "page_end": 6,
-          "char_start": 0,
-          "char_end": 0,
-          "quote": "Its SI unit is ohm, represented by the Greek letter Ω. According to Ohm’s law, R = V/I (11.6) If the potential difference across the two ends of a conductor is 1 V and the current through it is 1 A, then the resistance R, of the conductor 1 volt is 1 Ω. That is, 1 ohm = 1 ampere"
-        }
-      ],
-      "checkpoint": null,
-      "language": "hi-IN",
-      "analogy_family": null,
-      "groundedness_score": 0.4819,
-      "est_seconds": 47.1,
-      "generated_after_answer": false
-    },
-    {
-      "id": "b13",
-      "concept_id": "ohms_law_resistance",
-      "intent": "explain",
-      "script": "ओम के नियम से हमें यह भी पता चलता है कि करंट (I) रेजिस्टेंस (R) के व्युत्क्रमानुपाती (inversely proportional) होता है. इसका मतलब है कि अगर रेजिस्टेंस दोगुना हो जाए, तो करंट आधा हो जाएगा, बशर्ते पोटेंशियल डिफरेंस समान रहे. इसे सूत्र I = V/R से समझा जा सकता है. यह संबंध इलेक्ट्रिक सर्किट में करंट को नियंत्रित करने के लिए बहुत महत्वपूर्ण है. कई बार हमें सर्किट में करंट को बढ़ाना या घटाना पड़ता है. इसके लिए हम एक ऐसे कॉम्पोनेंट का उपयोग करते हैं जो वोल्टेज स्रोत को बदले बिना करंट को नियंत्रित कर सके. इसे वेरिएबल रेजिस्टेंस कहते हैं. अगले बीट में हम इसके बारे में और जानेंगे.",
-      "visual": {
-        "kind": "equation",
-        "reason": "यह सूत्र दिखाता है कि करंट रेजिस्टेंस के व्युत्क्रमानुपाती कैसे है।",
-        "subject": "करंट और रेजिस्टेंस का संबंध",
-        "payload": {
-          "latex": "I = \\frac{V}{R}",
-          "terms": [
-            {
-              "id": "I",
-              "label": "करंट",
-              "tex": "I"
-            },
-            {
-              "id": "equals",
-              "label": "बराबर",
-              "tex": "="
-            },
-            {
-              "id": "V",
-              "label": "पोटेंशियल डिफरेंस",
-              "tex": "V"
-            },
-            {
-              "id": "divide",
-              "label": "बटे",
-              "tex": "/"
-            },
-            {
-              "id": "R",
-              "label": "रेजिस्टेंस",
-              "tex": "R"
-            }
-          ]
-        },
-        "timeline": [
-          {
-            "element_id": "I",
-            "word_index": 25,
-            "action": "show"
-          },
-          {
-            "element_id": "equals",
-            "word_index": 26,
-            "action": "show"
-          },
-          {
-            "element_id": "V",
-            "word_index": 27,
-            "action": "show"
-          },
-          {
-            "element_id": "divide",
-            "word_index": 28,
-            "action": "show"
-          },
-          {
-            "element_id": "R",
-            "word_index": 29,
-            "action": "show"
-          }
-        ]
-      },
-      "citations": [
-        {
-          "doc_id": "jesc111-640a680a2407:0009",
-          "chunk_id": "jesc111-640a680a2407:0009",
-          "chapter": "Electricity",
-          "section": "11.4 OHM’S LAW",
-          "page_start": 6,
-          "page_end": 6,
-          "char_start": 0,
-          "char_end": 0,
-          "quote": "It is obvious from Eq. (11.7) that the current through a resistor is inversely proportional to its resistance. If the resistance is doubled the current gets halved. In many practical cases it is necessary to increase or decrease the current in an electric circuit. A component used to regulate current without changing the voltage source is called variable resistance."
-        }
-      ],
-      "checkpoint": null,
-      "language": "hi-IN",
-      "analogy_family": null,
-      "groundedness_score": 0.3382,
-      "est_seconds": 51.2,
-      "generated_after_answer": false
-    },
-    {
-      "id": "b14",
-      "concept_id": "ohms_law_resistance",
-      "intent": "example",
-      "script": "चलो एक और उदाहरण देखते हैं. एक इलेक्ट्रिक हीटर के टर्मिनलों के बीच पोटेंशियल डिफरेंस 60 वोल्ट है, जब वह स्रोत से 4 एम्पीयर करंट लेता है. यदि पोटेंशियल डिफरेंस को बढ़ाकर 120 वोल्ट कर दिया जाए, तो हीटर कितना करंट लेगा? सबसे पहले, हम हीटर का रेजिस्टेंस (R) निकालते हैं. ओम के नियम के अनुसार, R = V/I. तो, R = 60 V / 4 A = 15 ओम. अब, जब पोटेंशियल डिफरेंस 120 वोल्ट हो जाता है, तो हम नया करंट (I) निकाल सकते हैं: I = V/R = 120 V / 15 ओम = 8 एम्पीयर. तो, पोटेंशियल डिफरेंस दोगुना होने पर करंट भी दोगुना हो गया, क्योंकि रेजिस्टेंस समान रहा.",
-      "visual": {
-        "kind": "equation",
-        "reason": "यह उदाहरण ओम के नियम का उपयोग करके करंट की गणना करना सिखाता है जब पोटेंशियल डिफरेंस बदलता है।",
-        "subject": "करंट की गणना",
-        "payload": {
-          "latex": "R = \\frac{V}{I} = \\frac{60 \\text{ V}}{4 \\text{ A}} = 15 \\Omega \\\\ I = \\frac{V}{R} = \\frac{120 \\text{ V}}{15 \\Omega} = 8 \\text{ A}",
-          "terms": [
-            {
-              "id": "R1",
-              "label": "रेजिस्टेंस",
-              "tex": "R"
-            },
-            {
-              "id": "equals1",
-              "label": "बराबर",
-              "tex": "="
-            },
-            {
-              "id": "V1",
-              "label": "पोटेंशियल डिफरेंस",
-              "tex": "V"
-            },
-            {
-              "id": "divide1",
-              "label": "बटे",
-              "tex": "/"
-            },
-            {
-              "id": "I1",
-              "label": "करंट",
-              "tex": "I"
-            },
-            {
-              "id": "V_val1",
-              "label": "60 वोल्ट",
-              "tex": "60 \\text{ V}"
-            },
-            {
-              "id": "I_val1",
-              "label": "4 एम्पीयर",
-              "tex": "4 \\text{ A}"
-            },
-            {
-              "id": "R_val",
-              "label": "15 ओम",
-              "tex": "15 \\Omega"
-            },
-            {
-              "id": "I2",
-              "label": "करंट",
-              "tex": "I"
-            },
-            {
-              "id": "equals2",
-              "label": "बराबर",
-              "tex": "="
-            },
-            {
-              "id": "V2",
-              "label": "पोटेंशियल डिफरेंस",
-              "tex": "V"
-            },
-            {
-              "id": "divide2",
-              "label": "बटे",
-              "tex": "/"
-            },
-            {
-              "id": "R2",
-              "label": "रेजिस्टेंस",
-              "tex": "R"
-            },
-            {
-              "id": "V_val2",
-              "label": "120 वोल्ट",
-              "tex": "120 \\text{ V}"
-            },
-            {
-              "id": "R_val2",
-              "label": "15 ओम",
-              "tex": "15 \\Omega"
-            },
-            {
-              "id": "I_val2",
-              "label": "8 एम्पीयर",
-              "tex": "8 \\text{ A}"
-            }
-          ]
-        },
-        "timeline": [
-          {
-            "element_id": "R1",
-            "word_index": 21,
-            "action": "show"
-          },
-          {
-            "element_id": "equals1",
-            "word_index": 22,
-            "action": "show"
-          },
-          {
-            "element_id": "V1",
-            "word_index": 23,
-            "action": "show"
-          },
-          {
-            "element_id": "divide1",
-            "word_index": 24,
-            "action": "show"
-          },
-          {
-            "element_id": "I1",
-            "word_index": 25,
-            "action": "show"
-          },
-          {
-            "element_id": "V_val1",
-            "word_index": 29,
-            "action": "show"
-          },
-          {
-            "element_id": "I_val1",
-            "word_index": 31,
-            "action": "show"
-          },
-          {
-            "element_id": "R_val",
-            "word_index": 33,
-            "action": "show"
-          },
-          {
-            "element_id": "I2",
-            "word_index": 43,
-            "action": "show"
-          },
-          {
-            "element_id": "equals2",
-            "word_index": 44,
-            "action": "show"
-          },
-          {
-            "element_id": "V2",
-            "word_index": 45,
-            "action": "show"
-          },
-          {
-            "element_id": "divide2",
-            "word_index": 46,
-            "action": "show"
-          },
-          {
-            "element_id": "R2",
-            "word_index": 47,
-            "action": "show"
-          },
-          {
-            "element_id": "V_val2",
-            "word_index": 49,
-            "action": "show"
-          },
-          {
-            "element_id": "R_val2",
-            "word_index": 51,
-            "action": "show"
-          },
-          {
-            "element_id": "I_val2",
-            "word_index": 53,
+            "element_id": "3",
+            "word_index": 38,
             "action": "show"
           }
         ]
@@ -1278,45 +486,117 @@
           "chapter": "Electricity",
           "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
           "page_start": 9,
-          "page_end": 10,
+          "page_end": 11,
           "char_start": 0,
           "char_end": 0,
-          "quote": "Example 11.4 The potential difference between the terminals of an electric heater is 60 V when it draws a current of 4 A from the source. What current will the heater draw if the potential difference is increased to 120 V? Solution We are given, potential difference V = 60 V, current I = 4 A. 60 V = Ω. According to Ohm’s law, R = 15 I 4 A When the potential difference is increased to 120 V the current is given by 120 V = 8 A. current = Ω R 15 The current through the heater becomes 8 A."
+          "quote": "Example 11.4 The potential difference between the terminals of an electric heater is 60 V when it draws a current of 4 A from the source. What current will the heater draw if the potential difference is increased to 120 V? Solution We are given, potential difference V =  60 V, current I = 4 A. According to Ohm’s law, R = V/I = 60 V / 4 A = 15 Ω. When the potential difference is increased to 120 V the current is given by current = V/R = 120 V / 15 Ω = 8 A. The current through the heater becomes 8 A."
         }
       ],
       "checkpoint": null,
       "language": "hi-IN",
       "analogy_family": null,
-      "groundedness_score": 0.6227,
-      "est_seconds": 52.6,
+      "groundedness_score": 0.7771,
+      "est_seconds": 53.1,
       "generated_after_answer": false
     },
     {
-      "id": "b15",
-      "concept_id": "ohms_law_resistance",
-      "intent": "explain",
-      "script": "कभी-कभी हमें सर्किट में करंट को अपनी ज़रूरत के हिसाब से बदलना पड़ता है, जैसे एक डिमर स्विच (dimmer switch) लाइट की चमक को कम या ज़्यादा करता है. इसके लिए हम एक 'वेरिएबल रेजिस्टेंस' का उपयोग करते हैं, जिसे 'रियोस्टेट' (rheostat) भी कहते हैं. यह एक ऐसा उपकरण है जो वोल्टेज स्रोत को बदले बिना सर्किट में रेजिस्टेंस को बदल सकता है. रेजिस्टेंस बदलने से सर्किट में बहने वाला करंट भी बदल जाता है. यह हमें इलेक्ट्रिक उपकरणों में करंट को नियंत्रित करने की सुविधा देता है, जिससे हम उनकी कार्यक्षमता को अपनी इच्छानुसार समायोजित कर सकते हैं. यह बहुत उपयोगी होता है, खासकर प्रयोगशालाओं में या उन उपकरणों में जहाँ करंट को सटीक रूप से नियंत्रित करना होता है.",
+      "id": "b8",
+      "concept_id": "ohms_law",
+      "intent": "check",
+      "script": "तो, ओम के नियम के बारे में आपकी समझ कितनी गहरी है? एक सवाल का जवाब दो: अगर किसी सर्किट में विभवांतर को स्थिर रखते हुए, धारा को दोगुना कर दिया जाए, तो प्रतिरोध पर क्या असर पड़ेगा? ध्यान से सोचो कि V = IR सूत्र में ये तीनों राशियाँ एक-दूसरे से कैसे जुड़ी हैं।",
       "visual": {
-        "kind": "diagram",
-        "reason": "यह डायग्राम रियोस्टेट के प्रतीक को दिखाता है, जो एक वेरिएबल रेजिस्टेंस है।",
-        "subject": "रियोस्टेट का प्रतीक",
+        "kind": "equation",
+        "reason": "यह ओम के नियम के सूत्र को दिखाता है, जो छात्र को प्रश्न का उत्तर देने में मदद करेगा।",
+        "subject": "ओम का नियम",
         "payload": {
-          "mermaid": "graph LR\n    A[स्रोत] --> B(रियोस्टेट)\n    B --> C[लोड]\n    C --> A\n    style B fill:#fff,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5\n    B -- 'परिवर्तनीय' --> B"
+          "latex": "V = IR",
+          "terms": [
+            {
+              "id": "V",
+              "label": "विभवांतर",
+              "tex": "V"
+            },
+            {
+              "id": "I",
+              "label": "विद्युत धारा",
+              "tex": "I"
+            },
+            {
+              "id": "R",
+              "label": "प्रतिरोध",
+              "tex": "R"
+            }
+          ]
         },
         "timeline": [
           {
-            "element_id": "A",
-            "word_index": 18,
+            "element_id": "V",
+            "word_index": 26,
             "action": "show"
           },
           {
-            "element_id": "B",
-            "word_index": 20,
+            "element_id": "I",
+            "word_index": 26,
             "action": "show"
           },
           {
-            "element_id": "C",
-            "word_index": 22,
+            "element_id": "R",
+            "word_index": 26,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [],
+      "checkpoint": {
+        "id": "c1",
+        "concept_id": "ohms_law",
+        "type": "short",
+        "prompt": "यदि एक सर्किट में विभवांतर (V) स्थिर रहता है और विद्युत धारा (I) दोगुनी हो जाती है, तो प्रतिरोध (R) पर क्या प्रभाव पड़ेगा?",
+        "options": [],
+        "answer_key": "प्रतिरोध आधा हो जाएगा।",
+        "rubric": [
+          "उत्तर में 'आधा' या 'घट जाएगा' शामिल होना चाहिए।",
+          "उत्तर में 'V=IR' या 'R=V/I' का संदर्भ होना चाहिए।"
+        ],
+        "targets_misconception": null
+      },
+      "language": "hi-IN",
+      "analogy_family": null,
+      "groundedness_score": null,
+      "est_seconds": 25.4,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b9",
+      "concept_id": "electrical_resistance",
+      "intent": "explain",
+      "script": "हमने अभी देखा कि V/I एक स्थिरांक है जिसे हम R, यानी प्रतिरोध कहते हैं। प्रतिरोध किसी चालक का वह गुण है जो उसमें से आवेशों के प्रवाह का विरोध करता है। कल्पना करो कि इलेक्ट्रॉन एक तार में से बह रहे हैं, लेकिन तार के परमाणु उन्हें अपनी ओर खींचते हैं, जिससे उनकी गति धीमी हो जाती है। यह खिंचाव ही प्रतिरोध है। उच्च प्रतिरोध का मतलब है कि आवेशों के प्रवाह में अधिक बाधा है, जैसे एक भीड़-भाड़ वाली सड़क पर चलना मुश्किल होता है। प्रतिरोध का SI मात्रक ओम (ohm) है, जिसे ग्रीक अक्षर Ω (ओमेगा) से दर्शाया जाता है।",
+      "visual": {
+        "kind": "bullets",
+        "reason": "यह प्रतिरोध की परिभाषा और उसके मात्रक को स्पष्ट रूप से प्रस्तुत करता है।",
+        "subject": "विद्युत प्रतिरोध",
+        "payload": {
+          "heading": "विद्युत प्रतिरोध (Resistance)",
+          "items": [
+            "यह चालक का वह गुण है जो आवेशों के प्रवाह का विरोध करता है।",
+            "उच्च प्रतिरोध = आवेशों के प्रवाह में अधिक बाधा।",
+            "SI मात्रक: ओम (Ohm), प्रतीक: Ω"
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "0",
+            "word_index": 15,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 27,
+            "action": "show"
+          },
+          {
+            "element_id": "2",
+            "word_index": 38,
             "action": "show"
           }
         ]
@@ -1328,405 +608,268 @@
           "chapter": "Electricity",
           "section": "11.4 OHM’S LAW",
           "page_start": 6,
+          "page_end": 6,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "In Eq. (11.4), R is a constant for the given metallic wire at a given temperature and is called its resistance. It is the property of a conductor to resist the flow of charges  through it. Its SI unit is ohm, represented by the Greek letter Ω."
+        },
+        {
+          "doc_id": "jesc111-640a680a2407:0010",
+          "chunk_id": "jesc111-640a680a2407:0010",
+          "chapter": "Electricity",
+          "section": "11.4 OHM’S LAW",
+          "page_start": 6,
           "page_end": 7,
           "char_start": 0,
           "char_end": 0,
-          "quote": "In many practical cases it is necessary to increase or decrease the current in an electric circuit. A component used to regulate current without changing the voltage source is called variable resistance. In an electric circuit, a device called rheostat is often used to change the resistance in the circuit."
+          "quote": "The electrons, however, are not completely free to move within a conductor. They are restrained by the attraction of the atoms among which they move. Thus, motion of electrons through a conductor is retarded by its resistance."
+        }
+      ],
+      "checkpoint": null,
+      "language": "hi-IN",
+      "analogy_family": "everyday",
+      "groundedness_score": 0.5021,
+      "est_seconds": 47.5,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b10",
+      "concept_id": "electrical_resistance",
+      "intent": "explain",
+      "script": "तो, 1 ओम प्रतिरोध का क्या मतलब है? ओम के नियम के अनुसार, R = V/I। इसका मतलब है कि यदि किसी चालक के सिरों के बीच 1 वोल्ट का विभवांतर हो और उसमें से 1 एम्पीयर की धारा प्रवाहित हो, तो उस चालक का प्रतिरोध 1 ओम होगा। यह हमें प्रतिरोध की मात्रा को समझने में मदद करता है। उदाहरण के लिए, यदि एक बल्ब का प्रतिरोध 100 ओम है, तो इसका मतलब है कि वह 100 वोल्ट के विभवांतर पर 1 एम्पीयर की धारा प्रवाहित करेगा, या 1 वोल्ट के विभवांतर पर 0.01 एम्पीयर की धारा।",
+      "visual": {
+        "kind": "equation",
+        "reason": "यह 1 ओम की परिभाषा को गणितीय रूप से स्पष्ट करता है।",
+        "subject": "1 ओम की परिभाषा",
+        "payload": {
+          "latex": "1 \\text{ ओम} = \\frac{1 \\text{ वोल्ट}}{1 \\text{ एम्पीयर}}",
+          "terms": [
+            {
+              "id": "ohm",
+              "label": "ओम",
+              "tex": "\\text{ ओम}"
+            },
+            {
+              "id": "volt",
+              "label": "वोल्ट",
+              "tex": "\\text{ वोल्ट}"
+            },
+            {
+              "id": "ampere",
+              "label": "एम्पीयर",
+              "tex": "\\text{ एम्पीयर}"
+            }
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "ohm",
+            "word_index": 12,
+            "action": "show"
+          },
+          {
+            "element_id": "volt",
+            "word_index": 12,
+            "action": "show"
+          },
+          {
+            "element_id": "ampere",
+            "word_index": 12,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407:0009",
+          "chunk_id": "jesc111-640a680a2407:0009",
+          "chapter": "Electricity",
+          "section": "11.4 OHM’S LAW",
+          "page_start": 6,
+          "page_end": 6,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "If the potential difference across the two ends of a conductor is 1 V and the current through it is 1 A, then the resistance R, of the conductor is 1 Ω. That is, 1 ohm = 1 volt / 1 ampere"
+        }
+      ],
+      "checkpoint": null,
+      "language": "hi-IN",
+      "analogy_family": null,
+      "groundedness_score": 0.4424,
+      "est_seconds": 45.2,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b11",
+      "concept_id": "electrical_resistance",
+      "intent": "analogy",
+      "script": "प्रतिरोध को समझने के लिए, एक और उदाहरण लेते हैं: एक पानी का पाइप। अगर पाइप संकरा है, तो पानी को बहने में ज़्यादा मुश्किल होगी, यानी प्रतिरोध ज़्यादा होगा। पानी के अणु एक-दूसरे से और पाइप की दीवारों से ज़्यादा टकराएंगे। अगर पाइप चौड़ा है, तो पानी आसानी से बहेगा, यानी प्रतिरोध कम होगा। इसी तरह, एक बिजली के सर्किट में, कुछ घटक (components) धारा को आसानी से बहने देते हैं (कम प्रतिरोध), जबकि कुछ उसे रोकते हैं (उच्च प्रतिरोध)। यह प्रतिरोध ही तय करता है कि किसी दिए गए विभवांतर पर कितनी धारा प्रवाहित होगी।",
+      "visual": {
+        "kind": "diagram",
+        "reason": "यह पानी के पाइप के उदाहरण से प्रतिरोध की अवधारणा को स्पष्ट करता है, जहां संकरा पाइप अधिक प्रतिरोध और चौड़ा पाइप कम प्रतिरोध दर्शाता है।",
+        "subject": "पानी के पाइप का प्रतिरोध",
+        "payload": {
+          "mermaid": "graph LR\n    A[पानी का स्रोत]-->B(संकरा पाइप)\n    B-->C[कम बहाव (उच्च प्रतिरोध)]\n    D[पानी का स्रोत]-->E(चौड़ा पाइप)\n    E-->F[अधिक बहाव (कम प्रतिरोध)]\n    style A fill:#add8e6,stroke:#333,stroke-width:2px\n    style D fill:#add8e6,stroke:#333,stroke-width:2px\n    style B fill:#ffcccb,stroke:#333,stroke-width:2px\n    style E fill:#90ee90,stroke:#333,stroke-width:2px\n    style C fill:#f08080,stroke:#333,stroke-width:2px\n    style F fill:#87cefa,stroke:#333,stroke-width:2px\n    linkStyle 0 stroke-width:2px,fill:none,stroke:blue;\n    linkStyle 1 stroke-width:2px,fill:none,stroke:red;\n    linkStyle 2 stroke-width:2px,fill:none,stroke:blue;\n    linkStyle 3 stroke-width:2px,fill:none,stroke:green;"
+        },
+        "timeline": [
+          {
+            "element_id": "A",
+            "word_index": 14,
+            "action": "show"
+          },
+          {
+            "element_id": "B",
+            "word_index": 14,
+            "action": "show"
+          },
+          {
+            "element_id": "C",
+            "word_index": 14,
+            "action": "show"
+          },
+          {
+            "element_id": "D",
+            "word_index": 20,
+            "action": "show"
+          },
+          {
+            "element_id": "E",
+            "word_index": 20,
+            "action": "show"
+          },
+          {
+            "element_id": "F",
+            "word_index": 20,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407:0010",
+          "chunk_id": "jesc111-640a680a2407:0010",
+          "chapter": "Electricity",
+          "section": "11.4 OHM’S LAW",
+          "page_start": 6,
+          "page_end": 7,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "Certain components offer an easy path for the flow of electric current while the others resist the flow."
         }
       ],
       "checkpoint": null,
       "language": "hi-IN",
       "analogy_family": "mechanical",
-      "groundedness_score": 0.1842,
-      "est_seconds": 55.8,
+      "groundedness_score": 0.1904,
+      "est_seconds": 44.8,
       "generated_after_answer": false
     },
     {
-      "id": "b16",
-      "concept_id": "ohms_law_resistance",
-      "intent": "check",
-      "script": "अब, ओम के नियम और रेजिस्टेंस के बारे में आपकी समझ को परखने के लिए एक सवाल. यदि एक बल्ब का रेजिस्टेंस 10 ओम है और उसे 50 वोल्ट की बैटरी से जोड़ा जाता है, तो उसमें से कितना करंट बहेगा? अपना जवाब सोचो और मुझे बताओ.",
-      "visual": {
-        "kind": "bullets",
-        "reason": "Summary of the point being made.",
-        "subject": "",
-        "payload": {
-          "heading": "",
-          "items": []
-        },
-        "timeline": []
-      },
-      "citations": [],
-      "checkpoint": {
-        "id": "c2",
-        "concept_id": "ohms_law_resistance",
-        "type": "numeric",
-        "prompt": "यदि एक बल्ब का रेजिस्टेंस 10 ओम है और उसे 50 वोल्ट की बैटरी से जोड़ा जाता है, तो उसमें से कितना करंट बहेगा?",
-        "options": [],
-        "answer_key": "5 A",
-        "rubric": [
-          "छात्र को I = V/R सूत्र का उपयोग करना चाहिए।",
-          "सही गणना (50 V / 10 Ω = 5 A) होनी चाहिए।",
-          "सही इकाई (एम्पीयर) का उल्लेख होना चाहिए।"
-        ],
-        "targets_misconception": null
-      },
-      "language": "hi-IN",
-      "analogy_family": null,
-      "groundedness_score": null,
-      "est_seconds": 21.7,
-      "generated_after_answer": false
-    },
-    {
-      "id": "b17",
-      "concept_id": "factors_of_resistance_resistivity",
-      "intent": "transition",
-      "script": "हमने देखा कि अलग-अलग कॉम्पोनेंट का रेजिस्टेंस अलग-अलग होता है. लेकिन क्या रेजिस्टेंस केवल मटेरियल पर निर्भर करता है? क्या तार की लंबाई या मोटाई का भी रेजिस्टेंस पर कोई असर पड़ता है? सोचो, अगर तुम एक पतली और लंबी पाइप से पानी बहाने की कोशिश करो, तो क्या वह एक मोटी और छोटी पाइप की तुलना में ज़्यादा मुश्किल होगा? बिल्कुल! इसी तरह, इलेक्ट्रिक करंट के साथ भी होता है. चलो, एक एक्टिविटी से समझते हैं कि किसी कंडक्टर का रेजिस्टेंस किन-किन कारकों पर निर्भर करता है. यह हमें बताएगा कि हम अपनी ज़रूरत के हिसाब से रेजिस्टेंस को कैसे बदल सकते हैं.",
-      "visual": {
-        "kind": "bullets",
-        "reason": "यह स्लाइड रेजिस्टेंस को प्रभावित करने वाले कारकों के बारे में मुख्य प्रश्न प्रस्तुत करती है।",
-        "subject": "रेजिस्टेंस को प्रभावित करने वाले कारक",
-        "payload": {
-          "heading": "रेजिस्टेंस किन कारकों पर निर्भर करता है?",
-          "items": [
-            "क्या यह केवल मटेरियल पर निर्भर करता है?",
-            "क्या तार की लंबाई या मोटाई का कोई असर होता है?"
-          ]
-        },
-        "timeline": [
-          {
-            "element_id": "heading",
-            "word_index": 0,
-            "action": "show"
-          },
-          {
-            "element_id": "0",
-            "word_index": 10,
-            "action": "show"
-          },
-          {
-            "element_id": "1",
-            "word_index": 16,
-            "action": "show"
-          }
-        ]
-      },
-      "citations": [
-        {
-          "doc_id": "jesc111-640a680a2407:0011",
-          "chunk_id": "jesc111-640a680a2407:0011",
-          "chapter": "Electricity",
-          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
-          "page_start": 7,
-          "page_end": 7,
-          "char_start": 0,
-          "char_end": 0,
-          "quote": "Does the current depend on the length of the conductor? Does the current depend on the area of cross-section of the wire used? ...On applying Ohm’s law [Eqs. (11.5) – (11.7)], we observe that the resistance of the conductor depends (i) on its length, (ii) on its area of cross-section, and (iii) on the nature of its material."
-        }
-      ],
-      "checkpoint": null,
-      "language": "hi-IN",
-      "analogy_family": null,
-      "groundedness_score": null,
-      "est_seconds": 48.0,
-      "generated_after_answer": false
-    },
-    {
-      "id": "b18",
-      "concept_id": "factors_of_resistance_resistivity",
+      "id": "b12",
+      "concept_id": "electrical_resistance",
       "intent": "explain",
-      "script": "एक और एक्टिविटी करते हैं. हम एक सर्किट बनाते हैं जिसमें एक सेल, एक एमीटर और एक नाइक्रोम तार होता है. सबसे पहले, हम 'l' लंबाई का एक नाइक्रोम तार जोड़ते हैं और एमीटर की रीडिंग नोट करते हैं. फिर, हम उसी मोटाई का, लेकिन दोगुनी लंबाई ('2l') का नाइक्रोम तार जोड़ते हैं और फिर से एमीटर की रीडिंग नोट करते हैं. हम देखेंगे कि जब तार की लंबाई दोगुनी की जाती है, तो एमीटर की रीडिंग आधी हो जाती है. ओम के नियम के अनुसार, कम करंट का मतलब है ज़्यादा रेजिस्टेंस. इसका मतलब है कि कंडक्टर का रेजिस्टेंस उसकी लंबाई के सीधे आनुपातिक होता है (R ∝ l). जितनी ज़्यादा लंबाई, उतना ज़्यादा रेजिस्टेंस, जैसे एक लंबी सड़क पर चलने में ज़्यादा रुकावटें आती हैं.",
+      "script": "ओम के नियम से, हम जानते हैं कि I = V/R। इसका मतलब है कि विद्युत धारा (I) प्रतिरोध (R) के व्युत्क्रमानुपाती (inversely proportional) होती है। यानी, अगर विभवांतर स्थिर रहे, तो प्रतिरोध बढ़ने पर धारा घटती है, और प्रतिरोध घटने पर धारा बढ़ती है। उदाहरण के लिए, अगर प्रतिरोध दोगुना हो जाए, तो धारा आधी हो जाती है। यह बहुत महत्वपूर्ण है क्योंकि कई बार हमें सर्किट में धारा को बढ़ाना या घटाना होता है, और हम प्रतिरोध को बदलकर ऐसा कर सकते हैं।",
       "visual": {
-        "kind": "diagram",
-        "reason": "यह डायग्राम दिखाता है कि तार की लंबाई बदलने से सर्किट में करंट कैसे प्रभावित होता है।",
-        "subject": "लंबाई का रेजिस्टेंस पर प्रभाव",
+        "kind": "graph",
+        "reason": "यह दिखाता है कि विद्युत धारा प्रतिरोध के व्युत्क्रमानुपाती कैसे होती है, एक महत्वपूर्ण संबंध।",
+        "subject": "धारा और प्रतिरोध का संबंध",
         "payload": {
-          "mermaid": "graph TD\n    A[सेल] --> B(एमीटर)\n    B --> C1(नाइक्रोम तार 'l')\n    C1 --> D[कुंजी]\n    D --> A\n    subgraph दूसरा केस\n        A --> B\n        B --> C2(नाइक्रोम तार '2l')\n        C2 --> D\n    end"
-        },
-        "timeline": [
-          {
-            "element_id": "C1",
-            "word_index": 18,
-            "action": "show"
-          },
-          {
-            "element_id": "C2",
-            "word_index": 30,
-            "action": "show"
-          }
-        ]
-      },
-      "citations": [
-        {
-          "doc_id": "jesc111-640a680a2407:0011",
-          "chunk_id": "jesc111-640a680a2407:0011",
-          "chapter": "Electricity",
-          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
-          "page_start": 7,
-          "page_end": 8,
-          "char_start": 0,
-          "char_end": 0,
-          "quote": "Complete an electric circuit consisting of a cell, an ammeter, a nichrome wire of length l [say, marked (1)] and a plug key, as shown in Fig. 11.5. ...Replace the nichrome wire by another nichrome wire of same thickness but twice the length, that is 2l [marked (2) in the Fig. 11.5]. Note the ammeter reading. ...It is observed that the ammeter reading decreases to one-half when the length of the wire is doubled. ...Precise measurements have shown that resistance of a uniform metallic conductor is directly proportional to its length (l) (11.8)"
-        },
-        {
-          "doc_id": "jesc111-640a680a2407:0012",
-          "chunk_id": "jesc111-640a680a2407:0012",
-          "chapter": "Electricity",
-          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
-          "page_start": 8,
-          "page_end": 8,
-          "char_start": 0,
-          "char_end": 0,
-          "quote": "R ∝ l (11.8)"
-        }
-      ],
-      "checkpoint": null,
-      "language": "hi-IN",
-      "analogy_family": "everyday",
-      "groundedness_score": 0.5972,
-      "est_seconds": 58.6,
-      "generated_after_answer": false
-    },
-    {
-      "id": "b19",
-      "concept_id": "factors_of_resistance_resistivity",
-      "intent": "explain",
-      "script": "अब, तार की मोटाई बदलते हैं. हम उसी लंबाई ('l') का, लेकिन ज़्यादा मोटा नाइक्रोम तार जोड़ते हैं. एक मोटा तार का मतलब है ज़्यादा क्रॉस-सेक्शनल एरिया (area of cross-section). जब हम मोटा तार जोड़ते हैं, तो हम देखते हैं कि एमीटर की रीडिंग बढ़ जाती है. इसका मतलब है कि मोटा तार कम रेजिस्टेंस प्रदान करता है. तो, कंडक्टर का रेजिस्टेंस उसके क्रॉस-सेक्शनल एरिया के व्युत्क्रमानुपाती होता है (R ∝ 1/A). यानी, जितना ज़्यादा एरिया, उतना कम रेजिस्टेंस. इसे ऐसे समझो कि एक चौड़ी सड़क पर चलना एक पतली गली की तुलना में आसान होता है, क्योंकि वहां ज़्यादा जगह होती है.",
-      "visual": {
-        "kind": "diagram",
-        "reason": "यह डायग्राम दिखाता है कि तार की मोटाई बदलने से सर्किट में करंट कैसे प्रभावित होता है।",
-        "subject": "क्रॉस-सेक्शनल एरिया का रेजिस्टेंस पर प्रभाव",
-        "payload": {
-          "mermaid": "graph TD\n    A[सेल] --> B(एमीटर)\n    B --> C1(पतला तार 'A')\n    C1 --> D[कुंजी]\n    D --> A\n    subgraph दूसरा केस\n        A --> B\n        B --> C2(मोटा तार '2A')\n        C2 --> D\n    end"
-        },
-        "timeline": [
-          {
-            "element_id": "C1",
-            "word_index": 16,
-            "action": "show"
-          },
-          {
-            "element_id": "C2",
-            "word_index": 26,
-            "action": "show"
-          }
-        ]
-      },
-      "citations": [
-        {
-          "doc_id": "jesc111-640a680a2407:0011",
-          "chunk_id": "jesc111-640a680a2407:0011",
-          "chapter": "Electricity",
-          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
-          "page_start": 7,
-          "page_end": 8,
-          "char_start": 0,
-          "char_end": 0,
-          "quote": "Now replace the wire by a thicker nichrome wire, of the same length l [marked (3)]. A thicker wire has a larger cross-sectional area. Again note down the current through the circuit. ...The ammeter reading is increased when a thicker wire of the same material and of the same length is used in the circuit. ...Precise measurements have shown that resistance of a uniform metallic conductor is ... inversely proportional to the area of cross-section (A). That is, R ∝ 1/A (11.9)"
-        },
-        {
-          "doc_id": "jesc111-640a680a2407:0012",
-          "chunk_id": "jesc111-640a680a2407:0012",
-          "chapter": "Electricity",
-          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
-          "page_start": 8,
-          "page_end": 8,
-          "char_start": 0,
-          "char_end": 0,
-          "quote": "R ∝ 1/A and (11.9)"
-        }
-      ],
-      "checkpoint": null,
-      "language": "hi-IN",
-      "analogy_family": "everyday",
-      "groundedness_score": 0.4981,
-      "est_seconds": 47.5,
-      "generated_after_answer": false
-    },
-    {
-      "id": "b20",
-      "concept_id": "factors_of_resistance_resistivity",
-      "intent": "explain",
-      "script": "आखिर में, तार का मटेरियल बदलते हैं. हम उसी लंबाई और क्रॉस-सेक्शनल एरिया का एक कॉपर तार (copper wire) जोड़ते हैं, नाइक्रोम तार की जगह. हम देखते हैं कि एमीटर की रीडिंग फिर से बदल जाती है. इससे पता चलता है कि कंडक्टर का रेजिस्टेंस उसके मटेरियल की प्रकृति पर भी निर्भर करता है. जैसे, एक लकड़ी का रास्ता और एक कंक्रीट का रास्ता चलने में अलग-अलग अनुभव देते हैं, वैसे ही अलग-अलग मटेरियल इलेक्ट्रॉनों के प्रवाह को अलग-अलग तरीके से रोकते हैं. तांबा एक अच्छा कंडक्टर है, इसलिए उसका रेजिस्टेंस कम होता है, जबकि नाइक्रोम का रेजिस्टेंस ज़्यादा होता है. यह मटेरियल की आंतरिक संरचना पर निर्भर करता है.",
-      "visual": {
-        "kind": "diagram",
-        "reason": "यह डायग्राम दिखाता है कि तार का मटेरियल बदलने से सर्किट में करंट कैसे प्रभावित होता है।",
-        "subject": "मटेरियल का रेजिस्टेंस पर प्रभाव",
-        "payload": {
-          "mermaid": "graph TD\n    A[सेल] --> B(एमीटर)\n    B --> C1(नाइक्रोम तार)\n    C1 --> D[कुंजी]\n    D --> A\n    subgraph दूसरा केस\n        A --> B\n        B --> C2(कॉपर तार)\n        C2 --> D\n    end"
-        },
-        "timeline": [
-          {
-            "element_id": "C1",
-            "word_index": 17,
-            "action": "show"
-          },
-          {
-            "element_id": "C2",
-            "word_index": 29,
-            "action": "show"
-          }
-        ]
-      },
-      "citations": [
-        {
-          "doc_id": "jesc111-640a680a2407:0011",
-          "chunk_id": "jesc111-640a680a2407:0011",
-          "chapter": "Electricity",
-          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
-          "page_start": 7,
-          "page_end": 8,
-          "char_start": 0,
-          "char_end": 0,
-          "quote": "Instead of taking a nichrome wire, connect a copper wire [marked (4) in Fig. 11.5] in the circuit. Let the wire be of the same length and same area of cross-section as that of the first nichrome wire [marked (1)]. Note the value of the current. ...A change in ammeter reading is observed when a wire of different material of the same length and the same area of cross-section is used. ...On applying Ohm’s law [Eqs. (11.5) – (11.7)], we observe that the resistance of the conductor depends ... (iii) on the nature of its material."
-        }
-      ],
-      "checkpoint": null,
-      "language": "hi-IN",
-      "analogy_family": "everyday",
-      "groundedness_score": 0.548,
-      "est_seconds": 50.8,
-      "generated_after_answer": false
-    },
-    {
-      "id": "b21",
-      "concept_id": "factors_of_resistance_resistivity",
-      "intent": "explain",
-      "script": "इन सभी ऑब्जर्वेशन से पता चलता है कि किसी कंडक्टर का रेजिस्टेंस (R) उसकी लंबाई (l) के सीधे आनुपातिक और उसके क्रॉस-सेक्शनल एरिया (A) के व्युत्क्रमानुपाती होता है. इन दोनों को मिलाकर हम एक सूत्र बनाते हैं: R = ρ(l/A). यहां 'ρ' (rho) एक आनुपातिकता स्थिरांक है, जिसे मटेरियल की 'इलेक्ट्रिकल रेजिस्टिविटी' (electrical resistivity) कहते हैं. इसकी SI यूनिट ओम मीटर (Ω m) है. रेजिस्टिविटी मटेरियल की एक खास प्रॉपर्टी है. यह मटेरियल की आंतरिक संरचना पर निर्भर करती है और बताती है कि कोई मटेरियल करंट के प्रवाह का कितना विरोध करता है. यह रेजिस्टेंस से अलग है क्योंकि रेजिस्टेंस तार के आकार पर भी निर्भर करता है, जबकि रेजिस्टिविटी केवल मटेरियल पर निर्भर करती है.",
-      "visual": {
-        "kind": "equation",
-        "reason": "यह सूत्र रेजिस्टेंस, लंबाई, क्रॉस-सेक्शनल एरिया और रेजिस्टिविटी के बीच संबंध को दर्शाता है।",
-        "subject": "रेजिस्टेंस का सूत्र",
-        "payload": {
-          "latex": "R = \\rho \\frac{l}{A}",
-          "terms": [
+          "type": "line",
+          "x_label": "प्रतिरोध (R) (Ω)",
+          "y_label": "विद्युत धारा (I) (Ampere)",
+          "series": [
             {
-              "id": "R",
-              "label": "रेजिस्टेंस",
-              "tex": "R"
-            },
-            {
-              "id": "equals",
-              "label": "बराबर",
-              "tex": "="
-            },
-            {
-              "id": "rho",
-              "label": "रेजिस्टिविटी",
-              "tex": "\\rho"
-            },
-            {
-              "id": "l",
-              "label": "लंबाई",
-              "tex": "l"
-            },
-            {
-              "id": "divide",
-              "label": "बटे",
-              "tex": "/"
-            },
-            {
-              "id": "A",
-              "label": "क्रॉस-सेक्शनल एरिया",
-              "tex": "A"
+              "name": "I = V/R (V=स्थिर)",
+              "points": [
+                [
+                  1,
+                  10
+                ],
+                [
+                  2,
+                  5
+                ],
+                [
+                  4,
+                  2.5
+                ],
+                [
+                  5,
+                  2
+                ],
+                [
+                  10,
+                  1
+                ]
+              ]
             }
           ]
         },
         "timeline": [
           {
-            "element_id": "R",
-            "word_index": 26,
-            "action": "show"
-          },
-          {
-            "element_id": "equals",
-            "word_index": 27,
-            "action": "show"
-          },
-          {
-            "element_id": "rho",
-            "word_index": 28,
-            "action": "show"
-          },
-          {
-            "element_id": "l",
-            "word_index": 29,
-            "action": "show"
-          },
-          {
-            "element_id": "divide",
-            "word_index": 30,
-            "action": "show"
-          },
-          {
-            "element_id": "A",
-            "word_index": 31,
+            "element_id": "series.0",
+            "word_index": 17,
             "action": "show"
           }
         ]
       },
       "citations": [
         {
-          "doc_id": "jesc111-640a680a2407:0012",
-          "chunk_id": "jesc111-640a680a2407:0012",
+          "doc_id": "jesc111-640a680a2407:0009",
+          "chunk_id": "jesc111-640a680a2407:0009",
           "chapter": "Electricity",
-          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
-          "page_start": 8,
-          "page_end": 9,
+          "section": "11.4 OHM’S LAW",
+          "page_start": 6,
+          "page_end": 6,
           "char_start": 0,
           "char_end": 0,
-          "quote": "Precise measurements have shown that resistance of a uniform metallic conductor is directly proportional to its length (l) and inversely proportional to the area of cross-section (A). That is, R ∝ l (11.8) R ∝ 1/A and (11.9) Combining Eqs. (11.8) and (11.9) we get R ∝ l A R = ρ l or, (11.10) A where ρ (rho) is a constant of proportionality and is called the electrical resistivity of the material of the conductor. The SI unit of resistivity is Ω m. It is a characteristic property of the material."
+          "quote": "It is obvious from Eq. (11.7) that the current through a resistor is inversely proportional to its resistance. If the resistance is doubled the current gets halved."
         }
       ],
       "checkpoint": null,
       "language": "hi-IN",
       "analogy_family": null,
-      "groundedness_score": 0.7604,
-      "est_seconds": 54.0,
+      "groundedness_score": 0.5107,
+      "est_seconds": 39.2,
       "generated_after_answer": false
     },
     {
-      "id": "b22",
-      "concept_id": "factors_of_resistance_resistivity",
-      "intent": "explain",
-      "script": "मेटल और अलॉय (alloys) की रेजिस्टिविटी बहुत कम होती है, लगभग 10⁻⁸ ओम मीटर से 10⁻⁶ ओम मीटर तक, इसलिए वे बिजली के अच्छे कंडक्टर होते हैं. वहीं, इंसुलेटर (insulators) जैसे रबर और ग्लास की रेजिस्टिविटी बहुत ज़्यादा होती है, लगभग 10¹² से 10¹⁷ ओम मीटर तक. रेजिस्टेंस और रेजिस्टिविटी दोनों तापमान के साथ बदलते हैं. अलॉय की रेजिस्टिविटी आमतौर पर उनके घटक मेटलों की तुलना में ज़्यादा होती है, और वे उच्च तापमान पर आसानी से ऑक्सीडाइज़ (oxidise) नहीं होते हैं. यही कारण है कि उनका उपयोग इलेक्ट्रिक हीटिंग डिवाइस जैसे इलेक्ट्रिक आयरन और टोस्टर में किया जाता है. टंगस्टन का उपयोग इलेक्ट्रिक बल्ब के फिलामेंट के लिए किया जाता है, जबकि तांबे और एल्यूमीनियम का उपयोग आमतौर पर बिजली ट्रांसमिशन लाइनों के लिए होता है.",
+      "id": "b13",
+      "concept_id": "electrical_resistance",
+      "intent": "example",
+      "script": "चलो एक और उदाहरण देखते हैं। एक 220 V स्रोत से एक बल्ब जिसका प्रतिरोध 1200 Ω है, कितनी धारा लेगा? ओम के नियम के अनुसार, I = V/R = 220 V / 1200 Ω = 0.18 A। अब, उसी 220 V स्रोत से एक हीटर जिसका प्रतिरोध 100 Ω है, कितनी धारा लेगा? I = V/R = 220 V / 100 Ω = 2.2 A। देखा, हीटर का प्रतिरोध बल्ब से बहुत कम है, इसलिए वह बल्ब से ज़्यादा धारा लेता है! यही कारण है कि हीटर ज़्यादा गर्म होता है और बल्ब कम गर्म होता है, क्योंकि ज़्यादा धारा ज़्यादा ऊष्मा उत्पन्न करती है।",
       "visual": {
         "kind": "bullets",
-        "reason": "यह स्लाइड विभिन्न सामग्रियों की रेजिस्टिविटी और उनके उपयोग के बारे में महत्वपूर्ण जानकारी सारांशित करती है।",
-        "subject": "रेजिस्टिविटी के गुण",
+        "reason": "यह विभिन्न उपकरणों के लिए प्रतिरोध और धारा के बीच संबंध का एक व्यावहारिक उदाहरण देता है।",
+        "subject": "बल्ब और हीटर की धारा",
         "payload": {
-          "heading": "रेजिस्टिविटी के गुण",
+          "heading": "उदाहरण: बल्ब बनाम हीटर",
           "items": [
-            "मटेरियल की खास प्रॉपर्टी।",
-            "मेटल/अलॉय: कम रेजिस्टिविटी (अच्छे कंडक्टर)।",
-            "इंसुलेटर: ज़्यादा रेजिस्टिविटी (खराब कंडक्टर)।",
-            "अलॉय: उच्च तापमान पर ऑक्सीडाइज़ नहीं होते (हीटिंग डिवाइस में उपयोग)।"
+            "स्रोत: V = 220 V",
+            "बल्ब: R = 1200 Ω, I = 220V/1200Ω = 0.18 A",
+            "हीटर: R = 100 Ω, I = 220V/100Ω = 2.2 A",
+            "कम प्रतिरोध (हीटर) = अधिक धारा और अधिक ऊष्मा"
           ]
         },
         "timeline": [
           {
-            "element_id": "heading",
-            "word_index": 0,
-            "action": "show"
-          },
-          {
             "element_id": "0",
-            "word_index": 12,
+            "word_index": 11,
             "action": "show"
           },
           {
             "element_id": "1",
-            "word_index": 18,
+            "word_index": 20,
             "action": "show"
           },
           {
             "element_id": "2",
-            "word_index": 26,
+            "word_index": 33,
             "action": "show"
           },
           {
             "element_id": "3",
-            "word_index": 33,
+            "word_index": 41,
             "action": "show"
           }
         ]
@@ -1737,233 +880,348 @@
           "chunk_id": "jesc111-640a680a2407:0012",
           "chapter": "Electricity",
           "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
-          "page_start": 9,
+          "page_start": 8,
           "page_end": 9,
           "char_start": 0,
           "char_end": 0,
-          "quote": "The metals and alloys 178 Science Reprint 2026-27 have very low resistivity in the range of 10–8 Ω m to 10–6 Ω m. They are good conductors of electricity. Insulators like rubber and glass have resistivity of the order of 1012 to 1017 Ω m. Both the resistance and resistivity of a material vary with temperature. Table 11.2 reveals that the resistivity of an alloy is generally higher than that of its constituent metals. Alloys do not oxidise (burn) readily at high temperatures. For this reason, they are commonly used in electrical heating devices, like electric iron, toasters etc. Tungsten is used almost exclusively for filaments of electric bulbs, whereas copper and aluminium are generally used for electrical transmission lines."
+          "quote": "Example 11.3 (a) How much current will an electric bulb draw from a 220 V source, if the resistance of the bulb filament is 1200 Ω? (b) How much current will an electric heater coil draw from a 220 V source, if the resistance of the heater coil is 100 Ω? Solution (a) We are given V = 220 V; R = 1200 Ω. From Eq. (12.6), we have the current I = 220 V/1200 Ω = 0.18 A. (b) We are given, V = 220 V, R = 100 Ω. From Eq. (11.6), we have the current I = 220 V/100 Ω = 2.2 A. Note the difference of current drawn by an electric bulb and electric heater from the same 220 V source!"
         }
       ],
       "checkpoint": null,
       "language": "hi-IN",
       "analogy_family": null,
-      "groundedness_score": 0.4201,
-      "est_seconds": 58.6,
+      "groundedness_score": 0.5828,
+      "est_seconds": 48.9,
       "generated_after_answer": false
     },
     {
-      "id": "b23",
-      "concept_id": "factors_of_resistance_resistivity",
-      "intent": "example",
-      "script": "चलो एक और सवाल हल करते हैं. एक दिए गए मटेरियल के तार की लंबाई 'l' और क्रॉस-सेक्शनल एरिया 'A' है, और उसका रेजिस्टेंस 4 ओम है. उसी मटेरियल के एक और तार का रेजिस्टेंस क्या होगा जिसकी लंबाई 'l/2' और क्रॉस-सेक्शनल एरिया '2A' है? पहले तार के लिए, R1 = ρ(l/A) = 4 ओम. दूसरे तार के लिए, R2 = ρ((l/2)/(2A)). इसे हल करने पर, R2 = ρ(l/(4A)) = (1/4) × ρ(l/A) मिलता है. चूंकि ρ(l/A) = R1 = 4 ओम है, तो R2 = (1/4) × 4 ओम = 1 ओम. तो, नए तार का रेजिस्टेंस 1 ओम होगा. यह दिखाता है कि लंबाई और एरिया बदलने पर रेजिस्टेंस कैसे बदलता है.",
+      "id": "b14",
+      "concept_id": "electrical_resistance",
+      "intent": "explain",
+      "script": "सर्किट में धारा को नियंत्रित करने के लिए, हम एक 'परिवर्ती प्रतिरोध' (variable resistance) का उपयोग करते हैं। यह एक ऐसा घटक है जो वोल्टेज स्रोत को बदले बिना प्रतिरोध को बदल सकता है, जिससे हम धारा को अपनी ज़रूरत के अनुसार कम या ज़्यादा कर सकते हैं। उदाहरण के लिए, एक 'रियोस्टेट' (rheostat) एक ऐसा उपकरण है जिसका उपयोग अक्सर सर्किट में प्रतिरोध को बदलने के लिए किया जाता है। इसमें एक स्लाइडिंग संपर्क होता है जिसे खिसकाकर तार की प्रभावी लंबाई को बदला जा सकता है, जिससे प्रतिरोध बदल जाता है और बदले में धारा भी बदल जाती है।",
       "visual": {
-        "kind": "equation",
-        "reason": "यह उदाहरण रेजिस्टेंस के सूत्र का उपयोग करके लंबाई और एरिया बदलने पर रेजिस्टेंस की गणना करना सिखाता है।",
-        "subject": "रेजिस्टेंस की गणना",
+        "kind": "diagram",
+        "reason": "यह एक रियोस्टेट का प्रतीक दिखाता है, जो एक परिवर्ती प्रतिरोध है, जिसका उपयोग सर्किट में धारा को नियंत्रित करने के लिए किया जाता है।",
+        "subject": "रियोस्टेट (परिवर्ती प्रतिरोध)",
         "payload": {
-          "latex": "R_1 = \\rho \\frac{l}{A} = 4 \\Omega \\\\ R_2 = \\rho \\frac{l/2}{2A} = \\rho \\frac{l}{4A} \\\\ R_2 = \\frac{1}{4} \\left( \\rho \\frac{l}{A} \\right) \\\\ R_2 = \\frac{1}{4} \\times R_1 = \\frac{1}{4} \\times 4 \\Omega = 1 \\Omega",
-          "terms": [
-            {
-              "id": "R1_eq",
-              "label": "पहला रेजिस्टेंस",
-              "tex": "R_1 = \\rho \\frac{l}{A}"
-            },
-            {
-              "id": "R1_val",
-              "label": "4 ओम",
-              "tex": "= 4 \\Omega"
-            },
-            {
-              "id": "R2_eq1",
-              "label": "दूसरा रेजिस्टेंस",
-              "tex": "R_2 = \\rho \\frac{l/2}{2A}"
-            },
-            {
-              "id": "R2_eq2",
-              "label": "सरल किया गया",
-              "tex": "= \\rho \\frac{l}{4A}"
-            },
-            {
-              "id": "R2_eq3",
-              "label": "R1 के रूप में",
-              "tex": "= \\frac{1}{4} \\left( \\rho \\frac{l}{A} \\right)"
-            },
-            {
-              "id": "R2_val",
-              "label": "अंतिम मान",
-              "tex": "= \\frac{1}{4} \\times R_1 = \\frac{1}{4} \\times 4 \\Omega = 1 \\Omega"
-            }
-          ]
+          "mermaid": "graph LR\n    A[बैटरी]-->B(रियोस्टेट)\n    B-->C[बल्ब]\n    C-->A\n    style B fill:#ffcccb,stroke:#333,stroke-width:2px\n    style C fill:#ffff00,stroke:#333,stroke-width:2px\n    style A fill:#90ee90,stroke:#333,stroke-width:2px\n    linkStyle 0 stroke-width:2px,fill:none,stroke:black;\n    linkStyle 1 stroke-width:2px,fill:none,stroke:black;\n    linkStyle 2 stroke-width:2px,fill:none,stroke:black;"
         },
         "timeline": [
           {
-            "element_id": "R1_eq",
-            "word_index": 21,
-            "action": "show"
-          },
-          {
-            "element_id": "R1_val",
-            "word_index": 22,
-            "action": "show"
-          },
-          {
-            "element_id": "R2_eq1",
-            "word_index": 27,
-            "action": "show"
-          },
-          {
-            "element_id": "R2_eq2",
-            "word_index": 30,
-            "action": "show"
-          },
-          {
-            "element_id": "R2_eq3",
-            "word_index": 34,
-            "action": "show"
-          },
-          {
-            "element_id": "R2_val",
-            "word_index": 39,
+            "element_id": "B",
+            "word_index": 12,
             "action": "show"
           }
         ]
       },
       "citations": [
         {
-          "doc_id": "jesc111-640a680a2407:0014",
-          "chunk_id": "jesc111-640a680a2407:0014",
+          "doc_id": "jesc111-640a680a2407:0009",
+          "chunk_id": "jesc111-640a680a2407:0009",
+          "chapter": "Electricity",
+          "section": "11.4 OHM’S LAW",
+          "page_start": 6,
+          "page_end": 6,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "A component used to regulate current without changing the voltage source is called variable resistance. In an electric circuit, a device called rheostat is often used to change the resistance in the circuit."
+        }
+      ],
+      "checkpoint": null,
+      "language": "hi-IN",
+      "analogy_family": null,
+      "groundedness_score": 0.3463,
+      "est_seconds": 46.6,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b15",
+      "concept_id": "electrical_resistance",
+      "intent": "check",
+      "script": "अब प्रतिरोध के बारे में एक सवाल। क्या एक मोटे तार से या एक पतले तार से, दोनों एक ही सामग्री के बने हों और एक ही स्रोत से जुड़े हों, धारा अधिक आसानी से बहेगी? और क्यों? इस पर विचार करें कि तार की मोटाई का प्रतिरोध पर क्या प्रभाव पड़ता है, और प्रतिरोध का धारा पर क्या प्रभाव पड़ता है।",
+      "visual": {
+        "kind": "diagram",
+        "reason": "यह मोटे और पतले तार की कल्पना करने में मदद करता है, जो प्रतिरोध के कारकों में से एक है।",
+        "subject": "मोटा बनाम पतला तार",
+        "payload": {
+          "mermaid": "graph LR\n    A[स्रोत]-->B(मोटा तार)\n    B-->C[बल्ब]\n    A-->D(पतला तार)\n    D-->E[बल्ब]\n    style B fill:#90ee90,stroke:#333,stroke-width:2px\n    style D fill:#ffcccb,stroke:#333,stroke-width:2px\n    style A fill:#add8e6,stroke:#333,stroke-width:2px\n    style C fill:#ffff00,stroke:#333,stroke-width:2px\n    style E fill:#ffff00,stroke:#333,stroke-width:2px\n    linkStyle 0 stroke-width:2px,fill:none,stroke:black;\n    linkStyle 1 stroke-width:2px,fill:none,stroke:black;\n    linkStyle 2 stroke-width:2px,fill:none,stroke:black;\n    linkStyle 3 stroke-width:2px,fill:none,stroke:black;"
+        },
+        "timeline": [
+          {
+            "element_id": "A",
+            "word_index": 12,
+            "action": "show"
+          },
+          {
+            "element_id": "B",
+            "word_index": 12,
+            "action": "show"
+          },
+          {
+            "element_id": "C",
+            "word_index": 12,
+            "action": "show"
+          },
+          {
+            "element_id": "D",
+            "word_index": 12,
+            "action": "show"
+          },
+          {
+            "element_id": "E",
+            "word_index": 12,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407:0013",
+          "chunk_id": "jesc111-640a680a2407:0013",
           "chapter": "Electricity",
           "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
           "page_start": 10,
           "page_end": 11,
           "char_start": 0,
           "char_end": 0,
-          "quote": "Example 11.6 A wire of given material having length l and area of cross-section A has a resistance of 4 Ω. What would be the resistance of another wire of the same material having length l/2 and area of cross-section 2A? Solution For first wire l ρ = 4Ω R1 = A Now for second wire l/2 1 l ρ R2 = = ρ 2A 4 A 1 R2 R1 = 4 R2= 1Ω The resistance of the new wire is 1Ω."
+          "quote": "2. Will current flow more easily through a thick wire or a thin wire of the same material, when connected to the same source? Why?"
         }
       ],
-      "checkpoint": null,
-      "language": "hi-IN",
-      "analogy_family": null,
-      "groundedness_score": 0.7246,
-      "est_seconds": 52.6,
-      "generated_after_answer": false
-    },
-    {
-      "id": "b24",
-      "concept_id": "factors_of_resistance_resistivity",
-      "intent": "check",
-      "script": "अब, रेजिस्टेंस को प्रभावित करने वाले कारकों और रेजिस्टिविटी के बारे में आपकी समझ को परखने के लिए एक सवाल. एक तार का रेजिस्टेंस 8 ओम है. यदि उसकी लंबाई दोगुनी कर दी जाए और क्रॉस-सेक्शनल एरिया आधा कर दिया जाए, तो नया रेजिस्टेंस क्या होगा? अपना जवाब सोचो और मुझे बताओ.",
-      "visual": {
-        "kind": "bullets",
-        "reason": "Summary of the point being made.",
-        "subject": "",
-        "payload": {
-          "heading": "",
-          "items": []
-        },
-        "timeline": []
-      },
-      "citations": [],
       "checkpoint": {
-        "id": "c3",
-        "concept_id": "factors_of_resistance_resistivity",
-        "type": "numeric",
-        "prompt": "एक तार का रेजिस्टेंस 8 ओम है. यदि उसकी लंबाई दोगुनी कर दी जाए और क्रॉस-सेक्शनल एरिया आधा कर दिया जाए, तो नया रेजिस्टेंस क्या होगा?",
+        "id": "c2",
+        "concept_id": "electrical_resistance",
+        "type": "explain_own_words",
+        "prompt": "क्या एक मोटे तार से या एक पतले तार से, दोनों एक ही सामग्री के बने हों और एक ही स्रोत से जुड़े हों, धारा अधिक आसानी से बहेगी? अपने उत्तर का कारण भी दें।",
         "options": [],
-        "answer_key": "32 Ω",
+        "answer_key": "धारा मोटे तार से अधिक आसानी से बहेगी क्योंकि मोटे तार का अनुप्रस्थ-काट का क्षेत्रफल (cross-sectional area) अधिक होता है, जिससे प्रतिरोध कम होता है।",
         "rubric": [
-          "छात्र को R ∝ l और R ∝ 1/A के संबंध का उपयोग करना चाहिए।",
-          "लंबाई दोगुनी होने पर रेजिस्टेंस दोगुना (8*2=16) हो जाता है।",
-          "एरिया आधा होने पर रेजिस्टेंस दोगुना (16*2=32) हो जाता है।",
-          "सही इकाई (ओम) का उल्लेख होना चाहिए।"
+          "उत्तर में 'मोटा तार' या 'thick wire' शामिल होना चाहिए।",
+          "उत्तर में 'अनुप्रस्थ-काट का क्षेत्रफल' या 'cross-sectional area' का उल्लेख होना चाहिए।",
+          "उत्तर में 'कम प्रतिरोध' या 'less resistance' का उल्लेख होना चाहिए।"
         ],
         "targets_misconception": null
       },
       "language": "hi-IN",
       "analogy_family": null,
       "groundedness_score": null,
-      "est_seconds": 24.0,
+      "est_seconds": 28.6,
       "generated_after_answer": false
     },
     {
-      "id": "b25",
-      "concept_id": null,
-      "intent": "recap",
-      "script": "तो, आज हमने क्या सीखा? हमने सबसे पहले पोटेंशियल डिफरेंस के बारे में जाना, जो इलेक्ट्रिक चार्ज को बहने के लिए ज़रूरी 'इलेक्ट्रिक दबाव' है. हमने देखा कि V = W/Q होता है और इसकी यूनिट वोल्ट है. फिर, हमने ओम के नियम को समझा, जो बताता है कि पोटेंशियल डिफरेंस (V) करंट (I) के सीधे आनुपातिक होता है, यानी V = IR. यहां R रेजिस्टेंस है, जो करंट के प्रवाह का विरोध करता है और इसकी यूनिट ओम है. हमने यह भी देखा कि करंट रेजिस्टेंस के व्युत्क्रमानुपाती होता है, जिसका मतलब है कि ज़्यादा रेजिस्टेंस का मतलब कम करंट.",
+      "id": "b16",
+      "concept_id": "factors_resistivity",
+      "intent": "explain",
+      "script": "हमने देखा कि प्रतिरोध धारा के प्रवाह को रोकता है। लेकिन यह प्रतिरोध किन बातों पर निर्भर करता है? क्या तार की लंबाई, मोटाई या सामग्री से प्रतिरोध बदलता है? इन सवालों के जवाब जानने के लिए, चलो एक और गतिविधि देखते हैं। हम एक सर्किट में अलग-अलग लंबाई, मोटाई और सामग्री के तार जोड़कर एमीटर की रीडिंग देखेंगे। एमीटर की रीडिंग में बदलाव से हमें पता चलेगा कि प्रतिरोध कैसे बदल रहा है, क्योंकि धारा प्रतिरोध के व्युत्क्रमानुपाती होती है।",
       "visual": {
-        "kind": "bullets",
-        "reason": "यह स्लाइड पोटेंशियल डिफरेंस और ओम के नियम के मुख्य बिंदुओं को सारांशित करती है।",
-        "subject": "आज हमने क्या सीखा?",
+        "kind": "diagram",
+        "reason": "यह उस सर्किट को दिखाता है जिसका उपयोग प्रतिरोध को प्रभावित करने वाले कारकों का अध्ययन करने के लिए किया जाता है।",
+        "subject": "प्रतिरोध के कारकों का अध्ययन",
         "payload": {
-          "heading": "आज हमने सीखा:",
-          "items": [
-            "पोटेंशियल डिफरेंस (V): चार्ज के प्रवाह के लिए आवश्यक 'इलेक्ट्रिक दबाव' (V = W/Q, यूनिट: वोल्ट)।",
-            "ओम का नियम: V ∝ I (V = IR)।",
-            "रेजिस्टेंस (R): करंट के प्रवाह का विरोध (यूनिट: ओम)।"
-          ]
+          "mermaid": "graph LR\n    A[सेल]-->B[एमीटर]\n    B-->C[प्लग कुंजी]\n    C-->D{तार (लम्बाई, मोटाई, सामग्री)}\n    D-->A\n    style A fill:#90ee90,stroke:#333,stroke-width:2px\n    style B fill:#ffff00,stroke:#333,stroke-width:2px\n    style C fill:#add8e6,stroke:#333,stroke-width:2px\n    style D fill:#ffcccb,stroke:#333,stroke-width:2px\n    linkStyle 0 stroke-width:2px,fill:none,stroke:black;\n    linkStyle 1 stroke-width:2px,fill:none,stroke:black;\n    linkStyle 2 stroke-width:2px,fill:none,stroke:black;\n    linkStyle 3 stroke-width:2px,fill:none,stroke:black;"
         },
         "timeline": [
           {
-            "element_id": "heading",
-            "word_index": 0,
+            "element_id": "A",
+            "word_index": 20,
             "action": "show"
           },
           {
-            "element_id": "0",
-            "word_index": 12,
+            "element_id": "B",
+            "word_index": 20,
             "action": "show"
           },
           {
-            "element_id": "1",
-            "word_index": 26,
+            "element_id": "C",
+            "word_index": 20,
             "action": "show"
           },
           {
-            "element_id": "2",
-            "word_index": 35,
+            "element_id": "D",
+            "word_index": 20,
             "action": "show"
           }
         ]
       },
-      "citations": [],
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407:0011",
+          "chunk_id": "jesc111-640a680a2407:0011",
+          "chapter": "Electricity",
+          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
+          "page_start": 7,
+          "page_end": 8,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "Complete an electric circuit consisting of a cell, an ammeter, a nichrome wire of length l [say, marked (1)] and a plug key, as shown in Fig. 11.5. ... Does the current depend on the length of the conductor? Does the current depend on the area of cross-section of the wire used? ... On applying Ohm’s law [Eqs. (11.5) – (11.7)], we observe that the resistance of the conductor depends (i) on its length, (ii) on its area of cross-section, and (iii) on the nature of its material."
+        }
+      ],
       "checkpoint": null,
       "language": "hi-IN",
       "analogy_family": null,
-      "groundedness_score": null,
-      "est_seconds": 46.6,
+      "groundedness_score": 0.4559,
+      "est_seconds": 37.4,
       "generated_after_answer": false
     },
     {
-      "id": "b26",
-      "concept_id": null,
-      "intent": "recap",
-      "script": "हमने यह भी देखा कि रेजिस्टेंस केवल मटेरियल पर ही नहीं, बल्कि कंडक्टर की लंबाई और उसके क्रॉस-सेक्शनल एरिया पर भी निर्भर करता है. रेजिस्टेंस लंबाई के सीधे आनुपातिक और एरिया के व्युत्क्रमानुपाती होता है, जिसे सूत्र R = ρ(l/A) से दर्शाया जाता है. यहां 'ρ' मटेरियल की रेजिस्टिविटी है, जो मटेरियल का एक आंतरिक गुण है और इसकी यूनिट ओम मीटर है. हमने यह भी सीखा कि मेटल और अलॉय अच्छे कंडक्टर होते हैं क्योंकि उनकी रेजिस्टिविटी कम होती है, जबकि इंसुलेटर की रेजिस्टिविटी बहुत ज़्यादा होती है. यह सब हमें इलेक्ट्रिक सर्किट को बेहतर ढंग से समझने और डिज़ाइन करने में मदद करता है. मुझे उम्मीद है कि आपको यह सब अच्छे से समझ आया होगा.",
+      "id": "b17",
+      "concept_id": "factors_resistivity",
+      "intent": "explain",
+      "script": "सबसे पहले, जब हम तार की लंबाई (l) को दोगुना करते हैं, तो एमीटर की रीडिंग आधी हो जाती है। ओम के नियम के अनुसार, इसका मतलब है कि प्रतिरोध दोगुना हो गया है। ऐसा इसलिए होता है क्योंकि आवेशों को अब दोगुनी दूरी तय करनी पड़ती है, जिससे उन्हें परमाणुओं से टकराने के ज़्यादा अवसर मिलते हैं। तो, हम कह सकते हैं कि प्रतिरोध (R) तार की लंबाई (l) के सीधे आनुपातिक होता है। यानी, तार जितना लंबा होगा, उसका प्रतिरोध उतना ही ज़्यादा होगा। इसे R ∝ l के रूप में लिखा जाता है।",
       "visual": {
-        "kind": "bullets",
-        "reason": "यह स्लाइड रेजिस्टेंस को प्रभावित करने वाले कारकों और रेजिस्टिविटी के मुख्य बिंदुओं को सारांशित करती है।",
-        "subject": "आज हमने सीखा:",
+        "kind": "graph",
+        "reason": "यह दर्शाता है कि प्रतिरोध तार की लंबाई के सीधे आनुपातिक कैसे होता है।",
+        "subject": "प्रतिरोध और लंबाई का संबंध",
         "payload": {
-          "heading": "आज हमने सीखा:",
-          "items": [
-            "रेजिस्टेंस (R) निर्भर करता है: लंबाई (l), क्रॉस-सेक्शनल एरिया (A), मटेरियल की प्रकृति पर।",
-            "R = ρ(l/A): ρ (रेजिस्टिविटी) मटेरियल का आंतरिक गुण (यूनिट: ओम मीटर)।",
-            "मेटल/अलॉय: कम रेजिस्टिविटी; इंसुलेटर: ज़्यादा रेजिस्टिविटी।"
+          "type": "line",
+          "x_label": "लंबाई (l) (मीटर)",
+          "y_label": "प्रतिरोध (R) (Ω)",
+          "series": [
+            {
+              "name": "R ∝ l",
+              "points": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  2,
+                  8
+                ],
+                [
+                  3,
+                  12
+                ]
+              ]
+            }
           ]
         },
         "timeline": [
           {
-            "element_id": "heading",
-            "word_index": 0,
+            "element_id": "series.0",
+            "word_index": 25,
             "action": "show"
-          },
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407:0011",
+          "chunk_id": "jesc111-640a680a2407:0011",
+          "chapter": "Electricity",
+          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
+          "page_start": 7,
+          "page_end": 8,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "It is observed that the ammeter reading decreases to one-half when the length of the wire is doubled. ... Precise measurements have shown that resistance of a uniform metallic conductor is directly proportional to its length (l)"
+        }
+      ],
+      "checkpoint": null,
+      "language": "hi-IN",
+      "analogy_family": null,
+      "groundedness_score": 0.4929,
+      "est_seconds": 44.3,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b18",
+      "concept_id": "factors_resistivity",
+      "intent": "explain",
+      "script": "दूसरा कारक है तार का अनुप्रस्थ-काट का क्षेत्रफल (area of cross-section) (A), यानी उसकी मोटाई। जब हम उसी लंबाई का एक मोटा तार लगाते हैं, तो एमीटर की रीडिंग बढ़ जाती है, जिसका मतलब है कि प्रतिरोध कम हो गया है। ऐसा इसलिए होता है क्योंकि मोटे तार में इलेक्ट्रॉनों को बहने के लिए ज़्यादा जगह मिलती है, जिससे वे परमाणुओं से कम टकराते हैं। तो, प्रतिरोध (R) तार के अनुप्रस्थ-काट के क्षेत्रफल (A) के व्युत्क्रमानुपाती होता है। यानी, तार जितना मोटा होगा, उसका प्रतिरोध उतना ही कम होगा। इसे ऐसे समझो जैसे एक चौड़ी सड़क पर चलना आसान होता है क्योंकि भीड़ कम लगती है। इसे R ∝ 1/A के रूप में लिखा जाता है।",
+      "visual": {
+        "kind": "graph",
+        "reason": "यह दर्शाता है कि प्रतिरोध तार के अनुप्रस्थ-काट के क्षेत्रफल के व्युत्क्रमानुपाती कैसे होता है।",
+        "subject": "प्रतिरोध और क्षेत्रफल का संबंध",
+        "payload": {
+          "type": "line",
+          "x_label": "अनुप्रस्थ-काट का क्षेत्रफल (A) (m²)",
+          "y_label": "प्रतिरोध (R) (Ω)",
+          "series": [
+            {
+              "name": "R ∝ 1/A",
+              "points": [
+                [
+                  0.1,
+                  10
+                ],
+                [
+                  0.2,
+                  5
+                ],
+                [
+                  0.4,
+                  2.5
+                ],
+                [
+                  0.5,
+                  2
+                ],
+                [
+                  1,
+                  1
+                ]
+              ]
+            }
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "series.0",
+            "word_index": 30,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407:0011",
+          "chunk_id": "jesc111-640a680a2407:0011",
+          "chapter": "Electricity",
+          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
+          "page_start": 7,
+          "page_end": 8,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "The ammeter reading is increased when a thicker wire of the same material and of the same length is used in the circuit. ... Precise measurements have shown that resistance of a uniform metallic conductor is ... inversely proportional to the area of cross-section (A)."
+        }
+      ],
+      "checkpoint": null,
+      "language": "hi-IN",
+      "analogy_family": "everyday",
+      "groundedness_score": 0.5334,
+      "est_seconds": 53.5,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b19",
+      "concept_id": "factors_resistivity",
+      "intent": "explain",
+      "script": "तीसरा कारक है तार की सामग्री (nature of its material)। जब हम नाइक्रोम तार की जगह उसी लंबाई और मोटाई का तांबे का तार लगाते हैं, तो एमीटर की रीडिंग फिर से बदल जाती है। इसका मतलब है कि अलग-अलग सामग्री के तारों का प्रतिरोध अलग-अलग होता है। ऐसा इसलिए होता है क्योंकि हर सामग्री के परमाणुओं की संरचना और इलेक्ट्रॉनों के साथ उनकी अंतःक्रिया (interaction) अलग होती है। कुछ सामग्री बिजली की अच्छी चालक होती हैं, जैसे तांबा और एल्यूमीनियम, क्योंकि उनमें इलेक्ट्रॉन आसानी से बह सकते हैं। वहीं, कुछ खराब चालक होती हैं, जैसे रबर और कांच, क्योंकि वे इलेक्ट्रॉनों के प्रवाह का बहुत ज़्यादा विरोध करती हैं।",
+      "visual": {
+        "kind": "bullets",
+        "reason": "यह विभिन्न सामग्रियों के प्रतिरोध गुणों को सूचीबद्ध करता है।",
+        "subject": "सामग्री का प्रकार",
+        "payload": {
+          "heading": "प्रतिरोध सामग्री पर निर्भर करता है",
+          "items": [
+            "नाइक्रोम और तांबे का प्रतिरोध अलग होता है।",
+            "अच्छे चालक (Good Conductors): तांबा, एल्यूमीनियम (कम प्रतिरोध)",
+            "खराब चालक (Poor Conductors) / कुचालक (Insulators): रबर, कांच (उच्च प्रतिरोध)"
+          ]
+        },
+        "timeline": [
           {
             "element_id": "0",
-            "word_index": 12,
+            "word_index": 17,
             "action": "show"
           },
           {
             "element_id": "1",
-            "word_index": 26,
+            "word_index": 27,
             "action": "show"
           },
           {
@@ -1973,76 +1231,563 @@
           }
         ]
       },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407:0011",
+          "chunk_id": "jesc111-640a680a2407:0011",
+          "chapter": "Electricity",
+          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
+          "page_start": 7,
+          "page_end": 8,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "A change in ammeter reading is observed when a wire of different material of the same length and the same area of cross-section is used. ... on the nature of its material."
+        },
+        {
+          "doc_id": "jesc111-640a680a2407:0012",
+          "chunk_id": "jesc111-640a680a2407:0012",
+          "chapter": "Electricity",
+          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
+          "page_start": 8,
+          "page_end": 9,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "The metals and alloys have very low resistivity in the  range of 10–8 Ω m to  10–6 Ω m. They are good conductors of electricity. Insulators like rubber and glass have resistivity of the order of 1012 to 1017 Ω m."
+        }
+      ],
+      "checkpoint": null,
+      "language": "hi-IN",
+      "analogy_family": null,
+      "groundedness_score": 0.5352,
+      "est_seconds": 50.8,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b20",
+      "concept_id": "factors_resistivity",
+      "intent": "explain",
+      "script": "इन तीनों कारकों को मिलाकर, हम प्रतिरोध का एक सूत्र बना सकते हैं: R = ρl/A। यहाँ 'ρ' (रो) एक स्थिरांक है जिसे 'विद्युत प्रतिरोधकता' (electrical resistivity) कहते हैं। यह सामग्री का एक विशिष्ट गुण है, जो बताता है कि वह सामग्री कितनी अच्छी तरह से विद्युत धारा का संचालन करती है या उसका विरोध करती है। प्रतिरोधकता जितनी कम होगी, सामग्री उतनी ही अच्छी चालक होगी। यह सूत्र हमें किसी भी तार का प्रतिरोध उसकी भौतिक विशेषताओं और सामग्री के आधार पर गणना करने में मदद करता है।",
+      "visual": {
+        "kind": "equation",
+        "reason": "यह प्रतिरोध को प्रभावित करने वाले सभी कारकों को एक सूत्र में जोड़ता है और प्रतिरोधकता को परिभाषित करता है।",
+        "subject": "प्रतिरोध का सूत्र",
+        "payload": {
+          "latex": "R = \\rho \\frac{l}{A}",
+          "terms": [
+            {
+              "id": "R",
+              "label": "प्रतिरोध",
+              "tex": "R"
+            },
+            {
+              "id": "rho",
+              "label": "प्रतिरोधकता",
+              "tex": "\\rho"
+            },
+            {
+              "id": "l",
+              "label": "लंबाई",
+              "tex": "l"
+            },
+            {
+              "id": "A",
+              "label": "अनुप्रस्थ-काट का क्षेत्रफल",
+              "tex": "A"
+            }
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "R",
+            "word_index": 15,
+            "action": "show"
+          },
+          {
+            "element_id": "rho",
+            "word_index": 15,
+            "action": "show"
+          },
+          {
+            "element_id": "l",
+            "word_index": 15,
+            "action": "show"
+          },
+          {
+            "element_id": "A",
+            "word_index": 15,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407:0012",
+          "chunk_id": "jesc111-640a680a2407:0012",
+          "chapter": "Electricity",
+          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
+          "page_start": 8,
+          "page_end": 9,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "Combining Eqs. (11.8) and (11.9) we get R ∝ l/A or, R = ρ l/A (11.10) where ρ (rho) is a constant of proportionality and is called the electrical resistivity of the material of the conductor."
+        }
+      ],
+      "checkpoint": null,
+      "language": "hi-IN",
+      "analogy_family": null,
+      "groundedness_score": 0.6539,
+      "est_seconds": 41.1,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b21",
+      "concept_id": "factors_resistivity",
+      "intent": "explain",
+      "script": "प्रतिरोधकता का SI मात्रक ओम मीटर (Ω m) है। धातु और मिश्र धातुओं (alloys) की प्रतिरोधकता बहुत कम होती है, लगभग 10⁻⁸ Ω m से 10⁻⁶ Ω m तक, इसलिए वे अच्छे चालक होते हैं। यही कारण है कि तांबा और एल्यूमीनियम का उपयोग बिजली के तारों में किया जाता है। वहीं, कुचालक जैसे रबर और कांच की प्रतिरोधकता बहुत ज़्यादा होती है, लगभग 10¹² से 10¹⁷ Ω m तक। मिश्र धातुओं का उपयोग अक्सर हीटिंग उपकरणों में किया जाता है, जैसे इलेक्ट्रिक आयरन या टोस्टर, क्योंकि वे उच्च तापमान पर आसानी से ऑक्सीकृत (burn) नहीं होते और उनका प्रतिरोध भी शुद्ध धातुओं से ज़्यादा होता है।",
+      "visual": {
+        "kind": "bullets",
+        "reason": "यह प्रतिरोधकता के मात्रक और विभिन्न सामग्रियों के लिए इसके विशिष्ट मानों को सूचीबद्ध करता है।",
+        "subject": "विद्युत प्रतिरोधकता",
+        "payload": {
+          "heading": "विद्युत प्रतिरोधकता (Resistivity)",
+          "items": [
+            "SI मात्रक: ओम मीटर (Ω m)",
+            "धातु और मिश्र धातु: बहुत कम प्रतिरोधकता (अच्छे चालक)",
+            "कुचालक: बहुत उच्च प्रतिरोधकता (खराब चालक)",
+            "मिश्र धातुओं का उपयोग हीटिंग उपकरणों में होता है (जैसे नाइक्रोम)।"
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "0",
+            "word_index": 6,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 20,
+            "action": "show"
+          },
+          {
+            "element_id": "2",
+            "word_index": 30,
+            "action": "show"
+          },
+          {
+            "element_id": "3",
+            "word_index": 45,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407:0012",
+          "chunk_id": "jesc111-640a680a2407:0012",
+          "chapter": "Electricity",
+          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
+          "page_start": 8,
+          "page_end": 9,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "The SI unit of resistivity is Ω m. It is a characteristic property of the material. The metals and alloys have very low resistivity in the  range of 10–8 Ω m to  10–6 Ω m. They are good conductors of electricity. Insulators like rubber and glass have resistivity of the order of 1012 to 1017 Ω m. ... Alloys do not oxidise (burn) readily at high temperatures. For this reason, they are commonly used in electrical heating devices, like electric iron, toasters etc. Tungsten is used almost exclusively for filaments of electric bulbs, whereas copper and aluminium are generally used for electrical transmission lines."
+        }
+      ],
+      "checkpoint": null,
+      "language": "hi-IN",
+      "analogy_family": null,
+      "groundedness_score": 0.5879,
+      "est_seconds": 49.4,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b22",
+      "concept_id": "factors_resistivity",
+      "intent": "example",
+      "script": "चलो एक उदाहरण देखते हैं। एक धातु के तार की लंबाई 1 m है और प्रतिरोध 26 Ω है। यदि तार का व्यास 0.3 mm है, तो उस तापमान पर धातु की प्रतिरोधकता क्या होगी? हम सूत्र ρ = (RA)/l का उपयोग करते हैं। सबसे पहले, हमें तार का अनुप्रस्थ-काट का क्षेत्रफल (A) निकालना होगा, जो π(d/2)² होता है। व्यास d = 0.3 mm है, जिसे मीटर में बदलने पर 3 × 10⁻⁴ m होता है। इन मानों को सूत्र में रखने और गणना करने पर, हमें ρ = 1.84 × 10⁻⁶ Ω m मिलता है। तालिका 11.2 से हम देख सकते हैं कि यह मैंगनीज की प्रतिरोधकता है, जिससे हम तार की सामग्री का अनुमान लगा सकते हैं।",
+      "visual": {
+        "kind": "bullets",
+        "reason": "यह प्रतिरोधकता की गणना के लिए एक चरण-दर-चरण उदाहरण प्रस्तुत करता है।",
+        "subject": "उदाहरण 11.5: प्रतिरोधकता की गणना",
+        "payload": {
+          "heading": "उदाहरण: प्रतिरोधकता",
+          "items": [
+            "दिया गया: R = 26 Ω, l = 1 m, d = 0.3 mm = 3 × 10⁻⁴ m",
+            "क्षेत्रफल (A) = π(d/2)²",
+            "प्रतिरोधकता (ρ) = (RA)/l",
+            "गणना के बाद: ρ = 1.84 × 10⁻⁶ Ω m (मैंगनीज)"
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "0",
+            "word_index": 20,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 20,
+            "action": "show"
+          },
+          {
+            "element_id": "2",
+            "word_index": 20,
+            "action": "show"
+          },
+          {
+            "element_id": "3",
+            "word_index": 38,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407:0013",
+          "chunk_id": "jesc111-640a680a2407:0013",
+          "chapter": "Electricity",
+          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
+          "page_start": 9,
+          "page_end": 11,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "Example 11.5 Resistance of a metal wire of length 1 m is 26 Ω at 20°C. If the diameter of the wire is 0.3 mm, what will be the resistivity of the metal at that temperature? Using Table 11.2, predict the material of the wire. Solution We are given the resistance R of the wire = 26 Ω, the diameter d = 0.3 mm = 3 × 10-4 m, and the length l of the wire = 1 m. Therefore, from Eq. (11.10), the resistivity of the given metallic wire is ρ =  (RA/l)  =  (Rπd2/4l ) Substitution of values in this gives ρ =  1.84 × 10–6 Ω m The resistivity of the metal at 20°C is 1.84 × 10–6 Ω m. From Table 11.2, we see that this is the resistivity of manganese."
+        }
+      ],
+      "checkpoint": null,
+      "language": "hi-IN",
+      "analogy_family": null,
+      "groundedness_score": 0.6336,
+      "est_seconds": 54.9,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b23",
+      "concept_id": "factors_resistivity",
+      "intent": "example",
+      "script": "एक और उदाहरण देखते हैं। एक तार का प्रतिरोध 4 Ω है, जिसकी लंबाई l और अनुप्रस्थ-काट का क्षेत्रफल A है। यदि उसी सामग्री के दूसरे तार की लंबाई l/2 और अनुप्रस्थ-काट का क्षेत्रफल 2A हो, तो उसका प्रतिरोध क्या होगा? पहले तार के लिए, R₁ = ρl/A = 4 Ω। दूसरे तार के लिए, हम नए मानों को सूत्र में रखते हैं: R₂ = ρ(l/2)/(2A)। इसे हल करने पर, R₂ = ρl/(4A) = (1/4) * (ρl/A) मिलता है। चूंकि ρl/A पहले तार का प्रतिरोध R₁ है, तो R₂ = (1/4) * R₁ = (1/4) * 4 Ω = 1 Ω। देखा, लंबाई आधी और क्षेत्रफल दोगुना होने से प्रतिरोध बहुत कम होकर एक-चौथाई हो गया।",
+      "visual": {
+        "kind": "bullets",
+        "reason": "यह प्रतिरोध के सूत्र का उपयोग करके तार के आयामों में परिवर्तन के प्रभाव को दिखाता है।",
+        "subject": "उदाहरण 11.6: तार के आयाम बदलना",
+        "payload": {
+          "heading": "उदाहरण: तार के आयाम बदलना",
+          "items": [
+            "पहला तार: R₁ = ρl/A = 4 Ω",
+            "दूसरा तार: लंबाई = l/2, क्षेत्रफल = 2A",
+            "R₂ = ρ(l/2)/(2A) = (1/4) * (ρl/A)",
+            "R₂ = (1/4) * R₁ = (1/4) * 4 Ω = 1 Ω"
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "0",
+            "word_index": 20,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 20,
+            "action": "show"
+          },
+          {
+            "element_id": "2",
+            "word_index": 20,
+            "action": "show"
+          },
+          {
+            "element_id": "3",
+            "word_index": 38,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407:0013",
+          "chunk_id": "jesc111-640a680a2407:0013",
+          "chapter": "Electricity",
+          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
+          "page_start": 9,
+          "page_end": 11,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "Example 11.6 A wire of given material having length l and area of cross-section A has a resistance of 4 Ω. What would be the resistance of another wire of the same material having length l/2 and area of cross-section 2A? Solution For first wire R1 = ρ l/A = 4Ω Now for second wire R2 = ρ (l/2)/(2A) = 1/4 ρ l/A R2 = 1/4 R1 R2 = 1Ω The resistance of the new wire is 1Ω."
+        }
+      ],
+      "checkpoint": null,
+      "language": "hi-IN",
+      "analogy_family": null,
+      "groundedness_score": 0.5467,
+      "est_seconds": 53.5,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b24",
+      "concept_id": "factors_resistivity",
+      "intent": "check",
+      "script": "अब प्रतिरोध और प्रतिरोधकता के कारकों पर आधारित एक सवाल। अगर आपके पास एक लंबा, पतला तांबे का तार है, और आप चाहते हैं कि उसका प्रतिरोध कम हो जाए, तो आप क्या करेंगे? आपके पास तार की लंबाई और मोटाई बदलने का विकल्प है। सोचो कि लंबाई और क्षेत्रफल प्रतिरोध को कैसे प्रभावित करते हैं, और फिर अपना जवाब दो।",
+      "visual": {
+        "kind": "equation",
+        "reason": "यह प्रतिरोध के सूत्र को दिखाता है, जो छात्र को प्रश्न का उत्तर देने में मदद करेगा।",
+        "subject": "प्रतिरोध का सूत्र",
+        "payload": {
+          "latex": "R = \\rho \\frac{l}{A}",
+          "terms": [
+            {
+              "id": "R",
+              "label": "प्रतिरोध",
+              "tex": "R"
+            },
+            {
+              "id": "rho",
+              "label": "प्रतिरोधकता",
+              "tex": "\\rho"
+            },
+            {
+              "id": "l",
+              "label": "लंबाई",
+              "tex": "l"
+            },
+            {
+              "id": "A",
+              "label": "अनुप्रस्थ-काट का क्षेत्रफल",
+              "tex": "A"
+            }
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "R",
+            "word_index": 25,
+            "action": "show"
+          },
+          {
+            "element_id": "rho",
+            "word_index": 25,
+            "action": "show"
+          },
+          {
+            "element_id": "l",
+            "word_index": 25,
+            "action": "show"
+          },
+          {
+            "element_id": "A",
+            "word_index": 25,
+            "action": "show"
+          }
+        ]
+      },
       "citations": [],
+      "checkpoint": {
+        "id": "c3",
+        "concept_id": "factors_resistivity",
+        "type": "apply",
+        "prompt": "आपके पास एक लंबा, पतला तांबे का तार है। आप चाहते हैं कि उसका प्रतिरोध कम हो जाए। आप तार की लंबाई और मोटाई (अनुप्रस्थ-काट का क्षेत्रफल) में क्या बदलाव करेंगे?",
+        "options": [],
+        "answer_key": "प्रतिरोध कम करने के लिए, मुझे तार की लंबाई कम करनी होगी और/या तार को मोटा (अनुप्रस्थ-काट का क्षेत्रफल बढ़ाना) करना होगा।",
+        "rubric": [
+          "उत्तर में 'लंबाई कम करना' या 'decrease length' शामिल होना चाहिए।",
+          "उत्तर में 'मोटा करना' या 'अनुप्रस्थ-काट का क्षेत्रफल बढ़ाना' या 'increase cross-sectional area' शामिल होना चाहिए।"
+        ],
+        "targets_misconception": null
+      },
+      "language": "hi-IN",
+      "analogy_family": null,
+      "groundedness_score": null,
+      "est_seconds": 28.2,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b25",
+      "concept_id": "ohms_law",
+      "intent": "recap",
+      "script": "आज हमने विद्युत धारा के बारे में तीन मुख्य बातें सीखीं। सबसे पहले, ओम का नियम, जो बताता है कि किसी चालक में विभवांतर (V) उसमें प्रवाहित होने वाली विद्युत धारा (I) के सीधे आनुपातिक होता है, बशर्ते तापमान स्थिर रहे। इसे हम V = IR सूत्र से दर्शाते हैं। दूसरा, हमने विद्युत प्रतिरोध (R) के बारे में जाना, जो धारा के प्रवाह का विरोध करता है और इसका मात्रक ओम (Ω) है। यह चालक का वह गुण है जो इलेक्ट्रॉनों की गति को धीमा करता है।",
+      "visual": {
+        "kind": "bullets",
+        "reason": "यह ओम के नियम और प्रतिरोध की मुख्य बातों का सारांश प्रस्तुत करता है।",
+        "subject": "आज हमने क्या सीखा - भाग 1",
+        "payload": {
+          "heading": "आज हमने क्या सीखा",
+          "items": [
+            "ओम का नियम: V = IR (V ∝ I)",
+            "विद्युत प्रतिरोध (R): धारा के प्रवाह का विरोध करता है।",
+            "मात्रक: ओम (Ω)"
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "0",
+            "word_index": 18,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 33,
+            "action": "show"
+          },
+          {
+            "element_id": "2",
+            "word_index": 39,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407:0009",
+          "chunk_id": "jesc111-640a680a2407:0009",
+          "chapter": "Electricity",
+          "section": "11.4 OHM’S LAW",
+          "page_start": 6,
+          "page_end": 6,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "The potential difference, V, across the ends of a given metallic wire in an electric circuit is directly proportional to the current flowing through it,  provided its temperature remains the same. This is called Ohm’s law. ... R is a constant for the given metallic wire at a given temperature and is called its resistance. It is the property of a conductor to resist the flow of charges  through it. Its SI unit is ohm, represented by the Greek letter Ω."
+        }
+      ],
       "checkpoint": null,
       "language": "hi-IN",
       "analogy_family": null,
       "groundedness_score": null,
-      "est_seconds": 54.5,
+      "est_seconds": 40.2,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b26",
+      "concept_id": "factors_resistivity",
+      "intent": "recap",
+      "script": "और तीसरा, हमने उन कारकों को समझा जिन पर प्रतिरोध निर्भर करता है: तार की लंबाई (l), अनुप्रस्थ-काट का क्षेत्रफल (A), और सामग्री की प्रकृति। हमने देखा कि प्रतिरोध लंबाई के सीधे आनुपातिक और क्षेत्रफल के व्युत्क्रमानुपाती होता है। हमने यह भी सीखा कि प्रतिरोधकता (ρ) सामग्री का एक विशिष्ट गुण है, और सूत्र R = ρl/A का उपयोग करके हम किसी भी तार का प्रतिरोध उसकी भौतिक विशेषताओं और सामग्री के आधार पर गणना कर सकते हैं। मुझे उम्मीद है कि आपको यह सब अच्छे से समझ आ गया होगा और आप इन अवधारणाओं को याद रखेंगे।",
+      "visual": {
+        "kind": "bullets",
+        "reason": "यह प्रतिरोध को प्रभावित करने वाले कारकों और प्रतिरोधकता की मुख्य बातों का सारांश प्रस्तुत करता है।",
+        "subject": "आज हमने क्या सीखा - भाग 2",
+        "payload": {
+          "heading": "आज हमने क्या सीखा",
+          "items": [
+            "प्रतिरोध के कारक: लंबाई (l), क्षेत्रफल (A), सामग्री।",
+            "R ∝ l और R ∝ 1/A",
+            "प्रतिरोधकता (ρ): सामग्री का विशिष्ट गुण।",
+            "सूत्र: R = ρl/A"
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "0",
+            "word_index": 15,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 20,
+            "action": "show"
+          },
+          {
+            "element_id": "2",
+            "word_index": 28,
+            "action": "show"
+          },
+          {
+            "element_id": "3",
+            "word_index": 35,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407:0011",
+          "chunk_id": "jesc111-640a680a2407:0011",
+          "chapter": "Electricity",
+          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
+          "page_start": 7,
+          "page_end": 8,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "On applying Ohm’s law [Eqs. (11.5) – (11.7)], we observe that the resistance of the conductor depends (i) on its length, (ii) on its area of cross-section, and (iii) on the nature of its material. Precise measurements have shown that resistance of a uniform metallic conductor is directly proportional to its length (l) and inversely proportional to the area of cross-section (A)."
+        },
+        {
+          "doc_id": "jesc111-640a680a2407:0012",
+          "chunk_id": "jesc111-640a680a2407:0012",
+          "chapter": "Electricity",
+          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
+          "page_start": 8,
+          "page_end": 9,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "Combining Eqs. (11.8) and (11.9) we get R ∝ l/A or, R = ρ l/A (11.10) where ρ (rho) is a constant of proportionality and is called the electrical resistivity of the material of the conductor. The SI unit of resistivity is Ω m. It is a characteristic property of the material."
+        }
+      ],
+      "checkpoint": null,
+      "language": "hi-IN",
+      "analogy_family": null,
+      "groundedness_score": null,
+      "est_seconds": 45.2,
       "generated_after_answer": false
     }
   ],
   "final_quiz": [
     {
       "id": "q1",
-      "concept_id": "potential_difference",
-      "type": "explain_own_words",
-      "prompt": "आप अपने शब्दों में 'पोटेंशियल डिफरेंस' को कैसे समझाएंगे? एक उदाहरण भी दें।",
-      "options": [],
-      "answer_key": "पोटेंशियल डिफरेंस दो बिंदुओं के बीच का वह 'इलेक्ट्रिक दबाव' है जो चार्ज को एक बिंदु से दूसरे बिंदु तक ले जाने के लिए आवश्यक होता है। यह प्रति यूनिट चार्ज किए गए काम की मात्रा है। उदाहरण के लिए, एक बैटरी अपने टर्मिनलों के बीच पोटेंशियल डिफरेंस बनाए रखती है, जिससे बल्ब में करंट बहता है।",
+      "concept_id": "ohms_law",
+      "type": "mcq",
+      "prompt": "ओम के नियम के अनुसार, यदि किसी चालक का तापमान स्थिर रहता है, तो विभवांतर (V) और विद्युत धारा (I) के बीच क्या संबंध होता है?",
+      "options": [
+        "V, I के व्युत्क्रमानुपाती होता है।",
+        "V, I के सीधे आनुपातिक होता है।",
+        "V और I के बीच कोई संबंध नहीं होता है।",
+        "V, I के वर्ग के सीधे आनुपातिक होता है।"
+      ],
+      "answer_key": "V, I के सीधे आनुपातिक होता है।",
       "rubric": [
-        "पोटेंशियल डिफरेंस की सही परिभाषा होनी चाहिए (जैसे 'इलेक्ट्रिक दबाव' या 'चार्ज को स्थानांतरित करने के लिए किया गया काम')।",
-        "V = W/Q सूत्र का निहितार्थ या उल्लेख होना चाहिए।",
-        "एक प्रासंगिक और सही उदाहरण दिया जाना चाहिए (जैसे बैटरी और बल्ब, या पानी के टैंक का उदाहरण)।"
+        "सही विकल्प 'V, I के सीधे आनुपातिक होता है।' होना चाहिए।"
       ],
       "targets_misconception": null
     },
     {
       "id": "q2",
-      "concept_id": "ohms_law_resistance",
-      "type": "apply",
-      "prompt": "एक इलेक्ट्रिक हीटर का रेजिस्टेंस 50 ओम है. यदि उसे 220 वोल्ट के स्रोत से जोड़ा जाता है, तो वह कितना करंट लेगा? यदि वोल्टेज को आधा कर दिया जाए तो करंट पर क्या प्रभाव पड़ेगा?",
+      "concept_id": "electrical_resistance",
+      "type": "numeric",
+      "prompt": "एक विद्युत हीटर 220 V स्रोत से 2.2 A की धारा लेता है। हीटर का प्रतिरोध क्या है? (उत्तर ओम (Ω) में दें)",
       "options": [],
-      "answer_key": "ओम के नियम (I = V/R) के अनुसार, हीटर 220 V / 50 Ω = 4.4 एम्पीयर करंट लेगा। यदि वोल्टेज को आधा कर दिया जाए (110 V), तो करंट भी आधा हो जाएगा (110 V / 50 Ω = 2.2 एम्पीयर), क्योंकि करंट पोटेंशियल डिफरेंस के सीधे आनुपातिक होता है।",
+      "answer_key": "100",
       "rubric": [
-        "ओम के नियम (I=V/R) का सही उपयोग करके प्रारंभिक करंट की गणना (4.4 A) होनी चाहिए।",
-        "वोल्टेज आधा होने पर करंट पर पड़ने वाले प्रभाव का सही वर्णन होना चाहिए (आधा हो जाएगा)।",
-        "कारण स्पष्ट होना चाहिए (करंट वोल्टेज के सीधे आनुपातिक है)।",
-        "सही इकाइयाँ (एम्पीयर) का उल्लेख होना चाहिए।"
+        "उत्तर '100' होना चाहिए।",
+        "गणना V=IR या R=V/I का उपयोग करके की जानी चाहिए।"
       ],
       "targets_misconception": null
     },
     {
       "id": "q3",
-      "concept_id": "factors_of_resistance_resistivity",
+      "concept_id": "factors_resistivity",
       "type": "mcq",
-      "prompt": "निम्नलिखित में से कौन सा कारक किसी कंडक्टर के रेजिस्टेंस को प्रभावित नहीं करता है?",
+      "prompt": "एक तार का प्रतिरोध किन कारकों पर निर्भर नहीं करता है?",
       "options": [
-        "कंडक्टर की लंबाई",
-        "कंडक्टर का क्रॉस-सेक्शनल एरिया",
-        "कंडक्टर के मटेरियल की प्रकृति",
-        "कंडक्टर के सिरों के बीच का पोटेंशियल डिफरेंस"
+        "तार की लंबाई",
+        "तार की सामग्री",
+        "तार का अनुप्रस्थ-काट का क्षेत्रफल",
+        "तार से प्रवाहित होने वाली धारा"
       ],
-      "answer_key": "कंडक्टर के सिरों के बीच का पोटेंशियल डिफरेंस",
+      "answer_key": "तार से प्रवाहित होने वाली धारा",
       "rubric": [
-        "छात्र को यह पहचानना चाहिए कि रेजिस्टेंस एक आंतरिक गुण है जो V या I पर निर्भर नहीं करता है।"
+        "सही विकल्प 'तार से प्रवाहित होने वाली धारा' होना चाहिए।"
       ],
-      "targets_misconception": "छात्र यह मान सकता है कि रेजिस्टेंस सीधे वोल्टेज या करंट से प्रभावित होता है, जबकि यह केवल V/I का अनुपात है।"
+      "targets_misconception": "छात्र यह मान सकते हैं कि धारा प्रतिरोध को प्रभावित करती है, जबकि प्रतिरोध धारा के प्रवाह को प्रभावित करता है।"
     },
     {
       "id": "q4",
-      "concept_id": "factors_of_resistance_resistivity",
-      "type": "short",
-      "prompt": "एक ही मटेरियल के दो तार हैं. पहला तार 2 मीटर लंबा और 1 mm² क्रॉस-सेक्शनल एरिया का है. दूसरा तार 4 मीटर लंबा और 2 mm² क्रॉस-सेक्शनल एरिया का है. यदि पहले तार का रेजिस्टेंस R है, तो दूसरे तार का रेजिस्टेंस क्या होगा?",
+      "concept_id": "factors_resistivity",
+      "type": "explain_own_words",
+      "prompt": "आप एक बिजली के तार के प्रतिरोध को कैसे कम कर सकते हैं, यदि आपको सामग्री नहीं बदलनी है? अपने उत्तर का कारण भी दें।",
       "options": [],
-      "answer_key": "दूसरे तार का रेजिस्टेंस R ही होगा। पहले तार के लिए R = ρ(2/1) = 2ρ. दूसरे तार के लिए R' = ρ(4/2) = 2ρ. तो R' = R.",
+      "answer_key": "तार के प्रतिरोध को कम करने के लिए, मुझे तार की लंबाई कम करनी होगी और/या तार को मोटा (अनुप्रस्थ-काट का क्षेत्रफल बढ़ाना) करना होगा। ऐसा इसलिए है क्योंकि प्रतिरोध लंबाई के सीधे आनुपातिक और अनुप्रस्थ-काट के क्षेत्रफल के व्युत्क्रमानुपाती होता है।",
       "rubric": [
-        "छात्र को R = ρ(l/A) सूत्र का उपयोग करना चाहिए।",
-        "पहले तार के लिए R = ρ(2/1) या 2ρ की गणना होनी चाहिए।",
-        "दूसरे तार के लिए R' = ρ(4/2) या 2ρ की गणना होनी चाहिए।",
-        "सही निष्कर्ष (R' = R) पर पहुंचना चाहिए।"
+        "उत्तर में 'लंबाई कम करना' या 'decrease length' शामिल होना चाहिए।",
+        "उत्तर में 'मोटा करना' या 'अनुप्रस्थ-काट का क्षेत्रफल बढ़ाना' या 'increase cross-sectional area' शामिल होना चाहिए।",
+        "उत्तर में R ∝ l और R ∝ 1/A का संदर्भ होना चाहिए।"
       ],
-      "targets_misconception": "छात्र यह मान सकता है कि लंबाई दोगुनी होने और एरिया दोगुना होने पर रेजिस्टेंस भी दोगुना हो जाएगा, जबकि अनुपात समान रहता है।"
+      "targets_misconception": null
     }
   ],
   "language_switches": [],
