@@ -74,10 +74,17 @@ Session start: 2026-09-04 18:05 IST.
 - [x] `docs/VOICE.md` written
 
 ### Phase 4 Stage and video artefact
-- [ ] Three.js avatar with viseme morph targets
-- [ ] Slide build-up keyed to word timings, synced captions
-- [ ] **Playwright `record_video_dir` render plus ffmpeg audio mux**
-- [ ] Acceptance: a full lesson plays in the browser and produces `lesson.mp4`
+- [x] **Playwright `record_video_dir` -> CFR 30fps -> ffmpeg mux -> lesson.mp4**
+- [x] 26 beats, 18.9 min, drift 97 ms against 200 ms tolerance
+- [x] Slide build-up keyed to word timings, synced captions
+- [x] Aligner rewritten: danda, math symbols, unspoken words, lookahead resync
+- [x] Alignment health asserted across ALL 26 beats (was 25/26 broken)
+- [x] Reveal floor so no slide sits blank
+- [x] Avatar: stylised SVG teacher, text-derived visemes, sway, gaze, blinks
+- [x] 3D GLB rejected: facecap.glb is a real person's face, RPM needs an
+      interactive account. Constraint-3 fallback taken deliberately and early.
+- [x] **Acceptance: 52 passed; lesson.mp4 1280x720 h264 CFR30 + aac**
+- [x] `docs/AVATAR_VIDEO.md` written
 
 ### Phase 5 Adaptation
 - [ ] `misconceptions.yaml`, 30+ entries with trigger_patterns
