@@ -9,6 +9,8 @@ Runs against Ollama so it never spends Gemini or Groq quota.
 
 from __future__ import annotations
 
+import uuid
+
 import httpx
 import pytest
 from fastapi.testclient import TestClient
@@ -36,7 +38,8 @@ def test_health_ok():
 
 @pytest.mark.skipif(not _ollama_up(), reason="ollama not running")
 def test_cache_makes_repeat_call_free():
-    prompt = "Reply with exactly one word: electricity"
+    # Unique per run: a leftover cache entry would make the first call a hit.
+    prompt = f"Reply with exactly one word: electricity ({uuid.uuid4().hex[:8]})"
 
     before = budget.today()["billed_total"]
 

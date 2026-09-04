@@ -83,9 +83,11 @@ def today() -> dict:
     summary: dict[str, dict] = {}
     for e in entries:
         s = summary.setdefault(
-            e["provider"], {"billed": 0, "cached": 0, "limit": DAILY_LIMITS.get(e["provider"], 0)}
+            e["provider"], {"billed": 0, "cached": 0, "failed": 0, "limit": DAILY_LIMITS.get(e["provider"], 0)}
         )
         s["billed" if e["billed"] else "cached"] += 1
+        if not e.get("ok", True):
+            s["failed"] += 1
     for p, s in summary.items():
         s["remaining"] = max(0, s["limit"] - s["billed"])
         s["pct_used"] = round(s["billed"] / s["limit"] * 100, 1) if s["limit"] else 0.0

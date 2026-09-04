@@ -59,7 +59,7 @@ def retrieve(
     *,
     translation: str | None = None,
     top_k: int = TOP_K,
-    section: str | None = None,
+    section: str | list[str] | None = None,
 ) -> list[Hit]:
     queries = [query] + ([translation] if translation else [])
 
@@ -76,8 +76,10 @@ def retrieve(
         for i, s in sorted(fused.items(), key=lambda kv: -kv[1])
     ]
     if section:
-        want = section.strip().lower()
-        scoped = [h for h in hits if want in h.chunk.section.lower()]
+        wants = [section] if isinstance(section, str) else list(section)
+        wants = [w.strip().lower() for w in wants if w and w.strip()]
+        scoped = [h for h in hits
+                  if any(w in h.chunk.section.lower() for w in wants)]
         # Scoping must never return nothing, fall back to the whole document.
         hits = scoped or hits
     return hits[:top_k]
