@@ -1,0 +1,8 @@
+#!/bin/sh
+# Block any commit containing an API key. Covers Google AI Studio's older AIza
+# format and its newer AQ. format, Groq gsk_, and OpenAI-style sk-.
+if git diff --cached -U0 | grep -nE '^\+.*(AIza[0-9A-Za-z_-]{10}|AQ\.[A-Za-z0-9_-]{10}|gsk_[0-9A-Za-z]{10}|sk-[0-9A-Za-z]{20})'; then
+  echo "pre-commit: BLOCKED, an API key is present in the staged diff (lines above)." >&2
+  echo "Move it to .env, which is gitignored. Override only if certain: git commit --no-verify" >&2
+  exit 1
+fi
