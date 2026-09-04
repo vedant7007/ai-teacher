@@ -1,0 +1,78 @@
+# Voice and pace configuration, one entry per supported teaching language.
+# `shipped: true` means end-to-end tested. The others are wired and selectable
+# but not part of the tested demo path, per the agreed language cut.
+
+languages:
+  en-IN:
+    name: English (India)
+    voice: en-IN-NeerjaNeural
+    fallback_voice: en-US-AriaNeural
+    wpm: 150
+    script: latin
+    shipped: true
+
+  hi-IN:
+    name: Hindi
+    voice: hi-IN-SwaraNeural
+    fallback_voice: hi-IN-MadhurNeural
+    wpm: 130
+    script: devanagari
+    shipped: true
+
+  hinglish:
+    name: Hinglish (Roman script, code-mixed)
+    # Hindi voice reading Roman-script Hindi mispronounces; the Indian English
+    # voice handles code-mixed text far better.
+    voice: en-IN-NeerjaNeural
+    fallback_voice: hi-IN-SwaraNeural
+    wpm: 140
+    script: latin
+    shipped: true
+
+  te-IN:
+    name: Telugu
+    voice: te-IN-ShrutiNeural
+    fallback_voice: te-IN-MohanNeural
+    wpm: 120
+    script: telugu
+    shipped: false
+
+  ta-IN:
+    name: Tamil
+    voice: ta-IN-PallaviNeural
+    fallback_voice: ta-IN-ValluvarNeural
+    wpm: 120
+    script: tamil
+    shipped: false
+
+  mr-IN:
+    name: Marathi
+    voice: mr-IN-AarohiNeural
+    fallback_voice: mr-IN-ManoharNeural
+    wpm: 130
+    script: devanagari
+    shipped: false
+
+  bn-IN:
+    name: Bengali
+    voice: bn-IN-TanishaaNeural
+    fallback_voice: bn-IN-BashkarNeural
+    wpm: 130
+    script: bengali
+    shipped: false
+
+  es-ES:
+    name: Spanish
+    voice: es-ES-ElviraNeural
+    fallback_voice: es-MX-DaliaNeural
+    wpm: 145
+    script: latin
+    shipped: false
+
+  fr-FR:
+    name: French
+    voice: fr-FR-DeniseNeural
+    fallback_voice: fr-CA-SylvieNeural
+    wpm: 145
+    script: latin
+    shipped: false

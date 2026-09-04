@@ -38,7 +38,10 @@ def _load_dotenv(path: str = ".env") -> None:
 _load_dotenv()
 
 GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
-GROQ_MODEL = os.environ.get("GROQ_MODEL", "llama-3.3-70b-versatile")
+# Explicit, not the SDK default. A 2,600-word Devanagari lesson with per-beat
+# JSON is large, and a silent truncation would surface as a validation error.
+GEMINI_MAX_OUTPUT_TOKENS = int(os.environ.get("GEMINI_MAX_OUTPUT_TOKENS", "65536"))
+GROQ_MODEL = os.environ.get("GROQ_MODEL", "openai/gpt-oss-120b")
 OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "llama3.1:8b-instruct-q4_K_M")
 OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434")
 
@@ -49,6 +52,10 @@ BIG_PURPOSES = {"plan", "report"}
 
 class AllProvidersFailed(RuntimeError):
     pass
+
+
+class TruncatedResponse(RuntimeError):
+    """The model hit its output cap. Never repair this, it hides the cause."""
 
 
 def _chain(purpose: str) -> list[str]:
@@ -71,10 +78,25 @@ def _call_gemini(prompt: str, model: str, json_mode: bool, temperature: float) -
     if not key:
         raise RuntimeError("GEMINI_API_KEY not set")
     client = genai.Client(api_key=key)
-    cfg = types.GenerateContentConfig(temperature=temperature)
+    cfg = types.GenerateContentConfig(
+        temperature=temperature, max_output_tokens=GEMINI_MAX_OUTPUT_TOKENS
+    )
     if json_mode:
         cfg.response_mime_type = "application/json"
     resp = client.models.generate_content(model=model, contents=prompt, config=cfg)
+
+    finish = None
+    if resp.candidates:
+        finish = getattr(resp.candidates[0].finish_reason, "name", resp.candidates[0].finish_reason)
+    usage = getattr(resp, "usage_metadata", None)
+    out_tokens = getattr(usage, "candidates_token_count", None) if usage else None
+    print(f"[gemini] finish_reason={finish} output_tokens={out_tokens} "
+          f"cap={GEMINI_MAX_OUTPUT_TOKENS}")
+    if finish and finish not in ("STOP", "FinishReason.STOP"):
+        raise TruncatedResponse(
+            f"finish_reason={finish} after {out_tokens} output tokens "
+            f"(cap {GEMINI_MAX_OUTPUT_TOKENS})"
+        )
     return resp.text or ""
 
 
@@ -152,6 +174,13 @@ def complete(
         started = time.perf_counter()
         try:
             text = call(prompt, model, json_mode, temperature)
+        except TruncatedResponse:
+            budget.record(
+                model=model, purpose=purpose, billed=True,
+                latency_ms=int((time.perf_counter() - started) * 1000),
+                prompt_chars=len(prompt), ok=False,
+            )
+            raise
         except Exception as exc:  # noqa: BLE001 - any provider error falls through
             budget.record(
                 model=model, purpose=purpose, billed=True,
@@ -174,15 +203,22 @@ def complete(
 
 
 def complete_json(prompt: str, *, purpose: str, **kw) -> dict:
-    """complete() plus a tolerant JSON parse. Models like to wrap JSON in prose."""
+    """complete() plus a tolerant JSON parse. Models like to wrap JSON in prose.
+
+    A response that does not close its outer brace is truncated output, not a
+    schema mistake, so it raises rather than going down the repair path.
+    """
     raw = complete(prompt, purpose=purpose, json_mode=True, **kw)
     try:
         return json.loads(raw)
     except json.JSONDecodeError:
         start, end = raw.find("{"), raw.rfind("}")
-        if start != -1 and end > start:
-            return json.loads(raw[start : end + 1])
-        raise
+        if start == -1 or end <= start:
+            raise TruncatedResponse(
+                f"no complete JSON object in {len(raw)} chars; "
+                f"tail={raw[-120:]!r}"
+            ) from None
+        return json.loads(raw[start : end + 1])
 
 
 def available() -> dict[str, bool]:
