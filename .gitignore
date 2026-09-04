@@ -1,0 +1,12 @@
+.cache/
+storage/
+__pycache__/
+*.pyc
+.venv/
+.env
+node_modules/
+.next/
+out/
+data/demo/*.mp4
+*.webm
+.pytest_cache/
