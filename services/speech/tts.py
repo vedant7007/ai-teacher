@@ -15,6 +15,7 @@ from __future__ import annotations
 import asyncio
 import hashlib
 import re
+import unicodedata
 from dataclasses import dataclass, asdict
 from pathlib import Path
 
@@ -53,20 +54,34 @@ def voice_for(language: str) -> str:
 
 
 def _norm(s: str) -> str:
-    """Strip punctuation and marks so a boundary token can match a script word."""
-    return re.sub(r"[^\wऀ-ॿ]+", "", s).lower()
+    """Strip punctuation so a boundary token can match a script word.
+
+    Category-based, not a character range. The Devanagari block contains its own
+    punctuation: the danda U+0964 sits inside ऀ-ॿ, so a range-based keep-list
+    preserves it, and every sentence-final word fails to match the spoken token.
+    That desynced 25 of 26 beats.
+    """
+    return "".join(
+        c for c in s
+        if not unicodedata.category(c).startswith(("P", "Z", "C", "S"))
+    ).lower()
 
 
 def align_to_words(script: str, boundaries: list[dict]) -> list[WordTiming]:
     """Merge raw boundary events onto the whitespace words of `script`.
 
-    Three cases have to survive here:
+    Four cases have to survive, all of them observed on the demo lesson:
       - one event per word, the common case;
-      - a word split across several events, which Devanagari can do;
-      - a script token that is never spoken and so gets no event at all, such as
-        the "=" in "V = W/Q". These must still be emitted and must not desync
-        every following word.
+      - a word split across several events;
+      - a script token that is never spoken and gets no event at all, such as
+        the "=" in "V = W/Q" or a bare "Ω" the voice skips;
+      - a general desync, recovered by looking ahead rather than giving up.
+
+    Getting this wrong is silent: cues collapse to the end of the beat and the
+    slide simply sits blank. `tests/test_phase4.py` asserts alignment health
+    across every beat, not a sampled one.
     """
+    LOOKAHEAD = 6
     words = script.split()
     norm_words = [_norm(w) for w in words]
     out: list[WordTiming] = []
@@ -76,11 +91,14 @@ def align_to_words(script: str, boundaries: list[dict]) -> list[WordTiming]:
     start_ms: int | None = None
     end_ms = 0
 
-    def flush_silent(at_ms: int) -> None:
-        """Emit unspoken tokens (punctuation, symbols) at the current position."""
+    def emit(i: int, at: int, dur: int) -> None:
+        out.append(WordTiming(words[i], i, at, max(0, dur)))
+
+    def flush_unspoken(at_ms: int) -> None:
+        """Emit tokens that carry no phonetic content (punctuation, symbols)."""
         nonlocal wi
         while wi < len(words) and not norm_words[wi]:
-            out.append(WordTiming(words[wi], wi, at_ms, 0))
+            emit(wi, at_ms, 0)
             wi += 1
 
     for b in boundaries:
@@ -90,9 +108,20 @@ def align_to_words(script: str, boundaries: list[dict]) -> list[WordTiming]:
         b_start = b["offset"] // _TICKS_PER_MS
         b_end = (b["offset"] + b["duration"]) // _TICKS_PER_MS
 
-        flush_silent(b_start)
+        flush_unspoken(b_start)
         if wi >= len(words):
             break
+
+        # Nothing part-built and this token does not open the current word:
+        # look ahead for the word it does open, and treat everything skipped as
+        # unspoken rather than desyncing the remainder of the beat.
+        if not acc and not norm_words[wi].startswith(tok[:2] or tok):
+            for j in range(wi + 1, min(wi + 1 + LOOKAHEAD, len(words))):
+                if norm_words[j] and norm_words[j].startswith(tok[:2] or tok):
+                    while wi < j:
+                        emit(wi, b_start, 0)
+                        wi += 1
+                    break
 
         if start_ms is None:
             start_ms = b_start
@@ -100,23 +129,25 @@ def align_to_words(script: str, boundaries: list[dict]) -> list[WordTiming]:
         acc += tok
 
         while wi < len(words) and norm_words[wi] and acc.startswith(norm_words[wi]):
-            out.append(WordTiming(words[wi], wi, start_ms, max(0, end_ms - start_ms)))
+            emit(wi, start_ms, end_ms - start_ms)
             acc = acc[len(norm_words[wi]):]
             wi += 1
-            flush_silent(end_ms)
+            flush_unspoken(end_ms)
             if acc:
                 start_ms = end_ms
+
         if not acc:
             start_ms = None
-        elif len(acc) > 40:
-            # Desynced beyond recovery: drop the accumulator rather than let one
-            # bad token silently zero every remaining cue.
+        elif wi < len(words) and len(acc) > len(norm_words[wi]) + 8:
+            # Overran the current word without matching: emit it here and resync.
+            emit(wi, start_ms or b_start, end_ms - (start_ms or b_start))
+            wi += 1
             acc = ""
             start_ms = None
 
-    flush_silent(end_ms)
+    flush_unspoken(end_ms)
     for i in range(len(out), len(words)):
-        out.append(WordTiming(words[i], i, end_ms, 0))
+        emit(i, end_ms, 0)
     return out
 
 
