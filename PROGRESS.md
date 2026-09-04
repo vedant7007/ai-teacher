@@ -61,10 +61,17 @@ Session start: 2026-09-04 18:05 IST.
 - [ ] Acceptance: "beginner, chapter, 20 min, Hindi" lands within 10 percent, Devanagari, all explain-beats cited
 
 ### Phase 3 Speech and slides
-- [ ] edge-tts with WordBoundary timings
-- [ ] HTML slide renderer, 5 visual kinds
-- [ ] Visual Director guardrails with a stated reason per choice
-- [ ] Acceptance: each subject picks the right visual kind, timings align within 150 ms
+- [x] edge-tts with WordBoundary timings (boundary="WordBoundary" is opt-in in 7.x)
+- [x] Aligner survives unspoken symbols and multi-event words
+- [x] Hindi verified: 107 events for 107 words, 130 ms drift
+- [x] HTML slide renderer, all 5 visual kinds, word-timed reveal
+- [x] Graph draws progressively as the line is described
+- [x] Cue resolution maps invented element ids onto real DOM ids
+- [x] Visual Director: guardrails, apparatus stays a diagram, no fabricated data
+- [x] Word budget calibration, -11.3% -> -3.9%
+- [x] is_usable() guard stops a fallback stub overwriting the frozen demo
+- [x] **Acceptance: 43 passed; 4 graphs with correct distinct axes; drift 130 ms**
+- [x] `docs/VOICE.md` written
 
 ### Phase 4 Stage and video artefact
 - [ ] Three.js avatar with viseme morph targets

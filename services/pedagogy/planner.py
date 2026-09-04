@@ -109,13 +109,19 @@ def _format_sources(hits) -> str:
     return "\n".join(out)
 
 
+# The model reliably lands a few percent under whatever word count it is asked
+# for, so ask for slightly more and the delivered lesson lands on target. This
+# is a calibration constant, measured, not a guess: raise it if lessons run short.
+WORD_BUDGET_CALIBRATION = 1.10
+
+
 def build_prompt(
     profile: LearnerProfile,
     hits: list,
     *,
     topic: str | None = None,
 ) -> str:
-    words = target_words(profile)
+    words = int(target_words(profile) * WORD_BUDGET_CALIBRATION)
     p = _prompt("lesson.md")
     p = p.replace("{{PROFILE}}", json.dumps(profile.model_dump(), ensure_ascii=False, indent=2))
     p = p.replace("{{SOURCES}}", _format_sources(hits))
@@ -129,6 +135,9 @@ def build_prompt(
     beats = max(6, round(words / 110))
     p = p.replace("{{BEAT_COUNT}}", str(beats))
     p = p.replace("{{WORDS_PER_BEAT}}", str(int(words / beats)))
+    # Concept count drives checkpoint count. Left unbounded the model splits a
+    # short lesson into thin concepts and then skips checks on the thin ones.
+    p = p.replace("{{MAX_CONCEPTS}}", str(max(2, min(5, profile.time_budget_minutes // 6))))
     p = p.replace(
         "{{TOPIC_ONLY_NOTE}}",
         "" if hits else
@@ -223,8 +232,23 @@ def _sanitize(raw: dict, profile: LearnerProfile) -> dict:
         c["analogy_families"] = clean_str_list(c.get("analogy_families"))
         c["prerequisites"] = clean_str_list(c.get("prerequisites"))
 
+    INTENTS = {"hook", "explain", "example", "analogy", "demo", "check",
+               "recap", "transition"}
+    KINDS = {"equation", "graph", "diagram", "code", "bullets"}
+
     for b in raw.get("beats", []) or []:
         b.setdefault("language", profile.language)
+
+        # Emphasising visuals in the prompt makes the model occasionally put a
+        # visual kind in `intent`. Move it where it belongs rather than losing
+        # the whole lesson to one bad enum.
+        intent = str(b.get("intent", "")).lower()
+        if intent not in INTENTS:
+            if intent in KINDS:
+                b.setdefault("visual", {})
+                if isinstance(b["visual"], dict):
+                    b["visual"].setdefault("kind", intent)
+            b["intent"] = "check" if b.get("checkpoint") else "explain"
         af = b.get("analogy_family")
         if isinstance(af, str) and af.strip().lower() in NULLISH:
             b["analogy_family"] = None
@@ -249,6 +273,15 @@ def _sanitize(raw: dict, profile: LearnerProfile) -> dict:
 
 def _to_plan(raw: dict, profile: LearnerProfile) -> LessonPlan:
     return LessonPlan(**_sanitize(raw, profile))
+
+
+def is_usable(plan: LessonPlan, profile: LearnerProfile) -> bool:
+    """Is this a real lesson, or the emergency stub?
+
+    The frozen demo must never be overwritten by a fallback: a stub that reaches
+    data/demo/ would silently become the thing the judges see.
+    """
+    return len(plan.beats) >= 5 and plan.total_words() >= target_words(profile) * 0.5
 
 
 def _fallback_plan(profile: LearnerProfile, hits) -> LessonPlan:

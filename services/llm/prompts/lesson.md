@@ -55,7 +55,12 @@ A beat is one teaching moment, 20 to 60 seconds of speech. Rules:
 3. **A concrete example at least every third beat.** Use things this student can
    picture: water in pipes, a crowded doorway, a bicycle chain, money in a wallet.
 4. **End every explain beat with a bridge sentence** that sets up the next beat.
-5. **HARD REQUIREMENT: exactly one `check` beat per concept.** If you define N
+5. **HARD REQUIREMENT: define at most {{MAX_CONCEPTS}} concepts.** A 20 minute
+lesson taught to a beginner covers a handful of ideas properly, not eight
+thinly. If something needs only one beat, it is part of a neighbouring concept,
+not a concept of its own.
+
+**HARD REQUIREMENT: exactly one `check` beat per concept.** If you define N
    concepts you must produce N beats with `intent`:`check`, each carrying a
    populated `checkpoint`, each placed immediately after that concept is taught,
    never all at the end. A lesson with fewer check beats than concepts is
@@ -78,6 +83,23 @@ and nothing else:
 | `diagram` | processes, circuits, structures, flows, concept maps | `{"mermaid":"graph LR; A[Battery]-->B[Resistor];"}` |
 | `code` | programming, algorithms | `{"language":"python","source":"...","expected_output":"..."}` |
 | `bullets` | definitions, comparisons, summaries. Never a wall of text, max 5 short lines | `{"heading":"...","items":["...","..."]}` |
+
+**Graphs are mandatory where a relationship has a shape.** If a beat says one
+quantity is proportional to, inversely proportional to, or varies with another,
+use `graph`, not `bullets` and not `equation`. The straight line or the curve IS
+the claim, and the student must see it. Specifically:
+
+- a beat that reports experimental readings must plot them, using the real
+  numbers from the source material, not invented ones;
+- a beat that states "A is directly proportional to B" gets a straight line
+  through the origin;
+- a beat that states "A is inversely proportional to B" gets a falling curve;
+- label both axes with the actual quantity and unit for THAT beat. Never reuse
+  another beat's axes.
+
+A beat whose job is to state the formula itself keeps `equation`. A beat that
+explores how the quantities move together gets `graph`. Expect several graphs in
+a physics or maths lesson, not one.
 
 `reason` must say why this visual suits this subject and this moment, in one
 sentence. It is shown to the student, so write it for them, not for a developer.
