@@ -33,8 +33,8 @@ Session start: 2026-09-04 18:05 IST.
 - [x] Seed docs fetched: NCERT Electricity EN + HI, Magnetic Effects EN + HI
 - [x] `.env.example`, `requirements.txt`, `.gitignore`, `pytest.ini`
 - [x] **Acceptance: `/health` ok, repeat LLM call costs 0 requests** (2 passed, 57.74s)
-- [ ] Dockerfile build verified
-- [ ] Pushed to public GitHub
+- [ ] Dockerfile build verified (deferred to Phase 7, Docker daemon not running, deployment is optional)
+- [x] Pushed to GitHub: github.com/vedant7007/ai-teacher (**private, Vedant to flip to public**)
 
 ### Phase 1 Ingest and RAG
 - [ ] PyMuPDF parse into blocks with page number and font size
