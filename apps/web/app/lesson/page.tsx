@@ -50,6 +50,26 @@ function Stage() {
   const frameRef = useRef<HTMLIFrameElement | null>(null);
   const raf = useRef<number | null>(null);
 
+  // The slide is a fixed 1280x720 document. Scale it to the box it sits in so it
+  // fills the stage at any viewport and can never overflow into a page scroll.
+  const [scale, setScale] = useState(0.5);
+  const roRef = useRef<ResizeObserver | null>(null);
+  const fitRef = useCallback((el: HTMLDivElement | null) => {
+    roRef.current?.disconnect();
+    if (!el) return;
+    roRef.current = new ResizeObserver(([e]) => {
+      const r = e.contentRect;
+      setScale(Math.min(r.width / 1280, r.height / 720));
+    });
+    roRef.current.observe(el);
+  }, []);
+
+  // Keep the newest iframe: on a crossfade the outgoing one unmounts after the
+  // incoming one mounted, and a plain ref would be nulled by that cleanup.
+  const setFrame = useCallback((el: HTMLIFrameElement | null) => {
+    if (el) frameRef.current = el;
+  }, []);
+
   useEffect(() => {
     Promise.all([
       fetch("/data/lessons.json").then((r) => r.json()),
@@ -131,7 +151,7 @@ function Stage() {
 
   if (!lesson || !beat) {
     return (
-      <main className="min-h-screen flex items-center justify-center">
+      <main style={{ height: "100vh", overflow: "hidden", display: "grid", placeItems: "center" }}>
         <p className="t-micro dim">Preparing the lesson…</p>
       </main>
     );
@@ -141,16 +161,16 @@ function Stage() {
   const spokenIdx = beat.words.findIndex((w) => ms >= w.at && ms < w.at + w.d);
 
   return (
-    <main style={{ minHeight: "100vh", position: "relative", overflow: "hidden" }}>
+    <main style={{ height: "100vh", position: "relative", overflow: "hidden" }}>
       {/* concept rail, top edge, not a widget */}
       <div className="rail" style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 40 }}>
         <motion.div className="rail-fill" animate={{ width: `${progress}%` }} transition={SPRING} />
       </div>
 
-      <div style={{ display: "flex", height: "100vh" }}>
+      <div style={{ display: "flex", height: "100%", overflow: "hidden" }}>
         <section style={{ flex: 1, position: "relative", display: "flex",
-                          flexDirection: "column", minWidth: 0 }}>
-          <header style={{ padding: "22px 40px 0", display: "flex",
+                          flexDirection: "column", minWidth: 0, minHeight: 0 }}>
+          <header style={{ flex: "0 0 auto", padding: "18px 40px 0", display: "flex",
                            justifyContent: "space-between", alignItems: "baseline" }}>
             <span className="t-micro dim">
               {beat.intent} · beat {i + 1} of {lesson.beats.length}
@@ -158,25 +178,52 @@ function Stage() {
             <span className="t-micro dim">{lesson.title}</span>
           </header>
 
-          {/* the slide, full bleed, no card */}
-          <div style={{ flex: 1, position: "relative", display: "grid", placeItems: "center" }}>
+          {/* the slide, full bleed, no card. Captions and the "why" line live
+              inside the slide document, never duplicated by this layer. */}
+          <div
+            ref={fitRef}
+            style={{ flex: 1, minHeight: 0, position: "relative",
+                     overflow: "hidden", padding: "10px 20px" }}
+          >
             <div className="avatar-glow" />
-            <AnimatePresence mode="wait">
+            <AnimatePresence>
               <motion.div
                 key={beat.id}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.32 }}
-                style={{ width: "100%", display: "grid", placeItems: "center" }}
+                style={{ position: "absolute", inset: 0,
+                         display: "grid", placeItems: "center" }}
               >
                 <iframe
-                  ref={frameRef}
+                  ref={setFrame}
                   className="stage-frame"
                   src={`/slides/${lang}_${beat.id}.html`}
                   width={1280}
                   height={720}
-                  style={{ width: "min(100%, 1280px)", aspectRatio: "16/9", height: "auto" }}
+                  onLoad={(e) => {
+                    // The slide reveals nothing at t=0, so before playback the
+                    // stage would sit black. Seek just past the reveal floor so
+                    // the beat shows a real poster frame at rest.
+                    const w = (e.currentTarget as HTMLIFrameElement)
+                      .contentWindow as unknown as { seek?: (n: number) => void };
+                    // A diagram beat waits on mermaid before it defines seek(),
+                    // so poll briefly rather than firing once and missing it.
+                    const poster = Math.max(400, (beat.duration_ms || 0) * 0.09);
+                    let tries = 0;
+                    const id = setInterval(() => {
+                      tries += 1;
+                      if (typeof w?.seek === "function") {
+                        w.seek(poster);
+                        clearInterval(id);
+                      } else if (tries > 30) {
+                        clearInterval(id);
+                      }
+                    }, 120);
+                  }}
+                  style={{ width: 1280, height: 720, flex: "0 0 auto",
+                           transform: `scale(${scale})`, transformOrigin: "center center" }}
                   title={`slide ${beat.id}`}
                 />
               </motion.div>
@@ -184,7 +231,8 @@ function Stage() {
           </div>
 
           {/* controls */}
-          <div style={{ padding: "0 40px 26px", display: "flex", gap: 12, alignItems: "center" }}>
+          <div style={{ flex: "0 0 auto", padding: "0 40px 20px",
+                        display: "flex", gap: 12, alignItems: "center" }}>
             {!playing && !atCheck && (
               <button className="cta" onClick={play}>
                 {ms > 0 ? "Resume" : "Play the lesson"}
@@ -224,7 +272,8 @@ function Stage() {
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: 340, opacity: 0 }}
               transition={SPRING}
-              style={{ width: 340, padding: "26px 22px", overflowY: "auto" }}
+              style={{ width: 340, flex: "0 0 340px", height: "100%",
+                       padding: "26px 22px", overflowY: "auto" }}
             >
               <p className="t-micro dim">Learner model</p>
               <div style={{ marginTop: 14, display: "flex", flexDirection: "column", gap: 14 }}>
@@ -373,7 +422,7 @@ function Stage() {
 
 export default function Page() {
   return (
-    <Suspense fallback={<main style={{ minHeight: "100vh" }} />}>
+    <Suspense fallback={<main style={{ height: "100vh", overflow: "hidden" }} />}>
       <Stage />
     </Suspense>
   );

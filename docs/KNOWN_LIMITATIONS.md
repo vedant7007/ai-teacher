@@ -3,32 +3,40 @@
 Written honestly. Every number here is measured, and every item we did not fix
 says so plainly rather than being left undocumented.
 
-## Time fidelity: one global calibration constant, tuned per language
+## Time fidelity: the words-per-minute constant is wrong for English
 
-`services/pedagogy/planner.py` carries a single module-level constant:
+`services/pedagogy/planner.py` carries a per-language speaking rate and a single
+global calibration constant:
 
 ```python
+WPM = {"en-IN": 150, "hi-IN": 130, ...}
 WORD_BUDGET_CALIBRATION = 1.45
 ```
 
-The model reliably produces fewer words than it is asked for, so we ask for more
-than the true target. The problem is that the shortfall is **not uniform across
-languages**, and one global multiplier cannot correct both:
+We originally believed English lessons were running short and raised the
+calibration from 1.10 to 1.45 to compensate. **That diagnosis was wrong.**
+Measuring the rendered audio rather than estimating from word count shows:
 
-| Language | Target | Delivered | Delta | Requested / actual |
-|---|---|---|---|---|
-| Hindi | 2600 words | 2499 | **-3.9%** | 20 min / 19.2 min |
-| English | 3000 words | 2687 | **-10.4%** | 20 min / 17.9 min |
+| Language | Words | Predicted | Actual audio | Actual wpm | Constant | vs 20 min |
+|---|---|---|---|---|---|---|
+| Hindi | 2499 | 19.2 min | **18.9 min** | 132 | 130 | **-5%** |
+| English | 2687 | 17.9 min | **23.0 min** | **117** | 150 | **+15%** |
 
-**English is outside our own 10 percent acceptance band.** The constant was
-originally 1.10, tuned against Hindi alone, at which point English came in at
-**-35.9%** (12.8 minutes against 20 requested). Raising it to 1.45 fixed most of
-the gap but overshoots for Hindi and still undershoots for English.
+The Hindi constant of 130 is accurate. The English constant of 150 is roughly
+28 percent too fast: `en-IN-NeerjaNeural` actually delivers about **117 words per
+minute**. So English lessons were never undershooting, and raising the
+calibration to 1.45 pushed them from approximately on target to 15 percent long.
 
-The correct fix is per-language word-density calibration: a measured constant per
-language, derived from several generations each, rather than one number tuned on
-one language. We did not have time to gather that data, so the single constant
-stands and English runs about two minutes short of the requested twenty.
+**The correct fix is per-voice wpm measurement**, not word-budget calibration:
+synthesize a fixed passage with each configured voice, divide words by measured
+audio duration, and store the result per voice in `voices.yaml`. The calibration
+constant then becomes unnecessary for all languages rather than being tuned to
+compensate for a wrong rate in one of them.
+
+We did not have time to run that measurement across the voice set, so the demo
+English lesson runs about three minutes long against a 20 minute request. The
+number reported in `docs/EVALUATION.md` as "-10.4 percent" is a word-count
+estimate and is superseded by the measured +15 percent above.
 
 ## Avatar
 
