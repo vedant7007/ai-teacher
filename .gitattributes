@@ -1,0 +1,13 @@
+# Generated slide HTML: emitted by services/visual/slide.py, one file per beat.
+# Not hand-written, and 66 of them would otherwise dominate the language bar.
+apps/web/public/slides/*.html linguist-generated=true
+apps/web/public/data/*.json   linguist-generated=true
+
+# Frozen demo lessons are model output, not source.
+data/demo/*.json              linguist-generated=true
+
+# Lockfiles
+apps/web/package-lock.json    linguist-generated=true
+
+# Seed PDFs are third-party material (NCERT), not our code.
+data/seed/*.pdf               linguist-vendored=true
