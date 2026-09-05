@@ -109,10 +109,11 @@ def _format_sources(hits) -> str:
     return "\n".join(out)
 
 
-# The model reliably lands a few percent under whatever word count it is asked
-# for, so ask for slightly more and the delivered lesson lands on target. This
-# is a calibration constant, measured, not a guess: raise it if lessons run short.
-WORD_BUDGET_CALIBRATION = 1.10
+# The model lands well under whatever word count it is asked for, and the
+# shortfall grows with the target: Hindi at 2600 words came in 11% short, English
+# at 3000 words came in 36% short. Ask for more so the delivered lesson lands on
+# target. Measured, not guessed. Raise it if lessons still run short.
+WORD_BUDGET_CALIBRATION = 1.45
 
 
 def build_prompt(

@@ -142,8 +142,22 @@ def _graph(p: dict) -> str:
 </svg>"""
 
 
-def _diagram(p: dict) -> str:
-    return f'<pre class="mermaid" id="diagram">{html.escape(str(p.get("mermaid", "")))}</pre>'
+def _diagram(p: dict, fallback: list[str] | None = None) -> str:
+    """Mermaid, sanitised, with a bullets fallback carried on the element.
+
+    Mermaid renders its own parse failure as an SVG error card, so "an svg
+    exists" is not proof of success. The runtime check in _JS looks for the
+    error text and swaps in the fallback, because an error card must never
+    reach the video.
+    """
+    from services.visual import mermaid as mm
+
+    src = mm.sanitize(str(p.get("mermaid", "")))
+    fb = html.escape(json.dumps(fallback or [], ensure_ascii=False), quote=True)
+    return (
+        '<pre class="mermaid" id="diagram" data-fallback="' + fb + '">'
+        + html.escape(src) + "</pre>"
+    )
 
 
 def _code(p: dict) -> str:
@@ -281,6 +295,25 @@ if(KIND==='equation' && window.katex && window.__latex){
   katex.render(window.__latex, document.getElementById('eq'),
                {throwOnError:false, displayMode:true});
 }
+function mermaidFallback(){
+  const el=document.getElementById('diagram');
+  if(!el) return false;
+  const txt=(el.textContent||'').toLowerCase();
+  const broke = txt.includes('syntax error') || txt.includes('mermaid version')
+             || !!el.querySelector('.error-icon, .error-text');
+  if(!broke) return false;
+  let items=[]; try{ items=JSON.parse(el.dataset.fallback||'[]'); }catch(e){}
+  const ul=document.createElement('ul');
+  ul.className='bullets';
+  items.forEach((it,i)=>{
+    const li=document.createElement('li');
+    li.className='bullet reveal on'; li.id='b-'+i; li.textContent=it;
+    ul.appendChild(li);
+  });
+  el.replaceWith(ul);
+  window.__mermaidFellBack = true;
+  return true;
+}
 if(KIND==='diagram' && window.mermaid){
   mermaid.initialize({startOnLoad:true, theme:'base', securityLevel:'loose',
     themeVariables:{
@@ -289,8 +322,19 @@ if(KIND==='diagram' && window.mermaid){
       lineColor:'#58a6ff', textColor:'#e6edf3', mainBkg:'#161b22',
       nodeBorder:'#58a6ff', clusterBkg:'#0d1117', fontSize:'19px'}});
 }
+if(KIND==='diagram'){
+  // Mermaid renders asynchronously; check after it has had a chance to fail.
+  let tries=0;
+  const check=setInterval(()=>{
+    tries++;
+    const done=document.querySelector('.mermaid svg')||document.querySelector('ul.bullets');
+    if(done){ mermaidFallback(); clearInterval(check); window.__ready=true; }
+    else if(tries>40){ mermaidFallback(); clearInterval(check); window.__ready=true; }
+  }, 60);
+} else {
+  window.__ready = true;
+}
 window.seek(0);
-window.__ready = true;
 """
 
 
@@ -411,7 +455,11 @@ def render_slide(
 ) -> str:
     timings = timings or []
     cues = cues_for(beat, timings)
-    body = _RENDERERS[beat.visual.kind](beat.visual.payload or {})
+    if beat.visual.kind == "diagram":
+        from services.visual import mermaid as mm
+        body = _diagram(beat.visual.payload or {}, mm.fallback_items(beat.script))
+    else:
+        body = _RENDERERS[beat.visual.kind](beat.visual.payload or {})
 
     caption = ""
     if with_caption and timings:

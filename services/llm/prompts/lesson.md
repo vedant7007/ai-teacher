@@ -33,8 +33,8 @@ The student has {{MINUTES}} minutes. Spoken pace for {{LANGUAGE}} is about
 {{MIN_WORDS}} and {{MAX_WORDS}} words.** This is measured automatically and a
 lesson outside that range is rejected. Aim for {{TARGET_WORDS}}.
 
-To hit it, plan roughly **{{BEAT_COUNT}} beats of about {{WORDS_PER_BEAT}} words
-each**. Before you finish, add up the words in your scripts. If you are short,
+To hit it, plan **at least {{BEAT_COUNT}} beats of about {{WORDS_PER_BEAT}} words
+each**. Fewer beats than that will not reach the word count. Before you finish, add up the words in your scripts. If you are short,
 do not add beats: deepen the existing explanations with another sentence of
 detail or a second concrete example. Running short is the most common failure
 here, so err long rather than short.

@@ -1,0 +1,2580 @@
+{
+  "lesson_id": "demo_ohms_en",
+  "title": "Understanding Electrical Resistance and Ohm's Law",
+  "profile": {
+    "level": "beginner",
+    "prior_knowledge": [],
+    "goal": null,
+    "language": "en-IN",
+    "style": "examples-first",
+    "time_budget_minutes": 20,
+    "depth": "standard",
+    "topic": "11.4",
+    "wants_questions_during": true,
+    "wants_final_test": true
+  },
+  "concepts": [
+    {
+      "id": "ohms_law",
+      "name": "Ohm's Law",
+      "prerequisites": [],
+      "source_refs": [],
+      "difficulty": 0.3,
+      "est_minutes": 7.0,
+      "analogy_families": [
+        "mechanical",
+        "everyday"
+      ]
+    },
+    {
+      "id": "electrical_resistance",
+      "name": "Electrical Resistance",
+      "prerequisites": [
+        "ohms_law"
+      ],
+      "source_refs": [],
+      "difficulty": 0.4,
+      "est_minutes": 4.0,
+      "analogy_families": [
+        "everyday"
+      ]
+    },
+    {
+      "id": "factors_affecting_resistance",
+      "name": "Factors Affecting Resistance and Resistivity",
+      "prerequisites": [
+        "electrical_resistance"
+      ],
+      "source_refs": [],
+      "difficulty": 0.6,
+      "est_minutes": 9.0,
+      "analogy_families": [
+        "mechanical",
+        "everyday"
+      ]
+    }
+  ],
+  "beats": [
+    {
+      "id": "b1",
+      "concept_id": "ohms_law",
+      "intent": "hook",
+      "script": "Namaste! Imagine you're trying to walk through a very busy market street. Sometimes it's easy to move, and sometimes it's very difficult because of the crowd. Why does this happen? It's because the crowd offers resistance to your movement. Similarly, electricity, which is the flow of tiny particles called electrons, faces something similar when it moves through wires.",
+      "visual": {
+        "kind": "bullets",
+        "reason": "This visual introduces the concept of resistance using a relatable everyday scenario.",
+        "subject": "Crowded Market Analogy",
+        "payload": {
+          "heading": "Walking in a Crowd",
+          "items": [
+            "Easy to move in an empty street.",
+            "Difficult to move in a crowded street.",
+            "The crowd 'resists' your movement."
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "heading",
+            "word_index": 0,
+            "action": "show"
+          },
+          {
+            "element_id": "0",
+            "word_index": 10,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 17,
+            "action": "show"
+          },
+          {
+            "element_id": "2",
+            "word_index": 29,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": "everyday",
+      "groundedness_score": null,
+      "est_seconds": 23.2,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b2",
+      "concept_id": "ohms_law",
+      "intent": "hook",
+      "script": "Just like a crowd can slow you down, some materials make it harder for electrons to flow through them, while others let them pass easily. This 'difficulty' or 'opposition' that a material offers to the flow of electric current is what we call electrical resistance. It's a fundamental concept in understanding how circuits work.",
+      "visual": {
+        "kind": "bullets",
+        "reason": "This visual introduces the formal term 'electrical resistance' as the opposition to current flow.",
+        "subject": "Electrical Resistance",
+        "payload": {
+          "heading": "What is Electrical Resistance?",
+          "items": [
+            "Opposition to the flow of electric current.",
+            "Some materials resist more, some less.",
+            "It's like 'electrical friction'."
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "heading",
+            "word_index": 0,
+            "action": "show"
+          },
+          {
+            "element_id": "0",
+            "word_index": 20,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 30,
+            "action": "show"
+          },
+          {
+            "element_id": "2",
+            "word_index": 44,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": null,
+      "est_seconds": 21.6,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b3",
+      "concept_id": "ohms_law",
+      "intent": "hook",
+      "script": "Think about a water pipe. If the pipe is very narrow, or if it has many bends and rough insides, water doesn't flow through it as easily, right? It faces more resistance. But if the pipe is wide and smooth, water flows freely. Electricity behaves in a very similar way within wires and components. The properties of the wire affect how easily current flows.",
+      "visual": {
+        "kind": "diagram",
+        "reason": "This diagram illustrates the concept of resistance using the familiar analogy of water flow in pipes.",
+        "subject": "Water Pipe Analogy for Resistance",
+        "payload": {
+          "mermaid": "graph TD\n    A[Water Tank] --> B{Narrow/Rough Pipe}\n    B --> C[Slow Water Flow (High Resistance)]\n    A --> D{Wide/Smooth Pipe}\n    D --> E[Fast Water Flow (Low Resistance)]"
+        },
+        "timeline": [
+          {
+            "element_id": "A",
+            "word_index": 0,
+            "action": "show"
+          },
+          {
+            "element_id": "B",
+            "word_index": 10,
+            "action": "show"
+          },
+          {
+            "element_id": "C",
+            "word_index": 27,
+            "action": "show"
+          },
+          {
+            "element_id": "D",
+            "word_index": 40,
+            "action": "show"
+          },
+          {
+            "element_id": "E",
+            "word_index": 50,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": "mechanical",
+      "groundedness_score": null,
+      "est_seconds": 25.6,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b4",
+      "concept_id": "ohms_law",
+      "intent": "transition",
+      "script": "Today, we're going to dive deeper into this concept of electrical resistance. We'll learn how to measure it, what factors make it high or low, and why understanding it is so important for designing and using all the electrical devices we rely on every day, from your phone charger to an electric heater. This knowledge will help you understand why different materials are used in different parts of an electrical circuit. Are you ready to explore?",
+      "visual": {
+        "kind": "bullets",
+        "reason": "This visual outlines the learning objectives for the lesson, setting expectations for the student.",
+        "subject": "Lesson Objectives",
+        "payload": {
+          "heading": "What We'll Learn Today:",
+          "items": [
+            "How to measure electrical resistance.",
+            "Factors affecting resistance (length, area, material).",
+            "The concept of resistivity.",
+            "Ohm's Law: The relationship between Voltage, Current, and Resistance."
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "heading",
+            "word_index": 0,
+            "action": "show"
+          },
+          {
+            "element_id": "0",
+            "word_index": 14,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 21,
+            "action": "show"
+          },
+          {
+            "element_id": "2",
+            "word_index": 29,
+            "action": "show"
+          },
+          {
+            "element_id": "3",
+            "word_index": 35,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": null,
+      "est_seconds": 30.4,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b5",
+      "concept_id": "ohms_law",
+      "intent": "explain",
+      "script": "First, let's quickly recap two important terms we've discussed before: potential difference and electric current. Remember, potential difference, often called voltage, is like the 'electrical pressure' or 'push' that makes electric charges move through a conductor. Think of it as the force that drives the current. Electric current, on the other hand, is the actual flow of these charges, usually electrons, through the circuit. [citations: jesc111-640a680a2407:0004]",
+      "visual": {
+        "kind": "bullets",
+        "reason": "This visual reminds the student of the definitions of potential difference and current, which are prerequisites for Ohm's Law.",
+        "subject": "Potential Difference and Current",
+        "payload": {
+          "heading": "Quick Recap:",
+          "items": [
+            "Potential Difference (V): The 'push' that moves charges.",
+            "Electric Current (I): The flow of charges (electrons)."
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "heading",
+            "word_index": 0,
+            "action": "show"
+          },
+          {
+            "element_id": "0",
+            "word_index": 14,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 33,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407",
+          "chunk_id": "jesc111-640a680a2407:0004",
+          "chapter": "Electricity",
+          "section": "11.2 ELECTRIC POTENTIAL AND POTENTIAL DIFFERENCE",
+          "page_start": 3,
+          "page_end": 3,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "For flow of charges in a conducting metallic wire, the gravity, of course, has no role to play; the electrons move only if there is a difference of electric pressure – called the potential difference – along the conductor."
+        }
+      ],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": "mechanical",
+      "groundedness_score": 0.5535,
+      "est_seconds": 26.4,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b6",
+      "concept_id": "ohms_law",
+      "intent": "demo",
+      "script": "To understand how potential difference and current are related, let's imagine a simple experiment. We set up a circuit with a special wire called nichrome, which is an alloy. We connect an ammeter to measure the current, a voltmeter to measure the potential difference across the nichrome wire, and a battery made of several cells. We'll start by using just one cell as the power source. [citations: jesc111-640a680a2407:0008]",
+      "visual": {
+        "kind": "diagram",
+        "reason": "This diagram shows the experimental setup for Ohm's Law, helping the student visualize the circuit components.",
+        "subject": "Ohm's Law Circuit Setup",
+        "payload": {
+          "mermaid": "graph TD\n    A[Battery (Cells)] --> B(Key)\n    B --> C(Ammeter)\n    C --> D[Nichrome Wire (XY)]\n    D --> A\n    V(Voltmeter) -- parallel --> D"
+        },
+        "timeline": [
+          {
+            "element_id": "A",
+            "word_index": 0,
+            "action": "show"
+          },
+          {
+            "element_id": "B",
+            "word_index": 15,
+            "action": "show"
+          },
+          {
+            "element_id": "C",
+            "word_index": 20,
+            "action": "show"
+          },
+          {
+            "element_id": "D",
+            "word_index": 28,
+            "action": "show"
+          },
+          {
+            "element_id": "V",
+            "word_index": 35,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407",
+          "chunk_id": "jesc111-640a680a2407:0008",
+          "chapter": "Electricity",
+          "section": "11.4 OHM’S LAW",
+          "page_start": 5,
+          "page_end": 6,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "Set up a circuit as shown in Fig. 11.2, consisting of a nichrome wire XY of length, say 0.5 m, an ammeter, a voltmeter and four cells of 1.5 V each. (Nichrome is an alloy of nickel, chromium, manganese, and iron metals.) First use only one cell as the source in the circuit."
+        }
+      ],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": 0.7052,
+      "est_seconds": 27.2,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b7",
+      "concept_id": "ohms_law",
+      "intent": "demo",
+      "script": "We'll note down the readings from the ammeter (for current, I) and the voltmeter (for potential difference, V) with one cell. Then, we'll connect two cells in the circuit, increasing the total voltage, and again note the readings. We repeat this process, using three cells and then four cells, each time noting the new current and potential difference. What do you predict will happen to the current as we increase the number of cells, and thus the potential difference?",
+      "visual": {
+        "kind": "bullets",
+        "reason": "This visual outlines the steps of the experiment, focusing on varying the number of cells and observing changes.",
+        "subject": "Ohm's Law Experiment Steps",
+        "payload": {
+          "heading": "Experiment Steps:",
+          "items": [
+            "Start with 1 cell, record V and I.",
+            "Add more cells (2, 3, 4), record V and I each time.",
+            "Observe how V and I change together."
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "heading",
+            "word_index": 0,
+            "action": "show"
+          },
+          {
+            "element_id": "0",
+            "word_index": 17,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 28,
+            "action": "show"
+          },
+          {
+            "element_id": "2",
+            "word_index": 42,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407",
+          "chunk_id": "jesc111-640a680a2407:0008",
+          "chapter": "Electricity",
+          "section": "11.4 OHM’S LAW",
+          "page_start": 5,
+          "page_end": 6,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "Next connect two cells in the circuit and note the respective readings of the ammeter and voltmeter for the values of current through the nichrome wire and potential difference across the nichrome wire. Repeat the above steps using three cells and then four cells in the circuit separately."
+        }
+      ],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": 0.5531,
+      "est_seconds": 31.6,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b8",
+      "concept_id": "ohms_law",
+      "intent": "explain",
+      "script": "As we increase the number of cells, we are increasing the total potential difference (V) across the nichrome wire. What you would observe is that the current (I) flowing through the wire also increases. For example, if you double the potential difference, you'd find that the current approximately doubles as well. This shows a clear relationship where they both rise together. [citations: jesc111-640a680a2407:0008]",
+      "visual": {
+        "kind": "bullets",
+        "reason": "This visual summarizes the key observation from the experiment: increasing voltage leads to increasing current.",
+        "subject": "Observation: V and I Relationship",
+        "payload": {
+          "heading": "What We Observe:",
+          "items": [
+            "As Potential Difference (V) increases...",
+            "...Current (I) also increases.",
+            "They seem to be directly related."
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "heading",
+            "word_index": 0,
+            "action": "show"
+          },
+          {
+            "element_id": "0",
+            "word_index": 10,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 19,
+            "action": "show"
+          },
+          {
+            "element_id": "2",
+            "word_index": 26,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407",
+          "chunk_id": "jesc111-640a680a2407:0008",
+          "chapter": "Electricity",
+          "section": "11.4 OHM’S LAW",
+          "page_start": 5,
+          "page_end": 6,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "Next connect two cells in the circuit and note the respective readings of the ammeter and voltmeter for the values of current through the nichrome wire and potential difference across the nichrome wire."
+        }
+      ],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": 0.5181,
+      "est_seconds": 25.2,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b9",
+      "concept_id": "ohms_law",
+      "intent": "explain",
+      "script": "If we take the values of potential difference (V) and current (I) from our experiment and plot them on a graph, with V on the y-axis and I on the x-axis, we would find that all the points fall on a straight line. This line passes through the origin, which visually confirms that V is directly proportional to I. [citations: jesc111-640a680a2407:0008]",
+      "visual": {
+        "kind": "graph",
+        "reason": "This graph visually represents the direct proportionality between potential difference and current, a core aspect of Ohm's Law.",
+        "subject": "V-I Graph for Ohm's Law",
+        "payload": {
+          "type": "line",
+          "x_label": "Current (I) in Amperes (A)",
+          "y_label": "Potential Difference (V) in Volts (V)",
+          "series": [
+            {
+              "name": "Nichrome Wire",
+              "points": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.1,
+                  1.5
+                ],
+                [
+                  0.2,
+                  3.0
+                ],
+                [
+                  0.3,
+                  4.5
+                ],
+                [
+                  0.4,
+                  6.0
+                ]
+              ]
+            }
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "x_label",
+            "word_index": 20,
+            "action": "show"
+          },
+          {
+            "element_id": "y_label",
+            "word_index": 15,
+            "action": "show"
+          },
+          {
+            "element_id": "series[0]",
+            "word_index": 35,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407",
+          "chunk_id": "jesc111-640a680a2407:0008",
+          "chapter": "Electricity",
+          "section": "11.4 OHM’S LAW",
+          "page_start": 5,
+          "page_end": 6,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "Plot a graph between V and I, and observe the nature of the graph. In this Activity, you will find that approximately the same value for V/I is obtained in each case. Thus the V–I graph is a straight line that passes through the origin of the graph, as shown in Fig. 11.3."
+        }
+      ],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": 0.3577,
+      "est_seconds": 24.4,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b10",
+      "concept_id": "ohms_law",
+      "intent": "explain",
+      "script": "This direct relationship between potential difference and current was first established by a German physicist named Georg Simon Ohm in 1827. His discovery is now known as Ohm's Law. It states that the potential difference (V) across the ends of a given metallic wire in an electric circuit is directly proportional to the current (I) flowing through it, provided its temperature remains the same. This condition about temperature is very important! [citations: jesc111-640a680a2407:0008, jesc111-640a680a2407:0009]",
+      "visual": {
+        "kind": "bullets",
+        "reason": "This visual presents the formal statement of Ohm's Law, emphasizing the key condition of constant temperature.",
+        "subject": "Ohm's Law Statement",
+        "payload": {
+          "heading": "Ohm's Law:",
+          "items": [
+            "V ∝ I (Potential Difference is proportional to Current)",
+            "Condition: Temperature must remain the same.",
+            "Discovered by Georg Simon Ohm."
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "heading",
+            "word_index": 0,
+            "action": "show"
+          },
+          {
+            "element_id": "0",
+            "word_index": 25,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 40,
+            "action": "show"
+          },
+          {
+            "element_id": "2",
+            "word_index": 12,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407",
+          "chunk_id": "jesc111-640a680a2407:0008",
+          "chapter": "Electricity",
+          "section": "11.4 OHM’S LAW",
+          "page_start": 5,
+          "page_end": 6,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "In 1827, a German physicist Georg Simon Ohm (1787–1854) found out the relationship between the current I, flowing in a metallic wire and the potential difference across its terminals. The potential difference, V, across the ends of a given metallic wire in an electric circuit is directly proportional to the current flowing through it, provided its temperature remains the same. This is called Ohm’s law."
+        },
+        {
+          "doc_id": "jesc111-640a680a2407",
+          "chunk_id": "jesc111-640a680a2407:0009",
+          "chapter": "Electricity",
+          "section": "11.4 OHM’S LAW",
+          "page_start": 6,
+          "page_end": 6,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "V ∝ I (11.4)"
+        }
+      ],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": 0.7177,
+      "est_seconds": 29.6,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b11",
+      "concept_id": "ohms_law",
+      "intent": "explain",
+      "script": "To convert this proportionality, V ∝ I, into an equation, we introduce a constant. This constant is called 'R', which stands for resistance. So, Ohm's Law can be written as V = IR. This is one of the most fundamental equations in electricity. It tells us exactly how voltage, current, and resistance are mathematically linked in a circuit. [citations: jesc111-640a680a2407:0009]",
+      "visual": {
+        "kind": "equation",
+        "reason": "This visual displays the mathematical formula for Ohm's Law, defining each term as it's introduced.",
+        "subject": "Ohm's Law Formula",
+        "payload": {
+          "latex": "V = I \\times R",
+          "terms": [
+            {
+              "id": "V",
+              "label": "Potential Difference",
+              "tex": "V"
+            },
+            {
+              "id": "I",
+              "label": "Current",
+              "tex": "I"
+            },
+            {
+              "id": "R",
+              "label": "Resistance",
+              "tex": "R"
+            }
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "V",
+            "word_index": 15,
+            "action": "show"
+          },
+          {
+            "element_id": "I",
+            "word_index": 17,
+            "action": "show"
+          },
+          {
+            "element_id": "R",
+            "word_index": 21,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407",
+          "chunk_id": "jesc111-640a680a2407:0009",
+          "chapter": "Electricity",
+          "section": "11.4 OHM’S LAW",
+          "page_start": 6,
+          "page_end": 6,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "V = IR (11.5)"
+        }
+      ],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": 0.6806,
+      "est_seconds": 24.0,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b12",
+      "concept_id": "ohms_law",
+      "intent": "example",
+      "script": "Let's look at an example. Imagine an electric heater that has a potential difference of 60 Volts across its terminals and draws a current of 4 Amperes from the source. If we increase the potential difference to 120 Volts, what current will the heater draw? Since V is directly proportional to I, if the potential difference doubles from 60V to 120V, the current will also double from 4A to 8A, assuming the heater's resistance remains constant. [citations: jesc111-640a680a2407:0013]",
+      "visual": {
+        "kind": "bullets",
+        "reason": "This visual presents a numerical example to demonstrate the direct proportionality of Ohm's Law in a practical scenario.",
+        "subject": "Ohm's Law Example",
+        "payload": {
+          "heading": "Example: Electric Heater",
+          "items": [
+            "Initial: V = 60V, I = 4A",
+            "New: V = 120V",
+            "Since V ∝ I, if V doubles, I also doubles.",
+            "New Current = 8A"
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "heading",
+            "word_index": 0,
+            "action": "show"
+          },
+          {
+            "element_id": "0",
+            "word_index": 10,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 18,
+            "action": "show"
+          },
+          {
+            "element_id": "2",
+            "word_index": 24,
+            "action": "show"
+          },
+          {
+            "element_id": "3",
+            "word_index": 35,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407",
+          "chunk_id": "jesc111-640a680a2407:0013",
+          "chapter": "Electricity",
+          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
+          "page_start": 9,
+          "page_end": 11,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "Example 11.4 The potential difference between the terminals of an electric heater is 60 V when it draws a current of 4 A from the source. What current will the heater draw if the potential difference is increased to 120 V? Solution We are given, potential difference V = 60 V, current I = 4 A. According to Ohm’s law, R = 60 V / 4 A = 15 Ω. When the potential difference is increased to 120 V the current is given by current = 120 V / 15 Ω = 8 A. The current through the heater becomes 8 A."
+        }
+      ],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": 0.7965,
+      "est_seconds": 31.2,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b13",
+      "concept_id": "ohms_law",
+      "intent": "explain",
+      "script": "The key takeaway from Ohm's Law is that for a given metallic wire at a constant temperature, the ratio of potential difference to current, V/I, is always a constant value. This constant value is what we call its resistance (R). It's like the wire has a fixed 'difficulty level' for current flow, which doesn't change unless the wire itself changes or its temperature changes. This constant resistance is crucial for predicting how a circuit will behave.",
+      "visual": {
+        "kind": "bullets",
+        "reason": "This visual reinforces the idea that V/I is a constant for a given conductor, defining it as resistance.",
+        "subject": "V/I Ratio is Constant",
+        "payload": {
+          "heading": "Key Point:",
+          "items": [
+            "For a given conductor (at constant temperature):",
+            "The ratio V/I is always constant.",
+            "This constant value is the Resistance (R)."
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "heading",
+            "word_index": 0,
+            "action": "show"
+          },
+          {
+            "element_id": "0",
+            "word_index": 10,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 20,
+            "action": "show"
+          },
+          {
+            "element_id": "2",
+            "word_index": 28,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407",
+          "chunk_id": "jesc111-640a680a2407:0009",
+          "chapter": "Electricity",
+          "section": "11.4 OHM’S LAW",
+          "page_start": 6,
+          "page_end": 6,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "In Eq. (11.4), R is a constant for the given metallic wire at a given temperature and is called its resistance."
+        }
+      ],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": 0.793,
+      "est_seconds": 30.4,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b14",
+      "concept_id": "ohms_law",
+      "intent": "check",
+      "script": "Alright, let's test your understanding of Ohm's Law. If you have a circuit where the potential difference across a wire is 10 Volts and the current flowing through it is 2 Amperes, what would be the current if the potential difference is increased to 20 Volts, assuming the wire's temperature doesn't change? Think about the direct relationship we just discussed.",
+      "visual": {
+        "kind": "bullets",
+        "reason": "This visual presents the checkpoint question clearly, allowing the student to focus on the problem.",
+        "subject": "Ohm's Law Checkpoint",
+        "payload": {
+          "heading": "Checkpoint 1: Ohm's Law",
+          "items": [
+            "Initial: V = 10V, I = 2A",
+            "New: V = 20V",
+            "What is the new current (I)?"
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "heading",
+            "word_index": 0,
+            "action": "show"
+          },
+          {
+            "element_id": "0",
+            "word_index": 18,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 26,
+            "action": "show"
+          },
+          {
+            "element_id": "2",
+            "word_index": 33,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [],
+      "checkpoint": {
+        "id": "c1",
+        "concept_id": "ohms_law",
+        "type": "numeric",
+        "prompt": "If V = 10V and I = 2A, what is I when V = 20V (temperature constant)?",
+        "options": null,
+        "answer_key": "4A",
+        "rubric": [
+          "Student correctly identifies that current doubles when voltage doubles.",
+          "Student states the new current is 4A."
+        ],
+        "targets_misconception": null
+      },
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": null,
+      "est_seconds": 24.0,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b15",
+      "concept_id": "electrical_resistance",
+      "intent": "explain",
+      "script": "So, we've established that 'R' in V = IR stands for resistance. But what is it, really? Electrical resistance is the property of a conductor to oppose or resist the flow of electric charges, or electrons, through it. It's like an internal 'friction' that slows down the electrons as they try to move. Every material has some amount of resistance, even good conductors. [citations: jesc111-640a680a2407:0009]",
+      "visual": {
+        "kind": "bullets",
+        "reason": "This visual defines electrical resistance as the opposition to current flow, using simple terms.",
+        "subject": "Definition of Resistance",
+        "payload": {
+          "heading": "What is Resistance (R)?",
+          "items": [
+            "Property of a conductor.",
+            "Opposes the flow of electric charges.",
+            "Acts like 'electrical friction'."
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "heading",
+            "word_index": 0,
+            "action": "show"
+          },
+          {
+            "element_id": "0",
+            "word_index": 12,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 18,
+            "action": "show"
+          },
+          {
+            "element_id": "2",
+            "word_index": 30,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407",
+          "chunk_id": "jesc111-640a680a2407:0009",
+          "chapter": "Electricity",
+          "section": "11.4 OHM’S LAW",
+          "page_start": 6,
+          "page_end": 6,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "It is the property of a conductor to resist the flow of charges through it."
+        }
+      ],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": 0.5577,
+      "est_seconds": 26.0,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b16",
+      "concept_id": "electrical_resistance",
+      "intent": "explain",
+      "script": "The SI unit for resistance is called the ohm, named after Georg Simon Ohm, and it's represented by the Greek letter omega, which looks like this: Ω. According to Ohm's Law (R = V/I), one ohm is defined as the resistance when a potential difference of 1 Volt causes a current of 1 Ampere to flow through a conductor. So, 1 Ω is equal to 1 Volt divided by 1 Ampere. [citations: jesc111-640a680a2407:0009]",
+      "visual": {
+        "kind": "equation",
+        "reason": "This visual displays the unit of resistance (Ohm) and its definition in terms of Volts and Amperes.",
+        "subject": "Unit of Resistance: Ohm",
+        "payload": {
+          "latex": "1 \\Omega = \\frac{1 \\text{ V}}{1 \\text{ A}}",
+          "terms": [
+            {
+              "id": "ohm",
+              "label": "Ohm (unit of Resistance)",
+              "tex": "\\Omega"
+            },
+            {
+              "id": "volt",
+              "label": "Volt (unit of Potential Difference)",
+              "tex": "\\text{V}"
+            },
+            {
+              "id": "ampere",
+              "label": "Ampere (unit of Current)",
+              "tex": "\\text{A}"
+            }
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "ohm",
+            "word_index": 13,
+            "action": "show"
+          },
+          {
+            "element_id": "volt",
+            "word_index": 33,
+            "action": "show"
+          },
+          {
+            "element_id": "ampere",
+            "word_index": 38,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407",
+          "chunk_id": "jesc111-640a680a2407:0009",
+          "chapter": "Electricity",
+          "section": "11.4 OHM’S LAW",
+          "page_start": 6,
+          "page_end": 6,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "Its SI unit is ohm, represented by the Greek letter Ω. According to Ohm’s law, R = V/I (11.6) If the potential difference across the two ends of a conductor is 1 V and the current through it is 1 A, then the resistance R, of the conductor is 1 Ω. That is, 1 ohm = 1 volt / 1 ampere"
+        }
+      ],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": 0.5387,
+      "est_seconds": 29.2,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b17",
+      "concept_id": "electrical_resistance",
+      "intent": "explain",
+      "script": "We can rearrange Ohm's Law to show current: I = V/R. This equation clearly shows that the current (I) through a resistor is inversely proportional to its resistance (R), assuming the potential difference (V) remains constant. This means if the resistance increases, the current will decrease, and vice versa. This inverse relationship is very important for controlling current in circuits. [citations: jesc111-640a680a2407:0009]",
+      "visual": {
+        "kind": "graph",
+        "reason": "This graph illustrates the inverse relationship between current and resistance, helping the student visualize how they change relative to each other.",
+        "subject": "Current vs. Resistance Graph",
+        "payload": {
+          "type": "line",
+          "x_label": "Resistance (R) in Ohms (Ω)",
+          "y_label": "Current (I) in Amperes (A)",
+          "series": [
+            {
+              "name": "Constant Voltage",
+              "points": [
+                [
+                  1,
+                  12
+                ],
+                [
+                  2,
+                  6
+                ],
+                [
+                  3,
+                  4
+                ],
+                [
+                  4,
+                  3
+                ],
+                [
+                  6,
+                  2
+                ],
+                [
+                  12,
+                  1
+                ]
+              ]
+            }
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "x_label",
+            "word_index": 15,
+            "action": "show"
+          },
+          {
+            "element_id": "y_label",
+            "word_index": 10,
+            "action": "show"
+          },
+          {
+            "element_id": "series[0]",
+            "word_index": 30,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407",
+          "chunk_id": "jesc111-640a680a2407:0009",
+          "chapter": "Electricity",
+          "section": "11.4 OHM’S LAW",
+          "page_start": 6,
+          "page_end": 6,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "Also from Eq. (11.5) we get I = V/R (11.7) It is obvious from Eq. (11.7) that the current through a resistor is inversely proportional to its resistance. If the resistance is doubled the current gets halved."
+        }
+      ],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": 0.6381,
+      "est_seconds": 24.8,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b18",
+      "concept_id": "electrical_resistance",
+      "intent": "example",
+      "script": "To understand this inverse relationship, let's use another everyday example. Imagine a busy doorway (representing the current) in a building. If the doorway is very narrow (high resistance), only a few people can pass through at a time. But if the doorway is wide (low resistance), many more people can pass through easily. So, a wider doorway means less resistance and more flow, just like a lower electrical resistance means more current.",
+      "visual": {
+        "kind": "bullets",
+        "reason": "This visual uses a relatable analogy of a doorway to explain the inverse relationship between resistance and flow (current).",
+        "subject": "Doorway Analogy for Resistance",
+        "payload": {
+          "heading": "Doorway Analogy:",
+          "items": [
+            "Narrow doorway = High Resistance = Low Flow (Current)",
+            "Wide doorway = Low Resistance = High Flow (Current)"
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "heading",
+            "word_index": 0,
+            "action": "show"
+          },
+          {
+            "element_id": "0",
+            "word_index": 18,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 29,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": "everyday",
+      "groundedness_score": 0.544,
+      "est_seconds": 28.8,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b19",
+      "concept_id": "electrical_resistance",
+      "intent": "check",
+      "script": "Now for our second checkpoint, focusing on resistance. You have two copper wires, Wire A and Wire B. Wire A has a resistance of 5 Ohms, and Wire B has a resistance of 10 Ohms. If both wires are connected to the same 12 Volt battery, which wire will allow more current to flow through it, and why? Remember the inverse relationship between current and resistance.",
+      "visual": {
+        "kind": "bullets",
+        "reason": "This visual presents the checkpoint question clearly, allowing the student to focus on the problem.",
+        "subject": "Resistance Checkpoint",
+        "payload": {
+          "heading": "Checkpoint 2: Resistance",
+          "items": [
+            "Wire A: R = 5 Ω",
+            "Wire B: R = 10 Ω",
+            "Both connected to 12V battery.",
+            "Which wire has more current? Why?"
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "heading",
+            "word_index": 0,
+            "action": "show"
+          },
+          {
+            "element_id": "0",
+            "word_index": 12,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 19,
+            "action": "show"
+          },
+          {
+            "element_id": "2",
+            "word_index": 26,
+            "action": "show"
+          },
+          {
+            "element_id": "3",
+            "word_index": 33,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [],
+      "checkpoint": {
+        "id": "c2",
+        "concept_id": "electrical_resistance",
+        "type": "explain_own_words",
+        "prompt": "You have two wires, Wire A (R=5Ω) and Wire B (R=10Ω). Both are connected to a 12V battery. Which wire will have more current and why?",
+        "options": null,
+        "answer_key": "Wire A will have more current because current is inversely proportional to resistance. Lower resistance means higher current for the same voltage.",
+        "rubric": [
+          "Student correctly identifies Wire A.",
+          "Student explains that current is inversely proportional to resistance.",
+          "Student links lower resistance to higher current."
+        ],
+        "targets_misconception": null
+      },
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": null,
+      "est_seconds": 26.4,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b20",
+      "concept_id": "factors_affecting_resistance",
+      "intent": "explain",
+      "script": "Now that we understand what resistance is and how it relates to voltage and current, let's explore what factors actually determine how much resistance a conductor has. It's not just a fixed value for all wires; it changes based on a few key physical properties. Understanding these factors is crucial for choosing the right wire for different electrical applications, like power transmission or heating elements. [citations: jesc111-640a680a2407:0011]",
+      "visual": {
+        "kind": "bullets",
+        "reason": "This visual introduces the idea that resistance is not constant but depends on several factors.",
+        "subject": "Factors Affecting Resistance",
+        "payload": {
+          "heading": "What Affects Resistance?",
+          "items": [
+            "Resistance is not a fixed value.",
+            "It depends on physical properties of the conductor.",
+            "We'll explore these factors now."
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "heading",
+            "word_index": 0,
+            "action": "show"
+          },
+          {
+            "element_id": "0",
+            "word_index": 12,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 19,
+            "action": "show"
+          },
+          {
+            "element_id": "2",
+            "word_index": 28,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407",
+          "chunk_id": "jesc111-640a680a2407:0011",
+          "chapter": "Electricity",
+          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
+          "page_start": 7,
+          "page_end": 8,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "On applying Ohm’s law [Eqs. (11.5) – (11.7)], we observe that the resistance of the conductor depends (i) on its length, (ii) on its area of cross-section, and (iii) on the nature of its material."
+        }
+      ],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": 0.6158,
+      "est_seconds": 26.8,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b21",
+      "concept_id": "factors_affecting_resistance",
+      "intent": "demo",
+      "script": "Let's consider another imaginary experiment, similar to the one for Ohm's Law. We'll set up a circuit with a battery, an ammeter, and a nichrome wire of a specific length, let's say 'l', and a certain thickness. We'll measure the current flowing through this wire. This initial measurement will serve as our baseline to compare against as we change the wire's properties. [citations: jesc111-640a680a2407:0011]",
+      "visual": {
+        "kind": "diagram",
+        "reason": "This diagram shows the initial circuit setup for investigating factors affecting resistance, establishing a baseline.",
+        "subject": "Circuit for Resistance Factors",
+        "payload": {
+          "mermaid": "graph TD\n    A[Battery] --> B(Key)\n    B --> C(Ammeter)\n    C --> D[Nichrome Wire (Length l, Area A)]\n    D --> A"
+        },
+        "timeline": [
+          {
+            "element_id": "A",
+            "word_index": 0,
+            "action": "show"
+          },
+          {
+            "element_id": "B",
+            "word_index": 15,
+            "action": "show"
+          },
+          {
+            "element_id": "C",
+            "word_index": 20,
+            "action": "show"
+          },
+          {
+            "element_id": "D",
+            "word_index": 28,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407",
+          "chunk_id": "jesc111-640a680a2407:0011",
+          "chapter": "Electricity",
+          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
+          "page_start": 7,
+          "page_end": 8,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "Complete an electric circuit consisting of a cell, an ammeter, a nichrome wire of length l [say, marked (1)] and a plug key, as shown in Fig. 11.5. Now, plug the key. Note the current in the ammeter."
+        }
+      ],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": 0.6729,
+      "est_seconds": 25.6,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b22",
+      "concept_id": "factors_affecting_resistance",
+      "intent": "demo",
+      "script": "First, let's see how length affects resistance. We replace our original nichrome wire with another nichrome wire of the *same thickness* but *twice the length*, let's say '2l'. We keep the battery and all other components the same. What do you predict will happen to the current flowing through this longer wire compared to the original one? Will it increase, decrease, or stay the same? [citations: jesc111-640a680a2407:0011]",
+      "visual": {
+        "kind": "bullets",
+        "reason": "This visual highlights the change in the experiment: doubling the wire's length.",
+        "subject": "Experiment: Changing Wire Length",
+        "payload": {
+          "heading": "Factor 1: Length (l)",
+          "items": [
+            "Original wire: Length 'l'",
+            "New wire: Same thickness, Length '2l'",
+            "Predict: What happens to current?"
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "heading",
+            "word_index": 0,
+            "action": "show"
+          },
+          {
+            "element_id": "0",
+            "word_index": 14,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 22,
+            "action": "show"
+          },
+          {
+            "element_id": "2",
+            "word_index": 33,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407",
+          "chunk_id": "jesc111-640a680a2407:0011",
+          "chapter": "Electricity",
+          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
+          "page_start": 7,
+          "page_end": 8,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "Replace the nichrome wire by another nichrome wire of same thickness but twice the length, that is 2l [marked (2) in the Fig. 11.5]. Note the ammeter reading."
+        }
+      ],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": 0.6541,
+      "est_seconds": 26.8,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b23",
+      "concept_id": "factors_affecting_resistance",
+      "intent": "explain",
+      "script": "You would observe that the ammeter reading decreases to about one-half of its original value. Since current decreased, and voltage remained the same, this means the resistance of the wire doubled. This tells us that resistance is directly proportional to its length (R ∝ l). A longer wire means electrons have to travel further, encountering more obstacles, leading to higher resistance. [citations: jesc111-640a680a2407:0011]",
+      "visual": {
+        "kind": "graph",
+        "reason": "This graph visually represents the direct proportionality between resistance and length.",
+        "subject": "Resistance vs. Length Graph",
+        "payload": {
+          "type": "line",
+          "x_label": "Length (l) in meters (m)",
+          "y_label": "Resistance (R) in Ohms (Ω)",
+          "series": [
+            {
+              "name": "Resistance vs. Length",
+              "points": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  2,
+                  8
+                ],
+                [
+                  3,
+                  12
+                ]
+              ]
+            }
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "x_label",
+            "word_index": 30,
+            "action": "show"
+          },
+          {
+            "element_id": "y_label",
+            "word_index": 25,
+            "action": "show"
+          },
+          {
+            "element_id": "series[0]",
+            "word_index": 40,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407",
+          "chunk_id": "jesc111-640a680a2407:0011",
+          "chapter": "Electricity",
+          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
+          "page_start": 7,
+          "page_end": 8,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "It is observed that the ammeter reading decreases to one-half when the length of the wire is doubled. ... Precise measurements have shown that resistance of a uniform metallic conductor is directly proportional to its length (l) ... R ∝ l (11.8)"
+        }
+      ],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": 0.6318,
+      "est_seconds": 25.2,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b24",
+      "concept_id": "factors_affecting_resistance",
+      "intent": "analogy",
+      "script": "You can think of it like a long, narrow corridor in a building. The longer the corridor, the more effort it takes to walk from one end to the other because you encounter more people and obstacles along the way. Similarly, a longer wire means more 'electrical obstacles' for the electrons, thus increasing the resistance to their flow. This makes intuitive sense, doesn't it?",
+      "visual": {
+        "kind": "bullets",
+        "reason": "This visual uses the analogy of a long corridor to reinforce the concept of resistance increasing with length.",
+        "subject": "Corridor Analogy for Length",
+        "payload": {
+          "heading": "Long Corridor Analogy:",
+          "items": [
+            "Longer corridor = More obstacles, more effort.",
+            "Longer wire = More 'electrical obstacles'.",
+            "Result: Higher Resistance."
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "heading",
+            "word_index": 0,
+            "action": "show"
+          },
+          {
+            "element_id": "0",
+            "word_index": 15,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 25,
+            "action": "show"
+          },
+          {
+            "element_id": "2",
+            "word_index": 33,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": "everyday",
+      "groundedness_score": 0.5427,
+      "est_seconds": 25.6,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b25",
+      "concept_id": "factors_affecting_resistance",
+      "intent": "demo",
+      "script": "Next, let's investigate how the thickness of the wire affects resistance. We'll go back to our original nichrome wire of length 'l'. Now, we replace it with a *thicker* nichrome wire of the *same length* 'l'. A thicker wire means it has a larger area of cross-section. What do you think will happen to the current flowing through this thicker wire? Will it be more or less than the original current? [citations: jesc111-640a680a2407:0011]",
+      "visual": {
+        "kind": "bullets",
+        "reason": "This visual highlights the change in the experiment: using a thicker wire (larger cross-sectional area).",
+        "subject": "Experiment: Changing Wire Thickness",
+        "payload": {
+          "heading": "Factor 2: Area of Cross-section (A)",
+          "items": [
+            "Original wire: Area 'A'",
+            "New wire: Same length, Thicker (larger Area '2A')",
+            "Predict: What happens to current?"
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "heading",
+            "word_index": 0,
+            "action": "show"
+          },
+          {
+            "element_id": "0",
+            "word_index": 16,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 24,
+            "action": "show"
+          },
+          {
+            "element_id": "2",
+            "word_index": 36,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407",
+          "chunk_id": "jesc111-640a680a2407:0011",
+          "chapter": "Electricity",
+          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
+          "page_start": 7,
+          "page_end": 8,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "Now replace the wire by a thicker nichrome wire, of the same length l [marked (3)]. A thicker wire has a larger cross-sectional area. Again note down the current through the circuit."
+        }
+      ],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": 0.612,
+      "est_seconds": 29.2,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b26",
+      "concept_id": "factors_affecting_resistance",
+      "intent": "explain",
+      "script": "When you use a thicker wire, you would observe that the ammeter reading increases. This means that the thicker wire has *less* resistance. So, resistance is inversely proportional to the area of cross-section (R ∝ 1/A). A wider path allows more electrons to flow easily, reducing the overall opposition. This is why thick wires are often used for carrying large currents, like in household wiring. [citations: jesc111-640a680a2407:0011]",
+      "visual": {
+        "kind": "graph",
+        "reason": "This graph visually represents the inverse proportionality between resistance and the area of cross-section.",
+        "subject": "Resistance vs. Area Graph",
+        "payload": {
+          "type": "line",
+          "x_label": "Area of Cross-section (A) in m²",
+          "y_label": "Resistance (R) in Ohms (Ω)",
+          "series": [
+            {
+              "name": "Resistance vs. Area",
+              "points": [
+                [
+                  0.1,
+                  10
+                ],
+                [
+                  0.2,
+                  5
+                ],
+                [
+                  0.5,
+                  2
+                ],
+                [
+                  1,
+                  1
+                ]
+              ]
+            }
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "x_label",
+            "word_index": 30,
+            "action": "show"
+          },
+          {
+            "element_id": "y_label",
+            "word_index": 25,
+            "action": "show"
+          },
+          {
+            "element_id": "series[0]",
+            "word_index": 40,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407",
+          "chunk_id": "jesc111-640a680a2407:0011",
+          "chapter": "Electricity",
+          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
+          "page_start": 7,
+          "page_end": 8,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "The ammeter reading is increased when a thicker wire of the same material and of the same length is used in the circuit. ... inversely proportional to the area of cross-section (A). That is, R ∝ 1/A and (11.9)"
+        }
+      ],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": 0.5736,
+      "est_seconds": 26.8,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b27",
+      "concept_id": "factors_affecting_resistance",
+      "intent": "analogy",
+      "script": "Let's use our road analogy again. Imagine a highway. If the highway is very wide, many cars can travel at the same time, and traffic flows smoothly. This is like a thick wire with a large cross-sectional area, offering low resistance. But if the road is narrow, only a few cars can pass, causing congestion and slowing down the flow. This is like a thin wire with a small cross-sectional area, offering high resistance. ",
+      "visual": {
+        "kind": "bullets",
+        "reason": "This visual uses the analogy of a road's width to explain how cross-sectional area affects resistance.",
+        "subject": "Road Width Analogy for Area",
+        "payload": {
+          "heading": "Road Width Analogy:",
+          "items": [
+            "Wide highway = Large Area = Low Resistance (Smooth flow)",
+            "Narrow road = Small Area = High Resistance (Congested flow)"
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "heading",
+            "word_index": 0,
+            "action": "show"
+          },
+          {
+            "element_id": "0",
+            "word_index": 17,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 30,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": "everyday",
+      "groundedness_score": 0.36,
+      "est_seconds": 29.6,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b28",
+      "concept_id": "factors_affecting_resistance",
+      "intent": "demo",
+      "script": "Finally, let's consider the material of the wire. We take our original nichrome wire of length 'l' and area 'A'. Now, we replace it with a *copper wire* of the *exact same length* 'l' and *same area of cross-section* 'A'. What do you think will happen to the current now? Will it be the same as with the nichrome wire, or different? This will tell us if the material itself plays a role. [citations: jesc111-640a680a2407:0011]",
+      "visual": {
+        "kind": "bullets",
+        "reason": "This visual highlights the change in the experiment: using a different material while keeping length and area constant.",
+        "subject": "Experiment: Changing Wire Material",
+        "payload": {
+          "heading": "Factor 3: Nature of Material",
+          "items": [
+            "Original: Nichrome wire",
+            "New: Copper wire (same length 'l', same area 'A')",
+            "Predict: What happens to current?"
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "heading",
+            "word_index": 0,
+            "action": "show"
+          },
+          {
+            "element_id": "0",
+            "word_index": 15,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 22,
+            "action": "show"
+          },
+          {
+            "element_id": "2",
+            "word_index": 36,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407",
+          "chunk_id": "jesc111-640a680a2407:0011",
+          "chapter": "Electricity",
+          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
+          "page_start": 7,
+          "page_end": 8,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "Instead of taking a nichrome wire, connect a copper wire [marked (4) in Fig. 11.5] in the circuit. Let the wire be of the same length and same area of cross-section as that of the first nichrome wire [marked (1)]. Note the value of the current."
+        }
+      ],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": 0.6463,
+      "est_seconds": 30.0,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b29",
+      "concept_id": "factors_affecting_resistance",
+      "intent": "explain",
+      "script": "You'd definitely notice a different current reading! Copper is a much better conductor than nichrome, so the current would be significantly higher. This observation confirms that the resistance of a conductor also depends on the *nature of its material*. Different materials have different internal structures, which affect how easily electrons can move through them. This is why we use copper for electrical wires but alloys like nichrome for heating elements. [citations: jesc111-640a680a2407:0011]",
+      "visual": {
+        "kind": "bullets",
+        "reason": "This visual summarizes the observation that different materials have different resistances.",
+        "subject": "Observation: Material Affects Resistance",
+        "payload": {
+          "heading": "What We Observe:",
+          "items": [
+            "Different materials give different current readings.",
+            "Resistance depends on the nature of the material.",
+            "Some materials are better conductors than others."
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "heading",
+            "word_index": 0,
+            "action": "show"
+          },
+          {
+            "element_id": "0",
+            "word_index": 10,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 19,
+            "action": "show"
+          },
+          {
+            "element_id": "2",
+            "word_index": 29,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407",
+          "chunk_id": "jesc111-640a680a2407:0011",
+          "chapter": "Electricity",
+          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
+          "page_start": 7,
+          "page_end": 8,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "A change in ammeter reading is observed when a wire of different material of the same length and the same area of cross-section is used. On applying Ohm’s law [Eqs. (11.5) – (11.7)], we observe that the resistance of the conductor depends ... (iii) on the nature of its material."
+        }
+      ],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": 0.617,
+      "est_seconds": 28.8,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b30",
+      "concept_id": "factors_affecting_resistance",
+      "intent": "explain",
+      "script": "So, combining all these observations, we can write a single formula for the resistance of a uniform metallic conductor. Resistance (R) is directly proportional to its length (l) and inversely proportional to its area of cross-section (A). To make this into an equation, we introduce a constant of proportionality, which is represented by the Greek letter ρ (rho). The formula becomes R = ρ (l/A). [citations: jesc111-640a680a2407:0012]",
+      "visual": {
+        "kind": "equation",
+        "reason": "This visual presents the combined formula for resistance, showing how length, area, and resistivity are mathematically related.",
+        "subject": "Resistance Formula",
+        "payload": {
+          "latex": "R = \\rho \\frac{l}{A}",
+          "terms": [
+            {
+              "id": "R",
+              "label": "Resistance",
+              "tex": "R"
+            },
+            {
+              "id": "rho",
+              "label": "Resistivity",
+              "tex": "\\rho"
+            },
+            {
+              "id": "l",
+              "label": "Length",
+              "tex": "l"
+            },
+            {
+              "id": "A",
+              "label": "Area of Cross-section",
+              "tex": "A"
+            }
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "R",
+            "word_index": 13,
+            "action": "show"
+          },
+          {
+            "element_id": "rho",
+            "word_index": 33,
+            "action": "show"
+          },
+          {
+            "element_id": "l",
+            "word_index": 20,
+            "action": "show"
+          },
+          {
+            "element_id": "A",
+            "word_index": 26,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407",
+          "chunk_id": "jesc111-640a680a2407:0012",
+          "chapter": "Electricity",
+          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
+          "page_start": 8,
+          "page_end": 9,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "Combining Eqs. (11.8) and (11.9) we get R ∝ l/A or, R = ρ l/A (11.10) where ρ (rho) is a constant of proportionality and is called the electrical resistivity of the material of the conductor."
+        }
+      ],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": 0.8173,
+      "est_seconds": 26.8,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b31",
+      "concept_id": "factors_affecting_resistance",
+      "intent": "explain",
+      "script": "This constant, ρ (rho), is called the electrical resistivity of the material. It's a characteristic property of the material itself, telling us how strongly a specific material resists electric current, regardless of its shape or size. The SI unit of resistivity is Ohm-metre (Ω m). Materials with very low resistivity, like silver and copper, are excellent conductors, while materials with very high resistivity, like rubber and glass, are insulators. [citations: jesc111-640a680a2407:0012]",
+      "visual": {
+        "kind": "bullets",
+        "reason": "This visual defines resistivity, its unit, and distinguishes between conductors and insulators based on resistivity values.",
+        "subject": "Electrical Resistivity",
+        "payload": {
+          "heading": "Electrical Resistivity (ρ):",
+          "items": [
+            "Characteristic property of a material.",
+            "Measures how strongly a material resists current.",
+            "SI Unit: Ohm-metre (Ω m).",
+            "Low ρ = Good conductor (e.g., Copper)",
+            "High ρ = Insulator (e.g., Glass)"
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "heading",
+            "word_index": 0,
+            "action": "show"
+          },
+          {
+            "element_id": "0",
+            "word_index": 10,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 17,
+            "action": "show"
+          },
+          {
+            "element_id": "2",
+            "word_index": 27,
+            "action": "show"
+          },
+          {
+            "element_id": "3",
+            "word_index": 35,
+            "action": "show"
+          },
+          {
+            "element_id": "4",
+            "word_index": 44,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407",
+          "chunk_id": "jesc111-640a680a2407:0012",
+          "chapter": "Electricity",
+          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
+          "page_start": 8,
+          "page_end": 9,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "where ρ (rho) is a constant of proportionality and is called the electrical resistivity of the material of the conductor. The SI unit of resistivity is Ω m. It is a characteristic property of the material. The metals and alloys have very low resistivity in the range of 10–8 Ω m to 10–6 Ω m. They are good conductors of electricity. Insulators like rubber and glass have resistivity of the order of 1012 to 1017 Ω m."
+        }
+      ],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": 0.7803,
+      "est_seconds": 28.4,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b32",
+      "concept_id": "factors_affecting_resistance",
+      "intent": "example",
+      "script": "Let's apply this formula with an example. Imagine a wire made of a certain material, with length 'l' and area of cross-section 'A', has a resistance of 4 Ohms. Now, what would be the resistance of another wire made of the *same material*, but with half the length (l/2) and double the area of cross-section (2A)? Using R = ρ(l/A), we find the new resistance would be 1 Ohm. This demonstrates how changing dimensions significantly impacts resistance. [citations: jesc111-640a680a2407:0013]",
+      "visual": {
+        "kind": "bullets",
+        "reason": "This visual presents a numerical example to apply the resistance formula and demonstrate its practical use.",
+        "subject": "Resistance Calculation Example",
+        "payload": {
+          "heading": "Example: Changing Wire Dimensions",
+          "items": [
+            "Wire 1: Length 'l', Area 'A', R = 4 Ω",
+            "Wire 2: Same material, Length 'l/2', Area '2A'",
+            "Using R = ρ(l/A), R2 = ρ((l/2)/(2A)) = ρ(l/4A) = (1/4)R1",
+            "New Resistance (R2) = 1 Ω"
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "heading",
+            "word_index": 0,
+            "action": "show"
+          },
+          {
+            "element_id": "0",
+            "word_index": 15,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 25,
+            "action": "show"
+          },
+          {
+            "element_id": "2",
+            "word_index": 35,
+            "action": "show"
+          },
+          {
+            "element_id": "3",
+            "word_index": 45,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407",
+          "chunk_id": "jesc111-640a680a2407:0013",
+          "chapter": "Electricity",
+          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
+          "page_start": 9,
+          "page_end": 11,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "Example 11.6 A wire of given material having length l and area of cross-section A has a resistance of 4 Ω. What would be the resistance of another wire of the same material having length l/2 and area of cross-section 2A? Solution For first wire R1 = ρ l/A = 4Ω Now for second wire R2 = ρ (l/2)/(2A) = 1/4 (ρ l/A) = 1/4 R1 R2= 1Ω The resistance of the new wire is 1Ω."
+        }
+      ],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": 0.543,
+      "est_seconds": 31.6,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b33",
+      "concept_id": "factors_affecting_resistance",
+      "intent": "check",
+      "script": "Time for our third and final checkpoint for today! You have two copper wires. Wire X is 1 meter long and 1 millimeter thick. Wire Y is 2 meters long and 0.5 millimeters thick. Both are made of copper, so their resistivity is the same. Based on what we've learned about the factors affecting resistance, which wire do you expect to have higher resistance, and why? Consider both length and thickness.",
+      "visual": {
+        "kind": "bullets",
+        "reason": "This visual presents a comparative checkpoint question to assess understanding of factors affecting resistance.",
+        "subject": "Factors Affecting Resistance Checkpoint",
+        "payload": {
+          "heading": "Checkpoint 3: Factors Affecting Resistance",
+          "items": [
+            "Wire X: Length = 1m, Thickness = 1mm",
+            "Wire Y: Length = 2m, Thickness = 0.5mm",
+            "Both are copper wires (same ρ).",
+            "Which wire has higher resistance? Why?"
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "heading",
+            "word_index": 0,
+            "action": "show"
+          },
+          {
+            "element_id": "0",
+            "word_index": 15,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 24,
+            "action": "show"
+          },
+          {
+            "element_id": "2",
+            "word_index": 33,
+            "action": "show"
+          },
+          {
+            "element_id": "3",
+            "word_index": 39,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [],
+      "checkpoint": {
+        "id": "c3",
+        "concept_id": "factors_affecting_resistance",
+        "type": "explain_own_words",
+        "prompt": "You have two copper wires: Wire X (1m long, 1mm thick) and Wire Y (2m long, 0.5mm thick). Which wire has higher resistance and why?",
+        "options": null,
+        "answer_key": "Wire Y will have higher resistance. Resistance is directly proportional to length, so Wire Y's greater length increases resistance. Resistance is inversely proportional to the area of cross-section (thickness), and Wire Y is thinner, which also increases its resistance.",
+        "rubric": [
+          "Student correctly identifies Wire Y.",
+          "Student explains that Wire Y is longer, leading to higher resistance.",
+          "Student explains that Wire Y is thinner (smaller cross-section), leading to higher resistance.",
+          "Student mentions both factors contribute."
+        ],
+        "targets_misconception": null
+      },
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": null,
+      "est_seconds": 28.4,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b34",
+      "concept_id": "ohms_law",
+      "intent": "recap",
+      "script": "Excellent work today! We've covered a lot of ground and explored some fundamental concepts in electricity. Let's quickly review the main ideas we discussed. First, we started by understanding Ohm's Law, which is a cornerstone of electrical circuit analysis. It describes the crucial relationship between potential difference, current, and resistance in a circuit.",
+      "visual": {
+        "kind": "bullets",
+        "reason": "This visual provides a summary of Ohm's Law, reinforcing its definition and importance.",
+        "subject": "Recap: Ohm's Law",
+        "payload": {
+          "heading": "Recap: Ohm's Law",
+          "items": [
+            "Relates Potential Difference (V), Current (I), and Resistance (R).",
+            "V ∝ I (at constant temperature).",
+            "Formula: V = IR."
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "heading",
+            "word_index": 0,
+            "action": "show"
+          },
+          {
+            "element_id": "0",
+            "word_index": 18,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 26,
+            "action": "show"
+          },
+          {
+            "element_id": "2",
+            "word_index": 34,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": null,
+      "est_seconds": 21.2,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b35",
+      "concept_id": "ohms_law",
+      "intent": "recap",
+      "script": "We learned that Ohm's Law states that for a metallic conductor at a constant temperature, the potential difference (V) across its ends is directly proportional to the current (I) flowing through it. This direct relationship is expressed by the fundamental equation V = IR, where R is the constant of proportionality, representing the resistance. This law helps us predict how current will change if voltage changes, or vice-versa. [citations: jesc111-640a680a2407:0009]",
+      "visual": {
+        "kind": "equation",
+        "reason": "This visual reiterates the core Ohm's Law formula, reinforcing its mathematical representation.",
+        "subject": "Ohm's Law Formula Recap",
+        "payload": {
+          "latex": "V = I \\times R",
+          "terms": [
+            {
+              "id": "V",
+              "label": "Potential Difference",
+              "tex": "V"
+            },
+            {
+              "id": "I",
+              "label": "Current",
+              "tex": "I"
+            },
+            {
+              "id": "R",
+              "label": "Resistance",
+              "tex": "R"
+            }
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "V",
+            "word_index": 25,
+            "action": "show"
+          },
+          {
+            "element_id": "I",
+            "word_index": 27,
+            "action": "show"
+          },
+          {
+            "element_id": "R",
+            "word_index": 30,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407",
+          "chunk_id": "jesc111-640a680a2407:0009",
+          "chapter": "Electricity",
+          "section": "11.4 OHM’S LAW",
+          "page_start": 6,
+          "page_end": 6,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "V = IR (11.5)"
+        }
+      ],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": null,
+      "est_seconds": 28.0,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b36",
+      "concept_id": "electrical_resistance",
+      "intent": "recap",
+      "script": "We then defined resistance (R) as the property of a conductor that opposes the flow of electric current. It's like the internal friction that electrons experience as they move through the material. Its SI unit is the Ohm (Ω), where 1 Ohm equals 1 Volt per 1 Ampere. Remember, higher resistance means less current will flow for the same applied voltage, making it a crucial factor in circuit design. [citations: jesc111-640a680a2407:0009]",
+      "visual": {
+        "kind": "bullets",
+        "reason": "This visual summarizes the definition and unit of electrical resistance.",
+        "subject": "Recap: Electrical Resistance",
+        "payload": {
+          "heading": "Recap: Resistance (R)",
+          "items": [
+            "Property that opposes current flow.",
+            "SI Unit: Ohm (Ω).",
+            "1 Ω = 1 V / 1 A.",
+            "Higher R = Lower I (for same V)."
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "heading",
+            "word_index": 0,
+            "action": "show"
+          },
+          {
+            "element_id": "0",
+            "word_index": 10,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 17,
+            "action": "show"
+          },
+          {
+            "element_id": "2",
+            "word_index": 25,
+            "action": "show"
+          },
+          {
+            "element_id": "3",
+            "word_index": 33,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407",
+          "chunk_id": "jesc111-640a680a2407:0009",
+          "chapter": "Electricity",
+          "section": "11.4 OHM’S LAW",
+          "page_start": 6,
+          "page_end": 6,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "It is the property of a conductor to resist the flow of charges through it. Its SI unit is ohm, represented by the Greek letter Ω. According to Ohm’s law, R = V/I (11.6) If the potential difference across the two ends of a conductor is 1 V and the current through it is 1 A, then the resistance R, of the conductor is 1 Ω. That is, 1 ohm = 1 volt / 1 ampere"
+        }
+      ],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": null,
+      "est_seconds": 28.4,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b37",
+      "concept_id": "factors_affecting_resistance",
+      "intent": "recap",
+      "script": "Next, we explored the physical factors that influence a conductor's resistance. We found that resistance is directly proportional to its length (l). This means a longer wire will offer more resistance to current flow, making it harder for electrons to pass through. This is an important consideration when planning the layout of electrical wiring. [citations: jesc111-640a680a2407:0011]",
+      "visual": {
+        "kind": "bullets",
+        "reason": "This visual summarizes the direct relationship between resistance and length.",
+        "subject": "Recap: Resistance and Length",
+        "payload": {
+          "heading": "Recap: Factors Affecting Resistance",
+          "items": [
+            "1. Length (l): R ∝ l",
+            "Longer wire = Higher resistance."
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "heading",
+            "word_index": 0,
+            "action": "show"
+          },
+          {
+            "element_id": "0",
+            "word_index": 12,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 20,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407",
+          "chunk_id": "jesc111-640a680a2407:0011",
+          "chapter": "Electricity",
+          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
+          "page_start": 7,
+          "page_end": 8,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "Precise measurements have shown that resistance of a uniform metallic conductor is directly proportional to its length (l) ... R ∝ l (11.8)"
+        }
+      ],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": null,
+      "est_seconds": 22.4,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b38",
+      "concept_id": "factors_affecting_resistance",
+      "intent": "recap",
+      "script": "We also saw that resistance is inversely proportional to its area of cross-section (A). This means a thicker wire, with a larger cross-sectional area, offers less resistance, allowing current to flow more easily. This is why power cables are often thick, to minimize resistance and energy loss. So, a wide path means less opposition for the flowing electrons. [citations: jesc111-640a680a2407:0011]",
+      "visual": {
+        "kind": "bullets",
+        "reason": "This visual summarizes the inverse relationship between resistance and cross-sectional area.",
+        "subject": "Recap: Resistance and Area",
+        "payload": {
+          "heading": "Recap: Factors Affecting Resistance",
+          "items": [
+            "2. Area of Cross-section (A): R ∝ 1/A",
+            "Thicker wire (larger A) = Lower resistance."
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "heading",
+            "word_index": 0,
+            "action": "show"
+          },
+          {
+            "element_id": "0",
+            "word_index": 12,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 23,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407",
+          "chunk_id": "jesc111-640a680a2407:0011",
+          "chapter": "Electricity",
+          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
+          "page_start": 7,
+          "page_end": 8,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "inversely proportional to the area of cross-section (A). That is, R ∝ 1/A and (11.9)"
+        }
+      ],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": null,
+      "est_seconds": 24.0,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b39",
+      "concept_id": "factors_affecting_resistance",
+      "intent": "recap",
+      "script": "Finally, we learned that resistance depends on the nature of the material itself. This intrinsic property is quantified by electrical resistivity (ρ), with units of Ohm-metre (Ω m). Different materials have different resistivities; good conductors have low resistivity, while insulators have very high resistivity. This explains why we choose specific materials for different electrical applications. [citations: jesc111-640a680a2407:0012]",
+      "visual": {
+        "kind": "bullets",
+        "reason": "This visual summarizes the concept of resistivity and its role in determining a material's conductivity.",
+        "subject": "Recap: Resistivity",
+        "payload": {
+          "heading": "Recap: Factors Affecting Resistance",
+          "items": [
+            "3. Nature of Material: Electrical Resistivity (ρ)",
+            "SI Unit: Ohm-metre (Ω m).",
+            "Low ρ = Good conductor; High ρ = Insulator."
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "heading",
+            "word_index": 0,
+            "action": "show"
+          },
+          {
+            "element_id": "0",
+            "word_index": 12,
+            "action": "show"
+          },
+          {
+            "element_id": "1",
+            "word_index": 22,
+            "action": "show"
+          },
+          {
+            "element_id": "2",
+            "word_index": 30,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407",
+          "chunk_id": "jesc111-640a680a2407:0012",
+          "chapter": "Electricity",
+          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
+          "page_start": 8,
+          "page_end": 9,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "where ρ (rho) is a constant of proportionality and is called the electrical resistivity of the material of the conductor. The SI unit of resistivity is Ω m. It is a characteristic property of the material. The metals and alloys have very low resistivity in the range of 10–8 Ω m to 10–6 Ω m. They are good conductors of electricity. Insulators like rubber and glass have resistivity of the order of 1012 to 1017 Ω m."
+        }
+      ],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": null,
+      "est_seconds": 22.8,
+      "generated_after_answer": false
+    },
+    {
+      "id": "b40",
+      "concept_id": "factors_affecting_resistance",
+      "intent": "recap",
+      "script": "So, putting it all together, the resistance of a wire can be calculated using the formula R = ρ(l/A). Understanding these concepts – Ohm's Law, the definition of resistance, and the factors that influence it – is absolutely crucial for designing, troubleshooting, and safely using electrical circuits and devices. You've done a fantastic job grasping these complex ideas today. Keep practicing, and you'll master them in no time! Great job today!",
+      "visual": {
+        "kind": "equation",
+        "reason": "This visual presents the complete resistance formula as a final summary of the factors affecting resistance.",
+        "subject": "Complete Resistance Formula Recap",
+        "payload": {
+          "latex": "R = \\rho \\frac{l}{A}",
+          "terms": [
+            {
+              "id": "R",
+              "label": "Resistance",
+              "tex": "R"
+            },
+            {
+              "id": "rho",
+              "label": "Resistivity",
+              "tex": "\\rho"
+            },
+            {
+              "id": "l",
+              "label": "Length",
+              "tex": "l"
+            },
+            {
+              "id": "A",
+              "label": "Area of Cross-section",
+              "tex": "A"
+            }
+          ]
+        },
+        "timeline": [
+          {
+            "element_id": "R",
+            "word_index": 12,
+            "action": "show"
+          },
+          {
+            "element_id": "rho",
+            "word_index": 14,
+            "action": "show"
+          },
+          {
+            "element_id": "l",
+            "word_index": 16,
+            "action": "show"
+          },
+          {
+            "element_id": "A",
+            "word_index": 18,
+            "action": "show"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "doc_id": "jesc111-640a680a2407",
+          "chunk_id": "jesc111-640a680a2407:0012",
+          "chapter": "Electricity",
+          "section": "11.5 FACTORS ON WHICH THE RESISTANCE OF A CONDUCTOR DEPENDS",
+          "page_start": 8,
+          "page_end": 9,
+          "char_start": 0,
+          "char_end": 0,
+          "quote": "R = ρ l/A or, (11.10)"
+        }
+      ],
+      "checkpoint": null,
+      "language": "en-IN",
+      "analogy_family": null,
+      "groundedness_score": null,
+      "est_seconds": 28.4,
+      "generated_after_answer": false
+    }
+  ],
+  "final_quiz": [
+    {
+      "id": "q1",
+      "concept_id": "ohms_law",
+      "type": "apply",
+      "prompt": "An electric bulb has a resistance of 1200 Ω. If it is connected to a 220 V source, how much current will it draw? Use Ohm's Law.",
+      "options": [],
+      "answer_key": "0.18 A",
+      "rubric": [
+        "Student correctly identifies V=220V and R=1200Ω.",
+        "Student uses the formula I = V/R.",
+        "Student calculates I = 220/1200 = 0.18 A (approximately)."
+      ],
+      "targets_misconception": null
+    },
+    {
+      "id": "q2",
+      "concept_id": "electrical_resistance",
+      "type": "mcq",
+      "prompt": "Which of the following statements about resistance is TRUE?",
+      "options": [
+        "Resistance is the flow of electric charge.",
+        "Resistance is measured in Volts.",
+        "Resistance is the property of a conductor to oppose current flow.",
+        "Resistance is directly proportional to current."
+      ],
+      "answer_key": "Resistance is the property of a conductor to oppose current flow.",
+      "rubric": [
+        "Student selects the correct definition of resistance."
+      ],
+      "targets_misconception": null
+    },
+    {
+      "id": "q3",
+      "concept_id": "factors_affecting_resistance",
+      "type": "short",
+      "prompt": "You want to reduce the resistance of a wire without changing its material. What two physical changes could you make to the wire?",
+      "options": [],
+      "answer_key": "To reduce resistance, you could either increase its area of cross-section (make it thicker) or decrease its length (make it shorter).",
+      "rubric": [
+        "Student mentions increasing the area of cross-section (or making it thicker).",
+        "Student mentions decreasing its length (or making it shorter).",
+        "Student does not mention changing the material or temperature."
+      ],
+      "targets_misconception": null
+    },
+    {
+      "id": "q4",
+      "concept_id": "factors_affecting_resistance",
+      "type": "explain_own_words",
+      "prompt": "Why are coils of electric toasters and electric irons made of an alloy like nichrome rather than a pure metal like copper?",
+      "options": [],
+      "answer_key": "Alloys like nichrome have a much higher resistivity than pure metals like copper, meaning they offer more resistance to current flow. This high resistance causes them to heat up significantly when current passes through, which is the desired effect for toasters and irons. Additionally, alloys do not oxidise (burn) readily at high temperatures, making them durable for heating applications.",
+      "rubric": [
+        "Student states that alloys have higher resistance/resistivity than pure metals.",
+        "Student explains that high resistance leads to significant heating (desired effect).",
+        "Student mentions that alloys do not oxidise easily at high temperatures."
+      ],
+      "targets_misconception": null
+    }
+  ],
+  "language_switches": [],
+  "doc_id": "jesc111-640a680a2407"
+}
