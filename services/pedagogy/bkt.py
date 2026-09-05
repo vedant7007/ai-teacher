@@ -149,7 +149,9 @@ def decide_action(state: ConceptState, correct: bool, *, has_prereq: bool = Fals
         if state.p_known >= MASTERED:
             return "level_up"
         return "continue"
-    if state.consecutive_wrong >= 2 and has_prereq:
+    # `state` has not yet been updated with THIS answer, so count it here.
+    # Without the +1 the second consecutive wrong answer still looks like the first.
+    if state.consecutive_wrong + 1 >= 2 and has_prereq:
         return "step_back_prereq"
     if state.p_known < STRUGGLING:
         return "reexplain_analogy"
