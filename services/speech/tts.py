@@ -184,7 +184,14 @@ def _run(coro):
 
 
 def speak(text: str, language: str = "en-IN", *, cache: bool = True) -> tuple[Path, list[WordTiming]]:
-    """Synthesize `text`, returning the mp3 path and per-word timings."""
+    """Synthesize `text`, returning the mp3 path and per-word timings.
+
+    Markdown is stripped first: a model writing *twice the length* would
+    otherwise have the asterisks both voiced and printed in the captions.
+    """
+    from services.visual.slide import strip_markdown
+
+    text = strip_markdown(text)
     voice = voice_for(language)
     key = hashlib.sha256(f"{voice}|{text}".encode("utf-8")).hexdigest()[:16]
     AUDIO_DIR.mkdir(parents=True, exist_ok=True)

@@ -13,12 +13,53 @@ from __future__ import annotations
 
 import html
 import json
+import re
 
 from services.llm.schemas import Beat
 from services.speech.tts import WordTiming
 
 CDN_KATEX = "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9"
 CDN_MERMAID = "https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"
+
+
+_RE_NUM = re.compile(
+    r"(\d+(?:\.\d+)?)\s*"
+    r"(V\b|A\b|W\b|\u03a9|ohms?\b|volts?\b|amperes?\b|amps?\b|watts?\b)",
+    re.IGNORECASE,
+)
+
+
+def strip_markdown(text: str) -> str:
+    """Remove markdown the model emits into spoken text.
+
+    `*twice the length*` is both read aloud and printed literally in captions.
+    Applied before TTS and before display so the two stay in sync.
+    """
+    s = text or ""
+    s = re.sub(r"\*\*(.+?)\*\*", lambda m: m.group(1), s)
+    s = re.sub(r"\*(.+?)\*", lambda m: m.group(1), s)
+    s = re.sub(r"__(.+?)__", lambda m: m.group(1), s)
+    s = re.sub(r"`(.+?)`", lambda m: m.group(1), s)
+    s = re.sub(r"^\s{0,3}#{1,6}\s+", "", s, flags=re.MULTILINE)
+    return s.strip()
+
+
+def key_numbers(script: str, limit: int = 4) -> list[str]:
+    """Quantities from a beat's script, for when its visual has no payload.
+
+    A worked example that renders only a title wastes the whole frame. Its
+    numbers are the content, so show those large rather than nothing.
+    """
+    unit = r"(?:V|A|W|\u03a9|ohms?|volts?|amperes?|amps?|watts?)"
+    out, seen = [], set()
+    for m in _RE_NUM.finditer(script or ""):
+        val = f"{m.group(1)} {m.group(2)}"
+        if val.lower() not in seen:
+            seen.add(val.lower())
+            out.append(val)
+        if len(out) >= limit:
+            break
+    return out
 
 
 def element_ids(kind: str, payload: dict) -> list[str]:
@@ -172,7 +213,9 @@ def _code(p: dict) -> str:
     return f'<div class="code"><div class="lang">{html.escape(str(p.get("language","")))}</div>{lines}</div>{tail}'
 
 
-def _bullets(p: dict) -> str:
+def _bullets(p: dict, fallback: list[str] | None = None) -> str:
+    if not (p.get("items") or []):
+        p = {**p, "items": fallback or []}
     items = "".join(
         f'<li class="bullet" id="b-{i}">{html.escape(str(it))}</li>'
         for i, it in enumerate(p.get("items") or [])
@@ -182,43 +225,82 @@ def _bullets(p: dict) -> str:
     return f'{h}<ul class="bullets">{items}</ul>'
 
 
+def _fallback_content(script: str, limit: int = 4) -> list[str]:
+    """Sentences from the beat itself, so the stage always says something."""
+    parts = re.split(r"(?<=[.\u0964?!])\s+", (script or "").strip())
+    return [s.strip() for s in parts if len(s.strip()) > 14][:limit]
+
+
+def _has_content(visual, body: str) -> bool:
+    """Does the rendered body actually carry something to look at?
+
+    A bullets payload with a heading and no items renders a title into an
+    otherwise empty 1280x720 frame, which is the worst thing the camera can see.
+    """
+    p = visual.payload or {}
+    if visual.kind == "bullets":
+        return bool(p.get("items"))
+    if visual.kind == "equation":
+        return bool(p.get("latex"))
+    if visual.kind == "graph":
+        s = p.get("series") or [{}]
+        return bool(s and s[0].get("points"))
+    if visual.kind == "diagram":
+        return bool(str(p.get("mermaid", "")).strip())
+    if visual.kind == "code":
+        return bool(p.get("source"))
+    return bool(body.strip())
+
+
+def _numbers(values: list[str]) -> str:
+    """Large figures, used when a beat's visual carries nothing to draw."""
+    return ('<div class="figures">'
+            + "".join('<span class="fig reveal" id="b-%d">%s</span>'
+                      % (i, html.escape(v)) for i, v in enumerate(values))
+            + "</div>")
+
+
 _RENDERERS = {
     "equation": _equation, "graph": _graph, "diagram": _diagram,
     "code": _code, "bullets": _bullets,
 }
 
 _CSS = """
-:root{--bg:#0d1117;--fg:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--line:#30363d}
+:root{--bg:#0A0A0B;--fg:#EDEAE4;--muted:#8A857C;--accent:#F2A65A;--line:#232326}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);
   font:16px/1.6 "Segoe UI",system-ui,"Nirmala UI","Noto Sans Devanagari",sans-serif}
-.slide{width:1280px;height:720px;padding:44px 64px 24px;display:flex;flex-direction:column;
+.slide{width:1280px;height:720px;padding:34px 72px 18px;display:flex;flex-direction:column;
   gap:14px;position:relative;overflow:hidden}
 .kicker{color:var(--accent);font-size:14px;letter-spacing:.14em;text-transform:uppercase}
-h2{margin:0;font-size:38px;font-weight:650;line-height:1.25}
-.stage{flex:1;display:flex;align-items:center;justify-content:center;min-height:0}
+h2{margin:0 0 18px;font-size:46px;font-weight:600;line-height:1.15;letter-spacing:-.02em}
+.stage{flex:1;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;min-height:0;width:100%}
+.figures{display:flex;gap:44px;flex-wrap:wrap;justify-content:center;align-items:baseline}
+.fig{font-size:76px;font-weight:600;letter-spacing:-.03em;color:var(--accent)}
+.mermaid svg{max-height:480px}
 .reveal{opacity:0;transform:translateY(10px);transition:opacity .45s ease,transform .45s ease}
 .reveal.on{opacity:1;transform:none}
 .reveal.hl{color:var(--accent)}
-.eq{font-size:46px;text-align:center}
+.eq{font-size:62px;text-align:center}
 .terms{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px}
 .term{border:1px solid var(--line);border-radius:10px;padding:8px 14px;text-align:center}
 .term .tex{display:block;font-size:22px;color:var(--accent)}
 .term .lbl{display:block;font-size:13px;color:var(--muted)}
-svg{width:100%;height:100%;max-height:460px}
+svg{width:100%;height:100%;max-height:520px}
 .axis{stroke:var(--line);stroke-width:2}
 .axlbl{fill:var(--muted);font-size:15px;text-anchor:middle}
 .tick{fill:var(--muted);font-size:12px;text-anchor:middle}
 .schematic{fill:var(--muted);font-size:13px;text-anchor:end;font-style:italic}
 #line{stroke:var(--accent);stroke-width:3.5;stroke-linecap:round}
 .pt{fill:var(--accent)}
-.bullets{list-style:none;padding:0;margin:0;font-size:26px;display:flex;
-  flex-direction:column;gap:16px;max-width:900px}
-.bullet{padding-left:26px;position:relative}
-.bullet:before{content:"";position:absolute;left:0;top:.62em;width:9px;height:9px;
+.bullets{list-style:none;padding:0;margin:0;font-size:32px;display:flex;
+  flex-direction:column;gap:22px;max-width:1000px;line-height:1.35}
+.bullet{padding-left:32px;position:relative}
+.bullet:before{content:"";position:absolute;left:0;top:.58em;width:10px;height:10px;
   border-radius:2px;background:var(--accent)}
-.code{background:#010409;border:1px solid var(--line);border-radius:12px;padding:20px 24px;
-  font-family:"Cascadia Code",Consolas,monospace;font-size:19px;position:relative}
+.code{background:#08080A;border:1px solid var(--line);border-radius:12px;padding:26px 30px;
+  font-family:"Cascadia Code",Consolas,monospace;font-size:24px;position:relative}
 .lang{position:absolute;top:8px;right:14px;font-size:12px;color:var(--muted)}
 .cl{white-space:pre}
 .out{margin-top:14px;border-left:3px solid var(--accent);padding-left:14px;color:var(--muted)}
@@ -226,8 +308,8 @@ svg{width:100%;height:100%;max-height:460px}
 .mermaid{background:transparent;display:flex;justify-content:center;
   width:100%;font-size:19px}
 .mermaid svg{max-width:100%;height:auto;max-height:420px}
-.mermaid .nodeLabel,.mermaid .edgeLabel{fill:#e6edf3!important;color:#e6edf3!important}
-.mermaid .edgeLabel{background:#0d1117!important}
+.mermaid .nodeLabel,.mermaid .edgeLabel{fill:#EDEAE4!important;color:#EDEAE4!important}
+.mermaid .edgeLabel{background:#0A0A0B!important}
 .why{flex:0 0 auto;font-size:13px;color:var(--muted);
   border-top:1px solid var(--line);padding-top:8px}
 /* Two lines, scrolled to follow the spoken word. A full transcript would cover
@@ -317,10 +399,10 @@ function mermaidFallback(){
 if(KIND==='diagram' && window.mermaid){
   mermaid.initialize({startOnLoad:true, theme:'base', securityLevel:'loose',
     themeVariables:{
-      background:'#0d1117', primaryColor:'#161b22', primaryBorderColor:'#58a6ff',
-      primaryTextColor:'#e6edf3', secondaryColor:'#21262d', tertiaryColor:'#161b22',
-      lineColor:'#58a6ff', textColor:'#e6edf3', mainBkg:'#161b22',
-      nodeBorder:'#58a6ff', clusterBkg:'#0d1117', fontSize:'19px'}});
+      background:'#0A0A0B', primaryColor:'#141416', primaryBorderColor:'#F2A65A',
+      primaryTextColor:'#EDEAE4', secondaryColor:'#1A1A1D', tertiaryColor:'#141416',
+      lineColor:'#F2A65A', textColor:'#EDEAE4', mainBkg:'#141416',
+      nodeBorder:'#F2A65A', clusterBkg:'#0A0A0B', fontSize:'19px'}});
 }
 if(KIND==='diagram'){
   // Mermaid renders asynchronously; check after it has had a chance to fail.
@@ -372,7 +454,7 @@ _AVATAR_CSS = """
 .avatar{position:absolute;right:40px;bottom:150px;width:19%;max-width:210px;
   filter:drop-shadow(0 12px 30px rgba(0,0,0,.6));transform-origin:50% 95%}
 .avatar svg{width:100%;height:auto;overflow:visible}
-.av-torso{fill:#1f6feb}
+.av-torso{fill:#F2A65A}
 .av-collar{fill:#e6edf3}
 .av-neck{fill:#e8c4a2}
 .av-head{fill:#f2d3b8}
@@ -455,16 +537,25 @@ def render_slide(
 ) -> str:
     timings = timings or []
     cues = cues_for(beat, timings)
+    clean = strip_markdown(beat.script)
     if beat.visual.kind == "diagram":
         from services.visual import mermaid as mm
-        body = _diagram(beat.visual.payload or {}, mm.fallback_items(beat.script))
+        body = _diagram(beat.visual.payload or {}, mm.fallback_items(clean))
+    elif beat.visual.kind == "bullets":
+        body = _bullets(beat.visual.payload or {}, _fallback_content(clean))
     else:
         body = _RENDERERS[beat.visual.kind](beat.visual.payload or {})
+
+    # Last resort: a stage with nothing in it is the worst outcome on camera.
+    if not _has_content(beat.visual, body):
+        nums = key_numbers(clean)
+        body = (_numbers(nums) if nums
+                else _bullets({}, _fallback_content(clean)))
 
     caption = ""
     if with_caption and timings:
         words = "".join(
-            f'<span class="w" data-at="{t.start_ms}">{html.escape(t.word)} </span>'
+            f'<span class="w" data-at="{t.start_ms}">{html.escape(strip_markdown(t.word))} </span>'
             for t in timings
         )
         caption = f'<div class="caption">{words}</div>'
@@ -472,7 +563,9 @@ def render_slide(
     duration = (timings[-1].end_ms if timings else 0)
     word_spans = [{"at": t.start_ms, "dur": max(60, t.duration_ms), "word": t.word}
                   for t in timings]
-    head = f'<div class="kicker">{html.escape(title or beat.intent)}</div>' if title or beat.intent else ""
+    # The intent label and the "why this visual" line are internal metadata.
+    # They belong in the trace panel, not on the learner's screen.
+    head = ""
     reveal_class = "reveal"
 
     # Every animatable element carries .reveal so a cue can act on it.
@@ -489,9 +582,7 @@ def render_slide(
 <link rel="stylesheet" href="{CDN_KATEX}/katex.min.css">
 <style>{_CSS}{_AVATAR_CSS if avatar else ""}</style></head>
 <body><div class="slide" id="slide">
-  {head}
   <div class="stage">{body}</div>
-  <div class="why">{html.escape(beat.visual.reason)}</div>
   {caption}
   {_AVATAR_HTML if avatar else ""}
 </div>

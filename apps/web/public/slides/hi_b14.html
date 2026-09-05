@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="hi-IN"><head><meta charset="utf-8">
+<title>b14</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<style>
+:root{--bg:#0A0A0B;--fg:#EDEAE4;--muted:#8A857C;--accent:#F2A65A;--line:#232326}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+  font:16px/1.6 "Segoe UI",system-ui,"Nirmala UI","Noto Sans Devanagari",sans-serif}
+.slide{width:1280px;height:720px;padding:34px 72px 18px;display:flex;flex-direction:column;
+  gap:14px;position:relative;overflow:hidden}
+.kicker{color:var(--accent);font-size:14px;letter-spacing:.14em;text-transform:uppercase}
+h2{margin:0 0 18px;font-size:46px;font-weight:600;line-height:1.15;letter-spacing:-.02em}
+.stage{flex:1;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;min-height:0;width:100%}
+.figures{display:flex;gap:44px;flex-wrap:wrap;justify-content:center;align-items:baseline}
+.fig{font-size:76px;font-weight:600;letter-spacing:-.03em;color:var(--accent)}
+.mermaid svg{max-height:480px}
+.reveal{opacity:0;transform:translateY(10px);transition:opacity .45s ease,transform .45s ease}
+.reveal.on{opacity:1;transform:none}
+.reveal.hl{color:var(--accent)}
+.eq{font-size:62px;text-align:center}
+.terms{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.term{border:1px solid var(--line);border-radius:10px;padding:8px 14px;text-align:center}
+.term .tex{display:block;font-size:22px;color:var(--accent)}
+.term .lbl{display:block;font-size:13px;color:var(--muted)}
+svg{width:100%;height:100%;max-height:520px}
+.axis{stroke:var(--line);stroke-width:2}
+.axlbl{fill:var(--muted);font-size:15px;text-anchor:middle}
+.tick{fill:var(--muted);font-size:12px;text-anchor:middle}
+.schematic{fill:var(--muted);font-size:13px;text-anchor:end;font-style:italic}
+#line{stroke:var(--accent);stroke-width:3.5;stroke-linecap:round}
+.pt{fill:var(--accent)}
+.bullets{list-style:none;padding:0;margin:0;font-size:32px;display:flex;
+  flex-direction:column;gap:22px;max-width:1000px;line-height:1.35}
+.bullet{padding-left:32px;position:relative}
+.bullet:before{content:"";position:absolute;left:0;top:.58em;width:10px;height:10px;
+  border-radius:2px;background:var(--accent)}
+.code{background:#08080A;border:1px solid var(--line);border-radius:12px;padding:26px 30px;
+  font-family:"Cascadia Code",Consolas,monospace;font-size:24px;position:relative}
+.lang{position:absolute;top:8px;right:14px;font-size:12px;color:var(--muted)}
+.cl{white-space:pre}
+.out{margin-top:14px;border-left:3px solid var(--accent);padding-left:14px;color:var(--muted)}
+.olbl{font-size:12px;text-transform:uppercase;letter-spacing:.1em}
+.mermaid{background:transparent;display:flex;justify-content:center;
+  width:100%;font-size:19px}
+.mermaid svg{max-width:100%;height:auto;max-height:420px}
+.mermaid .nodeLabel,.mermaid .edgeLabel{fill:#EDEAE4!important;color:#EDEAE4!important}
+.mermaid .edgeLabel{background:#0A0A0B!important}
+.why{flex:0 0 auto;font-size:13px;color:var(--muted);
+  border-top:1px solid var(--line);padding-top:8px}
+/* Two lines, scrolled to follow the spoken word. A full transcript would cover
+   the visual it is meant to support. */
+.caption{flex:0 0 auto;height:76px;overflow:hidden;font-size:23px;line-height:38px;
+  position:relative}
+.caption .w{opacity:.35;transition:opacity .2s}
+.caption .w.spoken{opacity:1}
+.caption .w.current{color:var(--accent);opacity:1}
+
+.avatar{position:absolute;right:40px;bottom:150px;width:19%;max-width:210px;
+  filter:drop-shadow(0 12px 30px rgba(0,0,0,.6));transform-origin:50% 95%}
+.avatar svg{width:100%;height:auto;overflow:visible}
+.av-torso{fill:#F2A65A}
+.av-collar{fill:#e6edf3}
+.av-neck{fill:#e8c4a2}
+.av-head{fill:#f2d3b8}
+.av-hair{fill:#2b2118}
+.av-ear{fill:#e8c4a2}
+.av-brow{fill:#2b2118}
+.av-eyew{fill:#ffffff}
+.av-iris{fill:#3d2b1f}
+.av-lid{fill:#f2d3b8}
+.av-nose{fill:none;stroke:#d9ab86;stroke-width:3;stroke-linecap:round}
+.av-mouth{fill:#8c4a4a}
+.av-teeth{fill:#ffffff}
+</style></head>
+<body><div class="slide" id="slide">
+  <div class="stage"><pre class="mermaid reveal" id="diagram" class="reveal" data-fallback="[&quot;सर्किट में धारा को नियंत्रित करने के लिए, हम एक &#x27;परिवर्ती प्रतिरोध&#x27; (variable resistance) का उपयोग करते हैं।&quot;, &quot;यह एक ऐसा घटक है जो वोल्टेज स्रोत को बदले बिना प्रतिरोध को बदल सकता है, जिससे हम धारा को अपनी ज़रूरत के अनुसार कम या ज़्यादा कर सकते हैं।&quot;, &quot;उदाहरण के लिए, एक &#x27;रियोस्टेट&#x27; (rheostat) एक ऐसा उपकरण है जिसका उपयोग अक्सर सर्किट में प्रतिरोध को बदलने के लिए किया जाता है।&quot;, &quot;इसमें एक स्लाइडिंग संपर्क होता है जिसे खिसकाकर तार की प्रभावी लंबाई को बदला जा सकता है, जिससे प्रतिरोध बदल जाता है और बदले में धारा भी बदल जाती है।&quot;]">graph LR
+    A[&quot;बैटरी&quot;]--&gt;B(&quot;रियोस्टेट&quot;)
+    B--&gt;C[&quot;बल्ब&quot;]
+    C--&gt;A</pre></div>
+  <div class="caption"><span class="w" data-at="100">सर्किट </span><span class="w" data-at="712">में </span><span class="w" data-at="837">धारा </span><span class="w" data-at="1287">को </span><span class="w" data-at="1462">नियंत्रित </span><span class="w" data-at="1962">करने </span><span class="w" data-at="2262">के </span><span class="w" data-at="2387">लिए, </span><span class="w" data-at="2950">हम </span><span class="w" data-at="3237">एक </span><span class="w" data-at="3700">&#x27;परिवर्ती </span><span class="w" data-at="4325">प्रतिरोध&#x27; </span><span class="w" data-at="5187">(variable </span><span class="w" data-at="5825">resistance) </span><span class="w" data-at="6825">का </span><span class="w" data-at="7075">उपयोग </span><span class="w" data-at="7525">करते </span><span class="w" data-at="7850">हैं। </span><span class="w" data-at="9037">यह </span><span class="w" data-at="9487">एक </span><span class="w" data-at="9787">ऐसा </span><span class="w" data-at="10162">घटक </span><span class="w" data-at="10550">है </span><span class="w" data-at="10837">जो </span><span class="w" data-at="11075">वोल्टेज </span><span class="w" data-at="11637">स्रोत </span><span class="w" data-at="12000">को </span><span class="w" data-at="12212">बदले </span><span class="w" data-at="12625">बिना </span><span class="w" data-at="12950">प्रतिरोध </span><span class="w" data-at="13525">को </span><span class="w" data-at="13712">बदल </span><span class="w" data-at="14050">सकता </span><span class="w" data-at="14425">है, </span><span class="w" data-at="15075">जिससे </span><span class="w" data-at="15550">हम </span><span class="w" data-at="15850">धारा </span><span class="w" data-at="16225">को </span><span class="w" data-at="16487">अपनी </span><span class="w" data-at="16887">ज़रूरत </span><span class="w" data-at="17337">के </span><span class="w" data-at="17500">अनुसार </span><span class="w" data-at="18075">कम </span><span class="w" data-at="18337">या </span><span class="w" data-at="18550">ज़्यादा </span><span class="w" data-at="18950">कर </span><span class="w" data-at="19125">सकते </span><span class="w" data-at="19487">हैं। </span><span class="w" data-at="20687">उदाहरण </span><span class="w" data-at="21337">के </span><span class="w" data-at="21475">लिए, </span><span class="w" data-at="22075">एक </span><span class="w" data-at="22562">&#x27;रियोस्टेट&#x27; </span><span class="w" data-at="23650">(rheostat) </span><span class="w" data-at="24762">एक </span><span class="w" data-at="25062">ऐसा </span><span class="w" data-at="25475">उपकरण </span><span class="w" data-at="25962">है </span><span class="w" data-at="26212">जिसका </span><span class="w" data-at="26637">उपयोग </span><span class="w" data-at="27087">अक्सर </span><span class="w" data-at="27487">सर्किट </span><span class="w" data-at="27962">में </span><span class="w" data-at="28100">प्रतिरोध </span><span class="w" data-at="28712">को </span><span class="w" data-at="28875">बदलने </span><span class="w" data-at="29337">के </span><span class="w" data-at="29462">लिए </span><span class="w" data-at="29712">किया </span><span class="w" data-at="30012">जाता </span><span class="w" data-at="30350">है। </span><span class="w" data-at="31512">इसमें </span><span class="w" data-at="31987">एक </span><span class="w" data-at="32225">स्लाइडिंग </span><span class="w" data-at="32775">संपर्क </span><span class="w" data-at="33250">होता </span><span class="w" data-at="33575">है </span><span class="w" data-at="33887">जिसे </span><span class="w" data-at="34250">खिसकाकर </span><span class="w" data-at="34900">तार </span><span class="w" data-at="35225">की </span><span class="w" data-at="35387">प्रभावी </span><span class="w" data-at="35950">लंबाई </span><span class="w" data-at="36437">को </span><span class="w" data-at="36625">बदला </span><span class="w" data-at="37037">जा </span><span class="w" data-at="37212">सकता </span><span class="w" data-at="37587">है, </span><span class="w" data-at="38212">जिससे </span><span class="w" data-at="38725">प्रतिरोध </span><span class="w" data-at="39300">बदल </span><span class="w" data-at="39637">जाता </span><span class="w" data-at="40000">है </span><span class="w" data-at="40275">और </span><span class="w" data-at="40587">बदले </span><span class="w" data-at="40987">में </span><span class="w" data-at="41175">धारा </span><span class="w" data-at="41675">भी </span><span class="w" data-at="41887">बदल </span><span class="w" data-at="42225">जाती </span><span class="w" data-at="42587">है। </span></div>
+  
+<div class="avatar" id="avatar">
+  <svg viewBox="0 0 220 280" aria-hidden="true">
+    <defs>
+      <clipPath id="hairclip"><ellipse cx="110" cy="118" rx="66" ry="76"/></clipPath>
+    </defs>
+    <path class="av-torso" d="M34 280 q6-52 76-62 q70 10 76 62 z"/>
+    <path class="av-collar" d="M92 218 l18 20 l18-20 l-8-6 h-20 z"/>
+    <rect class="av-neck" x="96" y="186" width="28" height="34" rx="12"/>
+    <ellipse class="av-head" cx="110" cy="118" rx="66" ry="76"/>
+    <g clip-path="url(#hairclip)">
+      <path class="av-hair" d="M44 116 q4-72 66-72 q62 0 66 72 q-10-34-66-34 q-56 0-66 34z"/>
+    </g>
+    <ellipse class="av-ear" cx="45"  cy="126" rx="8" ry="13"/>
+    <ellipse class="av-ear" cx="175" cy="126" rx="8" ry="13"/>
+    <rect class="av-brow" id="av-brow-l" x="72"  y="94"  width="30" height="6" rx="3"/>
+    <rect class="av-brow" id="av-brow-r" x="118" y="94"  width="30" height="6" rx="3"/>
+    <ellipse class="av-eyew" cx="87"  cy="118" rx="14" ry="9"/>
+    <ellipse class="av-eyew" cx="133" cy="118" rx="14" ry="9"/>
+    <circle  class="av-iris" id="av-iris-l" cx="87"  cy="118" r="6"/>
+    <circle  class="av-iris" id="av-iris-r" cx="133" cy="118" r="6"/>
+    <ellipse class="av-lid"  id="av-lid-l" cx="87"  cy="118" rx="15" ry="0"/>
+    <ellipse class="av-lid"  id="av-lid-r" cx="133" cy="118" rx="15" ry="0"/>
+    <path class="av-nose" d="M110 126 q-5 16 3 20"/>
+    <ellipse class="av-mouth" id="av-mouth" cx="110" cy="164" rx="18" ry="4"/>
+    <ellipse class="av-teeth" id="av-teeth" cx="110" cy="160" rx="12" ry="0"/>
+  </svg>
+</div>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
+<script>
+window.__cues=[{"element": "diagram", "requested": "__floor__", "action": "show", "at_ms": 3428, "word_index": 0}, {"element": "diagram", "requested": "B", "action": "show", "at_ms": 5187, "word_index": 12}];
+window.__kind="diagram";
+window.__duration=42850;
+window.__wordSpans=[{"at": 100, "dur": 600, "word": "सर्किट"}, {"at": 712, "dur": 113, "word": "में"}, {"at": 837, "dur": 438, "word": "धारा"}, {"at": 1287, "dur": 163, "word": "को"}, {"at": 1462, "dur": 488, "word": "नियंत्रित"}, {"at": 1962, "dur": 288, "word": "करने"}, {"at": 2262, "dur": 113, "word": "के"}, {"at": 2387, "dur": 363, "word": "लिए,"}, {"at": 2950, "dur": 275, "word": "हम"}, {"at": 3237, "dur": 375, "word": "एक"}, {"at": 3700, "dur": 612, "word": "'परिवर्ती"}, {"at": 4325, "dur": 712, "word": "प्रतिरोध'"}, {"at": 5187, "dur": 625, "word": "(variable"}, {"at": 5825, "dur": 825, "word": "resistance)"}, {"at": 6825, "dur": 237, "word": "का"}, {"at": 7075, "dur": 437, "word": "उपयोग"}, {"at": 7525, "dur": 312, "word": "करते"}, {"at": 7850, "dur": 312, "word": "हैं।"}, {"at": 9037, "dur": 438, "word": "यह"}, {"at": 9487, "dur": 288, "word": "एक"}, {"at": 9787, "dur": 363, "word": "ऐसा"}, {"at": 10162, "dur": 375, "word": "घटक"}, {"at": 10550, "dur": 275, "word": "है"}, {"at": 10837, "dur": 225, "word": "जो"}, {"at": 11075, "dur": 550, "word": "वोल्टेज"}, {"at": 11637, "dur": 350, "word": "स्रोत"}, {"at": 12000, "dur": 200, "word": "को"}, {"at": 12212, "dur": 400, "word": "बदले"}, {"at": 12625, "dur": 312, "word": "बिना"}, {"at": 12950, "dur": 562, "word": "प्रतिरोध"}, {"at": 13525, "dur": 175, "word": "को"}, {"at": 13712, "dur": 325, "word": "बदल"}, {"at": 14050, "dur": 362, "word": "सकता"}, {"at": 14425, "dur": 287, "word": "है,"}, {"at": 15075, "dur": 462, "word": "जिससे"}, {"at": 15550, "dur": 287, "word": "हम"}, {"at": 15850, "dur": 362, "word": "धारा"}, {"at": 16225, "dur": 250, "word": "को"}, {"at": 16487, "dur": 388, "word": "अपनी"}, {"at": 16887, "dur": 438, "word": "ज़रूरत"}, {"at": 17337, "dur": 150, "word": "के"}, {"at": 17500, "dur": 562, "word": "अनुसार"}, {"at": 18075, "dur": 250, "word": "कम"}, {"at": 18337, "dur": 200, "word": "या"}, {"at": 18550, "dur": 387, "word": "ज़्यादा"}, {"at": 18950, "dur": 162, "word": "कर"}, {"at": 19125, "dur": 350, "word": "सकते"}, {"at": 19487, "dur": 338, "word": "हैं।"}, {"at": 20687, "dur": 638, "word": "उदाहरण"}, {"at": 21337, "dur": 125, "word": "के"}, {"at": 21475, "dur": 400, "word": "लिए,"}, {"at": 22075, "dur": 425, "word": "एक"}, {"at": 22562, "dur": 963, "word": "'रियोस्टेट'"}, {"at": 23650, "dur": 950, "word": "(rheostat)"}, {"at": 24762, "dur": 288, "word": "एक"}, {"at": 25062, "dur": 400, "word": "ऐसा"}, {"at": 25475, "dur": 475, "word": "उपकरण"}, {"at": 25962, "dur": 238, "word": "है"}, {"at": 26212, "dur": 413, "word": "जिसका"}, {"at": 26637, "dur": 438, "word": "उपयोग"}, {"at": 27087, "dur": 388, "word": "अक्सर"}, {"at": 27487, "dur": 463, "word": "सर्किट"}, {"at": 27962, "dur": 125, "word": "में"}, {"at": 28100, "dur": 600, "word": "प्रतिरोध"}, {"at": 28712, "dur": 150, "word": "को"}, {"at": 28875, "dur": 450, "word": "बदलने"}, {"at": 29337, "dur": 113, "word": "के"}, {"at": 29462, "dur": 238, "word": "लिए"}, {"at": 29712, "dur": 288, "word": "किया"}, {"at": 30012, "dur": 325, "word": "जाता"}, {"at": 30350, "dur": 287, "word": "है।"}, {"at": 31512, "dur": 463, "word": "इसमें"}, {"at": 31987, "dur": 225, "word": "एक"}, {"at": 32225, "dur": 537, "word": "स्लाइडिंग"}, {"at": 32775, "dur": 462, "word": "संपर्क"}, {"at": 33250, "dur": 312, "word": "होता"}, {"at": 33575, "dur": 300, "word": "है"}, {"at": 33887, "dur": 350, "word": "जिसे"}, {"at": 34250, "dur": 637, "word": "खिसकाकर"}, {"at": 34900, "dur": 312, "word": "तार"}, {"at": 35225, "dur": 150, "word": "की"}, {"at": 35387, "dur": 550, "word": "प्रभावी"}, {"at": 35950, "dur": 475, "word": "लंबाई"}, {"at": 36437, "dur": 175, "word": "को"}, {"at": 36625, "dur": 400, "word": "बदला"}, {"at": 37037, "dur": 163, "word": "जा"}, {"at": 37212, "dur": 363, "word": "सकता"}, {"at": 37587, "dur": 275, "word": "है,"}, {"at": 38212, "dur": 500, "word": "जिससे"}, {"at": 38725, "dur": 562, "word": "प्रतिरोध"}, {"at": 39300, "dur": 325, "word": "बदल"}, {"at": 39637, "dur": 350, "word": "जाता"}, {"at": 40000, "dur": 262, "word": "है"}, {"at": 40275, "dur": 300, "word": "और"}, {"at": 40587, "dur": 388, "word": "बदले"}, {"at": 40987, "dur": 175, "word": "में"}, {"at": 41175, "dur": 487, "word": "धारा"}, {"at": 41675, "dur": 200, "word": "भी"}, {"at": 41887, "dur": 325, "word": "बदल"}, {"at": 42225, "dur": 350, "word": "जाती"}, {"at": 42587, "dur": 263, "word": "है।"}];
+</script>
+<script>
+// Text-derived viseme approximation. A phoneme timeline would need a G2P model
+// we do not ship, so mouth shape is taken from the vowel in the word currently
+// being spoken: open for aa/ee, rounded for oo, narrow for consonant clusters.
+// Honest about what it is, and it tracks the audio because the word timings do.
+const VISEME = [
+  [/[ाआaā]|ऐ|ऑ/, {rx:16, ry:15, teeth:6}],   // open
+  [/[ीिइeिी]|ए/,  {rx:22, ry:8,  teeth:5}],   // wide
+  [/[ूुउoओ]|औ/,   {rx:11, ry:13, teeth:0}],   // rounded
+  [/[मबपmbp]/,    {rx:17, ry:2,  teeth:0}],   // closed
+];
+function visemeFor(word){
+  for(const [re, sh] of VISEME) if(re.test(word)) return sh;
+  return {rx:18, ry:9, teeth:3};
+}
+window.__avatarFrame = function(ms){
+  const m=document.getElementById('av-mouth'); if(!m) return;
+  const ws=window.__wordSpans||[];
+  let cur=null;
+  for(const w of ws){ if(w.at<=ms && ms<w.at+w.dur){ cur=w; break; } }
+
+  let rx=18, ry=3, teeth=0;
+  if(cur){
+    const sh=visemeFor(cur.word);
+    const p=(ms-cur.at)/Math.max(1,cur.dur);
+    const amp=Math.sin(Math.PI*Math.min(1,Math.max(0,p)));   // open then close
+    rx = 18 + (sh.rx-18)*amp;
+    ry = 3  + (sh.ry-3)*amp;
+    teeth = sh.teeth*amp;
+  }
+  m.setAttribute('rx', rx.toFixed(1));
+  m.setAttribute('ry', ry.toFixed(1));
+  const t=document.getElementById('av-teeth');
+  if(t) t.setAttribute('ry', teeth.toFixed(1));
+
+  // Idle: slow sway, breathing, eyes drifting toward the slide.
+  const a=document.getElementById('avatar');
+  if(a) a.style.transform='rotate('+(Math.sin(ms/1600)*1.4).toFixed(2)+'deg) '
+                        +'translateY('+(Math.sin(ms/2300)*2).toFixed(1)+'px)';
+  const gaze=Math.sin(ms/3100)*2.5;
+  ['av-iris-l','av-iris-r'].forEach((id,i)=>{
+    const e=document.getElementById(id);
+    if(e) e.setAttribute('cx', ((i?133:87)+gaze).toFixed(1));
+  });
+  // Brows lift a little while speaking, which reads as emphasis.
+  const lift = cur ? 2.5 : 0;
+  ['av-brow-l','av-brow-r'].forEach(id=>{
+    const e=document.getElementById(id); if(e) e.setAttribute('y', (94-lift).toFixed(1));
+  });
+  // Blink: ~every 4s, 120ms.
+  const blink=(ms%4200)<120 ? 9 : 0;
+  ['av-lid-l','av-lid-r'].forEach(id=>{
+    const e=document.getElementById(id); if(e) e.setAttribute('ry', blink);
+  });
+};
+</script>
+<script>
+const CUES = window.__cues || [];
+const KIND = window.__kind;
+function els(id){return document.querySelectorAll('[id="'+id+'"]');}
+function apply(c){
+  const t = c.element==='*' ? document.querySelectorAll('.reveal') : els(c.element);
+  t.forEach(e=>{
+    if(c.action==='hide') e.classList.remove('on');
+    else if(c.action==='highlight'){e.classList.add('on');e.classList.add('hl');}
+    else e.classList.add('on');
+  });
+}
+// A graph's line draws in rather than popping, so proportionality is watched
+// emerging rather than presented finished.
+function drawLine(pct){
+  const p=document.getElementById('line'); if(!p) return;
+  const L=p.getTotalLength();
+  p.style.strokeDasharray=L; p.style.strokeDashoffset=L*(1-pct);
+}
+window.seek = function(ms){
+  document.querySelectorAll('.reveal').forEach(e=>{e.classList.remove('on','hl');});
+  CUES.filter(c=>c.at_ms<=ms).forEach(apply);
+  if(KIND==='graph'){
+    const cs=CUES.length?CUES:[{at_ms:0}];
+    const span=Math.max(1,(cs[cs.length-1].at_ms||1)-(cs[0].at_ms||0));
+    drawLine(Math.max(0,Math.min(1,(ms-(cs[0].at_ms||0))/span)));
+  }
+  const ws=document.querySelectorAll('.caption .w');
+  let cur=null;
+  ws.forEach(w=>{
+    const on = Number(w.dataset.at)<=ms;
+    w.classList.toggle('spoken', on);
+    w.classList.remove('current');
+    if(on) cur=w;
+  });
+  if(cur){
+    cur.classList.add('current');
+    const box=document.querySelector('.caption');
+    const want=cur.offsetTop-box.offsetTop-38;   // keep the spoken line centred
+    if(Math.abs(box.scrollTop-want)>4) box.scrollTop=Math.max(0,want);
+  }
+  if(window.__avatarFrame) window.__avatarFrame(ms);
+  window.__seeked = ms;
+};
+window.play = function(){
+  const t0=performance.now();
+  (function tick(){
+    const ms=performance.now()-t0;
+    window.seek(ms);
+    if(ms < (window.__duration||0)) requestAnimationFrame(tick);
+  })();
+};
+if(KIND==='equation' && window.katex && window.__latex){
+  katex.render(window.__latex, document.getElementById('eq'),
+               {throwOnError:false, displayMode:true});
+}
+function mermaidFallback(){
+  const el=document.getElementById('diagram');
+  if(!el) return false;
+  const txt=(el.textContent||'').toLowerCase();
+  const broke = txt.includes('syntax error') || txt.includes('mermaid version')
+             || !!el.querySelector('.error-icon, .error-text');
+  if(!broke) return false;
+  let items=[]; try{ items=JSON.parse(el.dataset.fallback||'[]'); }catch(e){}
+  const ul=document.createElement('ul');
+  ul.className='bullets';
+  items.forEach((it,i)=>{
+    const li=document.createElement('li');
+    li.className='bullet reveal on'; li.id='b-'+i; li.textContent=it;
+    ul.appendChild(li);
+  });
+  el.replaceWith(ul);
+  window.__mermaidFellBack = true;
+  return true;
+}
+if(KIND==='diagram' && window.mermaid){
+  mermaid.initialize({startOnLoad:true, theme:'base', securityLevel:'loose',
+    themeVariables:{
+      background:'#0A0A0B', primaryColor:'#141416', primaryBorderColor:'#F2A65A',
+      primaryTextColor:'#EDEAE4', secondaryColor:'#1A1A1D', tertiaryColor:'#141416',
+      lineColor:'#F2A65A', textColor:'#EDEAE4', mainBkg:'#141416',
+      nodeBorder:'#F2A65A', clusterBkg:'#0A0A0B', fontSize:'19px'}});
+}
+if(KIND==='diagram'){
+  // Mermaid renders asynchronously; check after it has had a chance to fail.
+  let tries=0;
+  const check=setInterval(()=>{
+    tries++;
+    const done=document.querySelector('.mermaid svg')||document.querySelector('ul.bullets');
+    if(done){ mermaidFallback(); clearInterval(check); window.__ready=true; }
+    else if(tries>40){ mermaidFallback(); clearInterval(check); window.__ready=true; }
+  }, 60);
+} else {
+  window.__ready = true;
+}
+window.seek(0);
+</script>
+</body></html>

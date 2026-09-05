@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="hi-IN"><head><meta charset="utf-8">
+<title>b6</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<style>
+:root{--bg:#0A0A0B;--fg:#EDEAE4;--muted:#8A857C;--accent:#F2A65A;--line:#232326}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+  font:16px/1.6 "Segoe UI",system-ui,"Nirmala UI","Noto Sans Devanagari",sans-serif}
+.slide{width:1280px;height:720px;padding:34px 72px 18px;display:flex;flex-direction:column;
+  gap:14px;position:relative;overflow:hidden}
+.kicker{color:var(--accent);font-size:14px;letter-spacing:.14em;text-transform:uppercase}
+h2{margin:0 0 18px;font-size:46px;font-weight:600;line-height:1.15;letter-spacing:-.02em}
+.stage{flex:1;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;min-height:0;width:100%}
+.figures{display:flex;gap:44px;flex-wrap:wrap;justify-content:center;align-items:baseline}
+.fig{font-size:76px;font-weight:600;letter-spacing:-.03em;color:var(--accent)}
+.mermaid svg{max-height:480px}
+.reveal{opacity:0;transform:translateY(10px);transition:opacity .45s ease,transform .45s ease}
+.reveal.on{opacity:1;transform:none}
+.reveal.hl{color:var(--accent)}
+.eq{font-size:62px;text-align:center}
+.terms{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.term{border:1px solid var(--line);border-radius:10px;padding:8px 14px;text-align:center}
+.term .tex{display:block;font-size:22px;color:var(--accent)}
+.term .lbl{display:block;font-size:13px;color:var(--muted)}
+svg{width:100%;height:100%;max-height:520px}
+.axis{stroke:var(--line);stroke-width:2}
+.axlbl{fill:var(--muted);font-size:15px;text-anchor:middle}
+.tick{fill:var(--muted);font-size:12px;text-anchor:middle}
+.schematic{fill:var(--muted);font-size:13px;text-anchor:end;font-style:italic}
+#line{stroke:var(--accent);stroke-width:3.5;stroke-linecap:round}
+.pt{fill:var(--accent)}
+.bullets{list-style:none;padding:0;margin:0;font-size:32px;display:flex;
+  flex-direction:column;gap:22px;max-width:1000px;line-height:1.35}
+.bullet{padding-left:32px;position:relative}
+.bullet:before{content:"";position:absolute;left:0;top:.58em;width:10px;height:10px;
+  border-radius:2px;background:var(--accent)}
+.code{background:#08080A;border:1px solid var(--line);border-radius:12px;padding:26px 30px;
+  font-family:"Cascadia Code",Consolas,monospace;font-size:24px;position:relative}
+.lang{position:absolute;top:8px;right:14px;font-size:12px;color:var(--muted)}
+.cl{white-space:pre}
+.out{margin-top:14px;border-left:3px solid var(--accent);padding-left:14px;color:var(--muted)}
+.olbl{font-size:12px;text-transform:uppercase;letter-spacing:.1em}
+.mermaid{background:transparent;display:flex;justify-content:center;
+  width:100%;font-size:19px}
+.mermaid svg{max-width:100%;height:auto;max-height:420px}
+.mermaid .nodeLabel,.mermaid .edgeLabel{fill:#EDEAE4!important;color:#EDEAE4!important}
+.mermaid .edgeLabel{background:#0A0A0B!important}
+.why{flex:0 0 auto;font-size:13px;color:var(--muted);
+  border-top:1px solid var(--line);padding-top:8px}
+/* Two lines, scrolled to follow the spoken word. A full transcript would cover
+   the visual it is meant to support. */
+.caption{flex:0 0 auto;height:76px;overflow:hidden;font-size:23px;line-height:38px;
+  position:relative}
+.caption .w{opacity:.35;transition:opacity .2s}
+.caption .w.spoken{opacity:1}
+.caption .w.current{color:var(--accent);opacity:1}
+
+.avatar{position:absolute;right:40px;bottom:150px;width:19%;max-width:210px;
+  filter:drop-shadow(0 12px 30px rgba(0,0,0,.6));transform-origin:50% 95%}
+.avatar svg{width:100%;height:auto;overflow:visible}
+.av-torso{fill:#F2A65A}
+.av-collar{fill:#e6edf3}
+.av-neck{fill:#e8c4a2}
+.av-head{fill:#f2d3b8}
+.av-hair{fill:#2b2118}
+.av-ear{fill:#e8c4a2}
+.av-brow{fill:#2b2118}
+.av-eyew{fill:#ffffff}
+.av-iris{fill:#3d2b1f}
+.av-lid{fill:#f2d3b8}
+.av-nose{fill:none;stroke:#d9ab86;stroke-width:3;stroke-linecap:round}
+.av-mouth{fill:#8c4a4a}
+.av-teeth{fill:#ffffff}
+</style></head>
+<body><div class="slide" id="slide">
+  <div class="stage"><div class="eq" id="eq" class="reveal"></div><script>window.__latex="V = IR";</script><div class="terms"><span class="term reveal" id="term-V"><span class="tex">V</span><span class="lbl">विभवांतर</span></span><span class="term reveal" id="term-I"><span class="tex">I</span><span class="lbl">विद्युत धारा</span></span><span class="term reveal" id="term-R"><span class="tex">R</span><span class="lbl">प्रतिरोध</span></span></div></div>
+  <div class="caption"><span class="w" data-at="100">जर्मन </span><span class="w" data-at="725">भौतिक </span><span class="w" data-at="1162">विज्ञानी </span><span class="w" data-at="1775">जॉर्ज </span><span class="w" data-at="2137">साइमन </span><span class="w" data-at="2612">ओम </span><span class="w" data-at="2887">ने </span><span class="w" data-at="3162">1827 </span><span class="w" data-at="5025">में </span><span class="w" data-at="5412">इस </span><span class="w" data-at="5612">संबंध </span><span class="w" data-at="6137">को </span><span class="w" data-at="6575">&#x27;ओम </span><span class="w" data-at="6912">का </span><span class="w" data-at="7075">नियम&#x27; </span><span class="w" data-at="7700">कहा। </span><span class="w" data-at="9025">इस </span><span class="w" data-at="9350">नियम </span><span class="w" data-at="9650">के </span><span class="w" data-at="9812">अनुसार, </span><span class="w" data-at="10712">किसी </span><span class="w" data-at="11137">धातु </span><span class="w" data-at="11537">के </span><span class="w" data-at="11737">तार </span><span class="w" data-at="12075">के </span><span class="w" data-at="12250">सिरों </span><span class="w" data-at="12625">के </span><span class="w" data-at="12762">बीच </span><span class="w" data-at="13112">का </span><span class="w" data-at="13262">विभवांतर </span><span class="w" data-at="14237">(V) </span><span class="w" data-at="14887">उसमें </span><span class="w" data-at="15275">प्रवाहित </span><span class="w" data-at="15812">होने </span><span class="w" data-at="16175">वाली </span><span class="w" data-at="16512">विद्युत </span><span class="w" data-at="16987">धारा </span><span class="w" data-at="17737">(I) </span><span class="w" data-at="18400">के </span><span class="w" data-at="18600">सीधे </span><span class="w" data-at="19137">आनुपातिक </span><span class="w" data-at="19825">होता </span><span class="w" data-at="20150">है, </span><span class="w" data-at="20575">बशर्ते </span><span class="w" data-at="21237">उसका </span><span class="w" data-at="21612">तापमान </span><span class="w" data-at="22187">समान </span><span class="w" data-at="22587">रहे। </span><span class="w" data-at="23875">यह </span><span class="w" data-at="24612">&#x27;तापमान </span><span class="w" data-at="25250">समान </span><span class="w" data-at="25662">रहे&#x27; </span><span class="w" data-at="26200">वाली </span><span class="w" data-at="26662">शर्त </span><span class="w" data-at="27037">बहुत </span><span class="w" data-at="27437">महत्वपूर्ण </span><span class="w" data-at="28137">है </span><span class="w" data-at="28412">क्योंकि </span><span class="w" data-at="28887">तापमान </span><span class="w" data-at="29500">बदलने </span><span class="w" data-at="29937">से </span><span class="w" data-at="30150">तार </span><span class="w" data-at="30487">का </span><span class="w" data-at="30662">प्रतिरोध </span><span class="w" data-at="31275">बदल </span><span class="w" data-at="31587">सकता </span><span class="w" data-at="31975">है। </span><span class="w" data-at="33137">इसे </span><span class="w" data-at="33475">हम </span><span class="w" data-at="33750">गणितीय </span><span class="w" data-at="34262">रूप </span><span class="w" data-at="34562">से </span><span class="w" data-at="34850">ऐसे </span><span class="w" data-at="35237">लिखते </span><span class="w" data-at="35637">हैं: </span><span class="w" data-at="36237">V </span><span class="w" data-at="36525">∝ </span><span class="w" data-at="36537">I, </span><span class="w" data-at="37100">या </span><span class="w" data-at="37375">V/I </span><span class="w" data-at="37800">= </span><span class="w" data-at="37812">स्थिरांक। </span><span class="w" data-at="39487">इस </span><span class="w" data-at="39750">स्थिरांक </span><span class="w" data-at="40262">को </span><span class="w" data-at="40412">हम </span><span class="w" data-at="40650">R </span><span class="w" data-at="40800">कहते </span><span class="w" data-at="41162">हैं, </span><span class="w" data-at="41687">जिसका </span><span class="w" data-at="42237">मतलब </span><span class="w" data-at="42700">है </span><span class="w" data-at="42987">प्रतिरोध। </span><span class="w" data-at="44575">तो, </span><span class="w" data-at="45150">सूत्र </span><span class="w" data-at="45687">बनता </span><span class="w" data-at="46087">है </span><span class="w" data-at="46312">V </span><span class="w" data-at="46512">= </span><span class="w" data-at="46525">IR। </span><span class="w" data-at="47937">यह </span><span class="w" data-at="48350">सूत्र </span><span class="w" data-at="48800">विद्युत </span><span class="w" data-at="49262">परिपथों </span><span class="w" data-at="49812">को </span><span class="w" data-at="49975">समझने </span><span class="w" data-at="50525">का </span><span class="w" data-at="50787">आधार </span><span class="w" data-at="51137">है। </span></div>
+  
+<div class="avatar" id="avatar">
+  <svg viewBox="0 0 220 280" aria-hidden="true">
+    <defs>
+      <clipPath id="hairclip"><ellipse cx="110" cy="118" rx="66" ry="76"/></clipPath>
+    </defs>
+    <path class="av-torso" d="M34 280 q6-52 76-62 q70 10 76 62 z"/>
+    <path class="av-collar" d="M92 218 l18 20 l18-20 l-8-6 h-20 z"/>
+    <rect class="av-neck" x="96" y="186" width="28" height="34" rx="12"/>
+    <ellipse class="av-head" cx="110" cy="118" rx="66" ry="76"/>
+    <g clip-path="url(#hairclip)">
+      <path class="av-hair" d="M44 116 q4-72 66-72 q62 0 66 72 q-10-34-66-34 q-56 0-66 34z"/>
+    </g>
+    <ellipse class="av-ear" cx="45"  cy="126" rx="8" ry="13"/>
+    <ellipse class="av-ear" cx="175" cy="126" rx="8" ry="13"/>
+    <rect class="av-brow" id="av-brow-l" x="72"  y="94"  width="30" height="6" rx="3"/>
+    <rect class="av-brow" id="av-brow-r" x="118" y="94"  width="30" height="6" rx="3"/>
+    <ellipse class="av-eyew" cx="87"  cy="118" rx="14" ry="9"/>
+    <ellipse class="av-eyew" cx="133" cy="118" rx="14" ry="9"/>
+    <circle  class="av-iris" id="av-iris-l" cx="87"  cy="118" r="6"/>
+    <circle  class="av-iris" id="av-iris-r" cx="133" cy="118" r="6"/>
+    <ellipse class="av-lid"  id="av-lid-l" cx="87"  cy="118" rx="15" ry="0"/>
+    <ellipse class="av-lid"  id="av-lid-r" cx="133" cy="118" rx="15" ry="0"/>
+    <path class="av-nose" d="M110 126 q-5 16 3 20"/>
+    <ellipse class="av-mouth" id="av-mouth" cx="110" cy="164" rx="18" ry="4"/>
+    <ellipse class="av-teeth" id="av-teeth" cx="110" cy="160" rx="12" ry="0"/>
+  </svg>
+</div>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
+<script>
+window.__cues=[{"element": "eq", "requested": "__floor__", "action": "show", "at_ms": 4118, "word_index": 0}, {"element": "term-V", "requested": "V", "action": "show", "at_ms": 15812, "word_index": 33}, {"element": "term-I", "requested": "I", "action": "show", "at_ms": 16512, "word_index": 35}, {"element": "term-R", "requested": "R", "action": "show", "at_ms": 20575, "word_index": 43}];
+window.__kind="equation";
+window.__duration=51475;
+window.__wordSpans=[{"at": 100, "dur": 612, "word": "जर्मन"}, {"at": 725, "dur": 425, "word": "भौतिक"}, {"at": 1162, "dur": 600, "word": "विज्ञानी"}, {"at": 1775, "dur": 350, "word": "जॉर्ज"}, {"at": 2137, "dur": 463, "word": "साइमन"}, {"at": 2612, "dur": 263, "word": "ओम"}, {"at": 2887, "dur": 263, "word": "ने"}, {"at": 3162, "dur": 1850, "word": "1827"}, {"at": 5025, "dur": 375, "word": "में"}, {"at": 5412, "dur": 188, "word": "इस"}, {"at": 5612, "dur": 513, "word": "संबंध"}, {"at": 6137, "dur": 350, "word": "को"}, {"at": 6575, "dur": 325, "word": "'ओम"}, {"at": 6912, "dur": 150, "word": "का"}, {"at": 7075, "dur": 525, "word": "नियम'"}, {"at": 7700, "dur": 462, "word": "कहा।"}, {"at": 9025, "dur": 312, "word": "इस"}, {"at": 9350, "dur": 287, "word": "नियम"}, {"at": 9650, "dur": 150, "word": "के"}, {"at": 9812, "dur": 713, "word": "अनुसार,"}, {"at": 10712, "dur": 413, "word": "किसी"}, {"at": 11137, "dur": 388, "word": "धातु"}, {"at": 11537, "dur": 188, "word": "के"}, {"at": 11737, "dur": 325, "word": "तार"}, {"at": 12075, "dur": 162, "word": "के"}, {"at": 12250, "dur": 362, "word": "सिरों"}, {"at": 12625, "dur": 125, "word": "के"}, {"at": 12762, "dur": 338, "word": "बीच"}, {"at": 13112, "dur": 138, "word": "का"}, {"at": 13262, "dur": 850, "word": "विभवांतर"}, {"at": 14237, "dur": 413, "word": "(V)"}, {"at": 14887, "dur": 375, "word": "उसमें"}, {"at": 15275, "dur": 525, "word": "प्रवाहित"}, {"at": 15812, "dur": 350, "word": "होने"}, {"at": 16175, "dur": 325, "word": "वाली"}, {"at": 16512, "dur": 463, "word": "विद्युत"}, {"at": 16987, "dur": 538, "word": "धारा"}, {"at": 17737, "dur": 425, "word": "(I)"}, {"at": 18400, "dur": 187, "word": "के"}, {"at": 18600, "dur": 525, "word": "सीधे"}, {"at": 19137, "dur": 675, "word": "आनुपातिक"}, {"at": 19825, "dur": 312, "word": "होता"}, {"at": 20150, "dur": 287, "word": "है,"}, {"at": 20575, "dur": 650, "word": "बशर्ते"}, {"at": 21237, "dur": 363, "word": "उसका"}, {"at": 21612, "dur": 563, "word": "तापमान"}, {"at": 22187, "dur": 388, "word": "समान"}, {"at": 22587, "dur": 425, "word": "रहे।"}, {"at": 23875, "dur": 637, "word": "यह"}, {"at": 24612, "dur": 625, "word": "'तापमान"}, {"at": 25250, "dur": 400, "word": "समान"}, {"at": 25662, "dur": 425, "word": "रहे'"}, {"at": 26200, "dur": 450, "word": "वाली"}, {"at": 26662, "dur": 363, "word": "शर्त"}, {"at": 27037, "dur": 388, "word": "बहुत"}, {"at": 27437, "dur": 688, "word": "महत्वपूर्ण"}, {"at": 28137, "dur": 263, "word": "है"}, {"at": 28412, "dur": 463, "word": "क्योंकि"}, {"at": 28887, "dur": 600, "word": "तापमान"}, {"at": 29500, "dur": 425, "word": "बदलने"}, {"at": 29937, "dur": 200, "word": "से"}, {"at": 30150, "dur": 325, "word": "तार"}, {"at": 30487, "dur": 163, "word": "का"}, {"at": 30662, "dur": 600, "word": "प्रतिरोध"}, {"at": 31275, "dur": 300, "word": "बदल"}, {"at": 31587, "dur": 375, "word": "सकता"}, {"at": 31975, "dur": 287, "word": "है।"}, {"at": 33137, "dur": 325, "word": "इसे"}, {"at": 33475, "dur": 262, "word": "हम"}, {"at": 33750, "dur": 500, "word": "गणितीय"}, {"at": 34262, "dur": 288, "word": "रूप"}, {"at": 34562, "dur": 275, "word": "से"}, {"at": 34850, "dur": 375, "word": "ऐसे"}, {"at": 35237, "dur": 388, "word": "लिखते"}, {"at": 35637, "dur": 350, "word": "हैं:"}, {"at": 36237, "dur": 288, "word": "V"}, {"at": 36525, "dur": 60, "word": "∝"}, {"at": 36537, "dur": 463, "word": "I,"}, {"at": 37100, "dur": 262, "word": "या"}, {"at": 37375, "dur": 425, "word": "V/I"}, {"at": 37800, "dur": 60, "word": "="}, {"at": 37812, "dur": 813, "word": "स्थिरांक।"}, {"at": 39487, "dur": 250, "word": "इस"}, {"at": 39750, "dur": 500, "word": "स्थिरांक"}, {"at": 40262, "dur": 138, "word": "को"}, {"at": 40412, "dur": 225, "word": "हम"}, {"at": 40650, "dur": 137, "word": "R"}, {"at": 40800, "dur": 350, "word": "कहते"}, {"at": 41162, "dur": 313, "word": "हैं,"}, {"at": 41687, "dur": 538, "word": "जिसका"}, {"at": 42237, "dur": 450, "word": "मतलब"}, {"at": 42700, "dur": 275, "word": "है"}, {"at": 42987, "dur": 725, "word": "प्रतिरोध।"}, {"at": 44575, "dur": 425, "word": "तो,"}, {"at": 45150, "dur": 525, "word": "सूत्र"}, {"at": 45687, "dur": 388, "word": "बनता"}, {"at": 46087, "dur": 213, "word": "है"}, {"at": 46312, "dur": 200, "word": "V"}, {"at": 46512, "dur": 60, "word": "="}, {"at": 46525, "dur": 562, "word": "IR।"}, {"at": 47937, "dur": 400, "word": "यह"}, {"at": 48350, "dur": 437, "word": "सूत्र"}, {"at": 48800, "dur": 450, "word": "विद्युत"}, {"at": 49262, "dur": 538, "word": "परिपथों"}, {"at": 49812, "dur": 150, "word": "को"}, {"at": 49975, "dur": 537, "word": "समझने"}, {"at": 50525, "dur": 250, "word": "का"}, {"at": 50787, "dur": 338, "word": "आधार"}, {"at": 51137, "dur": 338, "word": "है।"}];
+</script>
+<script>
+// Text-derived viseme approximation. A phoneme timeline would need a G2P model
+// we do not ship, so mouth shape is taken from the vowel in the word currently
+// being spoken: open for aa/ee, rounded for oo, narrow for consonant clusters.
+// Honest about what it is, and it tracks the audio because the word timings do.
+const VISEME = [
+  [/[ाआaā]|ऐ|ऑ/, {rx:16, ry:15, teeth:6}],   // open
+  [/[ीिइeिी]|ए/,  {rx:22, ry:8,  teeth:5}],   // wide
+  [/[ूुउoओ]|औ/,   {rx:11, ry:13, teeth:0}],   // rounded
+  [/[मबपmbp]/,    {rx:17, ry:2,  teeth:0}],   // closed
+];
+function visemeFor(word){
+  for(const [re, sh] of VISEME) if(re.test(word)) return sh;
+  return {rx:18, ry:9, teeth:3};
+}
+window.__avatarFrame = function(ms){
+  const m=document.getElementById('av-mouth'); if(!m) return;
+  const ws=window.__wordSpans||[];
+  let cur=null;
+  for(const w of ws){ if(w.at<=ms && ms<w.at+w.dur){ cur=w; break; } }
+
+  let rx=18, ry=3, teeth=0;
+  if(cur){
+    const sh=visemeFor(cur.word);
+    const p=(ms-cur.at)/Math.max(1,cur.dur);
+    const amp=Math.sin(Math.PI*Math.min(1,Math.max(0,p)));   // open then close
+    rx = 18 + (sh.rx-18)*amp;
+    ry = 3  + (sh.ry-3)*amp;
+    teeth = sh.teeth*amp;
+  }
+  m.setAttribute('rx', rx.toFixed(1));
+  m.setAttribute('ry', ry.toFixed(1));
+  const t=document.getElementById('av-teeth');
+  if(t) t.setAttribute('ry', teeth.toFixed(1));
+
+  // Idle: slow sway, breathing, eyes drifting toward the slide.
+  const a=document.getElementById('avatar');
+  if(a) a.style.transform='rotate('+(Math.sin(ms/1600)*1.4).toFixed(2)+'deg) '
+                        +'translateY('+(Math.sin(ms/2300)*2).toFixed(1)+'px)';
+  const gaze=Math.sin(ms/3100)*2.5;
+  ['av-iris-l','av-iris-r'].forEach((id,i)=>{
+    const e=document.getElementById(id);
+    if(e) e.setAttribute('cx', ((i?133:87)+gaze).toFixed(1));
+  });
+  // Brows lift a little while speaking, which reads as emphasis.
+  const lift = cur ? 2.5 : 0;
+  ['av-brow-l','av-brow-r'].forEach(id=>{
+    const e=document.getElementById(id); if(e) e.setAttribute('y', (94-lift).toFixed(1));
+  });
+  // Blink: ~every 4s, 120ms.
+  const blink=(ms%4200)<120 ? 9 : 0;
+  ['av-lid-l','av-lid-r'].forEach(id=>{
+    const e=document.getElementById(id); if(e) e.setAttribute('ry', blink);
+  });
+};
+</script>
+<script>
+const CUES = window.__cues || [];
+const KIND = window.__kind;
+function els(id){return document.querySelectorAll('[id="'+id+'"]');}
+function apply(c){
+  const t = c.element==='*' ? document.querySelectorAll('.reveal') : els(c.element);
+  t.forEach(e=>{
+    if(c.action==='hide') e.classList.remove('on');
+    else if(c.action==='highlight'){e.classList.add('on');e.classList.add('hl');}
+    else e.classList.add('on');
+  });
+}
+// A graph's line draws in rather than popping, so proportionality is watched
+// emerging rather than presented finished.
+function drawLine(pct){
+  const p=document.getElementById('line'); if(!p) return;
+  const L=p.getTotalLength();
+  p.style.strokeDasharray=L; p.style.strokeDashoffset=L*(1-pct);
+}
+window.seek = function(ms){
+  document.querySelectorAll('.reveal').forEach(e=>{e.classList.remove('on','hl');});
+  CUES.filter(c=>c.at_ms<=ms).forEach(apply);
+  if(KIND==='graph'){
+    const cs=CUES.length?CUES:[{at_ms:0}];
+    const span=Math.max(1,(cs[cs.length-1].at_ms||1)-(cs[0].at_ms||0));
+    drawLine(Math.max(0,Math.min(1,(ms-(cs[0].at_ms||0))/span)));
+  }
+  const ws=document.querySelectorAll('.caption .w');
+  let cur=null;
+  ws.forEach(w=>{
+    const on = Number(w.dataset.at)<=ms;
+    w.classList.toggle('spoken', on);
+    w.classList.remove('current');
+    if(on) cur=w;
+  });
+  if(cur){
+    cur.classList.add('current');
+    const box=document.querySelector('.caption');
+    const want=cur.offsetTop-box.offsetTop-38;   // keep the spoken line centred
+    if(Math.abs(box.scrollTop-want)>4) box.scrollTop=Math.max(0,want);
+  }
+  if(window.__avatarFrame) window.__avatarFrame(ms);
+  window.__seeked = ms;
+};
+window.play = function(){
+  const t0=performance.now();
+  (function tick(){
+    const ms=performance.now()-t0;
+    window.seek(ms);
+    if(ms < (window.__duration||0)) requestAnimationFrame(tick);
+  })();
+};
+if(KIND==='equation' && window.katex && window.__latex){
+  katex.render(window.__latex, document.getElementById('eq'),
+               {throwOnError:false, displayMode:true});
+}
+function mermaidFallback(){
+  const el=document.getElementById('diagram');
+  if(!el) return false;
+  const txt=(el.textContent||'').toLowerCase();
+  const broke = txt.includes('syntax error') || txt.includes('mermaid version')
+             || !!el.querySelector('.error-icon, .error-text');
+  if(!broke) return false;
+  let items=[]; try{ items=JSON.parse(el.dataset.fallback||'[]'); }catch(e){}
+  const ul=document.createElement('ul');
+  ul.className='bullets';
+  items.forEach((it,i)=>{
+    const li=document.createElement('li');
+    li.className='bullet reveal on'; li.id='b-'+i; li.textContent=it;
+    ul.appendChild(li);
+  });
+  el.replaceWith(ul);
+  window.__mermaidFellBack = true;
+  return true;
+}
+if(KIND==='diagram' && window.mermaid){
+  mermaid.initialize({startOnLoad:true, theme:'base', securityLevel:'loose',
+    themeVariables:{
+      background:'#0A0A0B', primaryColor:'#141416', primaryBorderColor:'#F2A65A',
+      primaryTextColor:'#EDEAE4', secondaryColor:'#1A1A1D', tertiaryColor:'#141416',
+      lineColor:'#F2A65A', textColor:'#EDEAE4', mainBkg:'#141416',
+      nodeBorder:'#F2A65A', clusterBkg:'#0A0A0B', fontSize:'19px'}});
+}
+if(KIND==='diagram'){
+  // Mermaid renders asynchronously; check after it has had a chance to fail.
+  let tries=0;
+  const check=setInterval(()=>{
+    tries++;
+    const done=document.querySelector('.mermaid svg')||document.querySelector('ul.bullets');
+    if(done){ mermaidFallback(); clearInterval(check); window.__ready=true; }
+    else if(tries>40){ mermaidFallback(); clearInterval(check); window.__ready=true; }
+  }, 60);
+} else {
+  window.__ready = true;
+}
+window.seek(0);
+</script>
+</body></html>

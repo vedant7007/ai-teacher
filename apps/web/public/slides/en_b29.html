@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en-IN"><head><meta charset="utf-8">
+<title>b29</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<style>
+:root{--bg:#0A0A0B;--fg:#EDEAE4;--muted:#8A857C;--accent:#F2A65A;--line:#232326}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+  font:16px/1.6 "Segoe UI",system-ui,"Nirmala UI","Noto Sans Devanagari",sans-serif}
+.slide{width:1280px;height:720px;padding:34px 72px 18px;display:flex;flex-direction:column;
+  gap:14px;position:relative;overflow:hidden}
+.kicker{color:var(--accent);font-size:14px;letter-spacing:.14em;text-transform:uppercase}
+h2{margin:0 0 18px;font-size:46px;font-weight:600;line-height:1.15;letter-spacing:-.02em}
+.stage{flex:1;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;min-height:0;width:100%}
+.figures{display:flex;gap:44px;flex-wrap:wrap;justify-content:center;align-items:baseline}
+.fig{font-size:76px;font-weight:600;letter-spacing:-.03em;color:var(--accent)}
+.mermaid svg{max-height:480px}
+.reveal{opacity:0;transform:translateY(10px);transition:opacity .45s ease,transform .45s ease}
+.reveal.on{opacity:1;transform:none}
+.reveal.hl{color:var(--accent)}
+.eq{font-size:62px;text-align:center}
+.terms{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.term{border:1px solid var(--line);border-radius:10px;padding:8px 14px;text-align:center}
+.term .tex{display:block;font-size:22px;color:var(--accent)}
+.term .lbl{display:block;font-size:13px;color:var(--muted)}
+svg{width:100%;height:100%;max-height:520px}
+.axis{stroke:var(--line);stroke-width:2}
+.axlbl{fill:var(--muted);font-size:15px;text-anchor:middle}
+.tick{fill:var(--muted);font-size:12px;text-anchor:middle}
+.schematic{fill:var(--muted);font-size:13px;text-anchor:end;font-style:italic}
+#line{stroke:var(--accent);stroke-width:3.5;stroke-linecap:round}
+.pt{fill:var(--accent)}
+.bullets{list-style:none;padding:0;margin:0;font-size:32px;display:flex;
+  flex-direction:column;gap:22px;max-width:1000px;line-height:1.35}
+.bullet{padding-left:32px;position:relative}
+.bullet:before{content:"";position:absolute;left:0;top:.58em;width:10px;height:10px;
+  border-radius:2px;background:var(--accent)}
+.code{background:#08080A;border:1px solid var(--line);border-radius:12px;padding:26px 30px;
+  font-family:"Cascadia Code",Consolas,monospace;font-size:24px;position:relative}
+.lang{position:absolute;top:8px;right:14px;font-size:12px;color:var(--muted)}
+.cl{white-space:pre}
+.out{margin-top:14px;border-left:3px solid var(--accent);padding-left:14px;color:var(--muted)}
+.olbl{font-size:12px;text-transform:uppercase;letter-spacing:.1em}
+.mermaid{background:transparent;display:flex;justify-content:center;
+  width:100%;font-size:19px}
+.mermaid svg{max-width:100%;height:auto;max-height:420px}
+.mermaid .nodeLabel,.mermaid .edgeLabel{fill:#EDEAE4!important;color:#EDEAE4!important}
+.mermaid .edgeLabel{background:#0A0A0B!important}
+.why{flex:0 0 auto;font-size:13px;color:var(--muted);
+  border-top:1px solid var(--line);padding-top:8px}
+/* Two lines, scrolled to follow the spoken word. A full transcript would cover
+   the visual it is meant to support. */
+.caption{flex:0 0 auto;height:76px;overflow:hidden;font-size:23px;line-height:38px;
+  position:relative}
+.caption .w{opacity:.35;transition:opacity .2s}
+.caption .w.spoken{opacity:1}
+.caption .w.current{color:var(--accent);opacity:1}
+
+.avatar{position:absolute;right:40px;bottom:150px;width:19%;max-width:210px;
+  filter:drop-shadow(0 12px 30px rgba(0,0,0,.6));transform-origin:50% 95%}
+.avatar svg{width:100%;height:auto;overflow:visible}
+.av-torso{fill:#F2A65A}
+.av-collar{fill:#e6edf3}
+.av-neck{fill:#e8c4a2}
+.av-head{fill:#f2d3b8}
+.av-hair{fill:#2b2118}
+.av-ear{fill:#e8c4a2}
+.av-brow{fill:#2b2118}
+.av-eyew{fill:#ffffff}
+.av-iris{fill:#3d2b1f}
+.av-lid{fill:#f2d3b8}
+.av-nose{fill:none;stroke:#d9ab86;stroke-width:3;stroke-linecap:round}
+.av-mouth{fill:#8c4a4a}
+.av-teeth{fill:#ffffff}
+</style></head>
+<body><div class="slide" id="slide">
+  <div class="stage"><h2 id="heading">What We Observe:</h2><ul class="bullets"><li class="bullet reveal" id="b-0">Different materials give different current readings.</li><li class="bullet reveal" id="b-1">Resistance depends on the nature of the material.</li><li class="bullet reveal" id="b-2">Some materials are better conductors than others.</li></ul></div>
+  <div class="caption"><span class="w" data-at="100">You&#x27;d </span><span class="w" data-at="437">definitely </span><span class="w" data-at="1100">notice </span><span class="w" data-at="1637">a </span><span class="w" data-at="1750">different </span><span class="w" data-at="2237">current </span><span class="w" data-at="2637">reading! </span><span class="w" data-at="3950">Copper </span><span class="w" data-at="4512">is </span><span class="w" data-at="4675">a </span><span class="w" data-at="4737">much </span><span class="w" data-at="5100">better </span><span class="w" data-at="5462">conductor </span><span class="w" data-at="6037">than </span><span class="w" data-at="6237">nichrome, </span><span class="w" data-at="6987">so </span><span class="w" data-at="7250">the </span><span class="w" data-at="7362">current </span><span class="w" data-at="7787">would </span><span class="w" data-at="7962">be </span><span class="w" data-at="8112">significantly </span><span class="w" data-at="9025">higher. </span><span class="w" data-at="10412">This </span><span class="w" data-at="10800">observation </span><span class="w" data-at="11437">confirms </span><span class="w" data-at="12062">that </span><span class="w" data-at="12287">the </span><span class="w" data-at="12375">resistance </span><span class="w" data-at="13037">of </span><span class="w" data-at="13187">a </span><span class="w" data-at="13237">conductor </span><span class="w" data-at="13937">also </span><span class="w" data-at="14337">depends </span><span class="w" data-at="14850">on </span><span class="w" data-at="15000">the </span><span class="w" data-at="15087">nature </span><span class="w" data-at="15537">of </span><span class="w" data-at="15700">its </span><span class="w" data-at="15912">material. </span><span class="w" data-at="17400">Different </span><span class="w" data-at="18000">materials </span><span class="w" data-at="18675">have </span><span class="w" data-at="18900">different </span><span class="w" data-at="19387">internal </span><span class="w" data-at="19925">structures, </span><span class="w" data-at="20925">which </span><span class="w" data-at="21162">affect </span><span class="w" data-at="21575">how </span><span class="w" data-at="21875">easily </span><span class="w" data-at="22375">electrons </span><span class="w" data-at="23075">can </span><span class="w" data-at="23287">move </span><span class="w" data-at="23575">through </span><span class="w" data-at="23812">them. </span><span class="w" data-at="25062">This </span><span class="w" data-at="25450">is </span><span class="w" data-at="25612">why </span><span class="w" data-at="25887">we </span><span class="w" data-at="26050">use </span><span class="w" data-at="26350">copper </span><span class="w" data-at="26837">for </span><span class="w" data-at="27100">electrical </span><span class="w" data-at="27737">wires </span><span class="w" data-at="28225">but </span><span class="w" data-at="28462">alloys </span><span class="w" data-at="29025">like </span><span class="w" data-at="29287">nichrome </span><span class="w" data-at="29837">for </span><span class="w" data-at="30087">heating </span><span class="w" data-at="30550">elements. </span><span class="w" data-at="32087">[citations: </span><span class="w" data-at="33237">jesc111-640a680a2407:0011] </span></div>
+  
+<div class="avatar" id="avatar">
+  <svg viewBox="0 0 220 280" aria-hidden="true">
+    <defs>
+      <clipPath id="hairclip"><ellipse cx="110" cy="118" rx="66" ry="76"/></clipPath>
+    </defs>
+    <path class="av-torso" d="M34 280 q6-52 76-62 q70 10 76 62 z"/>
+    <path class="av-collar" d="M92 218 l18 20 l18-20 l-8-6 h-20 z"/>
+    <rect class="av-neck" x="96" y="186" width="28" height="34" rx="12"/>
+    <ellipse class="av-head" cx="110" cy="118" rx="66" ry="76"/>
+    <g clip-path="url(#hairclip)">
+      <path class="av-hair" d="M44 116 q4-72 66-72 q62 0 66 72 q-10-34-66-34 q-56 0-66 34z"/>
+    </g>
+    <ellipse class="av-ear" cx="45"  cy="126" rx="8" ry="13"/>
+    <ellipse class="av-ear" cx="175" cy="126" rx="8" ry="13"/>
+    <rect class="av-brow" id="av-brow-l" x="72"  y="94"  width="30" height="6" rx="3"/>
+    <rect class="av-brow" id="av-brow-r" x="118" y="94"  width="30" height="6" rx="3"/>
+    <ellipse class="av-eyew" cx="87"  cy="118" rx="14" ry="9"/>
+    <ellipse class="av-eyew" cx="133" cy="118" rx="14" ry="9"/>
+    <circle  class="av-iris" id="av-iris-l" cx="87"  cy="118" r="6"/>
+    <circle  class="av-iris" id="av-iris-r" cx="133" cy="118" r="6"/>
+    <ellipse class="av-lid"  id="av-lid-l" cx="87"  cy="118" rx="15" ry="0"/>
+    <ellipse class="av-lid"  id="av-lid-r" cx="133" cy="118" rx="15" ry="0"/>
+    <path class="av-nose" d="M110 126 q-5 16 3 20"/>
+    <ellipse class="av-mouth" id="av-mouth" cx="110" cy="164" rx="18" ry="4"/>
+    <ellipse class="av-teeth" id="av-teeth" cx="110" cy="160" rx="12" ry="0"/>
+  </svg>
+</div>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
+<script>
+window.__cues=[{"element": "heading", "requested": "heading", "action": "show", "at_ms": 100, "word_index": 0}, {"element": "b-0", "requested": "0", "action": "show", "at_ms": 4737, "word_index": 10}, {"element": "b-1", "requested": "1", "action": "show", "at_ms": 7962, "word_index": 19}, {"element": "b-2", "requested": "2", "action": "show", "at_ms": 13187, "word_index": 29}];
+window.__kind="bullets";
+window.__duration=38800;
+window.__wordSpans=[{"at": 100, "dur": 325, "word": "You'd"}, {"at": 437, "dur": 650, "word": "definitely"}, {"at": 1100, "dur": 525, "word": "notice"}, {"at": 1637, "dur": 100, "word": "a"}, {"at": 1750, "dur": 475, "word": "different"}, {"at": 2237, "dur": 388, "word": "current"}, {"at": 2637, "dur": 450, "word": "reading!"}, {"at": 3950, "dur": 550, "word": "Copper"}, {"at": 4512, "dur": 150, "word": "is"}, {"at": 4675, "dur": 60, "word": "a"}, {"at": 4737, "dur": 350, "word": "much"}, {"at": 5100, "dur": 350, "word": "better"}, {"at": 5462, "dur": 563, "word": "conductor"}, {"at": 6037, "dur": 188, "word": "than"}, {"at": 6237, "dur": 625, "word": "nichrome,"}, {"at": 6987, "dur": 250, "word": "so"}, {"at": 7250, "dur": 100, "word": "the"}, {"at": 7362, "dur": 413, "word": "current"}, {"at": 7787, "dur": 163, "word": "would"}, {"at": 7962, "dur": 138, "word": "be"}, {"at": 8112, "dur": 900, "word": "significantly"}, {"at": 9025, "dur": 500, "word": "higher."}, {"at": 10412, "dur": 375, "word": "This"}, {"at": 10800, "dur": 625, "word": "observation"}, {"at": 11437, "dur": 613, "word": "confirms"}, {"at": 12062, "dur": 213, "word": "that"}, {"at": 12287, "dur": 75, "word": "the"}, {"at": 12375, "dur": 650, "word": "resistance"}, {"at": 13037, "dur": 138, "word": "of"}, {"at": 13187, "dur": 60, "word": "a"}, {"at": 13237, "dur": 688, "word": "conductor"}, {"at": 13937, "dur": 388, "word": "also"}, {"at": 14337, "dur": 500, "word": "depends"}, {"at": 14850, "dur": 137, "word": "on"}, {"at": 15000, "dur": 75, "word": "the"}, {"at": 15087, "dur": 438, "word": "nature"}, {"at": 15537, "dur": 150, "word": "of"}, {"at": 15700, "dur": 200, "word": "its"}, {"at": 15912, "dur": 625, "word": "material."}, {"at": 17400, "dur": 587, "word": "Different"}, {"at": 18000, "dur": 662, "word": "materials"}, {"at": 18675, "dur": 212, "word": "have"}, {"at": 18900, "dur": 475, "word": "different"}, {"at": 19387, "dur": 525, "word": "internal"}, {"at": 19925, "dur": 775, "word": "structures,"}, {"at": 20925, "dur": 225, "word": "which"}, {"at": 21162, "dur": 400, "word": "affect"}, {"at": 21575, "dur": 287, "word": "how"}, {"at": 21875, "dur": 487, "word": "easily"}, {"at": 22375, "dur": 687, "word": "electrons"}, {"at": 23075, "dur": 200, "word": "can"}, {"at": 23287, "dur": 275, "word": "move"}, {"at": 23575, "dur": 225, "word": "through"}, {"at": 23812, "dur": 375, "word": "them."}, {"at": 25062, "dur": 375, "word": "This"}, {"at": 25450, "dur": 150, "word": "is"}, {"at": 25612, "dur": 263, "word": "why"}, {"at": 25887, "dur": 150, "word": "we"}, {"at": 26050, "dur": 287, "word": "use"}, {"at": 26350, "dur": 475, "word": "copper"}, {"at": 26837, "dur": 250, "word": "for"}, {"at": 27100, "dur": 625, "word": "electrical"}, {"at": 27737, "dur": 475, "word": "wires"}, {"at": 28225, "dur": 225, "word": "but"}, {"at": 28462, "dur": 550, "word": "alloys"}, {"at": 29025, "dur": 250, "word": "like"}, {"at": 29287, "dur": 538, "word": "nichrome"}, {"at": 29837, "dur": 238, "word": "for"}, {"at": 30087, "dur": 450, "word": "heating"}, {"at": 30550, "dur": 675, "word": "elements."}, {"at": 32087, "dur": 950, "word": "[citations:"}, {"at": 33237, "dur": 5563, "word": "jesc111-640a680a2407:0011]"}];
+</script>
+<script>
+// Text-derived viseme approximation. A phoneme timeline would need a G2P model
+// we do not ship, so mouth shape is taken from the vowel in the word currently
+// being spoken: open for aa/ee, rounded for oo, narrow for consonant clusters.
+// Honest about what it is, and it tracks the audio because the word timings do.
+const VISEME = [
+  [/[ाआaā]|ऐ|ऑ/, {rx:16, ry:15, teeth:6}],   // open
+  [/[ीिइeिी]|ए/,  {rx:22, ry:8,  teeth:5}],   // wide
+  [/[ूुउoओ]|औ/,   {rx:11, ry:13, teeth:0}],   // rounded
+  [/[मबपmbp]/,    {rx:17, ry:2,  teeth:0}],   // closed
+];
+function visemeFor(word){
+  for(const [re, sh] of VISEME) if(re.test(word)) return sh;
+  return {rx:18, ry:9, teeth:3};
+}
+window.__avatarFrame = function(ms){
+  const m=document.getElementById('av-mouth'); if(!m) return;
+  const ws=window.__wordSpans||[];
+  let cur=null;
+  for(const w of ws){ if(w.at<=ms && ms<w.at+w.dur){ cur=w; break; } }
+
+  let rx=18, ry=3, teeth=0;
+  if(cur){
+    const sh=visemeFor(cur.word);
+    const p=(ms-cur.at)/Math.max(1,cur.dur);
+    const amp=Math.sin(Math.PI*Math.min(1,Math.max(0,p)));   // open then close
+    rx = 18 + (sh.rx-18)*amp;
+    ry = 3  + (sh.ry-3)*amp;
+    teeth = sh.teeth*amp;
+  }
+  m.setAttribute('rx', rx.toFixed(1));
+  m.setAttribute('ry', ry.toFixed(1));
+  const t=document.getElementById('av-teeth');
+  if(t) t.setAttribute('ry', teeth.toFixed(1));
+
+  // Idle: slow sway, breathing, eyes drifting toward the slide.
+  const a=document.getElementById('avatar');
+  if(a) a.style.transform='rotate('+(Math.sin(ms/1600)*1.4).toFixed(2)+'deg) '
+                        +'translateY('+(Math.sin(ms/2300)*2).toFixed(1)+'px)';
+  const gaze=Math.sin(ms/3100)*2.5;
+  ['av-iris-l','av-iris-r'].forEach((id,i)=>{
+    const e=document.getElementById(id);
+    if(e) e.setAttribute('cx', ((i?133:87)+gaze).toFixed(1));
+  });
+  // Brows lift a little while speaking, which reads as emphasis.
+  const lift = cur ? 2.5 : 0;
+  ['av-brow-l','av-brow-r'].forEach(id=>{
+    const e=document.getElementById(id); if(e) e.setAttribute('y', (94-lift).toFixed(1));
+  });
+  // Blink: ~every 4s, 120ms.
+  const blink=(ms%4200)<120 ? 9 : 0;
+  ['av-lid-l','av-lid-r'].forEach(id=>{
+    const e=document.getElementById(id); if(e) e.setAttribute('ry', blink);
+  });
+};
+</script>
+<script>
+const CUES = window.__cues || [];
+const KIND = window.__kind;
+function els(id){return document.querySelectorAll('[id="'+id+'"]');}
+function apply(c){
+  const t = c.element==='*' ? document.querySelectorAll('.reveal') : els(c.element);
+  t.forEach(e=>{
+    if(c.action==='hide') e.classList.remove('on');
+    else if(c.action==='highlight'){e.classList.add('on');e.classList.add('hl');}
+    else e.classList.add('on');
+  });
+}
+// A graph's line draws in rather than popping, so proportionality is watched
+// emerging rather than presented finished.
+function drawLine(pct){
+  const p=document.getElementById('line'); if(!p) return;
+  const L=p.getTotalLength();
+  p.style.strokeDasharray=L; p.style.strokeDashoffset=L*(1-pct);
+}
+window.seek = function(ms){
+  document.querySelectorAll('.reveal').forEach(e=>{e.classList.remove('on','hl');});
+  CUES.filter(c=>c.at_ms<=ms).forEach(apply);
+  if(KIND==='graph'){
+    const cs=CUES.length?CUES:[{at_ms:0}];
+    const span=Math.max(1,(cs[cs.length-1].at_ms||1)-(cs[0].at_ms||0));
+    drawLine(Math.max(0,Math.min(1,(ms-(cs[0].at_ms||0))/span)));
+  }
+  const ws=document.querySelectorAll('.caption .w');
+  let cur=null;
+  ws.forEach(w=>{
+    const on = Number(w.dataset.at)<=ms;
+    w.classList.toggle('spoken', on);
+    w.classList.remove('current');
+    if(on) cur=w;
+  });
+  if(cur){
+    cur.classList.add('current');
+    const box=document.querySelector('.caption');
+    const want=cur.offsetTop-box.offsetTop-38;   // keep the spoken line centred
+    if(Math.abs(box.scrollTop-want)>4) box.scrollTop=Math.max(0,want);
+  }
+  if(window.__avatarFrame) window.__avatarFrame(ms);
+  window.__seeked = ms;
+};
+window.play = function(){
+  const t0=performance.now();
+  (function tick(){
+    const ms=performance.now()-t0;
+    window.seek(ms);
+    if(ms < (window.__duration||0)) requestAnimationFrame(tick);
+  })();
+};
+if(KIND==='equation' && window.katex && window.__latex){
+  katex.render(window.__latex, document.getElementById('eq'),
+               {throwOnError:false, displayMode:true});
+}
+function mermaidFallback(){
+  const el=document.getElementById('diagram');
+  if(!el) return false;
+  const txt=(el.textContent||'').toLowerCase();
+  const broke = txt.includes('syntax error') || txt.includes('mermaid version')
+             || !!el.querySelector('.error-icon, .error-text');
+  if(!broke) return false;
+  let items=[]; try{ items=JSON.parse(el.dataset.fallback||'[]'); }catch(e){}
+  const ul=document.createElement('ul');
+  ul.className='bullets';
+  items.forEach((it,i)=>{
+    const li=document.createElement('li');
+    li.className='bullet reveal on'; li.id='b-'+i; li.textContent=it;
+    ul.appendChild(li);
+  });
+  el.replaceWith(ul);
+  window.__mermaidFellBack = true;
+  return true;
+}
+if(KIND==='diagram' && window.mermaid){
+  mermaid.initialize({startOnLoad:true, theme:'base', securityLevel:'loose',
+    themeVariables:{
+      background:'#0A0A0B', primaryColor:'#141416', primaryBorderColor:'#F2A65A',
+      primaryTextColor:'#EDEAE4', secondaryColor:'#1A1A1D', tertiaryColor:'#141416',
+      lineColor:'#F2A65A', textColor:'#EDEAE4', mainBkg:'#141416',
+      nodeBorder:'#F2A65A', clusterBkg:'#0A0A0B', fontSize:'19px'}});
+}
+if(KIND==='diagram'){
+  // Mermaid renders asynchronously; check after it has had a chance to fail.
+  let tries=0;
+  const check=setInterval(()=>{
+    tries++;
+    const done=document.querySelector('.mermaid svg')||document.querySelector('ul.bullets');
+    if(done){ mermaidFallback(); clearInterval(check); window.__ready=true; }
+    else if(tries>40){ mermaidFallback(); clearInterval(check); window.__ready=true; }
+  }, 60);
+} else {
+  window.__ready = true;
+}
+window.seek(0);
+</script>
+</body></html>

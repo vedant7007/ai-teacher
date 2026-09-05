@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en-IN"><head><meta charset="utf-8">
+<title>b14</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<style>
+:root{--bg:#0A0A0B;--fg:#EDEAE4;--muted:#8A857C;--accent:#F2A65A;--line:#232326}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+  font:16px/1.6 "Segoe UI",system-ui,"Nirmala UI","Noto Sans Devanagari",sans-serif}
+.slide{width:1280px;height:720px;padding:34px 72px 18px;display:flex;flex-direction:column;
+  gap:14px;position:relative;overflow:hidden}
+.kicker{color:var(--accent);font-size:14px;letter-spacing:.14em;text-transform:uppercase}
+h2{margin:0 0 18px;font-size:46px;font-weight:600;line-height:1.15;letter-spacing:-.02em}
+.stage{flex:1;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;min-height:0;width:100%}
+.figures{display:flex;gap:44px;flex-wrap:wrap;justify-content:center;align-items:baseline}
+.fig{font-size:76px;font-weight:600;letter-spacing:-.03em;color:var(--accent)}
+.mermaid svg{max-height:480px}
+.reveal{opacity:0;transform:translateY(10px);transition:opacity .45s ease,transform .45s ease}
+.reveal.on{opacity:1;transform:none}
+.reveal.hl{color:var(--accent)}
+.eq{font-size:62px;text-align:center}
+.terms{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.term{border:1px solid var(--line);border-radius:10px;padding:8px 14px;text-align:center}
+.term .tex{display:block;font-size:22px;color:var(--accent)}
+.term .lbl{display:block;font-size:13px;color:var(--muted)}
+svg{width:100%;height:100%;max-height:520px}
+.axis{stroke:var(--line);stroke-width:2}
+.axlbl{fill:var(--muted);font-size:15px;text-anchor:middle}
+.tick{fill:var(--muted);font-size:12px;text-anchor:middle}
+.schematic{fill:var(--muted);font-size:13px;text-anchor:end;font-style:italic}
+#line{stroke:var(--accent);stroke-width:3.5;stroke-linecap:round}
+.pt{fill:var(--accent)}
+.bullets{list-style:none;padding:0;margin:0;font-size:32px;display:flex;
+  flex-direction:column;gap:22px;max-width:1000px;line-height:1.35}
+.bullet{padding-left:32px;position:relative}
+.bullet:before{content:"";position:absolute;left:0;top:.58em;width:10px;height:10px;
+  border-radius:2px;background:var(--accent)}
+.code{background:#08080A;border:1px solid var(--line);border-radius:12px;padding:26px 30px;
+  font-family:"Cascadia Code",Consolas,monospace;font-size:24px;position:relative}
+.lang{position:absolute;top:8px;right:14px;font-size:12px;color:var(--muted)}
+.cl{white-space:pre}
+.out{margin-top:14px;border-left:3px solid var(--accent);padding-left:14px;color:var(--muted)}
+.olbl{font-size:12px;text-transform:uppercase;letter-spacing:.1em}
+.mermaid{background:transparent;display:flex;justify-content:center;
+  width:100%;font-size:19px}
+.mermaid svg{max-width:100%;height:auto;max-height:420px}
+.mermaid .nodeLabel,.mermaid .edgeLabel{fill:#EDEAE4!important;color:#EDEAE4!important}
+.mermaid .edgeLabel{background:#0A0A0B!important}
+.why{flex:0 0 auto;font-size:13px;color:var(--muted);
+  border-top:1px solid var(--line);padding-top:8px}
+/* Two lines, scrolled to follow the spoken word. A full transcript would cover
+   the visual it is meant to support. */
+.caption{flex:0 0 auto;height:76px;overflow:hidden;font-size:23px;line-height:38px;
+  position:relative}
+.caption .w{opacity:.35;transition:opacity .2s}
+.caption .w.spoken{opacity:1}
+.caption .w.current{color:var(--accent);opacity:1}
+
+.avatar{position:absolute;right:40px;bottom:150px;width:19%;max-width:210px;
+  filter:drop-shadow(0 12px 30px rgba(0,0,0,.6));transform-origin:50% 95%}
+.avatar svg{width:100%;height:auto;overflow:visible}
+.av-torso{fill:#F2A65A}
+.av-collar{fill:#e6edf3}
+.av-neck{fill:#e8c4a2}
+.av-head{fill:#f2d3b8}
+.av-hair{fill:#2b2118}
+.av-ear{fill:#e8c4a2}
+.av-brow{fill:#2b2118}
+.av-eyew{fill:#ffffff}
+.av-iris{fill:#3d2b1f}
+.av-lid{fill:#f2d3b8}
+.av-nose{fill:none;stroke:#d9ab86;stroke-width:3;stroke-linecap:round}
+.av-mouth{fill:#8c4a4a}
+.av-teeth{fill:#ffffff}
+</style></head>
+<body><div class="slide" id="slide">
+  <div class="stage"><h2 id="heading">Checkpoint 1: Ohm&#x27;s Law</h2><ul class="bullets"><li class="bullet reveal" id="b-0">Initial: V = 10V, I = 2A</li><li class="bullet reveal" id="b-1">New: V = 20V</li><li class="bullet reveal" id="b-2">What is the new current (I)?</li></ul></div>
+  <div class="caption"><span class="w" data-at="100">Alright, </span><span class="w" data-at="962">let&#x27;s </span><span class="w" data-at="1325">test </span><span class="w" data-at="1662">your </span><span class="w" data-at="1862">understanding </span><span class="w" data-at="2575">of </span><span class="w" data-at="2800">Ohm&#x27;s </span><span class="w" data-at="3187">Law. </span><span class="w" data-at="4362">If </span><span class="w" data-at="4625">you </span><span class="w" data-at="4800">have </span><span class="w" data-at="5025">a </span><span class="w" data-at="5087">circuit </span><span class="w" data-at="5550">where </span><span class="w" data-at="5825">the </span><span class="w" data-at="5925">potential </span><span class="w" data-at="6512">difference </span><span class="w" data-at="6987">across </span><span class="w" data-at="7462">a </span><span class="w" data-at="7550">wire </span><span class="w" data-at="8025">is </span><span class="w" data-at="8187">10 </span><span class="w" data-at="8475">Volts </span><span class="w" data-at="8950">and </span><span class="w" data-at="9162">the </span><span class="w" data-at="9250">current </span><span class="w" data-at="9637">flowing </span><span class="w" data-at="10050">through </span><span class="w" data-at="10300">it </span><span class="w" data-at="10437">is </span><span class="w" data-at="10587">2 </span><span class="w" data-at="10762">Amperes, </span><span class="w" data-at="11562">what </span><span class="w" data-at="11850">would </span><span class="w" data-at="12025">be </span><span class="w" data-at="12175">the </span><span class="w" data-at="12275">current </span><span class="w" data-at="12725">if </span><span class="w" data-at="12850">the </span><span class="w" data-at="12962">potential </span><span class="w" data-at="13550">difference </span><span class="w" data-at="14062">is </span><span class="w" data-at="14237">increased </span><span class="w" data-at="14787">to </span><span class="w" data-at="14900">20 </span><span class="w" data-at="15312">Volts, </span><span class="w" data-at="15937">assuming </span><span class="w" data-at="16525">the </span><span class="w" data-at="16625">wire&#x27;s </span><span class="w" data-at="17100">temperature </span><span class="w" data-at="17700">doesn&#x27;t </span><span class="w" data-at="18100">change? </span><span class="w" data-at="19487">Think </span><span class="w" data-at="19850">about </span><span class="w" data-at="20250">the </span><span class="w" data-at="20375">direct </span><span class="w" data-at="20862">relationship </span><span class="w" data-at="21675">we </span><span class="w" data-at="21912">just </span><span class="w" data-at="22250">discussed. </span></div>
+  
+<div class="avatar" id="avatar">
+  <svg viewBox="0 0 220 280" aria-hidden="true">
+    <defs>
+      <clipPath id="hairclip"><ellipse cx="110" cy="118" rx="66" ry="76"/></clipPath>
+    </defs>
+    <path class="av-torso" d="M34 280 q6-52 76-62 q70 10 76 62 z"/>
+    <path class="av-collar" d="M92 218 l18 20 l18-20 l-8-6 h-20 z"/>
+    <rect class="av-neck" x="96" y="186" width="28" height="34" rx="12"/>
+    <ellipse class="av-head" cx="110" cy="118" rx="66" ry="76"/>
+    <g clip-path="url(#hairclip)">
+      <path class="av-hair" d="M44 116 q4-72 66-72 q62 0 66 72 q-10-34-66-34 q-56 0-66 34z"/>
+    </g>
+    <ellipse class="av-ear" cx="45"  cy="126" rx="8" ry="13"/>
+    <ellipse class="av-ear" cx="175" cy="126" rx="8" ry="13"/>
+    <rect class="av-brow" id="av-brow-l" x="72"  y="94"  width="30" height="6" rx="3"/>
+    <rect class="av-brow" id="av-brow-r" x="118" y="94"  width="30" height="6" rx="3"/>
+    <ellipse class="av-eyew" cx="87"  cy="118" rx="14" ry="9"/>
+    <ellipse class="av-eyew" cx="133" cy="118" rx="14" ry="9"/>
+    <circle  class="av-iris" id="av-iris-l" cx="87"  cy="118" r="6"/>
+    <circle  class="av-iris" id="av-iris-r" cx="133" cy="118" r="6"/>
+    <ellipse class="av-lid"  id="av-lid-l" cx="87"  cy="118" rx="15" ry="0"/>
+    <ellipse class="av-lid"  id="av-lid-r" cx="133" cy="118" rx="15" ry="0"/>
+    <path class="av-nose" d="M110 126 q-5 16 3 20"/>
+    <ellipse class="av-mouth" id="av-mouth" cx="110" cy="164" rx="18" ry="4"/>
+    <ellipse class="av-teeth" id="av-teeth" cx="110" cy="160" rx="12" ry="0"/>
+  </svg>
+</div>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
+<script>
+window.__cues=[{"element": "heading", "requested": "heading", "action": "show", "at_ms": 100, "word_index": 0}, {"element": "b-0", "requested": "0", "action": "show", "at_ms": 7462, "word_index": 18}, {"element": "b-1", "requested": "1", "action": "show", "at_ms": 9637, "word_index": 26}, {"element": "b-2", "requested": "2", "action": "show", "at_ms": 11850, "word_index": 33}];
+window.__kind="bullets";
+window.__duration=22887;
+window.__wordSpans=[{"at": 100, "dur": 712, "word": "Alright,"}, {"at": 962, "dur": 350, "word": "let's"}, {"at": 1325, "dur": 325, "word": "test"}, {"at": 1662, "dur": 188, "word": "your"}, {"at": 1862, "dur": 700, "word": "understanding"}, {"at": 2575, "dur": 212, "word": "of"}, {"at": 2800, "dur": 375, "word": "Ohm's"}, {"at": 3187, "dur": 313, "word": "Law."}, {"at": 4362, "dur": 250, "word": "If"}, {"at": 4625, "dur": 162, "word": "you"}, {"at": 4800, "dur": 212, "word": "have"}, {"at": 5025, "dur": 60, "word": "a"}, {"at": 5087, "dur": 450, "word": "circuit"}, {"at": 5550, "dur": 262, "word": "where"}, {"at": 5825, "dur": 87, "word": "the"}, {"at": 5925, "dur": 575, "word": "potential"}, {"at": 6512, "dur": 463, "word": "difference"}, {"at": 6987, "dur": 463, "word": "across"}, {"at": 7462, "dur": 75, "word": "a"}, {"at": 7550, "dur": 462, "word": "wire"}, {"at": 8025, "dur": 150, "word": "is"}, {"at": 8187, "dur": 275, "word": "10"}, {"at": 8475, "dur": 462, "word": "Volts"}, {"at": 8950, "dur": 200, "word": "and"}, {"at": 9162, "dur": 75, "word": "the"}, {"at": 9250, "dur": 375, "word": "current"}, {"at": 9637, "dur": 400, "word": "flowing"}, {"at": 10050, "dur": 237, "word": "through"}, {"at": 10300, "dur": 125, "word": "it"}, {"at": 10437, "dur": 138, "word": "is"}, {"at": 10587, "dur": 163, "word": "2"}, {"at": 10762, "dur": 600, "word": "Amperes,"}, {"at": 11562, "dur": 275, "word": "what"}, {"at": 11850, "dur": 162, "word": "would"}, {"at": 12025, "dur": 137, "word": "be"}, {"at": 12175, "dur": 87, "word": "the"}, {"at": 12275, "dur": 437, "word": "current"}, {"at": 12725, "dur": 112, "word": "if"}, {"at": 12850, "dur": 100, "word": "the"}, {"at": 12962, "dur": 575, "word": "potential"}, {"at": 13550, "dur": 500, "word": "difference"}, {"at": 14062, "dur": 163, "word": "is"}, {"at": 14237, "dur": 538, "word": "increased"}, {"at": 14787, "dur": 100, "word": "to"}, {"at": 14900, "dur": 400, "word": "20"}, {"at": 15312, "dur": 450, "word": "Volts,"}, {"at": 15937, "dur": 575, "word": "assuming"}, {"at": 16525, "dur": 87, "word": "the"}, {"at": 16625, "dur": 462, "word": "wire's"}, {"at": 17100, "dur": 587, "word": "temperature"}, {"at": 17700, "dur": 387, "word": "doesn't"}, {"at": 18100, "dur": 512, "word": "change?"}, {"at": 19487, "dur": 350, "word": "Think"}, {"at": 19850, "dur": 387, "word": "about"}, {"at": 20250, "dur": 112, "word": "the"}, {"at": 20375, "dur": 475, "word": "direct"}, {"at": 20862, "dur": 800, "word": "relationship"}, {"at": 21675, "dur": 225, "word": "we"}, {"at": 21912, "dur": 325, "word": "just"}, {"at": 22250, "dur": 637, "word": "discussed."}];
+</script>
+<script>
+// Text-derived viseme approximation. A phoneme timeline would need a G2P model
+// we do not ship, so mouth shape is taken from the vowel in the word currently
+// being spoken: open for aa/ee, rounded for oo, narrow for consonant clusters.
+// Honest about what it is, and it tracks the audio because the word timings do.
+const VISEME = [
+  [/[ाआaā]|ऐ|ऑ/, {rx:16, ry:15, teeth:6}],   // open
+  [/[ीिइeिी]|ए/,  {rx:22, ry:8,  teeth:5}],   // wide
+  [/[ूुउoओ]|औ/,   {rx:11, ry:13, teeth:0}],   // rounded
+  [/[मबपmbp]/,    {rx:17, ry:2,  teeth:0}],   // closed
+];
+function visemeFor(word){
+  for(const [re, sh] of VISEME) if(re.test(word)) return sh;
+  return {rx:18, ry:9, teeth:3};
+}
+window.__avatarFrame = function(ms){
+  const m=document.getElementById('av-mouth'); if(!m) return;
+  const ws=window.__wordSpans||[];
+  let cur=null;
+  for(const w of ws){ if(w.at<=ms && ms<w.at+w.dur){ cur=w; break; } }
+
+  let rx=18, ry=3, teeth=0;
+  if(cur){
+    const sh=visemeFor(cur.word);
+    const p=(ms-cur.at)/Math.max(1,cur.dur);
+    const amp=Math.sin(Math.PI*Math.min(1,Math.max(0,p)));   // open then close
+    rx = 18 + (sh.rx-18)*amp;
+    ry = 3  + (sh.ry-3)*amp;
+    teeth = sh.teeth*amp;
+  }
+  m.setAttribute('rx', rx.toFixed(1));
+  m.setAttribute('ry', ry.toFixed(1));
+  const t=document.getElementById('av-teeth');
+  if(t) t.setAttribute('ry', teeth.toFixed(1));
+
+  // Idle: slow sway, breathing, eyes drifting toward the slide.
+  const a=document.getElementById('avatar');
+  if(a) a.style.transform='rotate('+(Math.sin(ms/1600)*1.4).toFixed(2)+'deg) '
+                        +'translateY('+(Math.sin(ms/2300)*2).toFixed(1)+'px)';
+  const gaze=Math.sin(ms/3100)*2.5;
+  ['av-iris-l','av-iris-r'].forEach((id,i)=>{
+    const e=document.getElementById(id);
+    if(e) e.setAttribute('cx', ((i?133:87)+gaze).toFixed(1));
+  });
+  // Brows lift a little while speaking, which reads as emphasis.
+  const lift = cur ? 2.5 : 0;
+  ['av-brow-l','av-brow-r'].forEach(id=>{
+    const e=document.getElementById(id); if(e) e.setAttribute('y', (94-lift).toFixed(1));
+  });
+  // Blink: ~every 4s, 120ms.
+  const blink=(ms%4200)<120 ? 9 : 0;
+  ['av-lid-l','av-lid-r'].forEach(id=>{
+    const e=document.getElementById(id); if(e) e.setAttribute('ry', blink);
+  });
+};
+</script>
+<script>
+const CUES = window.__cues || [];
+const KIND = window.__kind;
+function els(id){return document.querySelectorAll('[id="'+id+'"]');}
+function apply(c){
+  const t = c.element==='*' ? document.querySelectorAll('.reveal') : els(c.element);
+  t.forEach(e=>{
+    if(c.action==='hide') e.classList.remove('on');
+    else if(c.action==='highlight'){e.classList.add('on');e.classList.add('hl');}
+    else e.classList.add('on');
+  });
+}
+// A graph's line draws in rather than popping, so proportionality is watched
+// emerging rather than presented finished.
+function drawLine(pct){
+  const p=document.getElementById('line'); if(!p) return;
+  const L=p.getTotalLength();
+  p.style.strokeDasharray=L; p.style.strokeDashoffset=L*(1-pct);
+}
+window.seek = function(ms){
+  document.querySelectorAll('.reveal').forEach(e=>{e.classList.remove('on','hl');});
+  CUES.filter(c=>c.at_ms<=ms).forEach(apply);
+  if(KIND==='graph'){
+    const cs=CUES.length?CUES:[{at_ms:0}];
+    const span=Math.max(1,(cs[cs.length-1].at_ms||1)-(cs[0].at_ms||0));
+    drawLine(Math.max(0,Math.min(1,(ms-(cs[0].at_ms||0))/span)));
+  }
+  const ws=document.querySelectorAll('.caption .w');
+  let cur=null;
+  ws.forEach(w=>{
+    const on = Number(w.dataset.at)<=ms;
+    w.classList.toggle('spoken', on);
+    w.classList.remove('current');
+    if(on) cur=w;
+  });
+  if(cur){
+    cur.classList.add('current');
+    const box=document.querySelector('.caption');
+    const want=cur.offsetTop-box.offsetTop-38;   // keep the spoken line centred
+    if(Math.abs(box.scrollTop-want)>4) box.scrollTop=Math.max(0,want);
+  }
+  if(window.__avatarFrame) window.__avatarFrame(ms);
+  window.__seeked = ms;
+};
+window.play = function(){
+  const t0=performance.now();
+  (function tick(){
+    const ms=performance.now()-t0;
+    window.seek(ms);
+    if(ms < (window.__duration||0)) requestAnimationFrame(tick);
+  })();
+};
+if(KIND==='equation' && window.katex && window.__latex){
+  katex.render(window.__latex, document.getElementById('eq'),
+               {throwOnError:false, displayMode:true});
+}
+function mermaidFallback(){
+  const el=document.getElementById('diagram');
+  if(!el) return false;
+  const txt=(el.textContent||'').toLowerCase();
+  const broke = txt.includes('syntax error') || txt.includes('mermaid version')
+             || !!el.querySelector('.error-icon, .error-text');
+  if(!broke) return false;
+  let items=[]; try{ items=JSON.parse(el.dataset.fallback||'[]'); }catch(e){}
+  const ul=document.createElement('ul');
+  ul.className='bullets';
+  items.forEach((it,i)=>{
+    const li=document.createElement('li');
+    li.className='bullet reveal on'; li.id='b-'+i; li.textContent=it;
+    ul.appendChild(li);
+  });
+  el.replaceWith(ul);
+  window.__mermaidFellBack = true;
+  return true;
+}
+if(KIND==='diagram' && window.mermaid){
+  mermaid.initialize({startOnLoad:true, theme:'base', securityLevel:'loose',
+    themeVariables:{
+      background:'#0A0A0B', primaryColor:'#141416', primaryBorderColor:'#F2A65A',
+      primaryTextColor:'#EDEAE4', secondaryColor:'#1A1A1D', tertiaryColor:'#141416',
+      lineColor:'#F2A65A', textColor:'#EDEAE4', mainBkg:'#141416',
+      nodeBorder:'#F2A65A', clusterBkg:'#0A0A0B', fontSize:'19px'}});
+}
+if(KIND==='diagram'){
+  // Mermaid renders asynchronously; check after it has had a chance to fail.
+  let tries=0;
+  const check=setInterval(()=>{
+    tries++;
+    const done=document.querySelector('.mermaid svg')||document.querySelector('ul.bullets');
+    if(done){ mermaidFallback(); clearInterval(check); window.__ready=true; }
+    else if(tries>40){ mermaidFallback(); clearInterval(check); window.__ready=true; }
+  }, 60);
+} else {
+  window.__ready = true;
+}
+window.seek(0);
+</script>
+</body></html>

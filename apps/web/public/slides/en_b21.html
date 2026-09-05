@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en-IN"><head><meta charset="utf-8">
+<title>b21</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<style>
+:root{--bg:#0A0A0B;--fg:#EDEAE4;--muted:#8A857C;--accent:#F2A65A;--line:#232326}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+  font:16px/1.6 "Segoe UI",system-ui,"Nirmala UI","Noto Sans Devanagari",sans-serif}
+.slide{width:1280px;height:720px;padding:34px 72px 18px;display:flex;flex-direction:column;
+  gap:14px;position:relative;overflow:hidden}
+.kicker{color:var(--accent);font-size:14px;letter-spacing:.14em;text-transform:uppercase}
+h2{margin:0 0 18px;font-size:46px;font-weight:600;line-height:1.15;letter-spacing:-.02em}
+.stage{flex:1;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;min-height:0;width:100%}
+.figures{display:flex;gap:44px;flex-wrap:wrap;justify-content:center;align-items:baseline}
+.fig{font-size:76px;font-weight:600;letter-spacing:-.03em;color:var(--accent)}
+.mermaid svg{max-height:480px}
+.reveal{opacity:0;transform:translateY(10px);transition:opacity .45s ease,transform .45s ease}
+.reveal.on{opacity:1;transform:none}
+.reveal.hl{color:var(--accent)}
+.eq{font-size:62px;text-align:center}
+.terms{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.term{border:1px solid var(--line);border-radius:10px;padding:8px 14px;text-align:center}
+.term .tex{display:block;font-size:22px;color:var(--accent)}
+.term .lbl{display:block;font-size:13px;color:var(--muted)}
+svg{width:100%;height:100%;max-height:520px}
+.axis{stroke:var(--line);stroke-width:2}
+.axlbl{fill:var(--muted);font-size:15px;text-anchor:middle}
+.tick{fill:var(--muted);font-size:12px;text-anchor:middle}
+.schematic{fill:var(--muted);font-size:13px;text-anchor:end;font-style:italic}
+#line{stroke:var(--accent);stroke-width:3.5;stroke-linecap:round}
+.pt{fill:var(--accent)}
+.bullets{list-style:none;padding:0;margin:0;font-size:32px;display:flex;
+  flex-direction:column;gap:22px;max-width:1000px;line-height:1.35}
+.bullet{padding-left:32px;position:relative}
+.bullet:before{content:"";position:absolute;left:0;top:.58em;width:10px;height:10px;
+  border-radius:2px;background:var(--accent)}
+.code{background:#08080A;border:1px solid var(--line);border-radius:12px;padding:26px 30px;
+  font-family:"Cascadia Code",Consolas,monospace;font-size:24px;position:relative}
+.lang{position:absolute;top:8px;right:14px;font-size:12px;color:var(--muted)}
+.cl{white-space:pre}
+.out{margin-top:14px;border-left:3px solid var(--accent);padding-left:14px;color:var(--muted)}
+.olbl{font-size:12px;text-transform:uppercase;letter-spacing:.1em}
+.mermaid{background:transparent;display:flex;justify-content:center;
+  width:100%;font-size:19px}
+.mermaid svg{max-width:100%;height:auto;max-height:420px}
+.mermaid .nodeLabel,.mermaid .edgeLabel{fill:#EDEAE4!important;color:#EDEAE4!important}
+.mermaid .edgeLabel{background:#0A0A0B!important}
+.why{flex:0 0 auto;font-size:13px;color:var(--muted);
+  border-top:1px solid var(--line);padding-top:8px}
+/* Two lines, scrolled to follow the spoken word. A full transcript would cover
+   the visual it is meant to support. */
+.caption{flex:0 0 auto;height:76px;overflow:hidden;font-size:23px;line-height:38px;
+  position:relative}
+.caption .w{opacity:.35;transition:opacity .2s}
+.caption .w.spoken{opacity:1}
+.caption .w.current{color:var(--accent);opacity:1}
+
+.avatar{position:absolute;right:40px;bottom:150px;width:19%;max-width:210px;
+  filter:drop-shadow(0 12px 30px rgba(0,0,0,.6));transform-origin:50% 95%}
+.avatar svg{width:100%;height:auto;overflow:visible}
+.av-torso{fill:#F2A65A}
+.av-collar{fill:#e6edf3}
+.av-neck{fill:#e8c4a2}
+.av-head{fill:#f2d3b8}
+.av-hair{fill:#2b2118}
+.av-ear{fill:#e8c4a2}
+.av-brow{fill:#2b2118}
+.av-eyew{fill:#ffffff}
+.av-iris{fill:#3d2b1f}
+.av-lid{fill:#f2d3b8}
+.av-nose{fill:none;stroke:#d9ab86;stroke-width:3;stroke-linecap:round}
+.av-mouth{fill:#8c4a4a}
+.av-teeth{fill:#ffffff}
+</style></head>
+<body><div class="slide" id="slide">
+  <div class="stage"><pre class="mermaid reveal" id="diagram" class="reveal" data-fallback="[&quot;Let&#x27;s consider another imaginary experiment, similar to the one for Ohm&#x27;s Law.&quot;, &quot;We&#x27;ll set up a circuit with a battery, an ammeter, and a nichrome wire of a specific length, let&#x27;s say &#x27;l&#x27;, and a certain thickness.&quot;, &quot;We&#x27;ll measure the current flowing through this wire.&quot;, &quot;This initial measurement will serve as our baseline to compare against as we change the wire&#x27;s properties.&quot;]">graph TD
+    A[&quot;Battery&quot;] --&gt; B(&quot;Key&quot;)
+    B --&gt; C(&quot;Ammeter&quot;)
+    C --&gt; D[&quot;Nichrome Wire (Length l, Area A)&quot;]
+    D --&gt; A</pre></div>
+  <div class="caption"><span class="w" data-at="100">Let&#x27;s </span><span class="w" data-at="512">consider </span><span class="w" data-at="1150">another </span><span class="w" data-at="1675">imaginary </span><span class="w" data-at="2337">experiment, </span><span class="w" data-at="3337">similar </span><span class="w" data-at="3862">to </span><span class="w" data-at="3962">the </span><span class="w" data-at="4112">one </span><span class="w" data-at="4387">for </span><span class="w" data-at="4662">Ohm&#x27;s </span><span class="w" data-at="5000">Law. </span><span class="w" data-at="6162">We&#x27;ll </span><span class="w" data-at="6462">set </span><span class="w" data-at="6775">up </span><span class="w" data-at="6925">a </span><span class="w" data-at="7000">circuit </span><span class="w" data-at="7475">with </span><span class="w" data-at="7650">a </span><span class="w" data-at="7712">battery, </span><span class="w" data-at="8400">an </span><span class="w" data-at="8600">ammeter, </span><span class="w" data-at="9300">and </span><span class="w" data-at="9525">a </span><span class="w" data-at="9575">nichrome </span><span class="w" data-at="10100">wire </span><span class="w" data-at="10475">of </span><span class="w" data-at="10637">a </span><span class="w" data-at="10700">specific </span><span class="w" data-at="11337">length, </span><span class="w" data-at="11975">let&#x27;s </span><span class="w" data-at="12300">say </span><span class="w" data-at="12737">&#x27;l&#x27;, </span><span class="w" data-at="13262">and </span><span class="w" data-at="13500">a </span><span class="w" data-at="13562">certain </span><span class="w" data-at="14037">thickness. </span><span class="w" data-at="15575">We&#x27;ll </span><span class="w" data-at="15900">measure </span><span class="w" data-at="16300">the </span><span class="w" data-at="16400">current </span><span class="w" data-at="16775">flowing </span><span class="w" data-at="17212">through </span><span class="w" data-at="17400">this </span><span class="w" data-at="17675">wire. </span><span class="w" data-at="18962">This </span><span class="w" data-at="19375">initial </span><span class="w" data-at="19887">measurement </span><span class="w" data-at="20450">will </span><span class="w" data-at="20650">serve </span><span class="w" data-at="21087">as </span><span class="w" data-at="21300">our </span><span class="w" data-at="21425">baseline </span><span class="w" data-at="22012">to </span><span class="w" data-at="22125">compare </span><span class="w" data-at="22650">against </span><span class="w" data-at="23237">as </span><span class="w" data-at="23487">we </span><span class="w" data-at="23625">change </span><span class="w" data-at="24025">the </span><span class="w" data-at="24162">wire&#x27;s </span><span class="w" data-at="24612">properties. </span><span class="w" data-at="26212">[citations: </span><span class="w" data-at="27362">jesc111-640a680a2407:0011] </span></div>
+  
+<div class="avatar" id="avatar">
+  <svg viewBox="0 0 220 280" aria-hidden="true">
+    <defs>
+      <clipPath id="hairclip"><ellipse cx="110" cy="118" rx="66" ry="76"/></clipPath>
+    </defs>
+    <path class="av-torso" d="M34 280 q6-52 76-62 q70 10 76 62 z"/>
+    <path class="av-collar" d="M92 218 l18 20 l18-20 l-8-6 h-20 z"/>
+    <rect class="av-neck" x="96" y="186" width="28" height="34" rx="12"/>
+    <ellipse class="av-head" cx="110" cy="118" rx="66" ry="76"/>
+    <g clip-path="url(#hairclip)">
+      <path class="av-hair" d="M44 116 q4-72 66-72 q62 0 66 72 q-10-34-66-34 q-56 0-66 34z"/>
+    </g>
+    <ellipse class="av-ear" cx="45"  cy="126" rx="8" ry="13"/>
+    <ellipse class="av-ear" cx="175" cy="126" rx="8" ry="13"/>
+    <rect class="av-brow" id="av-brow-l" x="72"  y="94"  width="30" height="6" rx="3"/>
+    <rect class="av-brow" id="av-brow-r" x="118" y="94"  width="30" height="6" rx="3"/>
+    <ellipse class="av-eyew" cx="87"  cy="118" rx="14" ry="9"/>
+    <ellipse class="av-eyew" cx="133" cy="118" rx="14" ry="9"/>
+    <circle  class="av-iris" id="av-iris-l" cx="87"  cy="118" r="6"/>
+    <circle  class="av-iris" id="av-iris-r" cx="133" cy="118" r="6"/>
+    <ellipse class="av-lid"  id="av-lid-l" cx="87"  cy="118" rx="15" ry="0"/>
+    <ellipse class="av-lid"  id="av-lid-r" cx="133" cy="118" rx="15" ry="0"/>
+    <path class="av-nose" d="M110 126 q-5 16 3 20"/>
+    <ellipse class="av-mouth" id="av-mouth" cx="110" cy="164" rx="18" ry="4"/>
+    <ellipse class="av-teeth" id="av-teeth" cx="110" cy="160" rx="12" ry="0"/>
+  </svg>
+</div>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
+<script>
+window.__cues=[{"element": "diagram", "requested": "A", "action": "show", "at_ms": 100, "word_index": 0}, {"element": "diagram", "requested": "B", "action": "show", "at_ms": 6925, "word_index": 15}, {"element": "diagram", "requested": "C", "action": "show", "at_ms": 8400, "word_index": 20}, {"element": "diagram", "requested": "D", "action": "show", "at_ms": 10700, "word_index": 28}];
+window.__kind="diagram";
+window.__duration=32925;
+window.__wordSpans=[{"at": 100, "dur": 400, "word": "Let's"}, {"at": 512, "dur": 625, "word": "consider"}, {"at": 1150, "dur": 512, "word": "another"}, {"at": 1675, "dur": 650, "word": "imaginary"}, {"at": 2337, "dur": 850, "word": "experiment,"}, {"at": 3337, "dur": 513, "word": "similar"}, {"at": 3862, "dur": 88, "word": "to"}, {"at": 3962, "dur": 138, "word": "the"}, {"at": 4112, "dur": 263, "word": "one"}, {"at": 4387, "dur": 263, "word": "for"}, {"at": 4662, "dur": 325, "word": "Ohm's"}, {"at": 5000, "dur": 300, "word": "Law."}, {"at": 6162, "dur": 288, "word": "We'll"}, {"at": 6462, "dur": 300, "word": "set"}, {"at": 6775, "dur": 137, "word": "up"}, {"at": 6925, "dur": 62, "word": "a"}, {"at": 7000, "dur": 462, "word": "circuit"}, {"at": 7475, "dur": 162, "word": "with"}, {"at": 7650, "dur": 60, "word": "a"}, {"at": 7712, "dur": 575, "word": "battery,"}, {"at": 8400, "dur": 187, "word": "an"}, {"at": 8600, "dur": 562, "word": "ammeter,"}, {"at": 9300, "dur": 212, "word": "and"}, {"at": 9525, "dur": 60, "word": "a"}, {"at": 9575, "dur": 512, "word": "nichrome"}, {"at": 10100, "dur": 362, "word": "wire"}, {"at": 10475, "dur": 150, "word": "of"}, {"at": 10637, "dur": 60, "word": "a"}, {"at": 10700, "dur": 625, "word": "specific"}, {"at": 11337, "dur": 413, "word": "length,"}, {"at": 11975, "dur": 312, "word": "let's"}, {"at": 12300, "dur": 337, "word": "say"}, {"at": 12737, "dur": 400, "word": "'l',"}, {"at": 13262, "dur": 225, "word": "and"}, {"at": 13500, "dur": 60, "word": "a"}, {"at": 13562, "dur": 463, "word": "certain"}, {"at": 14037, "dur": 675, "word": "thickness."}, {"at": 15575, "dur": 312, "word": "We'll"}, {"at": 15900, "dur": 387, "word": "measure"}, {"at": 16300, "dur": 87, "word": "the"}, {"at": 16400, "dur": 362, "word": "current"}, {"at": 16775, "dur": 425, "word": "flowing"}, {"at": 17212, "dur": 175, "word": "through"}, {"at": 17400, "dur": 262, "word": "this"}, {"at": 17675, "dur": 425, "word": "wire."}, {"at": 18962, "dur": 400, "word": "This"}, {"at": 19375, "dur": 500, "word": "initial"}, {"at": 19887, "dur": 550, "word": "measurement"}, {"at": 20450, "dur": 187, "word": "will"}, {"at": 20650, "dur": 425, "word": "serve"}, {"at": 21087, "dur": 200, "word": "as"}, {"at": 21300, "dur": 112, "word": "our"}, {"at": 21425, "dur": 575, "word": "baseline"}, {"at": 22012, "dur": 100, "word": "to"}, {"at": 22125, "dur": 512, "word": "compare"}, {"at": 22650, "dur": 575, "word": "against"}, {"at": 23237, "dur": 238, "word": "as"}, {"at": 23487, "dur": 125, "word": "we"}, {"at": 23625, "dur": 387, "word": "change"}, {"at": 24025, "dur": 125, "word": "the"}, {"at": 24162, "dur": 438, "word": "wire's"}, {"at": 24612, "dur": 738, "word": "properties."}, {"at": 26212, "dur": 950, "word": "[citations:"}, {"at": 27362, "dur": 5563, "word": "jesc111-640a680a2407:0011]"}];
+</script>
+<script>
+// Text-derived viseme approximation. A phoneme timeline would need a G2P model
+// we do not ship, so mouth shape is taken from the vowel in the word currently
+// being spoken: open for aa/ee, rounded for oo, narrow for consonant clusters.
+// Honest about what it is, and it tracks the audio because the word timings do.
+const VISEME = [
+  [/[ाआaā]|ऐ|ऑ/, {rx:16, ry:15, teeth:6}],   // open
+  [/[ीिइeिी]|ए/,  {rx:22, ry:8,  teeth:5}],   // wide
+  [/[ूुउoओ]|औ/,   {rx:11, ry:13, teeth:0}],   // rounded
+  [/[मबपmbp]/,    {rx:17, ry:2,  teeth:0}],   // closed
+];
+function visemeFor(word){
+  for(const [re, sh] of VISEME) if(re.test(word)) return sh;
+  return {rx:18, ry:9, teeth:3};
+}
+window.__avatarFrame = function(ms){
+  const m=document.getElementById('av-mouth'); if(!m) return;
+  const ws=window.__wordSpans||[];
+  let cur=null;
+  for(const w of ws){ if(w.at<=ms && ms<w.at+w.dur){ cur=w; break; } }
+
+  let rx=18, ry=3, teeth=0;
+  if(cur){
+    const sh=visemeFor(cur.word);
+    const p=(ms-cur.at)/Math.max(1,cur.dur);
+    const amp=Math.sin(Math.PI*Math.min(1,Math.max(0,p)));   // open then close
+    rx = 18 + (sh.rx-18)*amp;
+    ry = 3  + (sh.ry-3)*amp;
+    teeth = sh.teeth*amp;
+  }
+  m.setAttribute('rx', rx.toFixed(1));
+  m.setAttribute('ry', ry.toFixed(1));
+  const t=document.getElementById('av-teeth');
+  if(t) t.setAttribute('ry', teeth.toFixed(1));
+
+  // Idle: slow sway, breathing, eyes drifting toward the slide.
+  const a=document.getElementById('avatar');
+  if(a) a.style.transform='rotate('+(Math.sin(ms/1600)*1.4).toFixed(2)+'deg) '
+                        +'translateY('+(Math.sin(ms/2300)*2).toFixed(1)+'px)';
+  const gaze=Math.sin(ms/3100)*2.5;
+  ['av-iris-l','av-iris-r'].forEach((id,i)=>{
+    const e=document.getElementById(id);
+    if(e) e.setAttribute('cx', ((i?133:87)+gaze).toFixed(1));
+  });
+  // Brows lift a little while speaking, which reads as emphasis.
+  const lift = cur ? 2.5 : 0;
+  ['av-brow-l','av-brow-r'].forEach(id=>{
+    const e=document.getElementById(id); if(e) e.setAttribute('y', (94-lift).toFixed(1));
+  });
+  // Blink: ~every 4s, 120ms.
+  const blink=(ms%4200)<120 ? 9 : 0;
+  ['av-lid-l','av-lid-r'].forEach(id=>{
+    const e=document.getElementById(id); if(e) e.setAttribute('ry', blink);
+  });
+};
+</script>
+<script>
+const CUES = window.__cues || [];
+const KIND = window.__kind;
+function els(id){return document.querySelectorAll('[id="'+id+'"]');}
+function apply(c){
+  const t = c.element==='*' ? document.querySelectorAll('.reveal') : els(c.element);
+  t.forEach(e=>{
+    if(c.action==='hide') e.classList.remove('on');
+    else if(c.action==='highlight'){e.classList.add('on');e.classList.add('hl');}
+    else e.classList.add('on');
+  });
+}
+// A graph's line draws in rather than popping, so proportionality is watched
+// emerging rather than presented finished.
+function drawLine(pct){
+  const p=document.getElementById('line'); if(!p) return;
+  const L=p.getTotalLength();
+  p.style.strokeDasharray=L; p.style.strokeDashoffset=L*(1-pct);
+}
+window.seek = function(ms){
+  document.querySelectorAll('.reveal').forEach(e=>{e.classList.remove('on','hl');});
+  CUES.filter(c=>c.at_ms<=ms).forEach(apply);
+  if(KIND==='graph'){
+    const cs=CUES.length?CUES:[{at_ms:0}];
+    const span=Math.max(1,(cs[cs.length-1].at_ms||1)-(cs[0].at_ms||0));
+    drawLine(Math.max(0,Math.min(1,(ms-(cs[0].at_ms||0))/span)));
+  }
+  const ws=document.querySelectorAll('.caption .w');
+  let cur=null;
+  ws.forEach(w=>{
+    const on = Number(w.dataset.at)<=ms;
+    w.classList.toggle('spoken', on);
+    w.classList.remove('current');
+    if(on) cur=w;
+  });
+  if(cur){
+    cur.classList.add('current');
+    const box=document.querySelector('.caption');
+    const want=cur.offsetTop-box.offsetTop-38;   // keep the spoken line centred
+    if(Math.abs(box.scrollTop-want)>4) box.scrollTop=Math.max(0,want);
+  }
+  if(window.__avatarFrame) window.__avatarFrame(ms);
+  window.__seeked = ms;
+};
+window.play = function(){
+  const t0=performance.now();
+  (function tick(){
+    const ms=performance.now()-t0;
+    window.seek(ms);
+    if(ms < (window.__duration||0)) requestAnimationFrame(tick);
+  })();
+};
+if(KIND==='equation' && window.katex && window.__latex){
+  katex.render(window.__latex, document.getElementById('eq'),
+               {throwOnError:false, displayMode:true});
+}
+function mermaidFallback(){
+  const el=document.getElementById('diagram');
+  if(!el) return false;
+  const txt=(el.textContent||'').toLowerCase();
+  const broke = txt.includes('syntax error') || txt.includes('mermaid version')
+             || !!el.querySelector('.error-icon, .error-text');
+  if(!broke) return false;
+  let items=[]; try{ items=JSON.parse(el.dataset.fallback||'[]'); }catch(e){}
+  const ul=document.createElement('ul');
+  ul.className='bullets';
+  items.forEach((it,i)=>{
+    const li=document.createElement('li');
+    li.className='bullet reveal on'; li.id='b-'+i; li.textContent=it;
+    ul.appendChild(li);
+  });
+  el.replaceWith(ul);
+  window.__mermaidFellBack = true;
+  return true;
+}
+if(KIND==='diagram' && window.mermaid){
+  mermaid.initialize({startOnLoad:true, theme:'base', securityLevel:'loose',
+    themeVariables:{
+      background:'#0A0A0B', primaryColor:'#141416', primaryBorderColor:'#F2A65A',
+      primaryTextColor:'#EDEAE4', secondaryColor:'#1A1A1D', tertiaryColor:'#141416',
+      lineColor:'#F2A65A', textColor:'#EDEAE4', mainBkg:'#141416',
+      nodeBorder:'#F2A65A', clusterBkg:'#0A0A0B', fontSize:'19px'}});
+}
+if(KIND==='diagram'){
+  // Mermaid renders asynchronously; check after it has had a chance to fail.
+  let tries=0;
+  const check=setInterval(()=>{
+    tries++;
+    const done=document.querySelector('.mermaid svg')||document.querySelector('ul.bullets');
+    if(done){ mermaidFallback(); clearInterval(check); window.__ready=true; }
+    else if(tries>40){ mermaidFallback(); clearInterval(check); window.__ready=true; }
+  }, 60);
+} else {
+  window.__ready = true;
+}
+window.seek(0);
+</script>
+</body></html>
