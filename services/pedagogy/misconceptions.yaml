@@ -1,0 +1,609 @@
+# Misconception taxonomy.
+#
+# Matching is DETERMINISTIC first: an answer is tested against `trigger_patterns`
+# before any model is consulted. That makes the adaptation test offline, instant,
+# and unable to flake on a network call, and it makes the pedagogy inspectable by
+# a judge reading this file rather than hidden inside a prompt.
+#
+# `trigger_patterns` are regular expressions, matched case-insensitively against
+# the student's answer. Hindi and Hinglish variants sit alongside English because
+# the demo teaches in Hindi from an English source.
+#
+# `analogy_family` records the family the CORRECT model is usually taught with,
+# so re-explanation can deliberately switch to a different one.
+
+misconceptions:
+
+  # ---------------- physics: electricity ----------------
+
+  - id: ohms_law_inverse_confusion
+    subject: physics
+    concept: ohms_law
+    summary: Believes current rises when resistance rises at constant voltage.
+    trigger_patterns:
+      - "current\\s+(will\\s+)?(also\\s+)?increase"
+      - "current\\s+(goes|will go)\\s+up"
+      - "(zyada|jyada)\\s+current"
+      - "current.{0,16}(zyada|jyada|badh)"
+      - "current.{0,20}(bhi\\s+)?(increase|badh)"
+      - "करंट\\s*(भी\\s*)?(बढ़|अधिक|ज्यादा)"
+      - "धारा\\s*(भी\\s*)?(बढ़|अधिक)"
+      - "resistance.{0,24}increase.{0,24}current.{0,24}increase"
+    correct_model: >
+      At constant voltage, current is inversely proportional to resistance.
+      I = V/R, so if R doubles, I halves. Resistance opposes flow.
+    analogy_family: mechanical
+    preferred_analogy: >
+      A wider pipe lets more water through for the same pump pressure. Narrowing
+      the pipe adds resistance, so less water flows, not more.
+    diagnostic_question: >
+      A 12 V battery drives a 4 ohm resistor. If you swap it for an 8 ohm
+      resistor, does the current go up, go down, or stay the same? Give the number.
+
+  - id: voltage_current_conflation
+    subject: physics
+    concept: potential_difference
+    summary: Treats voltage and current as the same quantity.
+    trigger_patterns:
+      - "voltage\\s+is\\s+(the\\s+)?(same as|equal to)\\s+current"
+      - "current\\s+and\\s+voltage\\s+are\\s+(the\\s+)?same"
+      - "वोल्टेज\\s*(और|=)\\s*करंट\\s*(एक|समान|बराबर)"
+    correct_model: >
+      Voltage is the work done per unit charge between two points. Current is
+      the rate at which charge flows. Voltage causes current; they are different
+      quantities with different units.
+    analogy_family: mechanical
+    preferred_analogy: >
+      Voltage is the pressure difference across a pump. Current is how many
+      litres per second actually move.
+    diagnostic_question: >
+      A wire carries 2 A when 6 V is applied. Which quantity would change if you
+      made the wire thicker but kept the battery the same, and why?
+
+  - id: resistance_area_direct
+    subject: physics
+    concept: factors_of_resistance
+    summary: Thinks a thicker wire has more resistance.
+    trigger_patterns:
+      - "thicker.{0,20}(more|higher)\\s+resistance"
+      - "(more|larger|bigger)\\s+area.{0,24}(more|higher)\\s+resistance"
+      - "मोटा.{0,20}(ज्यादा|अधिक)\\s*प्रतिरोध"
+      - "क्षेत्रफल.{0,24}(बढ़|ज्यादा).{0,24}प्रतिरोध.{0,20}(बढ़|ज्यादा)"
+    correct_model: >
+      Resistance is inversely proportional to cross-sectional area. R = rho*l/A,
+      so doubling the area halves the resistance.
+    analogy_family: everyday
+    preferred_analogy: >
+      A wide doorway lets a crowd out faster than a narrow one. More width means
+      less obstruction, not more.
+    diagnostic_question: >
+      Two copper wires have the same length, but one is twice as thick. Which has
+      the lower resistance, and by what factor?
+
+  - id: resistance_length_inverse
+    subject: physics
+    concept: factors_of_resistance
+    summary: Thinks a longer wire has less resistance.
+    trigger_patterns:
+      - "longer.{0,20}(less|lower|kam)\\s+resistance"
+      - "लंबा.{0,20}(कम)\\s*प्रतिरोध"
+      - "length.{0,20}increase.{0,24}resistance.{0,20}(decrease|less)"
+    correct_model: >
+      Resistance is directly proportional to length. R = rho*l/A, so a wire twice
+      as long has twice the resistance.
+    analogy_family: everyday
+    preferred_analogy: >
+      Walking down a long crowded corridor takes more effort than a short one.
+      More corridor means more obstruction.
+    diagnostic_question: >
+      You cut a 10 ohm wire exactly in half. What is the resistance of one piece?
+
+  - id: series_current_divides
+    subject: physics
+    concept: resistors_in_series
+    summary: Thinks current splits between resistors in series.
+    trigger_patterns:
+      - "current\\s+(splits|divides|is divided)"
+      - "series.{0,24}current.{0,24}(different|divide|split)"
+      - "श्रेणी.{0,24}धारा.{0,24}(बंट|अलग|विभाजित)"
+    correct_model: >
+      In series there is only one path, so the same current flows through every
+      component. It is the voltage that divides.
+    analogy_family: everyday
+    preferred_analogy: >
+      A single-file queue through several doorways: everyone passes through every
+      doorway, so the rate is the same at each.
+    diagnostic_question: >
+      Three resistors in series carry 0.5 A through the first. What current flows
+      through the third, and what does divide between them instead?
+
+  - id: parallel_resistance_adds
+    subject: physics
+    concept: resistors_in_parallel
+    summary: Adds resistances directly when they are in parallel.
+    trigger_patterns:
+      - "parallel.{0,24}(add|sum|jodo)"
+      - "R\\s*=\\s*R1\\s*\\+\\s*R2.{0,24}parallel"
+      - "पार्श्व.{0,24}(जोड़|योग)"
+      - "समांतर.{0,24}(जोड़|योग)"
+    correct_model: >
+      In parallel the reciprocals add: 1/R = 1/R1 + 1/R2. The combined resistance
+      is always LESS than the smallest individual resistor.
+    analogy_family: everyday
+    preferred_analogy: >
+      Opening a second checkout lane cannot make the queue slower. More paths
+      means less total obstruction.
+    diagnostic_question: >
+      Two 10 ohm resistors are connected in parallel. Is the total more or less
+      than 10 ohms, and what is it exactly?
+
+  - id: power_equals_current
+    subject: physics
+    concept: electric_power
+    summary: Treats power and current as interchangeable.
+    trigger_patterns:
+      - "power\\s+is\\s+(the\\s+)?same\\s+as\\s+current"
+      - "पावर\\s*(और|=)\\s*करंट\\s*(एक|समान)"
+      - "watt.{0,16}(is|=).{0,10}amp"
+    correct_model: >
+      Power is the rate of energy transfer, P = VI. Current alone does not fix
+      the power, because the voltage matters too.
+    analogy_family: financial
+    preferred_analogy: >
+      Current is how many coins per second pass you. Power also depends on how
+      valuable each coin is.
+    diagnostic_question: >
+      Two devices both draw 2 A, one at 12 V and one at 240 V. Do they consume
+      the same power? Show the numbers.
+
+  - id: heating_independent_of_resistance
+    subject: physics
+    concept: heating_effect
+    summary: Thinks heat produced does not depend on resistance.
+    trigger_patterns:
+      - "heat.{0,24}(does not|doesn't|not).{0,16}depend.{0,16}resistance"
+      - "ऊष्मा.{0,24}प्रतिरोध.{0,20}(निर्भर नहीं|नहीं)"
+    correct_model: >
+      Joule's law: H = I^2*R*t. Heat is directly proportional to resistance for a
+      given current, which is why a heating element is deliberately high-resistance.
+    analogy_family: mechanical
+    preferred_analogy: >
+      Rubbing your hands together harder, against more friction, makes more heat.
+      Resistance is the electrical friction.
+    diagnostic_question: >
+      Why is the heating coil in a toaster made of nichrome rather than copper,
+      when both carry the same current?
+
+  # ---------------- physics: mechanics ----------------
+
+  - id: heavier_falls_faster
+    subject: physics
+    concept: gravity
+    summary: Believes heavier objects fall faster in the absence of air resistance.
+    trigger_patterns:
+      - "heav(y|ier).{0,24}fall.{0,16}(faster|first|pehle)"
+      - "भारी.{0,24}(तेज़|तेज|पहले).{0,16}गिर"
+    correct_model: >
+      In a vacuum all objects accelerate at the same g regardless of mass.
+      Greater mass means greater force but also greater inertia, and they cancel.
+    analogy_family: everyday
+    preferred_analogy: >
+      A feather and a hammer dropped on the Moon land together, because there is
+      no air to slow the feather.
+    diagnostic_question: >
+      A 1 kg and a 10 kg ball are dropped together in a vacuum from 20 m. Which
+      lands first, and why?
+
+  - id: force_needed_for_motion
+    subject: physics
+    concept: newtons_first_law
+    summary: Thinks continuous force is required to keep something moving.
+    trigger_patterns:
+      - "force.{0,24}(needed|required).{0,24}(keep|continue).{0,16}mov"
+      - "बल.{0,24}(चाहिए|ज़रूरी).{0,24}चलत"
+    correct_model: >
+      An object in motion stays in motion unless a net external force acts.
+      Force is needed to CHANGE motion, not to sustain it.
+    analogy_family: everyday
+    preferred_analogy: >
+      A puck slides across smooth ice with nothing pushing it. It slows only
+      because of friction, not because it "runs out" of motion.
+    diagnostic_question: >
+      A spacecraft switches off its engines far from any planet. Does it slow
+      down, speed up, or continue at constant velocity?
+
+  - id: action_reaction_cancel
+    subject: physics
+    concept: newtons_third_law
+    summary: Thinks action and reaction cancel so nothing can accelerate.
+    trigger_patterns:
+      - "action.{0,16}reaction.{0,16}cancel"
+      - "क्रिया.{0,16}प्रतिक्रिया.{0,16}(रद्द|बराबर.{0,12}शून्य)"
+    correct_model: >
+      Action and reaction act on DIFFERENT bodies, so they never cancel on the
+      same body. Only forces on the same object can cancel.
+    analogy_family: everyday
+    preferred_analogy: >
+      When you push off a wall on a skateboard, the wall pushes you. The two
+      forces act on different things, so you move.
+    diagnostic_question: >
+      A horse pulls a cart. If the cart pulls back equally, how does the pair
+      ever move forward?
+
+  - id: mass_weight_confusion
+    subject: physics
+    concept: mass_and_weight
+    summary: Uses mass and weight interchangeably.
+    trigger_patterns:
+      - "mass\\s+(is|and)\\s+(the\\s+)?same\\s+as\\s+weight"
+      - "द्रव्यमान\\s*(और|=)\\s*भार\\s*(एक|समान)"
+    correct_model: >
+      Mass is the amount of matter, in kilograms, and does not change with
+      location. Weight is the force of gravity on that mass, in newtons.
+    analogy_family: everyday
+    preferred_analogy: >
+      Your mass on the Moon is unchanged, but you weigh about a sixth as much,
+      because the Moon pulls more weakly.
+    diagnostic_question: >
+      An astronaut has a mass of 70 kg on Earth. What is her mass on the Moon,
+      and what is her weight there?
+
+  # ---------------- mathematics ----------------
+
+  - id: fraction_addition_denominators
+    subject: mathematics
+    concept: fractions
+    summary: Adds numerators and denominators separately.
+    trigger_patterns:
+      - "1/2\\s*\\+\\s*1/3\\s*=\\s*2/5"
+      - "add.{0,16}(top|numerator).{0,24}(bottom|denominator)"
+      - "अंश.{0,16}हर.{0,16}(अलग|दोनों).{0,16}जोड़"
+    correct_model: >
+      Fractions must share a denominator before adding. 1/2 + 1/3 becomes
+      3/6 + 2/6 = 5/6.
+    analogy_family: everyday
+    preferred_analogy: >
+      Half a pizza plus a third of a pizza is more than half a pizza. 2/5 is
+      less than half, so it cannot be right.
+    diagnostic_question: >
+      What is 1/4 + 1/4? Now check your method against that answer.
+
+  - id: negative_squared_negative
+    subject: mathematics
+    concept: exponents
+    summary: Thinks squaring a negative number gives a negative result.
+    trigger_patterns:
+      - "\\(-\\s*\\d+\\s*\\)\\s*\\^?2\\s*=\\s*-"
+      - "negative.{0,16}squared.{0,16}(is\\s+)?negative"
+      - "ऋण.{0,16}वर्ग.{0,16}ऋण"
+    correct_model: >
+      A negative times a negative is positive, so (-3)^2 = 9. Only -3^2 without
+      brackets means -(3^2) = -9.
+    analogy_family: computational
+    preferred_analogy: >
+      Two reversals return you to the original direction: turning around twice
+      leaves you facing forward.
+    diagnostic_question: >
+      Evaluate (-4)^2 and -4^2 separately, and explain why they differ.
+
+  - id: correlation_implies_causation
+    subject: mathematics
+    concept: statistics
+    summary: Concludes causation from correlation.
+    trigger_patterns:
+      - "correlat.{0,24}(so|therefore|means).{0,16}caus"
+      - "सहसंबंध.{0,24}(इसलिए|मतलब).{0,16}कारण"
+    correct_model: >
+      Correlation shows two variables move together. It cannot by itself
+      establish that one causes the other; a third factor may drive both.
+    analogy_family: everyday
+    preferred_analogy: >
+      Ice cream sales and drowning rise together. Neither causes the other;
+      hot weather drives both.
+    diagnostic_question: >
+      Shoe size correlates with reading ability in children. Does bigger footwear
+      cause better reading? What explains it?
+
+  - id: percentage_change_symmetry
+    subject: mathematics
+    concept: percentages
+    summary: Thinks a 50 percent fall is undone by a 50 percent rise.
+    trigger_patterns:
+      - "(down|fall|decrease).{0,16}50.{0,24}(up|rise|increase).{0,16}50.{0,24}(same|back|original)"
+      - "50.{0,12}(प्रतिशत|%).{0,24}वापस.{0,16}(वही|मूल)"
+    correct_model: >
+      Percentages apply to the current value. 100 falls by 50 percent to 50; a
+      50 percent rise on 50 returns only 75.
+    analogy_family: financial
+    preferred_analogy: >
+      Losing half your money then gaining half of what remains leaves you poorer
+      than you started.
+    diagnostic_question: >
+      A share falls 20 percent then rises 20 percent. Is it back to its original
+      price? Work it out from 100.
+
+  - id: division_always_shrinks
+    subject: mathematics
+    concept: division
+    summary: Believes dividing always produces a smaller number.
+    trigger_patterns:
+      - "divid.{0,24}always.{0,16}smaller"
+      - "भाग.{0,24}हमेशा.{0,16}छोटा"
+    correct_model: >
+      Dividing by a number less than 1 increases the value. 6 divided by 0.5 is
+      12, because 0.5 fits into 6 twelve times.
+    analogy_family: everyday
+    preferred_analogy: >
+      How many half-slices fit in six slices? Twelve. Cutting into smaller pieces
+      gives you more pieces.
+    diagnostic_question: >
+      Compute 10 divided by 0.25 and explain why the answer is larger than 10.
+
+  # ---------------- biology ----------------
+
+  - id: plants_only_photosynthesise
+    subject: biology
+    concept: respiration
+    summary: Thinks plants photosynthesise but do not respire.
+    trigger_patterns:
+      - "plants?.{0,24}(do not|don't|never).{0,16}respire"
+      - "पौधे.{0,24}(श्वसन नहीं|साँस नहीं)"
+    correct_model: >
+      Plants respire continuously, day and night. In daylight photosynthesis
+      simply exceeds respiration, so there is net oxygen release.
+    analogy_family: biological
+    preferred_analogy: >
+      A factory that both makes and consumes electricity still consumes it at
+      night, when production stops.
+    diagnostic_question: >
+      Does a plant in a sealed dark box consume oxygen? Explain what happens over
+      a whole day and night.
+
+  - id: evolution_is_individual
+    subject: biology
+    concept: evolution
+    summary: Thinks individual organisms evolve during their lifetime.
+    trigger_patterns:
+      - "(individual|organism).{0,24}evolve.{0,24}(lifetime|life)"
+      - "giraffe.{0,24}stretch.{0,24}neck"
+      - "जीव.{0,24}जीवनकाल.{0,24}विकसित"
+    correct_model: >
+      Populations evolve, not individuals. Heritable variation plus differential
+      survival changes allele frequencies across generations.
+    analogy_family: biological
+    preferred_analogy: >
+      A single brick does not change shape. The wall's overall pattern changes as
+      different bricks are chosen over many rebuilds.
+    diagnostic_question: >
+      If a weightlifter builds muscle, will their children be born stronger?
+      What does that tell you about how evolution works?
+
+  - id: dna_and_gene_same
+    subject: biology
+    concept: genetics
+    summary: Uses DNA, gene and chromosome interchangeably.
+    trigger_patterns:
+      - "gene.{0,16}(is|and).{0,16}same.{0,16}(as\\s+)?(dna|chromosome)"
+      - "जीन\\s*(और|=)\\s*(डीएनए|गुणसूत्र)\\s*(एक|समान)"
+    correct_model: >
+      DNA is the molecule. A gene is a stretch of DNA coding for a product. A
+      chromosome is a packaged length of DNA containing many genes.
+    analogy_family: computational
+    preferred_analogy: >
+      DNA is the text, a gene is one instruction in it, a chromosome is a whole
+      volume on the shelf.
+    diagnostic_question: >
+      Put DNA, gene and chromosome in order from smallest to largest and say why.
+
+  - id: immunity_from_antibiotics
+    subject: biology
+    concept: immunity
+    summary: Thinks antibiotics work against viruses.
+    trigger_patterns:
+      - "antibiotic.{0,24}(virus|viral|cold|flu)"
+      - "एंटीबायोटिक.{0,24}(वायरस|वाइरस|सर्दी)"
+    correct_model: >
+      Antibiotics target bacterial structures and processes. Viruses lack those
+      structures, so antibiotics have no effect on viral infections.
+    analogy_family: mechanical
+    preferred_analogy: >
+      A key cut for one lock will not open a completely different mechanism.
+    diagnostic_question: >
+      You have a common cold caused by a virus. Will antibiotics shorten it?
+      What harm might taking them do?
+
+  # ---------------- chemistry ----------------
+
+  - id: mass_lost_in_burning
+    subject: chemistry
+    concept: conservation_of_mass
+    summary: Thinks mass disappears when something burns.
+    trigger_patterns:
+      - "mass.{0,24}(lost|disappear|destroyed).{0,16}burn"
+      - "द्रव्यमान.{0,24}(नष्ट|गायब).{0,16}जल"
+    correct_model: >
+      Mass is conserved. The products include gases that escape, so the residue
+      weighs less while the total mass of everything is unchanged.
+    analogy_family: everyday
+    preferred_analogy: >
+      Money moved from your wallet to your bank account has not vanished; it is
+      simply somewhere you are not counting.
+    diagnostic_question: >
+      Wood burns and the ash weighs far less. Where did the missing mass go, and
+      how would you weigh it?
+
+  - id: atoms_change_in_reaction
+    subject: chemistry
+    concept: chemical_reactions
+    summary: Thinks atoms are created or destroyed during a reaction.
+    trigger_patterns:
+      - "atoms?.{0,24}(created|destroyed|disappear).{0,16}reaction"
+      - "परमाणु.{0,24}(बनते|नष्ट).{0,16}अभिक्रिया"
+    correct_model: >
+      Atoms are rearranged, not created or destroyed. This is why chemical
+      equations must balance on both sides.
+    analogy_family: everyday
+    preferred_analogy: >
+      Rebuilding a Lego house into a Lego car uses exactly the same bricks in a
+      different arrangement.
+    diagnostic_question: >
+      Why must the number of each type of atom be the same on both sides of a
+      balanced equation?
+
+  - id: strong_acid_means_concentrated
+    subject: chemistry
+    concept: acids_and_bases
+    summary: Confuses acid strength with concentration.
+    trigger_patterns:
+      - "strong.{0,16}acid.{0,24}(means|=).{0,16}concentrat"
+      - "मजबूत.{0,16}अम्ल.{0,24}(गाढ़ा|सांद्र)"
+    correct_model: >
+      Strength describes how completely an acid dissociates. Concentration
+      describes how much acid is dissolved. A dilute strong acid exists.
+    analogy_family: everyday
+    preferred_analogy: >
+      Strength is how loud each person can shout; concentration is how many
+      people are in the room.
+    diagnostic_question: >
+      Is a very dilute solution of hydrochloric acid a strong acid or a weak one?
+      Explain the difference you are using.
+
+  - id: bonds_release_energy
+    subject: chemistry
+    concept: bond_energy
+    summary: Thinks breaking bonds releases energy.
+    trigger_patterns:
+      - "breaking.{0,16}bonds?.{0,24}releas.{0,16}energy"
+      - "बंध.{0,16}तोड़.{0,24}ऊर्जा.{0,16}निकल"
+    correct_model: >
+      Breaking bonds absorbs energy; forming bonds releases it. A reaction is
+      exothermic when the bonds formed are stronger than those broken.
+    analogy_family: mechanical
+    preferred_analogy: >
+      Pulling two magnets apart takes effort; letting them snap together gives
+      that energy back.
+    diagnostic_question: >
+      In combustion, energy is released overall. Does that mean bond breaking or
+      bond making dominates? Which absorbs energy?
+
+  # ---------------- programming ----------------
+
+  - id: assignment_is_equality
+    subject: programming
+    concept: variables
+    summary: Reads `=` as a mathematical equality rather than assignment.
+    trigger_patterns:
+      - "x\\s*=\\s*x\\s*\\+\\s*1.{0,24}(impossible|cannot|wrong|never)"
+      - "assignment.{0,16}(is|means).{0,16}equal"
+      - "बराबर.{0,24}(असंभव|गलत)"
+    correct_model: >
+      `=` stores the value on the right into the name on the left. `x = x + 1`
+      reads the old value, adds one, and stores the result back.
+    analogy_family: everyday
+    preferred_analogy: >
+      A whiteboard: you read the number, add one, wipe it, write the new number.
+    diagnostic_question: >
+      After `x = 5` then `x = x + 3`, what is x, and what happened in what order?
+
+  - id: mutable_default_argument
+    subject: programming
+    concept: functions
+    summary: Expects a mutable default argument to reset on each call.
+    trigger_patterns:
+      - "def\\s+\\w+\\(.*=\\s*\\[\\s*\\].*\\).{0,40}(fresh|new|reset|empty)\\s+(list|each)"
+      - "default.{0,16}(list|dict).{0,24}(reset|new).{0,16}each\\s+call"
+    correct_model: >
+      Default arguments are evaluated once, when the function is defined. A
+      mutable default is shared across every call. Use None and create inside.
+    analogy_family: everyday
+    preferred_analogy: >
+      One shared shopping basket left by the door, not a fresh basket per trip.
+    diagnostic_question: >
+      What does calling `f()` three times print, if `def f(a=[]): a.append(1);
+      print(a)`? Why?
+
+  - id: reference_vs_copy
+    subject: programming
+    concept: references
+    summary: Thinks assigning a list creates an independent copy.
+    trigger_patterns:
+      - "b\\s*=\\s*a.{0,32}(copy|independent|separate)"
+      - "assign.{0,16}list.{0,24}(makes|creates).{0,16}copy"
+    correct_model: >
+      Assignment binds another name to the same object. Mutating through one name
+      is visible through the other. Copy explicitly with list(a) or a.copy().
+    analogy_family: everyday
+    preferred_analogy: >
+      Two people with the address of the same house. Repainting it changes what
+      both of them see.
+    diagnostic_question: >
+      After `a = [1,2]; b = a; b.append(3)`, what is `a`, and why?
+
+  - id: loop_variable_scope
+    subject: programming
+    concept: scope
+    summary: Expects a loop variable to vanish after the loop in Python.
+    trigger_patterns:
+      - "loop\\s+variable.{0,24}(gone|undefined|not exist).{0,16}after"
+      - "लूप.{0,24}चर.{0,24}(खत्म|नहीं).{0,16}बाद"
+    correct_model: >
+      Python loops do not create a new scope. The loop variable persists after
+      the loop with its final value.
+    analogy_family: computational
+    preferred_analogy: >
+      The counter on a turnstile still shows its last reading after everyone has
+      gone through.
+    diagnostic_question: >
+      After `for i in range(3): pass`, what is the value of `i`?
+
+  - id: recursion_no_base_case
+    subject: programming
+    concept: recursion
+    summary: Writes recursion without recognising the need for a base case.
+    trigger_patterns:
+      - "recursion.{0,24}(no|without).{0,16}base\\s+case"
+      - "पुनरावर्तन.{0,24}आधार.{0,16}(नहीं|बिना)"
+    correct_model: >
+      Every recursive function needs a base case that returns without recursing,
+      or it recurses until the stack is exhausted.
+    analogy_family: everyday
+    preferred_analogy: >
+      Two mirrors facing each other reflect forever because nothing ever stops
+      the process.
+    diagnostic_question: >
+      What happens when you call a factorial function that never checks for n
+      equal to 0 or 1?
+
+  - id: float_equality
+    subject: programming
+    concept: floating_point
+    summary: Expects exact equality when comparing floating point results.
+    trigger_patterns:
+      - "0\\.1\\s*\\+\\s*0\\.2\\s*==\\s*0\\.3.{0,16}(true|correct)"
+      - "float.{0,24}(exact|precise).{0,16}equal"
+    correct_model: >
+      Binary floating point cannot represent 0.1 exactly, so sums carry tiny
+      errors. Compare with a tolerance, or use decimal for money.
+    analogy_family: computational
+    preferred_analogy: >
+      Writing one third as 0.333 in a fixed number of digits: three of them do
+      not add back to exactly 1.
+    diagnostic_question: >
+      Does `0.1 + 0.2 == 0.3` evaluate to True in Python? What should you write
+      instead?
+
+  - id: off_by_one_range
+    subject: programming
+    concept: loops
+    summary: Expects range(n) to include n.
+    trigger_patterns:
+      - "range\\(\\s*\\d+\\s*\\).{0,24}includes?"
+      - "range.{0,16}(1|one).{0,16}to.{0,16}n.{0,24}inclusive"
+    correct_model: >
+      `range(n)` yields 0 to n-1, n values in total. The upper bound is exclusive.
+    analogy_family: everyday
+    preferred_analogy: >
+      A fence with 5 posts has 4 gaps between them. Counting boundaries and
+      counting items give different totals.
+    diagnostic_question: >
+      How many numbers does `range(5)` produce, and what is the largest?
